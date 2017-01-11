@@ -1,0 +1,30 @@
+//  Base CSS for placeholder support for ie8 & ie9
+
+.input-placeholder-wrap {
+    position: relative;
+    display: inline-block;
+
+    input {
+        margin: 0;
+        z-index: 2;
+        position: relative;
+
+        &.transparent {
+            background-repeat: repeat;
+            background-color: transparent;
+            background-image: url('@{baseImagePath}_shared/blank.png');
+        }
+    }
+
+    .input-placeholder {
+        .box-sizing;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        display: block;
+        min-height: 100%;
+        position: absolute;
+        white-space: nowrap;
+    }
+}

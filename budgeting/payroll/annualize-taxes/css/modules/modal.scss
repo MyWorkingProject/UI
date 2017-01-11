@@ -1,0 +1,34 @@
+#annualize-taxes {
+    width: 28.2rem;
+    z-index: 9999;
+    .rp-grid {
+        &-headers-1 {
+            .rp-grid-cell {
+                border-top: none;
+            }
+        }
+
+        .is-selected {
+            width: 10%;
+        }
+
+        .payroll-type {
+            width: 40%;
+        }
+
+        .data-type {
+            width: 50%;
+        }
+    }
+    .ic-close {
+        @include fa-icon(close);
+        color: $rp-neutral-04;
+    }
+    .box-footer {
+        text-align: right;
+    }
+    z-index: 9999;
+}
+.aside {
+    z-index: 9999 !important;
+}

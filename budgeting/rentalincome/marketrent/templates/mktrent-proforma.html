@@ -1,0 +1,19 @@
+<div class="rp-cg-row-header">
+    <div class="rp-cg-text rp-cg-body-text" ng-if="column.row.data && column.row.data.isProformaUnitType < 1">
+        <span>{{column.row.data.name}}</span>
+        <!--<span class="comment-cell"><i class="rp-icon-chat-bubble"></i> {{column.row.data.commentCount}}</span>-->
+    </div>
+    <div class="rp-cg-text rp-cg-body-text col-md-12 p-l-0" ng-if="column.row.data && column.row.data.isProformaUnitType > 0">
+        <div class="mr-text">
+            <span ng-click="column.config.removeUnitType(column)" class="remove-icon pull-left m-r-sm p-t-xs"><i class="rp-del-icon"></i></span>
+            <input class="rp-cg-input-text rp-form-input visible-sm-inline-block"
+                   ng-model-options="{updateOn: 'blur'}"
+                   ng-change="column.config.validateDescr(column)"
+                   ng-model="column.row.data[column.config.key]" />
+        </div>
+        <div class="mr-lable">
+            <span>{{column.row.data.name}}</span>
+        </div>
+        <!--<span class="comment-cell"><i class="rp-icon-chat-bubble"></i> {{column.row.data.commentCount}}</span>-->
+    </div>
+</div>

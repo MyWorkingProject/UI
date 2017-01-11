@@ -1,0 +1,17 @@
+<div id="recall-allocations" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <h4 class="aside-title">{{page.recallDistSettingModel.isHistory == true ? page.fieldLabels.HistoryHeading : page.fieldLabels.pageHeading}}</h4>
+            </div>
+            <div class="m-a-md">
+                <rp-grid ng-if="page.model.grid" model="page.model.grid"></rp-grid>
+                <div class="m-t-md">
+                    <button class="btn rounded btn-outline text-primary b-primary pull-right" ng-click="page.close()">{{::page.fieldLabels.Cancel}}</button>                    
+                    <button class="btn rounded primary m-r-1 pull-right" ng-if="!page.recallDistSettingModel.isHistory" ng-click="page.recallDistAllocations()">{{::page.fieldLabels.Recall}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

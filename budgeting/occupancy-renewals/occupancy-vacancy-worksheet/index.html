@@ -1,0 +1,53 @@
+<div id="occupancy-worksheet" class="container-fluid">
+    <!--<div class="occupancy-worksheet-summary">-->
+    <div class="col-md-3 p-l-0">
+        <h5 class="mr-title">{{::page.fieldLabels.headerTitle}}</h5>
+        <div class="inline p-r-1 text-pointer">
+            <a ng-click="page.makeLeaseComment()"> <i class="rp-icon-chat-bubble"></i>
+                <span>{{page. model.form.commentCount}}</span>
+        </div>
+        <div class="inline p-l-1 p-r-1 pointer">
+            <a ng-if="page.isEditable" ng-click="page.showCalculator()"> <i class="rp-icon-calculator-2"></i>
+                <span>{{::page.fieldLabels.calculatorText}}</span></a>
+        </div>
+    </div>
+    <div class="page-buttons col-md-9 p-r-0">
+        <button ng-if="page.isEditable" type="button" class="btn primary rounded p-x-mdy pull-right btn-md w-xs m-l-1" ng-click="page.save()">
+                {{::page.fieldLabels.saveText}}
+            </button>
+        <button type="button" class="btn rounded btn-outline b-primary text-primary p-x-md pull-right btn-md" ng-click="page.cancel()">
+                {{::page.fieldLabels.cancelText}}
+            </button>
+    </div>
+
+
+
+    <div class="row m-b-2 p-l-0" data-ng-if="page.isEditable">
+        <div class="col-md-12 col-sm-12 p-l-0 m-t-2">
+
+            <div class="inline p-r-1 table-form-block p-l-0">
+                <span class="m-r-sm">{{::page.fieldLabels.input_occ_by}}</span>
+                <label class="md-check form-label p-r-1">
+                    <input name="occupancyType" type="radio"
+                           value="goal" ng-model="page.model.form.occupancyType" ng-disabled="page.model.form.disableGoal" ng-change="page.setFormInput()"/>
+                    <i class="blue"></i>
+                    {{::page.fieldLabels.goalPercentageText}}
+                </label>
+
+
+                <label class="md-check form-label">
+                    <input name="occupancyType" type="radio"
+                           value="moveIns" ng-model="page.model.form.occupancyType" ng-disabled="page.model.form.disableMoveIn" ng-change="page.setFormInput()"/>
+                    <i class="blue"></i>
+                    {{::page.fieldLabels.moveInText}}
+                </label>
+            </div>
+            <div class="pull-right m-l-1 pointer" ng-click="page.showTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>Table Settings</div>
+
+        </div>
+    </div>
+    <div class="row">
+        <rp-cg model="page.model.grid">
+        </rp-cg>
+    </div>
+</div>

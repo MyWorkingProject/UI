@@ -1,0 +1,68 @@
+<div id="payroll-job-allocation" ng-controller="JobPositionAllocationCtrl as jobAllocation" ng-init="jobAllocation.setModel($index)">
+    <form name="jobAllocation.model.form" novalidate>
+        <div>
+            <h5 class="page-title">{{::jobAllocation.fieldLabels.pageTitle}}</h5>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block">{{::jobAllocation.fieldLabels.noOfEmployees}}</label>
+                        <div ng-if="jobAllocation.model.isEdit" class="m-r-2">
+                            <rp-form-input-text config="jobAllocation.formConfig.noOfEmployees" rp-model="jobAllocation.model.noOfEmployees">
+                            </rp-form-input-text>
+                        </div>
+                        <label class="form-label" ng-if="!jobAllocation.model.isEdit">{{jobAllocation.model.noOfEmployees}}</label>
+                    </div>
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block" for="payType">{{::jobAllocation.fieldLabels.payType}}</label>
+                        <div ng-if="jobAllocation.model.isEdit">
+                            <label class="md-check m-r-1">
+                                <input type="radio" name="radio" ng-value="'Salary'" ng-model="jobAllocation.model.payType">
+                                <i class="blue"></i>
+                                {{::jobAllocation.fieldLabels.salary}}
+                            </label>
+                            <label class="md-check">
+                                <input type="radio" name="radio" ng-value="'Hourly'" ng-model="jobAllocation.model.payType">
+                                <i class="blue"></i>
+                                {{::jobAllocation.fieldLabels.hourly}}
+                            </label>
+                        </div>
+                        <label class="form-label"
+                               ng-if="!jobAllocation.model.isEdit">{{jobAllocation.model.payType}}</label>
+                    </div>
+                </div>
+                <div class="row m-t-1">
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block">{{::jobAllocation.fieldLabels.startDate}}</label>
+                        <div ng-if="jobAllocation.model.isEdit" class="m-r-2">
+                            <rp-datetimepicker rp-model="jobAllocation.model.startDate" config="jobAllocation.formConfig.startDate">
+                            </rp-datetimepicker>
+                        </div>
+                        <label ng-if="!jobAllocation.model.isEdit" class="form-label">{{jobAllocation.model.startDate.format(jobAllocation.fieldLabels.dateFormat) }}</label>
+                    </div>
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block">{{::jobAllocation.fieldLabels.endDate}}</label>
+                        <div ng-if="jobAllocation.model.isEdit" class="m-r-2">
+                            <rp-datetimepicker rp-model="jobAllocation.model.endDate" config="jobAllocation.formConfig.endDate">
+                            </rp-datetimepicker>
+                        </div>
+                        <label ng-if="!jobAllocation.model.isEdit" class="form-label">{{jobAllocation.model.endDate.format(jobAllocation.fieldLabels.dateFormat) }}</label>
+                    </div>
+                </div>
+                <div class="row m-t-1">
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block" for="propertyAllocation">{{::jobAllocation.fieldLabels.propertyAllocation}}</label>
+                        <div ng-if="jobAllocation.model.isEdit" class="m-r-2">
+                            <rp-form-input-text config="jobAllocation.formConfig.propertyAllocation" rp-model="jobAllocation.model.allocationPercent">
+                            </rp-form-input-text>
+                        </div>
+                        <label class="form-label" ng-if="!jobAllocation.model.isEdit">{{jobAllocation.model.allocationPercent}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

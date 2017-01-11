@@ -1,0 +1,54 @@
+#gl-account-history {
+
+	.gl-acct-history-content {
+		.box-header {
+			background-color: $rp-nav-color-04;
+
+			h4 {
+				@include header-3($rp-neutral-02);
+			}
+		}
+
+		.box-body {
+			padding: 1rem 0.5rem;
+		}
+
+		// .panel-default {
+		// 	margin-bottom: 0.5rem;
+		// }
+
+		.panel {
+			margin: 1rem;
+		}
+
+		.panel-toggle {
+			@include small-text;
+		}
+
+		.panel-open {
+			&.box-header {
+				background-color: $rp-primary;
+
+				.panel-title {
+					@include header-3($white);
+				}
+			}
+
+			.activity-count {
+				background-color: $rp-neutral;
+
+			}
+		}
+
+		.activity-count {
+			@include x-small-text;
+			background-color: $rp-nav-color-02;
+			color: $white;
+			
+			margin-right: 1rem;
+			position: relative;
+			top: -0.15rem;
+		}
+	}
+
+}

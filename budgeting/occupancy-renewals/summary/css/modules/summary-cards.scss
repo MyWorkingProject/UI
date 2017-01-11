@@ -1,0 +1,90 @@
+#occupancy-renewals-summary {
+
+	.summary-card-wrapper {
+		margin: 2rem 0;
+	}
+
+	.summary-card {
+		@include inline-block;
+
+		height: 5.5rem;
+		text-align: center;
+		padding: 1.5rem 0;
+
+		border-right: 1px solid $rp-neutral-05;
+
+		&:last-child {
+			border-right: none;
+		}
+
+		&-icon {
+			font-size: 22px;
+		}
+
+		&-label {
+			@include title-3;
+			margin: 0.2rem 0 0;
+
+			.count {
+				@include large-text;
+			}
+
+			small {
+				@include x-small-text;
+				text-align: left;
+				display: block;
+			}
+		}
+
+		.pie-wrapper {
+			display: inline-block;
+
+			// & > div {
+			// 	float: left;
+			// }
+		}
+	}
+
+	.summary-grid-wrapper {
+		width: 100%;
+		padding-bottom: 1.5rem;
+
+		// .total .rp-cg-body-text{
+		// 	font-weight: normal;
+		// }
+
+		.column-title {
+			text-align: left;
+		}
+
+		.legend-icon {
+			height: 10px;
+			width: 10px;
+			border-radius: 50%;
+
+			display: inline-block;
+			margin-right: 0.5rem;
+			vertical-align: baseline;
+
+			background-color: $rp-neutral;
+
+			&.move-outs {
+				background-color: $rp-primary-02;
+			}
+			&.move-ins {
+				background-color: $rp-primary;
+			}
+			&.lease-renewals {
+				background-color: $rp-neutral-04;
+			}
+			&.occupancy-percent {
+				border: 1px solid $rp-accent;
+				background-color: $white;
+
+			}
+		}
+
+	}
+
+
+}

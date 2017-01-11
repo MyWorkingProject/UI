@@ -1,0 +1,18 @@
+<div class="rp-cg-editable">
+    <span class="rp-cg-text rp-cg-body-text mr-lable">
+        {{column.getVal().toLocaleString()}}
+    </span>
+
+    <!--<span class="rp-cg-text" ng-if="column.row.data.leaseExpirePeriod == column.config.key.replace('period','')" title="Lease expires : {{column.row.data.leaseExpireDate}}">
+        *
+    </span>-->
+    <div ng-class="{'error-left': column.row.data.leaseExpirePeriod == column.config.key.replace('period','')}" >
+        <input class="rp-cg-input-text rp-form-input text-right mr-text"
+               ng-model-options="{updateOn: 'blur'}"
+               ng-change="column.config.makeRentVal(column.config, model.gridData,column)"
+               ng-focus="column.config.makeRentFocus(column.config, column)"
+               ng-model="column.row.data[column.config.key]"/>
+               <!--ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"-->
+               <!--onkeypress='return event.charCode >= 48 && event.charCode <= 57'--> 
+    </div>
+</div>

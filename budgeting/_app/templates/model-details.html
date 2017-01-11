@@ -1,0 +1,55 @@
+<div class="white ng-scope budget-model-details">
+    <div class="row">
+        <div class="col-sm-12 p-l-0">
+            <div class="p-t-sm clearfix">
+                <div class="col-md-6 pull-left m-t-xs p-l-0">
+                    <div class="text-center text-sm-left ft-follow">
+                        <p class="inline p-l-1 p-r-1 text-center m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{info.propertyName}}
+                            </small>
+                        </p>
+                        <p class="inline p-l-1 b-l b-r p-r-1 text-center m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{info.budgetYear}}
+                            </small>
+                        </p>
+                        <p class="inline p-l-1 p-r-1 text-center m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{info.budgetType}} - {{info.assettype}}
+                            </small>
+                        </p>
+                        <h3 class="budget-model-title text-primary p-l-1">
+                            {{info.pageTitle ? info.pageTitle : info.modelName }}
+                        </h3>
+                         <div class="p-l-1"><div class="pull-left m-t-xs m-r-xs left-bar refRowStyle" ></div><span class="text-muted"> {{ info.subTitle ? info.subTitle : ""  }} </span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pull-right m-t-xs">
+                        <div class="text-center text-sm-right ft-follow" ng-if="info.isUnitsShow">
+                            <p class="inline p-x text-left">
+                                <small class="ft-s-14 _400">
+                                    {{info.budgetModelUnitsText}}
+                                </small>
+                                <span class="ft-s-18 _500 block m-a-0 text-left">{{info.noOfUnits}}</span>
+                            </p>
+                            <p class="inline p-x b-l b-r text-left">
+                                <small class="ft-s-14 _400">
+                                    {{info.budgetModelSqFtText}}
+                                </small>
+                                <span class="ft-s-18 _500 block m-a-0 text-left">{{info.rentableSqFt | number}}</span>
+                            </p>
+                            <p class="inline p-x text-left">
+                                <small class="ft-s-14 _400">
+                                    {{info.budgetModelWorkflowText}}
+                                </small>
+                                <span class="ft-s-18 _500 block m-a-0 text-left">Level {{info.currentSequence}}</span>
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+<small class="m-l-xs text-muted" ng-if="info.isChartNameShow">{{ info.masterChartName }}</small>

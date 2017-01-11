@@ -1,0 +1,42 @@
+<div class="aside" id="advanceActuals" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <i class="close rp-icon-delete-2 m-t-sm" ng-click="page.close()"></i>
+                <div class="p-t-sm">
+                    <h5>{{::page.fieldLabels.lblAdvanceActuals}}</h5>
+                </div>
+            </div>
+            <div class="aside-body">
+                <div class="col-md-12 p-l-0" ng-if="!page.model.form.isAdvanceActaulsEditable">
+                    <label class="form-label m-b-0 _600" for="selectAdvanceActuals">
+                        {{::page.fieldLabels.lblUseActuals}}
+                    </label>
+                    <div>
+                        <span class="_400">{{::page.model.form.lblAdvanceActualsYear}}</span>
+                        <span class="_400">{{::page.model.form.lblAdvanceActualsMonth}}</span>
+                    </div>
+                </div>
+                <form name="advanceActuals" novalidate ng-if="page.model.form.isAdvanceActaulsEditable">
+                    <div class="col-md-12 p-l-0">
+                        <label class="form-label _600" for="selectAdvanceActuals">
+                            {{::page.fieldLabels.lblUseActuals}}
+                        </label>
+                        <rp-form-select-menu config="page.formConfig.advanceActuals" rp-model="page.model.form.adActuals">
+                        </rp-form-select-menu>
+                        <div class="m-t-1">
+                            <div class="pull-right">
+                                <button class="btn rounded btn-outline b-primary text-primary m-r-xs" ng-click="page.cancel()">
+                                    {{::page.fieldLabels.lblCancel}}
+                                </button>
+                                <button class="btn rounded primary" ng-click="page.doAdvanceActuals(advanceActuals)">
+                                    {{::page.fieldLabels.lblApplyActuals}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

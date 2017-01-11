@@ -1,0 +1,148 @@
+/*.workspaces .workflowform {
+
+    .comments {
+        width: 100%;
+        border-radius: 5px;
+
+        @media @smallScreenAndBelow {
+            width: 67%;
+        }
+    }
+
+    .column(12);
+
+    @media @mediumScreen {
+        .column(10);
+    }
+
+    @media @largeScreen {
+        .column(8);
+    }
+
+    .column-1 {
+        .column(12);
+
+        @media @smallScreen {
+            .column(6);
+        }
+
+        @media @largeScreen {
+            .column(5);
+        }
+    }
+
+
+
+    .column-2 {
+        .column(12);
+
+        @media @smallScreen {
+            .column(6);
+        }
+
+        @media @mediumScreen {
+            .column(4);
+        }
+
+        @media @largeScreen {
+            .column(3);
+        }
+    }
+
+    .column-3 {
+        .column(12);
+
+        @media @mediumScreen {
+            .column(10);
+        }
+
+        @media @largeScreen {
+            .column(8);
+        }
+    }
+
+    .add-links {
+        margin-top: 5px;
+
+        @media @defaultOnly {
+            text-align: center;
+        }
+    }
+
+    .form-title {
+        .bold;
+        .large-text;
+        .column(11);
+        color: @dark-gray;
+        margin-bottom: 15px;
+    }
+
+    .form-row {
+        .clearfix;
+    }
+
+    .form-block {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 20px;
+        width: 370px;
+        margin-left:0px;
+
+        &:last-child {
+            @media @smallScreen {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .formctrl-block {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 20px;
+        width: 270px;
+          margin-left:0px;
+        @media @smallScreenAndBelow {
+            width: 98%;
+        }
+
+        &:last-child {
+            @media @smallScreen {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+ 
+
+
+     .field-label {
+            .form-label;
+        }
+
+
+    .rp-input-text-wrap {
+        .block;
+    }
+
+
+
+
+    .icon {
+        .icon-close;
+        .block;
+        .rounded(7px);
+        top: 6px;
+        width: 14px;
+        right: -20px;
+        height: 14px;
+        text-align: center;
+        position: absolute;
+        background-color: @gray;
+
+        &:before {
+            color: @white;
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+} */

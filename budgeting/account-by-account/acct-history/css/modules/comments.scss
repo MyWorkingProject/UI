@@ -1,0 +1,29 @@
+#gl-account-history {
+	.gl-acct-history-comments {
+
+		h3 {
+			@include header-3;
+		}
+
+		.sl-left {
+			margin-left: -16px;
+		}
+		
+		.ic-circle {
+			@include fa-icon(circle);
+
+			font-size: 6px;
+			line-height: 10px;
+			vertical-align: middle;
+
+			margin: 0 0.25rem;
+			//color: $rp-neutral-04;
+		}
+
+		.source-data {
+			font-size: 0.85em;
+		}
+
+
+	}
+}

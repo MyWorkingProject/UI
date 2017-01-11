@@ -1,0 +1,22 @@
+<div id="taskBudgetUserView">
+	<div class="page-body taskuser-page-content-wrap">
+		<div class="taskuser-page-content">
+     <h3 class="chart-heading">{{page.model.text.pageHeading}}</h3>
+			<div class="controls">
+                <span class="button medium blue newbtn saveBtn" ng-click="page.save()">
+                    {{ ::page.model.text.saveBtnText }}
+                </span>
+                <input type="checkbox" id="chkAll" ng-model='page.model.isAllModels'/> 
+                <label for="chkAll" class="field-label">
+                       {{ ::page.model.text.assignAllChkText }} 
+                    </label>
+                <rp-toggle class="table-filter-toggle"
+                           model="page.model.grid.filtersModel.state.active"
+                           options="{activeText: page.model.text.hideFilters,
+                       defaultText: page.model.text.showFilters}">
+                </rp-toggle>
+            </div>
+            <rp-grid model="page.model.grid"></rp-grid>
+      	</div>
+      </div>
+</div>

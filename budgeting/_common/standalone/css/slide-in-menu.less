@@ -1,0 +1,111 @@
+//  Slide-in Menu Module
+
+.slide-in-menu {
+    // top: 0;
+    // left: 0;
+    // padding: 0;
+    // z-index: 10;
+    // height: 100%;
+    // width: 199px;
+    // position: absolute;
+    // background-color: @dark-gray;
+    // border-right: solid 1px #646464;
+
+    &.right {
+        margin: 0;
+        left: 100%;
+    }
+
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    a,
+    span,
+    a:visited,
+    li.current {
+        .arial;
+    }
+
+    a,
+    a:visited,
+    li.current {
+        font-size: 12px;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+
+    a,
+    .link,
+    a:visited {
+        .block;
+        color: #d3d3d3;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: @white;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .current {
+        color: @light-orange;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .link {
+        .block;
+        .crop-text-overflow;
+        cursor: pointer;
+        font-size: 12px;
+        padding-top: 1px;
+        line-height: 38px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        &.open {
+            border-bottom: solid 1px #7d7d7d;
+        }
+    }
+
+    li {
+        border-bottom: solid 1px #7d7d7d;
+
+        li {
+            border-bottom: none;
+        }
+
+        a,
+        a:visited {
+            .crop-text-overflow;
+        }
+    }
+
+    .menu {
+        overflow: hidden;
+    }
+
+    .dropdown {
+        overflow: hidden;
+        background-color: #575757;
+    }
+}
+
+//  Fall back for browsers that
+//  Don't support rgba colors
+
+.no-rgba
+.slide-in-menu {
+    border-right: solid 1px rgb(48, 48, 48);
+
+    a:hover {
+        background-color: rgb(25, 25, 25);
+    }
+
+    li.current {
+        background-color: rgb(50, 50, 50);
+    }
+}

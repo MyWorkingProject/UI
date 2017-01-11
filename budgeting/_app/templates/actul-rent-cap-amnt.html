@@ -1,0 +1,8 @@
+<div ng-if="!model.capState.edit" class="text-right">
+    {{record.capAmount}}
+</div>
+<div ng-if="model.capState.edit">
+    <!--<input type="text" class="form-control"  ng-model="record.amount"/>-->
+    <rp-form-input-text config="model.formConfig.amount" class="text-right" rp-model="record.capAmount">
+    </rp-form-input-text>
+</div>

@@ -1,0 +1,533 @@
+<div class="rent-options" ng-if="page.model.rentOptions.isRentOptionReady">
+    <form name="conventionalRent">
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <h5 class="col-xs-6">{{::page.getLangValue('mr_page_title')}}</h5>
+            <div class="form-group col-xs-6" >
+                <div class="col-sm-9 col-sm-offset-3" ng-show="page.model.rentOptions.hasEditRights">
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.showForm()" ng-show="!page.model.rentOptions.visible">
+                        <i class="fa fa-edit"></i>
+                        {{::page.getLangValue('mr_options_edit')}}
+                    </button>
+                    <!-- buttons to submit / cancel form -->
+                    <span ng-show="page.model.rentOptions.visible" class="pull-right">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-click="page.cancel()">
+                            {{::page.getLangValue('mr_options_cancel')}}
+                        </button>
+                        <button type="submit" class="btn rounded primary w-xs" ng-click="page.saveRentOptions()">
+                            {{::page.getLangValue('mr_options_save')}}
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <!--BEGIN For Market Rent Method-->
+
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('mr_body_title')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <div class="form-group row m-b-0">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !==''">
+                            {{ page.rentOptions.records.rentOptions.marketRentTitle }}  Method
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle ==''">
+                            {{ page.model.form.marketRentTitle }}  
+                        </label>
+                    
+                    </div>
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.assetType!=='Senior Living'" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !==''">
+                            {{ page.rentOptions.records.rentOptions.marketRentTitle  }} 
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle ==''">
+                            {{ page.model.form.marketRentGLTitle }}
+                        </label>
+                        <span class="rp-icon-question-circle m-l-1 show-pointer" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-click="page.showProductToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-product" ng-show="page.model.rentOptions.productToolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('mr_helptext')}}                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--market Rent GL Label for Service Group-->
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.assetType=='Senior Living'" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !=='' && page.rentOptions.records.rentOptions.incomeModel ==='Service group'">
+                            {{ page.rentOptions.records.rentOptions.marketRentTitle  }} for {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle =='' && page.rentOptions.records.rentOptions.incomeModel ==='Service group'">
+                            {{ page.model.form.marketRentGLTitle }} for  {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle =='' && page.rentOptions.records.rentOptions.incomeModel !=='Service group'">
+                            {{ page.model.form.marketRentGLTitle }}
+                        </label>
+
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !=='' && page.rentOptions.records.rentOptions.incomeModel !=='Service group'">
+                            {{ page.rentOptions.records.rentOptions.marketRentTitle }}
+                        </label>
+
+                        <!--<i class="rp-icon-question-circle m-l-1 show-pointer" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-click="page.showOverWriteInfo()"></i>-->
+                        <span class="rp-icon-question-circle m-l-1 show-pointer" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-click="page.showProductToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-product" ng-show="page.model.rentOptions.productToolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('mr_helptext')}} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('mr_total_Percent')}}
+                        </label>
+                    </div>
+                    <div class="col-sm-1" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <label class="ft-s-16 ft-bold text-color">                         
+                        </label>
+                    </div>
+                </div>
+               
+                <div class="form-group row" ng-if="!page.rentModelSettings.rentSettings.mrFlag">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">                          
+                            <rp-form-select-menu  ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod "
+                                                 config="page.formConfig.marketRentOptions" 
+                                                 rp-model="page.rentOptions.records.rentOptions.incomeModel">
+                            </rp-form-select-menu>
+                            <span class="span-width" ng-if="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{page.model.form.marketRentLabel }}</label>
+                            </span>
+                        </p>
+                    </div>
+
+
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <p class="form-control-static" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts">
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts ">
+                                <gl-accnt-search data="item"></gl-accnt-search>
+                            </span>
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{item.glAccountNumber}}-{{item.glAccountDescription}}</label>
+                            </span>
+                        </p>
+                       <span class="text-info" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts " ng-if="page.rentModelSettings.rentSettings.addGLOptions">+</span> 
+                        <a href="" class="text-info rp-grid-link"  ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts " ng-if="page.rentModelSettings.rentSettings.addGLOptions"  ng-click="page.updateGLModel(page.rentOptions.records.marketRentGLAccounts)"> {{::page.getLangValue('mr_add_GL')}}</a>
+                    </div>
+
+                    <div class="col-sm-2" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'"  ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">                       
+                        <p class="form-control-static  inner-addon right-addon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts" ng-init="page.convertTodecimals(item)">
+                            <span class="fa" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">%</span>
+                            <input type="number" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" class="form-control text-right" name="" ng-model="item.incomePercent" restrict-input="^[0-9]*$" step="0.01" required />
+                            <span class="span-width text-right" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{ item.incomePercent }} % </label>
+                            </span>
+
+                        </p>
+                    </div>
+
+                    <div class="col-sm-1 p-l-0" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'">
+                        <p class="form-control-static-del-icon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                            <span ng-if="$index !== 0">
+                                <i class="rp-icon-delete del-icon-margin  show-pointer pull-left" ng-click="page.removeRow($index,page.rentOptions.records.marketRentGLAccounts)"></i>
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                 <!--DIV for senior Living with service Group for Market Rent-->
+                <div class="form-group row" ng-if="page.rentModelSettings.rentSettings.mrFlag">
+                    <div class="col-sm-4" >
+                        <p class="form-control-static">
+                            <!--<select ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod" 
+                                ng-model="page.rentOptions.records.rentOptions.incomeModel"
+                                    class="form-control "
+                                    rp-select-options="page.model.rentOptions.marketRentOptions"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                    ng-change="page.updateModelFlagsByCondition(page.rentOptions.records.rentOptions)"
+                                    ng-options="s.value as s.text for s in  page.model.rentOptions.marketRentOptions"></select>-->
+                            <rp-form-select-menu ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod"
+                                                 config="page.formConfig.marketRentOptions"
+                                                 rp-model="page.rentOptions.records.rentOptions.incomeModel">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{ page.model.form.marketRentLabel }}</label>
+                            </span>
+                            <!--<span class="span-width" editable-select="page.rentOptions.records.rentOptions.incomeModel" e-ng-options="s.value as s.text for s in page.model.rentOptions.marketRentOptions">
+                                {{ page.rentOptions.records.rentOptions.incomeModel  }}
+                            </span>-->
+                        </p>
+                    </div>
+
+
+                    <div class="col-sm-5" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                        <p class="form-control-static" ng-repeat="item in page.rentModelSettings.rentSettings.mrGLForSG">
+                            <span ng-if="$index!=0">
+                                <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !==''">
+                                    {{ page.rentOptions.records.rentOptions.marketRentTitle  }} for {{ page.rentOptions.records.propertyServiceGroups[$index].serviceGroupName }}
+                                </label>
+                                <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle ==''">
+                                    {{ page.model.form.marketRentGLTitle }} for  {{ page.rentOptions.records.propertyServiceGroups[$index].serviceGroupName }}
+                                </label>
+                            </span>
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">
+                                <gl-accnt-search data="item"></gl-accnt-search>
+                            </span>
+                            <span class="span-width block" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{item.glAccountNumber}}-{{item.glAccountDescription}}</label>
+                            </span>
+                        </p>
+                       
+                    </div>
+
+                    <div class="col-sm-2" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'">
+                        <p class="form-control-static  inner-addon right-addon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts">
+                            <span class="fa" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">%</span>
+                            <span class="span-width" editable-text="item.incomePercent">{{item.incomePercent}} </span>
+
+                        </p>
+                    </div>
+
+                    <div class="col-sm-1 p-l-0" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'">
+                        <p class="form-control-static-del-icon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts" ng-show="page.rentOptions.records.rentOptions.incomeModel !=='None'">
+                            <span ng-if="$index !== 0">
+                                <i class="rp-icon-delete del-icon-margin  show-pointer pull-left" ng-click="page.removeRow($index,page.rentOptions.records.marketRentGLAccounts)"></i>
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--END For Market Rent Method-->
+         
+        <!--BEGIN For Actual Rent Method  -->
+
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('mr_body_actual_rent')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <div class="form-group row m-b-0">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle !==''">
+                            {{ page.rentOptions.records.rentOptions.scheduleRentTitle }}  Method
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle ==''">
+                            {{ page.model.form.actualRentTitle }}  
+                        </label>
+                    </div>
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.assetType !=='Senior Living'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle !==''">
+                            {{ page.rentOptions.records.rentOptions.scheduleRentTitle  }} 
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle ==''">
+                            {{ page.model.form.actualRentGLTitle  }}
+                        </label>
+                        <!--<i class="rp-icon-question-circle m-l-1 show-pointer" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-click="page.showOverWriteInfo()"></i>-->
+                    </div>
+
+                    <!--Actual Rent GL Label for Service Group-->
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.assetType=='Senior Living'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <!--<label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !==''">
+                            {{ page.rentOptions.records.rentOptions.scheduleRentTitle  }} for {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle ==''">
+                            {{ page.model.form.actualRentGLTitle }} for {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>-->
+
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle !=='' && page.rentOptions.records.rentOptions.scheduleRentMethod ==='Service group'">
+                            {{ page.rentOptions.records.rentOptions.scheduleRentTitle  }} for {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle =='' && page.rentOptions.records.rentOptions.scheduleRentMethod ==='Service group'">
+                            {{ page.model.form.actualRentGLTitle }} for  {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle =='' && page.rentOptions.records.rentOptions.scheduleRentMethod !=='Service group'">
+                            {{ page.model.form.actualRentGLTitle }}
+                        </label>
+
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.scheduleRentTitle !=='' && page.rentOptions.records.rentOptions.scheduleRentMethod !=='Service group'">
+                            {{ page.rentOptions.records.rentOptions.scheduleRentTitle }}
+                        </label>
+
+
+                        <!--<i class="rp-icon-question-circle m-l-1 show-pointer" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-click="page.showOverWriteInfo()"></i>-->
+                    </div>
+
+                    <div class="col-sm-2" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('mr_total_Percent')}}
+                        </label>
+                    </div>
+                    <div class="col-sm-1" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <label class="ft-s-16 ft-bold text-color">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row" ng-if="!page.rentModelSettings.rentSettings.arFlag">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">                          
+                            <rp-form-select-menu ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod" 
+                                                 config="page.formConfig.scheduleRentGLAccounts"
+                                                 rp-model="page.rentOptions.records.rentOptions.scheduleRentMethod">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible  || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{ page.model.form.actualRentLabel }}</label>
+                            </span>
+                        </p>
+                    </div>
+
+
+                    <div class="col-sm-5" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <p class="form-control-static" ng-repeat="item in page.rentOptions.records.scheduleRentGLAccounts" >
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" >
+                                <gl-accnt-search data="item"></gl-accnt-search>
+                            </span>
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{item.glAccountNumber}}-{{item.glAccountDescription}}</label>
+                            </span>
+                        </p>
+                        <span class="text-info" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentModelSettings.rentSettings.addGLOptions" >+</span>
+                        <a href="" class="text-info rp-grid-link" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentModelSettings.rentSettings.addGLOptions" ng-click="page.updateGLModel(page.rentOptions.records.scheduleRentGLAccounts)"> {{::page.getLangValue('mr_add_GL')}}</a>
+                    </div>
+
+                    <div class="col-sm-2" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <p class="form-control-static  inner-addon right-addon" ng-repeat="item in page.rentOptions.records.scheduleRentGLAccounts"  ng-init="page.convertTodecimals(item)">
+                            <span class="fa" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">%</span>
+                            <!--<span class="span-width" editable-text="item.incomePercent">{{item.incomePercent}}</span>-->
+                            <input type="number" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" class="form-control text-right" name="" ng-model="item.incomePercent" restrict-input="^[0-9]*$" step="0.01" required />
+                            <span class="span-width text-right" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{ item.incomePercent }} % </label>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="col-sm-1 p-l-0" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'">
+                        <p class="form-control-static-del-icon" ng-repeat="item in page.rentOptions.records.scheduleRentGLAccounts" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                            <span ng-if="$index !== 0">
+                                <i class="rp-icon-delete del-icon-margin  show-pointer pull-left" ng-click="page.removeRow($index,page.rentOptions.records.scheduleRentGLAccounts)"></i>
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!--DIV for senior Living with service Group for Actual Rent-->
+                <div class="form-group row" ng-if="page.rentModelSettings.rentSettings.arFlag">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            <!--<span class="span-width" editable-select="page.rentOptions.records.rentOptions.scheduleRentMethod" e-ng-options="s.value as s.text for s in page.model.rentOptions.marketRentOptions">
+                                {{ page.rentOptions.records.rentOptions.incomeModel }}
+                            </span>-->
+                            <!--<select ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod" 
+                                    ng-model="page.rentOptions.records.rentOptions.scheduleRentMethod"
+                                    class="form-control "
+                                    rp-select-options="page.model.rentOptions.scheduleRentGLAccounts"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                     ng-change="page.updateModelFlagsByCondition(page.rentOptions.records.rentOptions)"
+                                    ng-options="s.value as s.text for s in  page.model.rentOptions.scheduleRentGLAccounts"></select>-->
+                            <rp-form-select-menu ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod"
+                                                 config="page.formConfig.scheduleRentGLAccounts"
+                                                 rp-model="page.rentOptions.records.rentOptions.scheduleRentMethod">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible  || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{ page.model.form.actualRentLabel }}</label>
+                            </span>
+                        </p>
+                    </div>
+
+
+                    <div class="col-sm-5" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <p class="form-control-static" ng-repeat="item in page.rentModelSettings.rentSettings.arGLForSG">
+                            <span ng-if="$index!=0">
+                                <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle !==''">
+                                    {{ page.rentOptions.records.rentOptions.scheduleRentTitle  }} for {{ page.rentOptions.records.propertyServiceGroups[$index].serviceGroupName }}
+                                </label>
+                                <label class="ft-s-16 ft-bold text-color" ng-if="page.rentOptions.records.rentOptions.marketRentTitle ==''">
+                                    {{ page.model.form.actualRentGLTitle }} for  {{ page.rentOptions.records.propertyServiceGroups[$index].serviceGroupName }}
+                                </label>
+                            </span>
+                            <span class="span-width" ng-if="page.model.rentOptions.visible">
+                                <gl-accnt-search data="item"></gl-accnt-search>
+                            </span>
+                            <span class="span-width  block" ng-show="!page.model.rentOptions.visible">
+                                <label>{{item.glAccountNumber}}-{{item.glAccountDescription}}</label>
+                            </span>
+                        </p>
+
+                    </div>
+
+                    <div class="col-sm-2" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                        <p class="form-control-static  inner-addon right-addon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts"  ng-init="page.convertTodecimals(item)" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                            <span class="fa" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">%</span>
+                            <!--<span class="span-width" editable-text="item.incomePercent">{{item.incomePercent}}</span>-->
+                            <input type="number" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" class="form-control text-right" name="" ng-model="item.incomePercent" restrict-input="^[0-9]*$" step="0.01" required />
+                            <span class="span-width text-right" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{ item.incomePercent }} % </label>
+                            </span>
+
+                        </p>
+                    </div>
+
+                    <div class="col-sm-1 p-l-0" ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if="page.rentOptions.records.rentOptions.assetType=='Affordable'" >
+                        <p class="form-control-static-del-icon" ng-repeat="item in page.rentOptions.records.marketRentGLAccounts" ng-show="page.rentOptions.records.rentOptions.scheduleRentMethod !=='None'">
+                            <span ng-if="$index !== 0">
+                                <i class="rp-icon-delete del-icon-margin  show-pointer pull-left" ng-click="page.removeRow($index,page.rentOptions.records.marketRentGLAccounts)"></i>
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--End of Actual Rent Method  -->
+
+
+        <!--BEGIN Loss/Gain To Lease Method-->
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('mr_body_loss_gain_lease')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <div class="form-group row m-b-0">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('mr_loss_gain_lease_method')}}
+                        </label>
+                    </div>
+                    <div class="col-sm-5" ng-show="page.rentOptions.records.rentOptions.lossToLeaseMethod !=='None'">
+                        <label class="ft-s-16 ft-bold text-color" ng-if="!page.rentModelSettings.rentSettings.lossToLeaseFlag">
+                            {{::page.getLangValue('mr_loss_gain_lease')}} 
+                        </label>
+                        <label class="ft-s-16 ft-bold text-color" ng-if="page.rentModelSettings.rentSettings.lossToLeaseFlag">
+                            {{::page.getLangValue('mr_loss_gain_sg')}} for {{ page.rentOptions.records.propertyServiceGroups[0].serviceGroupName }}
+                        </label>
+                    </div>
+                </div>
+
+                <!--loss gain to lease-- other then service group of senior living-->
+                <div class="form-group row" ng-if="!page.rentModelSettings.rentSettings.lossToLeaseFlag">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">                         
+                            <rp-form-select-menu ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod"
+                                                 config="page.formConfig.lossGainToLeaseOptions"
+                                                 rp-model="page.rentOptions.records.rentOptions.lossToLeaseMethod">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible  || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{ page.model.form.LossToLeaseLabel }}</label>
+                            </span>
+                        </p>
+                    </div>                   
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.lossToLeaseMethod !=='None'">                       
+                        <p class="form-control-static">
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts"  ng-if=" page.rentModelSettings.rentSettings.showlossToLease">
+                                                      
+                                <gl-accnt-search data="page.rentModelSettings.rentSettings.lossToLease" ></gl-accnt-search>
+                            </span>
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>
+                                    {{page.rentModelSettings.rentSettings.lossToLease.glAccountNumber}}-{{page.rentModelSettings.rentSettings.lossToLease.glAccountDescription}}                                    
+                                                       
+                                </label>
+                            </span>
+                        </p>
+                    </div>
+                   
+                </div>
+
+
+                <!--DIV for senior Living with service Group for Loss To Lease-->
+                <div class="form-group row" ng-show="page.rentModelSettings.rentSettings.lossToLeaseFlag">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            <!--<span class="span-width" editable-select="page.rentOptions.records.rentOptions.lossToLeaseMethod" e-ng-options="s.value as s.text for s in page.model.rentOptions.lossGainToLeaseOptions">
+                                {{ page.rentOptions.records.rentOptions.lossToLeaseMethod  }}
+                            </span>-->                       
+                            <rp-form-select-menu ng-show="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editInputMethod"
+                                                 config="page.formConfig.lossGainToLeaseOptions"
+                                                 rp-model="page.rentOptions.records.rentOptions.lossToLeaseMethod">
+                            </rp-form-select-menu>
+
+
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible  || !page.rentOptions.records.rentOptions.editInputMethod ">
+                                <label>{{ page.model.form.LossToLeaseLabel }}</label>
+                            </span>
+                        </p>
+                    </div>
+                   
+
+                    <div class="col-sm-5" ng-if="page.rentModelSettings.rentSettings.lossToLeaseFlag" ng-show="page.rentOptions.records.rentOptions.lossToLeaseMethod !=='None'">
+                        <p class="form-control-static" ng-repeat="item in page.rentModelSettings.rentSettings.lossToLeaseForSG">
+                            <span ng-if="$index!=0">
+                                <label class="ft-s-16 ft-bold text-color">
+                                    {{::page.getLangValue('mr_loss_gain_sg')}} for {{ page.rentOptions.records.propertyServiceGroups[$index].serviceGroupName }}
+                                </label>
+                              
+                            </span>
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts">
+                              
+                                <gl-accnt-search data="item"></gl-accnt-search>
+                            </span>
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>{{item.glAccountNumber}}-{{item.glAccountDescription}}</label>
+                            </span>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="form-group row m-b-0" ng-if="page.rentOptions.records.rentOptions.assetType !=='Senior Living'">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-5" ng-show="page.rentOptions.records.rentOptions.lossToLeaseMethod !=='None'">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('mr_gain_loss_lease')}}
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="form-group row" ng-show="page.rentOptions.records.rentOptions.assetType !=='Senior Living'">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-5" ng-if="page.rentOptions.records.rentOptions.lossToLeaseMethod !=='None'">
+                        <p class="form-control-static">
+                            <span class="span-width" ng-if="page.model.rentOptions.visible && page.rentOptions.records.rentOptions.editGLAccounts" ng-if=" page.rentModelSettings.rentSettings.showGainToLease">
+                              
+                                <gl-accnt-search data="page.rentModelSettings.rentSettings.gainToLease"></gl-accnt-search>
+                            </span>
+                            <span class="span-width" ng-show="!page.model.rentOptions.visible || !page.rentOptions.records.rentOptions.editGLAccounts">
+                                <label>
+                                    {{page.rentModelSettings.rentSettings.gainToLease.glAccountNumber}}-{{page.rentModelSettings.rentSettings.gainToLease.glAccountDescription}}
+                                </label>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END of Loss/Gain To Lease Method-->
+    </form>
+</div>

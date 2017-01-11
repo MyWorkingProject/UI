@@ -1,0 +1,16 @@
+﻿{{{ include("../js/controllers/bdgt-glaccount-category.js") }}}
+{{{ include("/controllers/bdgt-glaccount-category.spec.js") }}}
+{{{ include("../js/models/account-category-row-operation.js") }}}
+{{{ include("/models/account-category-row-operation.spec.js") }}}
+{{{ include("../js/models/account-category-wiz.js") }}}
+{{{ include("/models/account-category-wiz.spec.js") }}}
+{{{ include("../js/models/accountcategory-common.js") }}}
+{{{ include("/models/accountcategory-common.spec.js") }}}
+{{{ include("../js/models/accountcategory-data.js") }}}
+{{{ include("/models/accountcategory-data.spec.js") }}}
+{{{ include("../js/models/accountcategory-form.js") }}}
+{{{ include("/models/accountcategory-form.spec.js") }}}
+{{{ include("../js/models/accountcategory.js") }}}
+{{{ include("/models/accountcategory.spec.js") }}}
+{{{ include("../js/services/accountcategory.js") }}}
+{{{ include("/services/accountcategory.spec.js") }}}

@@ -1,0 +1,69 @@
+#change-rent {
+    /*.finalized {
+        color: $success-color;
+        background-color: $success;
+    }
+
+    .read-only {
+        color: $grey-color;
+        background-color: $grey;
+    }
+
+    .rp-form-input-text-field {
+        text-align: right;
+    } */
+    width: 100%;
+    height: 38.5rem;
+    top: auto;
+
+    &.error {
+        height: 16rem;
+    }
+
+    .aside-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-top: none;
+    }
+
+    .ic-close {
+        color: $rp-neutral-04;
+        @include x-small-text;
+    }
+
+    .unavailable {
+        min-height: 100px;
+    }
+
+    .active-row {
+        @include module-title;
+        background-color: $rp-neutral-05;
+        text-align: center;
+        padding: 0.25rem;
+    }
+
+    .period-select {
+        .rp-select-menu {
+            width: 24.75rem;
+        }
+    }
+
+    .unit-type-select {
+        .rp-select-menu {
+            width: 18.3rem;
+        }
+    }
+
+    .unit-select {
+        .rp-select-menu {
+            width: 11.6rem;
+        }
+    }
+
+    .expire-period {
+        .rp-select-menu {
+            width: 11.6rem;
+        }
+    }
+}

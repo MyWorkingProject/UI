@@ -1,0 +1,11 @@
+﻿<span ng-if="record.rowType !== 'monthlyAmount'">
+    {{record[config.key]}}
+</span>
+<span ng-if="record.rowType === 'monthlyAmount'" class="monthly-row">
+    {{record[config.key]}}
+    <input name="variableAmountMonthly" 
+        ng-model="record.monthlyAmt" 
+        ng-model-options="{updateOn:'blur'}" 
+        class="form-control form-control-sm rp-currency-editable rp-calculator-amt pull-right" 
+        type="text" /> 
+</span>

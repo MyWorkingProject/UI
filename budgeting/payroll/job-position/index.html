@@ -1,0 +1,98 @@
+<div id="job-position-modal" class="aside" tabindex="-1" role="dialog">
+	<div class="aside-dialog">
+		<div class="aside-content">
+
+			<div class="aside-header">
+				<button type="button" class="close" ng-click="page.closeModal()">
+					<i class="ic-close rp-icon-delete-2"></i>
+				</button>
+        		<h4 class="aside-title">{{page.state.modalHeader}}</h4>
+			</div>
+
+			<div class="aside-body">
+				<ng-form ng-if="page.state.isReady" name="page.state.jobPositionDetailsForm" 
+					class="ft-form" role="form" novalidate>
+
+					<!-- Title -->
+					<div class="form-group">
+						<label class="job-pos-label" for="jobTitle">
+							{{::page.translate("job_pos_title")}}
+						</label>
+
+						<rp-form-select-menu ng-if="page.state.form.isTitleEditable"
+							config="page.formConfig.jobTitle"
+							rp-model="page.model.jobPositionID">
+						</rp-form-select-menu>
+
+						<p class="form-control-static" ng-if="!page.state.form.isTitleEditable">
+							{{page.model.jobPositionTitle || "-"}}
+						</span>
+					</div>
+
+					<!-- Worker's Comp Class -->
+					<div class="form-group">
+						<label class="job-pos-label" for="compensationClass">
+							{{::page.translate("job_pos_comp_class")}}
+						</label>
+
+						<p class="form-control-static">
+							{{page.model.workerClass || "-"}}
+						</span>
+					</div>
+
+					<!-- Department -->
+					<div class="form-group">
+						<label class="job-pos-label" for="department">
+							{{::page.translate("job_pos_dept")}}
+						</label>
+
+						<p class="form-control-static">
+							{{page.model.department || "-"}}
+						</span>
+					</div>
+					
+					<!-- Number of Employees -->
+					<div class="form-group">
+						<label class="job-pos-label" for="employeesCount">
+							{{::page.translate("job_pos_employees_count")}}
+						</label>
+
+						<rp-form-input-text ng-if="page.state.form.isEmployeeCountEditable && !page.model.isLockCount"
+							config="page.formConfig.employeesCount"
+							rp-model="page.model.employeesCount">
+						</rp-form-input-text>
+
+						<p class="form-control-static" ng-if="!page.state.form.isEmployeeCountEditable || page.model.isLockCount">
+							{{page.model.employeesCount || 0}}
+						</span>
+					</div>
+					
+				</ng-form>
+			</div><!-- .aside-body -->
+
+			<div class="aside-footer">
+	            <button class="btn btn-outline b-primary text-primary rounded"
+	            		ng-if="page.state.form.isEditable"
+	            		ng-click="page.cancel()"
+	            		type="button"> 
+	                {{::page.translate("job_pos_btn_cancel")}}
+	            </button>  
+	            <button class="btn rounded primary"
+	            		ng-if="page.state.form.isEditable"	            		
+	            		ng-click="page.save()"
+	            		ng-disabled="page.state.errorMessage || !page.state.isReady"
+	            		type="button"> 
+	                {{::page.translate("job_pos_btn_save")}}
+	            </button> 
+	            <button class="btn rounded primary"
+	            		ng-if="!page.state.form.isEditable"	            		
+	            		ng-click="page.edit()"
+	            		ng-disabled="page.state.errorMessage || !page.state.isReady"
+	            		type="button"> 
+	                {{::page.translate("job_pos_btn_edit")}}
+	            </button>             
+			</div><!-- .aside-footer -->
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,74 @@
+<div id="payroll-item-salary" ng-controller="PayrollSalaryItemCtrl as payrollItem" ng-init="payrollItem.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::payrollItem.fieldLabels.headerTitle}}</h5>
+            <div class="text-muted m-b-sm">
+                <span>{{::payrollItem.fieldLabels.subTitle}}</span>
+            </div>
+            <div class="inline p-r-1 pointer" ng-click="payrollItem.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{payrollItem.model.commentCount }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="payrollItem.model.isEdit" ng-click="payrollItem.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::payrollItem.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="payrollItem.model.grid">
+        <ng-form class="form-horizontal" role="form" name="payrollItem.model.form" novalidate>
+            <div class="col-md-12">
+                <div class="rp-action-bar box">
+                    <div class="row">
+                        <div class="col-md-5 p-a-0">
+                            <div class="col-md-6">
+                                <label class="ft-s-14 _600 form-label" for="beginningSalaryRate">{{::payrollItem.fieldLabels.beginningSalaryRateText}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.beginningSalaryRate" rp-model="payrollItem.model.beginningSalaryRate">
+                                </rp-form-input-text>
+                                <p ng-if="!payrollItem.model.isEdit" class="form-control-static">
+                                    {{::payrollItem.fieldLabels.preSuffixCurrency}} {{ payrollItem.model.beginningSalaryRate }} {{::payrollItem.fieldLabels.preSuffixYear}}
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ft-s-14 _600 form-label" for="dateOfIncrease">{{::payrollItem.fieldLabels.dateOfIncreaseText}}</label>
+                                <rp-datetimepicker ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.dateOfIncrease" rp-model="payrollItem.model.dateOfIncrease">
+                                </rp-datetimepicker>
+                                <p ng-if="!payrollItem.model.isEdit" class="form-control-static">
+                                    {{ payrollItem.model.dateOfIncrease.format(payrollItem.fieldLabels.dateFormat) }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-7 p-a-0">
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="increasePercentage">{{::payrollItem.fieldLabels.increaseText}} {{::payrollItem.fieldLabels.preSuffixPercentage}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.increasePercentage" rp-model="payrollItem.model.increasePercentage">
+                                </rp-form-input-text>
+                                <p ng-if="!payrollItem.model.isEdit" class="form-control-static">
+                                    {{ payrollItem.model.increasePercentage }} {{::payrollItem.fieldLabels.preSuffixPercentage}}
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="increaseCurrency">{{::payrollItem.fieldLabels.increaseText}} {{::payrollItem.fieldLabels.preSuffixCurrency}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.increaseCurrency" rp-model="payrollItem.model.increaseCurrency">
+                                </rp-form-input-text>
+                                <p ng-if="!payrollItem.model.isEdit" class="form-control-static">
+                                    {{::payrollItem.fieldLabels.preSuffixCurrency}} {{ payrollItem.model.increaseCurrency }}
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="ft-s-14 _600 form-label" for="endingSalaryRate">{{::payrollItem.fieldLabels.endingSalaryRateText}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.endingSalaryRate" rp-model="payrollItem.model.endingSalaryRate">
+                                </rp-form-input-text>
+                                <p ng-if="!payrollItem.model.isEdit" class="form-control-static">
+                                    {{::payrollItem.fieldLabels.preSuffixCurrency}} {{ payrollItem.model.endingSalaryRate }} {{::payrollItem.fieldLabels.preSuffixYear}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <rp-cg model="payrollItem.model.grid">
+                </rp-cg>
+            </div>
+        </ng-form>
+    </div>
+</div>

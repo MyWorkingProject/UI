@@ -1,0 +1,35 @@
+.contract-properties-tab{
+
+    .btn-assign{
+    	font-size: inherit !important;
+    }
+    #coa-grid-wrapper {
+    	.rp-grid-body-wrap{
+    		min-height: 100px;
+    	}
+    	.rp-grid-wrap{
+    		overflow-x: visible;
+    		overflow-y: visible;
+    	}
+    }
+
+
+
+    .category-title{
+        line-height: 1rem !important;
+    }
+
+    .dropdown-item{
+    	line-height: 1rem !important;
+    }
+    .dropdown-menu-height{
+    	max-height:300px;
+    	overflow-y:auto;
+    }
+    .tool-tip-position{
+    	position:absolute;
+    	top:0px;
+    	left: 170px;
+    }
+
+}

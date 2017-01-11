@@ -1,0 +1,236 @@
+.contracts {
+    margin-bottom: 10px; 
+    
+    .is-selected {
+        width: 3%;
+    }
+
+    .property-name,
+    .vendor-name {
+        width: 12%;
+    }
+
+    .description {
+        width: 15%;
+    }
+
+    .percentage {
+        width: 10%;
+    }
+
+    .total,
+    .percentage, 
+    .amount {
+        text-align: right;
+    }
+
+    .rp-grid-wrap {
+        overflow-x: auto;
+    }
+
+    .rp-grid {
+        min-width: 1200px;
+    }
+
+    .contracts-bg-color {
+        background-color: white;
+    }
+
+    .contracts-hdr-scrl-btn {
+        width: 30%;
+    }
+
+    .contracts-child-scrl-btn {
+        width: 50%;
+    }
+
+    .div-parent-border {
+        border: 1px solid #eee;
+        height: 61px;
+    }
+
+    .div-hdr-chk {
+        border: 1px solid #eceeef;
+        display: inline-block;
+        width: 40px;
+        height: 35px;
+        margin-left: 13px;
+        margin-top: 10px;
+        margin-right: 13px;
+        margin-bottom: 9px;
+        border: 1px solid #F0F0F0;
+        display: inline-block;
+    }
+
+    .div-hdr-delete {
+        border: 1px solid #F0F0F0;
+        display: inline-block;
+        width: 90px;
+        height: 35px;
+        margin-left: 13px;
+        margin-top: 9px;
+        margin-right: 13px;
+        margin-bottom: 9px;
+        vertical-align: middle;
+    }
+
+    .del-icon {
+        margin-left: 6px;
+        margin-right: 6px;
+        vertical-align: -webkit-baseline-middle;
+    }
+
+    .div-import {
+        border: 1px solid #F0F0F0;
+        display: inline-block;
+        width: 90px;
+        height: 35px;
+        margin-left: 13px;
+        margin-top: 9px;
+        margin-right: 13px;
+        margin-bottom: 9px;
+        vertical-align: middle;
+        float: right;
+    }
+    /*.md-check.dark-bluebox > i::before {
+        border: 1px solid #cbcbcb;
+        border-radius: 3px;
+        margin-top: 6px;
+        margin-left: 3px;
+    }
+
+    .md-check input:checked + i:before {
+        border-width: 0;
+        background-color: inherit;
+        margin-top: 6px;
+        margin-left: 3px;
+    }*/
+    .icon-trash {
+        margin-left: 6px;
+        margin-right: 6px;
+        vertical-align: -webkit-baseline-middle;
+        color: #a3afb5;
+        font-size: medium;
+    }
+
+    .span-text {
+        color: black;
+        margin-left: 7px;
+    }
+
+    .btn-submit {
+        color: #a3afb5 !important;
+    }
+
+    .btn-submit:hover {
+        //background-color: #fff !important;
+        color: inherit !important;
+    }
+
+
+    icon-margin {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    /*.icon-size {
+        font-size: 18px;
+    }*/
+    .rp-grid-body-1 .amount {
+        text-align: right;
+    }
+
+    .box-border {
+        border: 1px solid #ddd !important;
+    }
+
+    .table-filter-toggle {
+        cursor: pointer;
+    }
+
+    .filter-cursor {
+        cursor: pointer;
+    }
+
+    .modal {
+        top: 239px;
+    }
+
+    // .align-tool-tip {
+    //     position: absolute;
+    //     top: 0px;
+    //     left: 120px;
+    // }
+
+    // show-pop-up {
+    //     display: block;
+    // }
+
+    // hide-pop-up {
+    //     display: none;
+    // }
+
+    .rp-icon-question-circle:before {
+        font-size: xx-large;
+    }
+
+
+    .dialog-padding-left {
+        padding-left: 5rem !important;
+    }
+
+    .modal-title {
+        color: #757575;
+    }
+
+    .modal-header {
+        border-bottom: 0px;
+    }
+
+    .icon-margin {
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+
+    .rp-grid-headers-1 {
+        .md-check {
+            display: none;
+        }
+    }
+	.title-display {
+        display: inline-block;
+    }
+     .btn-min-width
+    {
+        width: 160px;
+    }
+    .rp-scrolling-tabs-screen
+    {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+     .status-inner {
+        position: relative;
+        bottom: 0.25rem;
+        //margin-top: 0.46rem;
+    }
+    .md-check
+    {
+        top: .1rem;
+    }
+    .rp-action-bar
+    {
+        .dropdown-menu
+        {
+            width: 40px;
+        }
+    }
+	.icon-size-remove
+	{
+		.action-icon
+		{
+			font-size: 12px !important;
+		}
+	
+	}
+   
+}

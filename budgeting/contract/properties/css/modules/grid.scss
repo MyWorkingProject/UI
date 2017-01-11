@@ -1,0 +1,58 @@
+// Applicable for all grids in properties tab
+#properties-wrapper {
+    .rp-grid-headers-1 {
+        .rp-grid-cell {
+            border-top: none;
+        }
+    }
+
+    .grid-controls {
+        float: none;
+        text-align: right;
+    }
+}
+
+// Exclusive for properties grid
+#properties-grid-wrapper {
+    .percentage {
+        width: 15%;
+    }
+
+    .gl-account {
+        width: 40%;
+        .toggle-allocation-state {
+            text-decoration: underline;
+        }
+    }
+
+    .delete-row {
+        width: 3rem;
+        text-align: center;
+    }
+
+	.rp-grid-cell {
+		.rp-input-text{
+			width: 60%;
+		}
+	}
+
+}
+
+// Grid views depending on page state
+.contract-view  #properties-wrapper {
+    .percentage {
+        text-align: right;
+    }
+
+    .delete-row {
+        display: none;
+    }
+
+	.rp-grid-row.active {
+		background-color: transparent;
+
+		&:nth-child(even) {
+			background-color: $row-even;
+		}
+	}
+}

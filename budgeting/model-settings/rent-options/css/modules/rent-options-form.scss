@@ -1,0 +1,27 @@
+.rent-options{
+	.editable-wrap {
+            width:100%;
+        }
+
+    .del-icon-margin{
+        margin-top: 26%;    
+    }
+   
+     .show-pointer {
+        cursor: pointer;
+    }
+
+     .form-control-static-del-icon {
+        min-height: 3.25rem;
+        padding-top: 0;
+        padding-bottom: 0.375rem;
+        margin-bottom: 0;
+    }
+
+       .tool-tip-product {
+           width: 99%;
+           left: 139px;
+           top: -14px;
+          position: absolute;
+    }
+}

@@ -1,0 +1,21 @@
+#advanceActuals {
+        width: 22rem;
+        z-index: 9999 !important;
+        .rp-icon-delete-2
+        {
+            font-size: .8rem;
+            font-weight: normal;
+        }
+        .rp-icon-question-circle
+        {
+            font-size: 2rem;
+        }
+}
+#applyActualsDialog
+{
+      z-index: 99999 !important;
+      .rp-icon-question-circle
+      {
+           font-size: 2rem;
+      }
+}

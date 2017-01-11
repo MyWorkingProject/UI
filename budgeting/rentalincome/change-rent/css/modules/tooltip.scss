@@ -1,0 +1,13 @@
+#change-rent {
+	.popover {
+		top: -20px !important;
+
+		width: 30rem;
+		max-width: none;
+	}
+
+	.popover-content {
+		@include small-text;
+		padding: 0.5rem;
+	}
+}

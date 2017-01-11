@@ -1,0 +1,20 @@
+<div id="occupancy-service-group">
+    <div class="row m-b-lg">
+        <div class="col-md-9 col-sm-9">
+            <h5>{{::page.fieldLabels.headerTitle}}</h5>
+            <div class="text-muted m-b-sm">
+                <span>{{::page.fieldLabels.subTitle}}</span>
+            </div>
+        </div>
+        <div class="pull-right m-t-sm col-md-3 col-sm-3">
+            <div class="pull-right m-l-1 pointer" ng-click="page.showTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>{{ ::page.fieldLabels.tableSettings }}</div>
+        </div>
+    </div>
+    <div class="row">
+        <rp-cg model="page.model.grid">
+        </rp-cg>
+    </div>
+</div>
+
+<div ng-include src="'../budgeting/occupancy-renewals/occupancy-vacancy-summary/index.html'">
+</div>

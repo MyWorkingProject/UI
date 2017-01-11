@@ -1,0 +1,25 @@
+<div class="aside payroll-selector" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <h4 class="aside-title">Select Employee{{::page.translate("def_adj_hd")}}</h4>
+            </div>
+            <div class="m-a-md pull-right clearfix" ng-init="page.model.grid.filtersModel.state.active = false">
+                <div class="pull-right grid-controls">
+                    <div class="grid-control-item">
+                        <rp-toggle model="page.model.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Filter',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                      activeIconClass: 'rp-icon-filter'
+                                }">
+                        </rp-toggle>
+                    </div>
+                </div>
+            </div>
+            <div class="m-a-md">
+                <rp-grid model="page.model.grid"></rp-grid>
+            </div>
+        </div>
+    </div>
+</div>

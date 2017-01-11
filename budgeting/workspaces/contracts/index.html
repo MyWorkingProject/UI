@@ -1,0 +1,176 @@
+<div>
+
+    <div class="contracts">
+
+        <div class="row m-b-md">
+            <div class="col-md-9 m-b-xs">
+                <div class="title-display p-t-xs">
+                    <h5 class="workspace-title pull-left bws-title ft-bold">{{page.model.text.PageHeaderText}}</h5>
+                </div>
+                <!--</div>-->
+                <div class="col-md-6 pull-right p-r-0">
+                    <div class="tabs-menu-wrap pull-right">
+                        <rp-tabs-menu class="t1 large" model="page.tabsMenu">
+                        </rp-tabs-menu>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="rp-action-bar box m-b-md" ng-class="{'activate-tooltip': page.contractOperations.state.dispErr}">
+            <div class="action-item select-all ft-form">
+                <label class="md-check dark-bluebox">
+                    <input type="checkbox" name="selectall"
+                           ng-model="page.model.state.isSelectAll"
+                           ng-true-value="true" ng-false-value="false">
+                    <i class="primary"></i>
+                </label>
+
+
+                <span class="action-icon rp-icon-angle-down m-r-0 pointer" data-toggle="dropdown"></span>
+
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                        <label class="md-check select-type">
+                            <input type="radio" name="select-type" value="all"
+                                   ng-model="page.model.state.selectType"
+                                   ng-click="page.model.setSelectState(true)">
+                            <i class="primary"></i>
+                            Select all
+                        </label>
+                    </li>
+                    <li class="dropdown-item">
+                        <label class="md-check select-type">
+                            <input type="radio" name="select-type" value="visible"
+                                   ng-model="page.model.state.selectType"
+                                   ng-click="page.model.setSelectState(true)">
+                            <i class="primary"></i>
+                            Select visible
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+
+            <button ng-click="page.deleteContract('delete')"
+                    ng-show="page.model.form.allcontracts.isActive"
+                    class="action-item" data-toggle="modal"
+                    data-target="{{page.contractOperations.state.dataPopUpID}}"
+                    popover-placement="right" popover-trigger="focus"
+                    uib-popover="{{page.contractOperations.toolTip.del }}">
+                <i class="action-icon rp-icon-trash ft-s-12"></i>
+                <span class="action-text">
+                    {{::page.model.text.deleteContract}}
+                </span>
+            </button>
+
+            <button ng-click="page.removeContract('remove')"
+                    ng-show="page.model.form.expiringcontracts.isActive"
+                    class="action-item"
+                    popover-placement="right" popover-trigger="focus"
+                    uib-popover="{{page.contractOperations.toolTip.rem }}">
+                <span class="icon-size-remove"><i class="action-icon rp-icon-delete-2">  </i></span>
+                {{::page.model.text.removeContract}}
+            </button>
+
+
+
+
+            <button ng-show="page.model.form.allcontracts.isActive"
+                    ng-click="page.importContract()"
+                    class="action-item pull-right">
+                <i class="action-icon ic-download">  </i>
+                <span class="action-text">
+                    {{::page.model.text.importGLAccount}}
+                </span>
+            </button>
+            <!--
+            <div ng-show="page.contractOperations.state.toolTipAlert"
+                    class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip align-tool-tip action-item">
+                <span class="arrow left pull-left white"></span>
+                <div class="box-body">
+                    {{page.contractOperations.toolTip.toolTipText }}
+                </div>
+            </div>
+            -->
+        </div>
+        <!-- TODO -->
+        <!--  <div class="selected-stats">4 out of 5 selected</div> -->
+    </div>
+
+</div>
+<div class="contracts-import">
+    <div class="import-contracts" ng-class="page.model.importState">
+        <span class="divider-h fw"></span>
+        <span class="icon-close rp-icon-delete-2" ng-click="page.importContract()">
+        </span>
+        <div class="slider-wrap">
+            <div class="slider">
+                <div ng-include="'workspaces/contracts-csv/index.html'">
+                    <!--<div ng-include src="model.form.includeFile">-->
+                </div>
+            </div>
+        </div>
+        <span class="divider-h fw m-b-md"></span>
+    </div>
+</div>
+<div class="contracts">
+
+    <div id="alertDialog" class="modal" data-backdrop="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{::page.model.text.deleteHeader}} </h5>
+                </div>
+
+                <div class="">
+                    <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+                    <div class="dialog-padding-left  p-t-sm">
+                        <p class="m-b-sm">{{::page.model.text.deleteDesc}} </p>
+                        <p>{{::page.model.text.delConfMsg}}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn rounded neutral p-x-md" data-dismiss="modal" ng-click="page.delContract()">{{::page.model.text.Continue}}</button>
+                    <button type="button" class="btn rounded primary p-x-md" data-dismiss="modal">{{::page.model.text.Cancel}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="white m-l-sm p-l-xs">
+        <div class="row">
+            <div class="pull-left" ng-show="page.model.form.allcontracts.isActive">
+                <a href="#/contract/new/">
+                    <button class="btn rounded primary"><i class="fa fa-fw m-r-xs fa-plus"></i> {{::page.model.text.addContract}}</button>
+                </a>
+            </div>
+
+
+            <div class="p-y-md p-t-sm pull-right clearfix" ng-init="gridFactory.grid.filtersModel.state.active = false">
+                <div class="pull-right grid-controls">
+                    <div class="grid-control-item">
+                        <i class="icon rp-icon-printer"></i>
+                        <span class="text">
+                            {{::page.model.text.print}}
+                        </span>
+                    </div>
+                    <div class="grid-control-item">
+                        <rp-toggle model="gridFactory.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Filter',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                activeIconClass: 'rp-icon-filter'
+                                }">
+                        </rp-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="gridFactory.grid">
+        <rp-grid class="workspaces max-grid-width" model="gridFactory.grid"></rp-grid>
+    </div>
+</div>
+

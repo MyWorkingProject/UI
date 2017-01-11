@@ -1,0 +1,23 @@
+<div>
+	<span ng-if="record.rowType !== 'adjustmentPercent'">
+	    {{record[config.key] | number:0}}
+	</span>
+	<span ng-if="record.rowType === 'adjustmentPercent'">
+	    <span ng-if="config.key !== 'total'">
+	    	<!--
+	    	<rp-form-input-text
+	    		config="record.textConfig"
+	    		rp-model="record[config.key]">
+            </rp-form-input-text>
+            -->
+
+            <input type="text"
+		    	ng-model-options="{updateOn: 'blur'}"
+		        ng-model="record[config.key]" 
+		        ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/"
+		        data-col-id="{{config.key}}"
+		        class="form-control form-control-sm rp-amount-adjustment"/>
+
+	    </span>
+	</span>
+</div>

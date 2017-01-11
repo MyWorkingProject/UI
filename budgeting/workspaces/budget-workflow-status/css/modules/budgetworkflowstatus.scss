@@ -1,0 +1,749 @@
+/*
+.workspaces .budgetworkflowstatus {
+
+
+
+    .is-selected {
+        // width: 3%;
+        @include width(3%,3%);
+    }
+
+        .is-selected input {
+            vertical-align: -6px;
+        }
+
+    .property-name {
+        // width: 20%;
+        @include width(14%,20%);
+    }
+
+    .model-name {
+        // width: 28%;
+        @include width(20%,28%);
+    }
+
+    .model-type {
+        // width: 18%;
+        @include width(18%,20%);
+    }
+
+
+    .budget-year {
+        // width: 8%;
+        @include width(8%,10%);
+    }
+
+
+    .status {
+        // width: 12%;
+        @include width(13%,14%);
+    }
+
+
+
+    .role-level {
+        width: 18%;
+    }
+
+    .comments {
+        width: 100%;
+
+        @media @smallScreenAndBelow {
+            width: 67%;
+        } 
+    }
+
+
+
+
+
+    .is-selected {
+        width: 27px;
+    }
+
+
+
+
+    .error-msg {
+       // .block;
+    }
+
+    .workflow-title {
+        //.module-title;
+        margin-bottom: 20px;
+    }
+
+   // .column(12);
+
+    @media @mediumScreen {
+        .column(10);
+    }
+
+    @media @largeScreen {
+        .column(8);
+    } 
+
+    .column-1 {
+        .column(12);
+
+       @media @smallScreen {
+            .column(6);
+        }
+
+        @media @largeScreen {
+            .column(5);
+        } 
+    }
+
+    .column-2 {
+        .column(12);
+
+        @media @smallScreen {
+            .column(6);
+        }
+
+        @media @mediumScreen {
+            .column(4);
+        }
+
+        @media @largeScreen {
+            .column(3);
+        } 
+    }
+
+    .column-3 {
+        .column(12);
+
+       @media @mediumScreen {
+            .column(10);
+        }
+
+        @media @largeScreen {
+            .column(8);
+        } 
+    }
+}
+
+
+.workspaces .rp-date-range {
+    display: none;
+}
+
+
+
+
+
+.lableField {
+    @include lableCol(1,12);
+    @include lablewidth(38%,22%,16%,11%); //60%-medium
+}
+
+ @mixin lableCol(@normalCol,@otherCol) {
+    .column(@normalCol);
+
+    @media @defaultOnly {
+        .column(@otherCol);
+    }
+
+    @media @smallScreenOnly {
+        .column(@otherCol);
+    }
+
+    @media @smallScreenAndBelow {
+        .column(@otherCol);
+    }
+
+    @media @mediumScreenOnly {
+        .column(@otherCol);
+    } 
+
+    display: block;
+    //color: @dark-gray;
+    margin-left: 0px;
+}
+
+
+@mixin lablewidth(@defWidth,@smlwidth,@mediumwidth,@largeWidth) {
+    @media @largeScreenOnly {
+        .width(@largeWidth);
+    }
+
+    @media @xLargeScreen {
+        .width(@largeWidth);
+    }
+
+    @media @smallScreenOnly {
+        .width(@smlwidth);
+    }
+
+    @media @mediumScreenOnly {
+        .width(@mediumwidth);
+    }
+
+    @media @defaultOnly {
+        .width(@defWidth);
+    } 
+}
+
+@mixin width(@w1) {
+    width: @w1;
+}
+
+@mixin width(@w1, @w2) {
+    width: @w1;
+
+    @media @xLargeScreen {
+        width: @w2;
+    } 
+}
+
+.row-break {
+    margin-bottom: 2%;
+}
+
+.rejectBtn {
+    float: left;
+    margin-left: 1%;
+}
+
+.tooltip-container {
+    position: relative;
+
+    .tooltip {
+        &.active {
+            display: block;
+        }
+
+        &.rjdisplay {
+            display: none;
+        }
+    }
+}
+
+
+.tooltip-container-reject {
+    position: relative;
+
+    .tooltip {
+        &.rjdisplay {
+            display: block;
+        }
+
+        &.active {
+            display: none;
+        }
+    }
+}
+
+.rp-calloutrej.top {
+    top: -35px;
+    margin-left: 80px;
+    left: inherit;
+}
+
+.rp-callout.top {
+    top: -35px;
+    left: inherit;
+}
+
+    .rp-callout.top:before {
+        top: 0;
+        left: 14%;
+        margin-top: 20px;
+    }
+
+.info-tooltip {
+    position: relative;
+
+    .tooltip {
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.helpicon {
+    top: -14px;
+    width: 500px;
+    margin-left: 20px;
+    white-space: normal;
+    right: 0;
+    left: 0px;
+}
+
+.rp-callout.right {
+    right: 0;
+    left: 0px;
+}
+
+.info-icon {
+    .icon-info;
+}
+
+.chk-submit {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.table-filter-toggle {
+    //.link;
+    //.icon-filter;
+    //.inline-block;
+    cursor: pointer;
+    min-width: 95px;
+    text-align: left;
+
+    &:before {
+        //.block;
+        //.float-left;
+        font-size: 16px;
+        line-height: 26px;
+        padding-right: 5px;
+    }
+
+    &.on {
+        color: @orange;
+
+        &:before {
+            color: @orange;
+        }
+    }
+
+    .active,
+    .inactive {
+        //.block;
+        //.small-text;
+        cursor: pointer;
+        line-height: 26px;
+    }
+
+    .active {
+        .hide;
+    }
+
+    &.on {
+        .active {
+            .inline;
+        }
+
+        .inactive {
+            .hide;
+        }
+    }
+}
+
+
+
+
+.bws-title {
+    padding-bottom: 10px;
+}
+
+
+
+
+
+.budgetworkflowstatus-page-content {
+    //.page-content-wrap;
+    padding-top: 0px !important;
+}
+
+#budgetworkflowstatus-page-content {
+
+    .rp-grid-wrap {
+        overflow-x: auto;
+    }
+
+    .rp-grid {
+        min-width: 500px;
+    }
+
+    .max-grid-width {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    .max-form-width {
+        width: 100% !important;
+    }
+
+    .progress-bar-div-wrap {
+       //.rounded(5px);
+        width: 100%;
+        height: 10px;
+        border: 1px solid @silver;
+        background-color: @silver;
+        position: relative;
+        cursor: pointer;
+
+        &.close {
+            .workflow-pop-over-wrap {
+                .hide;
+            }
+
+            .workflow-pop-over {
+                .hide;
+            }
+        }
+
+        &:before {
+            .hide;
+            .transform(rotate(-45deg));
+            top: 10px;
+            z-index: 3;
+            right: 80px;
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background-color: @white;
+            border-top: solid 1px #aaa;
+            border-right: solid 1px #aaa;
+        }
+
+        &.open {
+            &:before {
+                .block;
+            }
+
+            .workflow-pop-over-wrap {
+                .block;
+                position: absolute;
+                right: 40px;
+                margin-top: 5px;
+                z-index: 2;
+            }
+
+            .workflow-pop-over {
+                //.inline-block;
+                .rounded(5px);
+                height: auto;
+                background-color: #ffffff;
+                border: solid 1px #c0d0e1;
+                position: relative;
+                width: 200px;
+
+                li {
+                    margin: 10px;
+
+                    .workflow-pop-over-role {
+                        //.inline-block;
+                        //.sub-heading;
+
+                        .stacked-text {
+                            .sub-title;
+                        }
+                    }
+
+                    .completed {
+                        font-size: 20px;
+                        //.v1-icon-complete-inverse;
+                        display: inline-flex;
+                        color: @green;
+                        padding-top: 5px;
+                        padding-right: 10px;
+                        vertical-align: middle;
+                    }
+
+                    .overdue {
+                        font-size: 20px;
+                        //.v1-icon-warning;
+                        display: inline-flex;
+                        color: @action;
+                        padding-top: 5px;
+                        padding-right: 10px;
+                        vertical-align: middle;
+                    }
+
+                    .in-progress {
+                        font-size: 20px;
+                       // .v1-icon-in-progress;
+                        display: inline-flex;
+                        color: @silver;
+                        padding-top: 5px;
+                        padding-right: 10px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+
+    .progress-bar-div {
+        //.rounded(5px);
+        background-color: @green;
+        height: 10px;
+    }
+} */
+
+#budgetworkflowstatus-page-content {
+    .toggle-btn-header-width {
+        width: 50%;
+    }
+
+    .toggle-btn-width {
+        width: 50%;
+    }
+
+    .tool-tip-apprv {
+        //width: 14%;
+        position: absolute;
+        top: 3px;
+        left: 18.3rem;
+    }
+
+    .tool-tip-sub {
+        //width: 14%;
+        position: absolute;
+        top: 3px;
+        left: 11rem;
+    }
+
+
+    @mixin width($w1) {
+        width: $w1;
+    }
+
+    @mixin width($w1, $w2) {
+        width: $w1;
+        /*@media @xLargeScreen {
+            width: @w2;
+        }*/
+    }
+
+    .is-selected {
+        // width: 3%;
+        @include width(3%,3%);
+        padding-left: 16px;
+        //@extend col-md-1 !optional;
+    }
+
+    .is-selected input {
+        vertical-align: -6px;
+    }
+
+    .property-name {
+        // width: 20%;
+        @include width(14%,20%);
+    }
+
+    .model-name {
+        // width: 28%;
+        @include width(18%,28%);
+    }
+
+    .model-type {
+        // width: 18%;
+        @include width(18%,20%);
+    }
+
+
+    .budget-year {
+        // width: 8%;
+        @include width(8%,10%);
+    }
+
+
+    .status {
+        // width: 12%;
+        @include width(15%,14%);
+    }
+
+    .help-icon {
+        vertical-align: middle;
+    }
+
+    .fa-check-circle:before {
+        color: #6cc79f;
+    }
+
+    .open {
+        display: block;
+    }
+
+    .close {
+        display: none;
+    }
+
+    .pop-over {
+        position: absolute;
+        top: 30px;
+        z-index: 2;
+        width: 178px;
+        right: 0px;
+    }
+
+    .lne-height {
+        //line-height: 15px;
+    }
+
+
+
+    .list-body-margin {
+        margin-left: 28px;
+    }
+
+    .icon-top {
+        padding-top: 3px;
+    }
+
+    .div-cmnt {
+        padding-right: 0px;
+    }
+
+    .btn-cancel {
+        width: 100px;
+    }
+
+    .rp-grid-cell {
+        //line-height: 25px;
+    }
+
+    .btn-submit {
+        color: #a3afb5 !important;
+    }
+
+    .btn-submit:hover {
+        //background-color: #fff !important;
+        color: inherit !important;
+    }
+
+    .level-font {
+        font-size: 0.89em;
+    }
+	.Overdue
+	{
+		color: $rp-danger;
+	}
+    .title-display {
+        display: inline-block;
+    }
+
+    .print-pading {
+        padding-left: 0.5rem;
+    }
+
+    .box-border {
+        border: 1px solid #ddd !important;
+    }
+
+    .icon-margin {
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+
+    .show-pointer {
+        cursor: pointer;
+    }
+
+    .help-tip {
+        position: absolute;
+        left: 224px;
+        top: -31px;
+    }
+
+    .submit-workflow-header {
+        display: inline !important;
+    }
+
+    .border-line {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .popover-list-item {
+        display: block;
+        position: relative;
+        padding: 6px 16px;
+    }
+
+
+    .rp-grid-wrap {
+        overflow-x: auto;
+    }
+
+    .rp-grid {
+        min-width: 600px;
+    }
+
+    .max-grid-width {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    .pop-overflow {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .pop-layout {
+        width: 80%;
+        top: -32px;
+    }
+
+    .pop-min-height {
+        min-height: 45rem;
+    }
+
+    .filter-padding {
+        padding-top: 0.21rem;
+    }
+
+    .filter-cursor {
+        cursor: pointer;
+    }
+
+    .rp-grid-wrap {
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+
+    .modal-position {
+        z-index: 9999;
+    }
+
+
+
+    .icon-size-sm {
+        font-size: 10px;
+        vertical-align: text-top;
+        margin-right: 4px;
+    }
+
+    .check-align {
+        vertical-align: baseline;
+        padding-left: 1.4rem;
+    }
+
+    .btn-min-width
+    {
+        width: 160px;
+    }
+    .rp-scrolling-tabs-screen
+    {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .md-check
+    {
+        top: .1rem;
+    }
+	.btn-min-width
+    {
+        width: 160px;
+    }
+    .rp-scrolling-tabs-screen
+    {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+     .status-inner {
+        position: relative;
+        bottom: 0.25rem;
+        //margin-top: 0.46rem;
+    }
+    .md-check
+    {
+        top: .1rem;
+    }
+}

@@ -1,0 +1,6 @@
+﻿<div ng-show="!model.amountState">
+    <span class="rp-cg-text rp-cg-body-text">{{ record.amount | number:2 }}</span>
+</div>
+<div ng-show="model.amountState" class="rp-input-text small">
+    <input type="text"  class="form-control"  style="width: 80px;"  ng-blur="config.method(record)" ng-model="record.amount"/>
+</div>

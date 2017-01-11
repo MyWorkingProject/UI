@@ -1,0 +1,96 @@
+/*//  Scrolling Tabs Menu
+
+.rp-scrolling-tabs-wrap {
+   // .overflow-hidden;
+}
+
+.rp-scrolling-tabs-menu {
+    border-bottom: solid 1px @silver;
+    height: 30px;
+    position: relative;
+
+    .scroll-left {
+       // .v1-icon-menu-arrow-r;
+        right: -15px;
+    }
+
+    .scroll-right {
+       // .v1-icon-menu-arrow-l;
+        left: -15px;
+    }
+
+   // .scroll-left,
+    .scroll-right {
+       // .block;
+        top: 0;
+        width: 16px;
+        height: 30px;
+        cursor: pointer;
+        position: absolute;
+        text-align: center;
+
+        &:before {
+            color: @silver;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        &.disabled {
+            cursor: default;
+            visibility: hidden;
+
+            &:before {
+                cursor: default;
+            }
+        }
+    }
+
+    .rp-scrolling-tabs-screen {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 50px;
+        margin: 0 0 -50px;
+        position: relative;
+    }
+
+    .rp-scrolling-tabs-slider {
+        .clearfix;
+    }
+
+    .rp-scrolling-tab {
+        .small-text;
+        .float-left;
+        line-height: 27px;
+        margin-right: 20px;
+        padding-bottom: 3px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        .tab-text,
+        .tab-link {
+            cursor: pointer;
+            color: fadeout(@link, 30%);
+        }
+
+        &:hover {
+            .tab-text,
+            .tab-link {
+                color: @link;
+            }
+        }
+
+        &.active {
+            padding-bottom: 0;
+            border-bottom: solid 3px @link;
+
+            .tab-text,
+            .tab-link {
+                color: @link;
+                cursor: default;
+            }
+        }
+    }
+}*/

@@ -1,0 +1,11 @@
+<div class="payroll-item-view" ng-controller="PayrollItemViewCtrl as page">
+<div class="row m-b-1">
+        <div class="col-md-12">
+            <h5>{{::page.headerTitle}}</h5>
+        </div>
+    </div>
+    <div class="row" ng-if="page.model.grid">
+        <rp-cg model="page.model.grid">
+        </rp-cg>
+    </div>
+</div>

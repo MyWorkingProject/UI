@@ -1,0 +1,48 @@
+<div id="budgeting-home" class="container-fluid">
+    <!-- Workspaces -->
+    <div class="row" ng-controller="BdgtWorkspacesCtrl as workspace">
+        <div class="col-md-12">
+            <rp-workspaces ng-if="workspace.config.sessionStatus.isReady"></rp-workspaces>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Models -->
+        <div class="widget col-md-6 col-sm-12">
+            <div id="model-widget-wrapper" class="box" ng-controller="BdgtModelWidgetCtrl as page">
+                <div class="box-header no-b-b">
+                    <h3>Models</h3>
+                    <div class="box-tool">
+                        <ul class="nav nav-inline">
+                            <li class="nav-item">
+                                <a class="nav-link text-gray-05"><span class="fa fa-refresh" ng-click="page.initializeModel()"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="page-sub-nav-menu" class="nav-link text-gray-05" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="rp-icon-sort-amount-desc"></i></a>
+                                <div class="dropdown-menu dropdown-menu-extend pull-right" aria-labelledby="page-sub-nav-menu">
+
+                                    <a class="dropdown-item" href="#" ng-click="page.sortBudgetModels('budgetyear')">Year</a>
+                                    <a class="dropdown-item" href="#"  ng-click="page.sortBudgetModels('propertyName')">Property</a>
+                                    <a class="dropdown-item" href="#"  ng-click="page.sortBudgetModels('budgetType')">Type</a>
+                                    <a class="dropdown-item" href="#"  ng-click="page.sortBudgetModels('modelName')">Model</a>
+
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-gray-05">
+                                    <rp-toggle class="rp-icon-filter"
+                                               model="gridModel.grid.filtersModel.state.active"
+                                               options="{activeText:'', defaultText: ''}">
+                                    </rp-toggle>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body p-a-0">
+                    <rp-grid model="gridModel.grid"></rp-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

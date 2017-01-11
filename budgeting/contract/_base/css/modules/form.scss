@@ -1,0 +1,48 @@
+#define-contract-wrapper {
+	.editable-wrap {
+		width: 100%;
+
+		.editable-input {
+			width: 100%;
+		}
+	}
+
+	.ui-select-container {
+		.form-control {
+        	@include placeholder-color();
+        	border-color: $input-border;
+        	line-height: 26px;        	
+		}
+	}
+
+	.ng-submitted {
+		.ui-select-container.ng-invalid-required {
+			.form-control {
+				border-color: $rp-danger;
+			}
+		}
+	}
+	
+	
+	&.contract-edit, 
+	&.contract-new {
+		.form-control-static {
+			padding: 0;
+		}
+	}
+
+	&.contract-view {
+
+	}
+
+	.notes {
+		white-space: pre;
+	}
+
+	.vendor-selector {
+		input {
+			width: 100% !important; //need to override the width set as inline css
+		}
+	}
+
+}

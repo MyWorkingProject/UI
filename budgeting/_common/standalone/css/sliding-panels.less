@@ -1,0 +1,32 @@
+//  Sliding Panels
+
+.sliding-panels {
+    overflow: hidden;
+    position: relative;
+
+    .sliding-panels-list {
+        top: 0;
+        left: 0;
+        min-height: 100%;
+        position: absolute;
+    }
+
+    .sliding-panel {
+        float: left;
+    }
+}
+
+.sliding-panels.test {
+    height: 200px;
+    margin: 0 auto;
+
+    .sliding-panel {
+        .box-sizing;
+        height: 200px;
+        font-size: 28px;
+        line-height: 96px;
+        text-align: center;
+        background-color: #ffc;
+        border: solid 2px #fcc;
+    }
+}

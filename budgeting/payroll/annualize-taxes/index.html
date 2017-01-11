@@ -1,0 +1,17 @@
+<div id="annualize-taxes" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="aside-title">Annualize Taxes{{::page.translate("def_adj_hd")}}</h4>
+            </div>
+            <div class="m-a-md">
+                <rp-grid ng-if="page.model.grid" model="page.model.grid"></rp-grid>
+                <div class="m-t-md">
+                    <button class="btn rounded primary pull-right" ng-click="page.saveAnualizeTax()">Save</button>
+                    <button class="btn rounded btn-outline b-primary text-primary m-r-1 pull-right" ng-click="$hide()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

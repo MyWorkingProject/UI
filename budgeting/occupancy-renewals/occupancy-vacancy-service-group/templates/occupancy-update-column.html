@@ -1,0 +1,15 @@
+﻿
+<div class="rp-cg-text rp-cg-body-text text-left" >
+    {{column.row.data[column.config.key] }}
+
+    <span class="text-right text-primary pull-right">       
+        <a  ng-click="column.config.action.click(column, row)">Update </a>
+        <span class="rp-icon-question-circle p-l-sm" ng-click="column.config.action.onIconClick(column, row)"></span>
+    </span>
+    <div class="col-sm-3 fdn-arrow box-color text-color begining-help-text tool-tip-product" ng-show="column.row.data.updateBOUToolTip">
+        <span class="arrow top pull-left white"></span>
+        <div class="box-body">
+           {{column.row.data.helpText}} 
+        </div>
+    </div>
+</div>

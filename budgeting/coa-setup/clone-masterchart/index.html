@@ -1,0 +1,29 @@
+<div id="cloneChart" ng-controller="BdgtCloneMasterchartCtrl as page" ng-class="page.model.editModel.state">
+    <div>
+        <div class="clone-page-title">
+            <h2 class="chart-heading" ng-show="!page.model.isEditMode">{{ page.model.text.pageHeading }}</h2>
+            <div class="btnBackNext" ng-show="page.model.wizard">
+                <span class="button medium white backBtn btn-align" ng-click="page.backClick()">
+                    Back
+                </span>
+            </div>
+        </div>
+        <div>
+            <div class="controls">
+                <div class="float-left">
+                    <a class="button medium blue newbtn show-on-edit" ng-click="page.saveData()">
+                        {{ !page.model.isEditMode?page.model.text.saveBtnText:page.model.text.cloneBtnText }}
+                    </a>
+                </div>
+                <div class="float-right">
+                    <rp-toggle class="table-filter-toggle"
+                               model="page.model.grid.filtersModel.state.active"
+                               options="{activeText: page.model.text.hideFilters,
+	                       defaultText: page.model.text.showFilters}">
+                    </rp-toggle>
+                </div>
+            </div>
+            <rp-grid model="page.model.grid"></rp-grid>
+        </div>
+    </div>
+</div>

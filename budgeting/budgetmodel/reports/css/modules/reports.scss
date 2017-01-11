@@ -1,0 +1,253 @@
+/*.reports-page-content{
+	padding-left: 10px;
+}
+
+#reports-page-content{
+	.report-header{
+		padding-bottom:10px;
+	}
+	.report-name{
+		@media @largeScreen{
+			width:220px;
+		}
+	}
+	.srchBtnDiv{
+		padding-right:100px;
+		display:inline-block;
+	}
+	
+	#report-nav{
+		display:inline-block;
+		float:none;
+		margin-top:10px;
+		@media @largeScreen{
+			float:right;
+			margin-top:0px;
+		}
+	}
+	#report-nav a{
+		width:20%;
+		padding-right:10px;
+	}
+	#report-nav a:hover{
+		color:@link-hover;
+	}
+
+	.rp-expandable-list-content{
+		.name{
+			width:40%;
+		}
+		.summary{
+			width:60%;
+		}
+	}
+
+	.rp-expandable-list.theme-1 .list-row{
+		@media @largeScreen{
+			display:block;
+		}
+	}
+
+	.rp-expandable-list.sample-1 {
+        .name {
+        	   .sub-heading;
+        }
+        a .name {
+    	    color:inherit;
+        }
+        .summary {
+        	.sub-title;
+        	 font-size:13px;
+       	}
+    } 
+}*/
+#reports-page-content {
+
+    .li-active {
+        color: $rp-primary;
+    }
+
+    .li-item-hgt{
+        height:335px !important;// auto!important;
+    };
+
+    .display-inline {
+        display: inline-block;
+    }
+
+    .all-labl-pad {
+        margin-left: 0.8rem;
+    }
+
+    .srch-labl-pad {
+        margin-right: 0.61rem;
+    }
+
+    .empty-star {
+        @include rp-icon(star);
+    }
+
+    .rp-grid-row {
+        background-color: $white;
+    }
+
+    .full-star {
+        @include rp-icon(star-full);
+    }
+
+    .full-star:before {
+        color: $light-orange;
+    }
+
+    .fav-col {
+        width: 10%;
+    }
+
+    .star-alignment {
+        display: inline-block;
+    }
+
+    .nav-side-menu {
+        ul {
+            .active {
+                border-left: none !important;
+                background-color: $white;
+                //color: $rp-primary;
+            }
+        }
+    }
+
+    .accrdn-pad {
+        padding-left: 0.8rem;
+    }
+
+    .report-name {
+        width: 34%;
+    }
+
+    .rp-grid-headers-1 {
+        .rp-grid-text {
+            color: $rp-primary;
+        }
+    }
+
+
+    .rp-grid-headers-1 {
+        .rp-grid-header-icon.reverse:before {
+            color: $rp-primary;
+        }
+
+        .rp-grid-cell {
+            border-top: none;
+        }
+    }
+
+    .rp-grid-headers-1 {
+        .rp-grid-header-icon.sortable:before {
+            color: $rp-primary;
+        }
+    }
+
+    .rp-grid-headers-1 {
+        .rp-grid-header-icon.active:before {
+            color: $rp-primary;
+            line-height: 18px !important;
+        }
+    }
+
+
+    .rp-grid-wrap {
+        .nav-side-menu ul .active {
+            border-left: none !important;
+        }
+    }
+
+    .rp-grid-body-wrap {
+        min-height: 0px !important;
+    }
+
+    .nav-side-menu {
+        width: 100% !important;
+    }
+
+    .reports-a-padding {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    #left-nav {
+        .nav-side-menu ul li:not(:first-child):after {
+            display: none !important;
+        }
+
+        .nav-side-menu ul .sub-menu li:before {
+            display: none !important;
+        }
+    }
+
+    .table thead th {
+        border-bottom: 1px solid #eceeef !important;
+    }
+
+    .border-line {
+        border-bottom: 1px solid $silver;
+    }
+
+    .panel-border {
+        border: 1px solid $silver !important;
+    }
+
+    .empty-div {
+        height: 0.3rem;
+    }
+
+    .accrodian-height {
+        height: 3rem;
+    }
+
+    .li-height {
+        line-height: 18px;
+    }
+
+    .li-a {
+        color: $white;
+    }
+
+    .li-height:after {
+        padding-right: 1rem !important;
+    }
+
+    #allReports {
+        .menu-list {
+            border: none !important;
+        }
+
+        ul {
+            li:not(collapsed) {
+                background-color: $rp-primary !important;
+
+                a {
+                    color: $white;
+                    font-weight: normal;
+                }
+
+                &:after {
+                    color: white;
+                }
+            }
+
+            li.collapsed {
+                background-color: $light-gray !important;
+
+                a {
+                    color: $dark-gray;
+                    font-weight: normal;
+                }
+
+                &:after {
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+}

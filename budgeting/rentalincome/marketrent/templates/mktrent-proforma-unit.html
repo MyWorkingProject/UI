@@ -1,0 +1,11 @@
+<div class="rp-cg-editable">
+  
+        <input ng-if="column.row.data.isProformaUnitType > 0" class="rp-cg-input-text rp-form-input text-right mr-text"
+               ng-model-options="{updateOn: 'blur'}"
+               ng-change="column.config.updateUnitCount()"
+               ng-model="column.row.data[column.config.key]"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+    <span ng-if="column.row.data.isProformaUnitType > 0" class="rp-cg-text rp-cg-body-text mr-lable"> {{column.row.data.unitCount }}</span>
+
+</div>
+<span class="rp-cg-text rp-cg-body-text" ng-if="column.row.data.isProformaUnitType < 1"> {{column.row.data.unitCount }}</span>

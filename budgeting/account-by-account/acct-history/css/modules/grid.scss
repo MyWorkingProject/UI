@@ -1,0 +1,81 @@
+#gl-account-history {
+
+	.rp-grid-headers-1 {
+		.rp-grid-text {
+			@include small-text;
+			color: $rp-primary;
+		}
+
+		.rp-grid-cell {
+			border-top: none;
+		}
+
+		.sortable:before {
+			color: $rp-primary;
+		}
+	}
+
+	.rp-grid-body-wrap {
+		min-height: auto;
+	}
+
+	.rp-grid-row:nth-child(even) {
+		background-color: $white;
+
+		&:hover {
+			background-color: $row-hover;
+		}
+	}
+
+	.rp-grid-cell {
+		vertical-align: top;
+	}
+
+	.debit, .credit, .balance {
+		text-align: right;
+	}
+
+	.expand {
+		width: 3%;
+		padding-right: 0;
+
+		span {
+			cursor: pointer;
+		}
+	}
+
+	.posted {
+		width: 10%;		
+	}
+
+	.memo {
+		width: 30%;
+
+		.panel {
+			margin: 0;
+			
+			.panel-title {
+				@include body-2;
+			}
+		}
+	}
+
+	.total-grid {
+		.rp-grid-headers-1 {
+			display: none;
+		}
+
+		.posted {
+			text-align: center;
+		}
+
+		.rp-grid-cell {
+			border-bottom: none;
+		}
+
+		.rp-grid-text {
+			font-weight: bold;
+		}
+	}
+
+}

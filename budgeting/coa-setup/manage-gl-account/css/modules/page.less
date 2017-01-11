@@ -1,0 +1,72 @@
+//  page Base Styles
+
+.managegl-page-content {
+    .inner {
+        .column(12);
+    }
+
+    .managegl-page-title {
+        .page-title;
+        height: 30px;
+        padding-top: 20px;
+    }
+
+    #managelTitle {
+        display: block;
+    }
+
+    .page-content-wrap;
+    //height: 30px;
+
+
+    .controls {
+        .clearfix;
+        font-size: 0;
+        line-height: 0;
+        text-align: right;
+        margin-bottom: 10px;
+        margin-top: 25px;
+    }
+
+
+    .show-form-button {
+        .float-left;
+        font-size: 0;
+        line-height: 24px;
+        position: relative;
+        padding: 0 0 0 20px;
+        margin-left: 1%;
+
+        span {
+            .inline-block;
+        }
+
+        .icon {
+            .v1-icon-add;
+            top: 0;
+            left: 0;
+            position: absolute;
+
+            &:before {
+                .block;
+                color: @white;
+                font-size: 7px;
+                line-height: 22px;
+                padding-left: 7px;
+                padding-right: 5px;
+            }
+        }
+
+        .text {
+            font-size: 13px;
+            line-height: 24px;
+            padding-right: 10px;
+        }
+
+        &.active {
+            cursor: default;
+            border-color: @link-active;
+            background-color: @link-active;
+        }
+    }
+}

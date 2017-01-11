@@ -1,0 +1,415 @@
+ .daterangepicker.ltr {
+       z-index: 9999 !important;
+    }
+  .modal{
+        z-index:9999 !important;
+    }
+#payroll-employee-details
+{
+    z-index: 9999 !important;
+    display: block;
+    top: 0;
+    right:0;
+    position: fixed;
+    width: 60%;
+    height: 100%;
+    background:white;  
+    .modal{
+        z-index:9999 !important;
+    }
+    .col-sm-9 {     
+        width: 100%; 
+    }
+    .clear-both{
+        clear: both;
+    }
+    .min-h-d{
+    height: 20px;   
+    }
+    .p-y-sm{
+        margin-top: 20px; 
+    }  
+    .model-footer-buttons{
+        position:fixed;
+        bottom:-16px;
+        background:white;
+        border-top:1px solid #ececec !important;
+    }
+    .form-horizontal{
+        margin-top:10px;
+    }  
+    .box-header{
+        border-bottom:none;
+    }
+    .pull-top-change{        
+        color:#515356;
+    }
+    
+    .box-body-pull{
+       margin-right: 30px;
+    margin-bottom: 20px;     
+    }
+    .sample-fit-form-row{
+        margin-bottom:20px;
+    }
+    .col-md-5-5{
+        float: left;
+        width: 26%;
+        margin-right: -10px;
+    }
+    .row-col {
+        display: table; 
+        table-layout: auto; 
+        border-spacing: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .pull-right-adjust{
+        margin-bottom: 20px;
+        margin-right: 10px;
+    }
+   .row-inner-scroll{
+        height: 792px;
+        overflow-y: scroll;
+    }
+    .col-md-5-5.pull-right{                
+        width: 100%;    
+        margin-top: 15px;
+        text-align:right;
+        margin-bottom: -15px;
+    }
+    .rp-icon-question-circle.p-l-sm {   
+       margin-left: -15px;
+       vertical-align: -webkit-baseline-middle;
+    }
+   .start-date.clear-right{
+       margin-right:40px !important;
+   }
+   ft-form .form-group .form-control {  
+       border-color: rgba(120, 130, 140, 0.2);
+   }
+   .startdate, .enddate{
+       margin-bottom: -16px;
+    }
+   .md-check {
+        float:left;
+    }
+    .arrow {    
+    margin-left: -49px;
+    }
+    .allocation-percent{
+        width:8%;
+    }
+   .start-date {
+        width: 12%;
+    }
+   .end-date {
+        width: 12%;
+    }
+    .fdn-arrow.box-color{
+    //margin-left: 20px;
+    //margin-top: 70px;    
+    width: 353px;
+    position: absolute;
+        margin-left: -126px;
+    margin-top: 40px;
+    }
+    .box-header>h3 {
+        margin-bottom: 15px;
+    }
+    .display-lbl-block{
+        display:block;
+    }
+   .popover {
+		display: none !important;
+	}
+	&.activate-tooltip .popover {
+		display: block !important;
+	}
+    .text-link{
+        text-decoration:underline;
+        color:#42a5f5;
+    }
+    .add-property{
+        margin-bottom: 2.0rem;
+    }
+    .md-check {
+        cursor: pointer;
+        padding-left: 1.25rem;
+        padding-right: 15px;
+        padding-top: 10px;
+        display: inline-block;
+        position: relative;
+    }
+   
+  
+    .col-md-5.dt-fix{
+        display:inline-flex;
+    }
+    .col-md-5 {
+        float: left;
+        width: 35.66667%;
+        margin-right: 5%;
+    }
+	.rp-grid
+	{
+		min-width: 1200px;
+		.employee
+		{
+			width: 15%;
+		}
+		.position
+		{
+			width: 15%;
+		}
+		.property-allocation
+		{
+			width: 15%;
+		}
+         .start-date{
+        width:15%;
+     
+        }
+      
+        .end-date{
+            width:15%;
+        }
+
+		.rp-grid-filters-1
+		{
+			.employee
+			{
+				width: 13%;
+			}
+			.position
+			{
+				width: 87%;
+			}
+		}
+	}
+	//------------------------------------------------------------------
+    
+
+
+    .text-link{
+        text-decoration:underline;
+        color:#42a5f5 !important;
+    }
+
+    .row-body{       
+           overflow:visible;           
+    }   
+    .top-spacer{    
+            border-left:0px;            
+    }
+    .right.w-xl.white.b-l{
+            border-left:0px;
+    }
+    .rp-form-textarea-field-wrap{
+        border-style: none; 
+       
+    }
+    .p-a{
+            border-bottom: 1px solid #ececec;
+    }
+    .list-group-item:first-child {
+        margin-left: -20px;
+        margin-right: 15px;
+        background-color:#fafafa;/* rgba(152, 152, 152, 0.09);*/        
+        border-bottom: 1px solid #ececec;
+        border-left: 0px;
+        border-top: 0px;
+    }
+    .list-group-item p-x-md {
+        border-bottom: 1px solid #cbcbcb;
+        background-color: #f8f8f8;
+        border-left:0px;
+        border-right:0px;
+    }
+    .comments-user{
+        color: #333333;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    .list-group{
+          margin-left: 20px;
+    margin-right: 20px;
+    }
+    .list-group-item div {
+        margin-left:32px; 
+        margin-top: 9px;       
+    }
+    .block{
+         margin-top: 10px; 
+    }
+    .form-group row{
+        margin-left: 2px;
+        margin-right: 0px;
+    }
+    .ft-form{
+        margin-left:10px;
+        margin-right:10px;
+    } 
+
+    .pull-left{
+        width: auto;            
+    }   
+    .list-group-item p-x-md{
+        border-left:0px;
+        border-right:0px;
+        width:336px;
+    }
+    .list-group-item{
+             border: 1px solid #ddd; 
+    }
+    .m-l{
+        margin-left: 2rem !important;
+    }
+    .streamline {    
+        margin-top: -14px;
+    }
+    .p-x-md .m-t .p-v-xs{
+        margin-left:1rem;
+    }
+    .m-t {    
+        margin-left: 2rem;
+        color:#333;
+    }
+    .sl-left{   
+        margin-top: -10px;
+        margin-bottom: 14px;
+    }
+    .text-muted
+        {
+        opacity: 1.6;        
+        font-size: 13px;
+    }
+    .reponses-top{
+        margin-top:10px;    
+        width:280px;
+    }
+    .fa-circle
+    {
+        margin-left: 5px;
+        margin-right: 5px;
+        opacity: 0.4;
+    }
+    .rp-form-textarea-field
+    {
+        border:1px solid #abd9ff;
+        margin-top:-12px;                        
+        margin-left: -5px;
+        width: 107%;
+    }
+    .r-ap{
+        width:270px;
+        font-size:13px;
+    }
+    .p-a.responses{
+        border-bottom:0px;
+            margin-left: -20px;
+    margin-bottom: -20px;
+    }
+    // New comments creation
+    label{
+        margin-left: 4px;
+        margin-bottom: 14px;      
+    }
+    .deep-right{
+            margin-right: -30px;
+                margin-top: 3px
+    }
+    .form-control {
+        min-height:2.5rem; 
+        /*border-color:#cbcbcb;*/
+        margin-left: 4px;
+    }
+    .col-xs-6 {
+    width: 60%;
+    }
+    .daterangepicker.ltr {
+       z-index: 9999 !important;
+    }
+ 
+ 
+    .col-sm-offset-3{
+      margin-top: 20px;
+    bottom: 15px;
+
+        
+    }
+    .input-group-addon {
+        border-radius:0px;                
+        padding-left: 15px;      
+    }    
+
+     .btn.rounded{
+        margin-top: 4px; 
+        margin-left: 6px;     
+    }
+    .input-group{
+        margin-left: 2px;
+    }
+    .form-group {       
+        margin-left: -6px;        
+        margin-bottom: 10px;
+        right:0;
+    }
+
+    .pull-right.text-muted.text-lg.p-t-sm{
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }  
+    .appEllipseContent {
+        overflow: hidden;           
+        display: inline-block;
+        line-height: 16px;            
+        white-space: nowrap;                
+        width: 200px;                
+        -ms-text-overflow: ellipsis;       
+        text-overflow: ellipsis;
+    }
+
+    .appEllipseContenthover {
+        overflow: visible;
+        white-space: normal;                
+         text-align: justify;
+            width: 210px;
+        line-height: 16px; 
+    }
+    .rp-comment {
+        margin-left: 5px;
+        margin-top: 0px;
+    }
+    .rp-pull-lt{
+        margin-left: 1px;        
+        height: 30px;
+        font-size: 13px;
+        color:#fff;
+    }
+    .rp-pull-lft{
+      margin-left: -5px;
+      margin-top: 3px;
+    }
+    .rp-icon-trash, .rp-icon-edit-text{
+        color: #42a5f5 !important;
+     }    
+    .container {
+        height: 40px; 
+        width: 225px;
+        margin-left: -15px;
+        margin-bottom: 6px;
+        overflow: hidden;
+        position: relative;  
+         display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+  
+
+
+

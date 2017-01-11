@@ -1,0 +1,38 @@
+//  Collapsible List
+
+.collapsible-list {
+    overflow: hidden;
+}
+
+.collapsible-list-title {
+    .icon-expand;
+    color: @gray;
+    height: 19px;
+    cursor: pointer;
+    font-size: 11px;
+    padding-top: 1px;
+    line-height: 19px;
+    padding-left: 18px;
+    position: relative;
+    background: #efeded;
+    text-transform: uppercase;
+
+    &.open {
+        .icon-collapse;
+        font-size: 11px;
+        line-height: 19px;
+        text-transform: uppercase;
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        color: #cad4e2;
+        font-size: 14px;
+        line-height: 20px;
+        position: absolute;
+        text-align: center;
+    }
+}

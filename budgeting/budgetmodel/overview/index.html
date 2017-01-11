@@ -1,0 +1,172 @@
+<div class="box overview-exp-list">
+    <div class="row col-xs-12 m-b-sm">
+        <h5 class="pull-left m-t-sm">
+            {{page.model.form.catHeading}}
+        </h5>
+        <div class="p-t-0 pull-right" ng-if="page.workflow.form.isSubmitLevel">
+            <div class="m-t-0 text-right">
+                <button class="btn rounded primary m-b-sm" ng-click="page.toggleSubmitWorkflow()">{{::page.model.form.submitTxt}}</button>
+            </div>
+        </div>
+        <div class="p-t-0 pull-right" ng-if="page.workflow.form.isApproveLevel">
+            <div class="m-t-0 text-right">
+                <button ng-click="page.toggleApproveWorkflow()" class="btn rounded primary m-b-sm m-r-sm">
+                    <i class="rp-icon-correct ft-s-12">  </i>
+                    {{::page.model.form.approveTxt}}
+                </button>
+                <button ng-click="page.toggleRejectWorkflow()" class="btn rounded b-neutral m-b-sm">
+                    <i class="rp-icon-delete-2  ft-s-12">  </i>
+                    {{::page.model.form.rejectTxt}}
+                </button>
+            </div>
+        </div>
+        <div class="m-t-sm m-r-md text-nav-color pull-right">
+            <a href="#/model-settings/{{page.model.form.distID}}/rent">
+                <i class="fa rp-icon-gear text"> </i><span class="text settings-icon ft-s-14">{{page.model.form.settingsText}}</span>
+            </a>
+        </div>
+    </div>
+    <!-- Submit Form Starts-->
+    <div ng-show="page.workflow.form.slideSubmitCommentsForm.state.open">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box workflow-box">
+                    <div class="box-header no-b-b p-l-sm p-b-sm">
+                        <h2 class="submit-workflow-header">{{::page.model.form.submitTxt}} {{::page.model.form.workflowTxt}}</h2>
+                        <span class="rp-icon-delete-2 pull-right" ng-click="page.toggleSubmitWorkflow()"></span>
+                    </div>
+                    <div class="box-body p-l-sm p-b-md p-t-0">
+                        <form class="ft-form" role="form" ng-submit="page.updateSubmitWorkflow()">
+                            <div class="form-group row m-b-0">
+                                <div class="col-md-2">
+                                    <span class="form-control-label ft-bold">{{::page.model.form.commentsTxt}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <textarea required id="subComments" ng-model="page.workflow.form.submitComments" name="submitComments" ng-minlength="1"
+                                              ng-maxlength="512" ng-trim="true" ng-model-options="{updateOn: 'blur'}" class="form-control" rows="3"
+                                              placeholder="{{page.workflow.form.placeholder.submitComments}}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-0">
+                                <div class="col-sm-8 pull-left">
+                                    <button type="submit" class="btn primary rounded p-x-md pull-right">{{::page.model.form.submitTxt}}</button>
+                                    <button class="btn rounded btn-outline b-info text-info p-x-md m-r-md pull-right" ng-click="page.toggleSubmitWorkflow()">{{::page.model.form.cancelTxt}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Submit Form Ends-->
+    <!-- Approve Form Starts-->
+    <div ng-show="page.workflow.form.slideApproveCommentsForm.state.open">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box workflow-box">
+                    <div class="box-header no-b-b p-l-sm p-b-sm">
+                        <h2 class="submit-workflow-header">{{::page.model.form.approveTxt}} {{::page.model.form.workflowTxt}}</h2>
+                        <span class="rp-icon-delete-2 pull-right" ng-click="page.toggleApproveWorkflow()"></span>
+                    </div>
+                    <div class="box-body p-l-sm p-b-md p-t-0">
+                        <form class="ft-form" role="form" ng-submit="page.approveWorkflow()">
+                            <div class="form-group row m-b-0">
+                                <div class="col-md-2">
+                                    <span class="form-control-label ft-bold">{{::page.model.form.commentsTxt}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <textarea required id="appComments" ng-model="page.workflow.form.approveComments" name="approveComments" ng-minlength="1"
+                                              ng-maxlength="512" ng-trim="true" ng-model-options="{updateOn: 'blur'}" class="form-control" rows="3"
+                                              placeholder="{{page.workflow.form.placeholder.approveComments}}"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-0">
+                                <div class="col-sm-8 pull-left">
+                                    <button type="submit" class="btn primary rounded p-x-md pull-right">{{::page.model.form.approveTxt}}</button>
+                                    <button class="btn rounded btn-outline b-info text-info p-x-md m-r-md pull-right" ng-click="page.toggleApproveWorkflow()">{{::page.model.form.cancelTxt}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Approve Form Ends-->
+    <!-- Reject Form Starts -->
+    <div ng-show="page.workflow.form.slideRejectCommentsForm.state.open">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box workflow-box">
+                    <div class="box-header no-b-b p-l-sm p-b-sm">
+                        <h2 class="submit-workflow-header">{{::page.model.form.rejectTxt}} {{::page.model.form.workflowTxt}}</h2>
+                        <span class="rp-icon-delete-2 pull-right" ng-click="page.toggleRejectWorkflow()"></span>
+                    </div>
+                    <div class="box-body p-l-sm p-b-md p-t-0">
+                        <form class="ft-form" role="form" ng-submit="page.rejectWorkflow()">
+                            <div class="form-group row m-b-0">
+                                <div class="col-md-2">
+                                    <span class="form-control-label ft-bold">{{::page.model.form.commentsTxt}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <textarea required id="rejComments" ng-model="page.workflow.form.rejectComments" name="rejectComments" ng-minlength="1"
+                                              ng-maxlength="512" ng-trim="true" ng-model-options="{updateOn: 'blur'}" class="form-control" rows="3"
+                                              placeholder="{{page.workflow.form.placeholder.rejectComments}}"></textarea>
+                                </div>
+                            </div>
+                            <div class="checkbox col-md-12">
+                                <label class="md-check dark-bluebox p-r-md" ng-repeat="item in page.workflow.form.rejectSequences">
+                                    <input type="checkbox" ng-model="item.checked">
+                                    <i class="primary"></i>
+                                    {{item.roleName}}
+                                </label>
+                            </div>
+                            <div class="form-group row m-b-0">
+                                <div class="col-sm-8 pull-left">
+                                    <button type="submit" class="btn primary rounded p-x-md pull-right">{{::page.model.form.rejectTxt}}</button>
+                                    <button class="btn rounded btn-outline b-info text-info p-x-md m-r-md pull-right" ng-click="page.toggleRejectWorkflow()">{{::page.model.form.cancelTxt}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reject Form Ends-->
+    <div class="box-body p-l-0">
+        <div class="row no-gutter m-b">
+            <div class="col-xs-12">
+                <div class="nav-side-menu">
+                    <div class="menu-list overview-list-menu">
+                        <ul id="menu-content" class="menu-content collapse out circle-spacer" ng-class="{'no-child': (list.sectionName === list.sectionDrivers[0].driverName || list.sectionID===-1)}" ng-repeat="list in page.model.listData | filter:{ sectionName: '!Model Options & Details'}">
+                            <li data-toggle="collapse" data-target="#{{ 'nav-' + $index }}" class="collapsed" ng-click="page.navigateToPage(list.sectionDrivers[0].driverID,list.isDisplay,'header',list.categoryCode)">
+                                <a>
+                                    <span class="inline-block v-t list-name _400">{{list.isDisplay ? list.sectionName : list.sectionDrivers[0].driverName}} </span>
+                                    <span class="inline-block v-t ft-regular ft-s-12 ft-track-5 list-dt">{{list.isDisplay ? list.lastModifiedBy : list.sectionDrivers[0].lastModifiedBy}}</span>
+                                    <span class="inline-block v-t item-summary text-right">{{list.summaryAmount}}</span>
+                                    <span class="pull-right circle" ng-class="{'fa fa-check-circle Completed':list.status=='Done','fa rp-icon-time Active':list.status=='In-Progress','fa fa-circle-thin Inactive':list.status=='Pending'}"></span>
+                                </a>
+                            </li>
+                            <ul class="sub-menu collapse" ng-if="list.isDisplay" id="{{ 'nav-' + $index }}">
+                                <li ng-repeat="item in list.sectionDrivers" class="m-l-md sub-menu-bottom-border" ng-click="page.navigateToPage(item.driverID,list.isDisplay,'section', item.categoryCode)">
+                                    <span class="inline-block v-t item-name">{{item.driverName}}</span>
+                                    <span class="ft-regular ft-s-12 ft-track-5 inline-block item-dt">{{item.lastModifiedBy}}</span>
+                                    <span class="inline-block v-t item-summary text-right"><span ng-if="item.summaryAmount" class="m-r-xs">{{page.model.form.currencySymbol}}</span>{{item.summaryAmount}}</span>
+                                    <span class="pull-right" ng-class="{'fa fa-check-circle Completed':item.status=='Done','fa rp-icon-time Active':item.status=='In-Progress','fa fa-circle-thin Inactive':item.status=='Pending'}" ng-click="page.updateSubStatus(item, list); $event.preventDefault();"></span>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row no-gutter m-b-0" ng-repeat="level in levels.levelSections">
+    <div class="col-sm-12">
+        <div class="nav-side-menu">
+            <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li data-toggle="collapse" data-target="#{{ 'nav-' + $index }}" class="menu-sequence">
+                        <a>
+                            <span class="_400">Level {{level.sequence}}</span>
+                        </a>
+                    </li>
+                    
+                    <ul class="sub-menu collapse in" id="{{ 'nav-' + $index }}" ng-class="{'in' : page.levelModel.levelData.viewAllDetailsText == 'View All Details'}">
+                        <li class="col-sm-5 p-r-md p-t-0" ng-repeat="role in level.workflows">
+                            <div class="box col-sm-12 level-box">
+                                <div class="box-header no-shadow p-t-0 p-b-0">
+                                    <div class="box-header-border row m-x-sm m-y-md p-b-sm">
+                                        <span class="row-col-1 inline _300 ft-bold">{{role.roleName}}</span>
+
+                                        <i ng-class="{'fa fa-circle-thin Inactive pull-right':role.status == '' && role.attentionType == '','fa rp-icon-delete Rejected pull-right':role.status == 'Rejected','fa fa-check-circle Submitted pull-right':role.status == 'Submitted','fa fa-check-circle Approved pull-right':role.status == 'Approved','fa fa-exclamation-circle needAttention pull-right':role.attentionType == 'Overdue' , 'fa fa-exclamation-circle needAttention pull-right':role.attentionType == 'Reject'}"></i>
+
+                                    </div>
+                                </div>
+                                <div class="box-body p-t-0">
+                                    <div class="m-b-1"><span class="text-muted m-t">{{::levels.dueText}} {{::levels.dateText}} : </span><span class="ft-medium ft-s-14 ft-track-5 pull-right" ng-class="{dateRed:role.attentionType == 'Overdue'}">{{role.dueDate}}</span></div>
+                                    <div class="sub-section-divider  m-b-1"><span class="text-muted m-t">{{role.statusTitle}} {{::levels.dateText}} : </span><span class="ft-medium ft-s-14 ft-track-5 pull-right">{{role.statusDate}}</span></div>
+                                    <div class="m-b-1"><span class="text-muted m-t">{{role.statusTitle}} {{::levels.byText}} : </span><span class="ft-medium ft-s-14 ft-track-5 pull-right">{{role.statusBy}}</span></div>
+                                    <div class="sub-section-divider m-b-sm p-t-sm b-t" ng-class="{active:role.showHideDetails.state.active,inactive:!role.showHideDetails.state.active}"><span class="text-muted m-t">{{::levels.sectionsText}} </span></div>
+                                    <div class="m-b-sm" ng-class="{active:role.showHideDetails.state.active,inactive:!role.showHideDetails.state.active}"><span class="ft-medium ft-s-14 ft-track-5">{{role.sections}}</span></div>
+                                    <div class="sub-section-divider m-b-sm" ng-class="{active:role.showHideDetails.state.active,inactive:!role.showHideDetails.state.active}"><span class="text-muted m-t">{{::levels.usersText}} </span></div>
+                                    <div class="m-b-sm" ng-class="{active:role.showHideDetails.state.active,inactive:!role.showHideDetails.state.active}"><span class="ft-medium ft-s-14 ft-track-5">{{role.users}}</span></div>
+                                    <div>
+                                        <rp-toggle class="details-toggle"
+                                                   model="role.showHideDetails.state.active"
+                                                   options="{activeText: levels.showDetails,defaultText: levels.hideDetails}">
+                                        </rp-toggle>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

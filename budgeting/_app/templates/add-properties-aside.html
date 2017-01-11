@@ -1,0 +1,53 @@
+
+<div id="add-properties-aside" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div id="add-properties">
+                <div class="right w-xl white b-l">
+                    <div class="row-col">
+                        <div class="top-spacer">
+                            <a data-dismiss="modal" class="pull-right text-muted text-lg p-t-sm" ng-click="page.close()">&times;</a>
+                            <div class="p-a">
+                                <div class="h5">
+                                    {{:: page.model.text.headerTxt}}
+                                </div>
+                            </div>
+                            <div class="row-row">
+                                <div class="row-body">
+                                    <div class="row-inner">
+                                        <div class="list-group no-radius">                                           
+                                            <div class="p-t-sm clearfix" ng-init="page.grid.filtersModel.state.active = false">
+                                                <div class="pull-right grid-controls p-t-sm">
+                                                    <div class="grid-control-item m-r-1">
+                                                        <rp-toggle model="page.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                                                          defaultText: 'Filter',
+                                                                          defaultIconClass: 'rp-icon-filter active',
+                                                                          activeIconClass: 'rp-icon-filter'
+                                                                    }">
+                                                        </rp-toggle>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ng-form role="form" name="addProperties" novalidate>                                                
+                                                <div class="row-col p-b-0 p-l-sm">                                          
+                                                    <rp-grid model="page.grid">
+                                                    </rp-grid>
+                                                </div>
+                                            </ng-form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-a b-t">
+                    <div class="p-r-0">
+                        <button type="submit" class="btn rounded btn-outline b-primary text-primary w-full p-x-md" ng-click="page.close()">{{::page.model.text.cancel}}</button>
+                        <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.getSelectedProperties()">{{::page.model.text.select}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+
+#budget-comments {
+    .modal > .right {    
+        overflow-y: scroll !important;
+        overflow-x: hidden;
+    }
+
+    .thumb {
+        width: 27%;
+    }
+    .container{
+    width: 225px;
+    margin-left: -15px;    
+    overflow: hidden;
+    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    /*.container:hover{
+     overflow: visible;
+        white-space: normal;                
+         text-align: justify;
+            width: 210px;
+        line-height: 16px; 
+    }*/
+    .comment {
+        width: 30%;
+    }
+    .applies-to {
+        width: 20%;
+    }
+
+    .response-count {
+        width: 14%;
+    }
+
+    .comments-text-decoration {
+        text-decoration: underline;
+    }
+
+    .rp-grid-cell {
+        //line-height:28px;
+    }
+
+    .display-inline-block {
+        display: inline-block;
+    }
+
+    .b-l-cell-response {
+        border-left: 1px solid #ff6a00 !important;
+    }
+
+    .icon-margin {
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+
+    .rp-grid-wrap {
+        overflow-x: auto;
+    }
+
+    .rp-grid {
+        min-width: 600px;
+    }
+
+    .max-grid-width {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+
+    .table-filter-toggle {
+        cursor: pointer;
+    }
+
+    .filter-cursor {
+        cursor: pointer;
+    }
+
+    .rp-grid-filters-1 .thumb {
+        width: 0%;
+    }
+
+    .rp-grid-filters-1 .created-by {
+        width: 27%;
+    }
+
+       .modal > .right
+    {
+        width:340px;
+    }
+   .response-count-position
+   {
+		position: relative;
+		bottom: 0.0625rem;
+   }
+}

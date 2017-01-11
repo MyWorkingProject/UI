@@ -1,0 +1,1 @@
+{{{ include("controller/payroll-report-view-base.js") }}}

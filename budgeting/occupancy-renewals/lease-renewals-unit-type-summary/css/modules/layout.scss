@@ -1,0 +1,59 @@
+#occupancy-service-group {
+    .text-pointer {
+        cursor: pointer;
+    }
+    .occupancy-worksheet-header {
+        background-color: $white !important;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: none;
+        .rp-cg-body-cell {
+            cursor: default;
+        }
+        .rp-cg-body-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+    .refText {
+        position: absolute;
+        width: 750px;
+        margin-top: 2px !important;
+        font-size: 11px;
+    }
+    .rp-cg-free {
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+        .occupancy-worksheet-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+        }
+    }
+    .level-5 {
+        .occupancy-worksheet-header {
+            height: 103px;
+        }
+    }
+    .rp-cg-locked {
+        .rp-cg-headers-row {
+            .item-description {
+                .rp-cg-headers-text {
+                    visibility: hidden;
+                }
+            }
+        }
+        .item-description {
+            .rp-cg-text {
+                &.rp-cg-body-text {
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

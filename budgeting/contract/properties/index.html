@@ -1,0 +1,91 @@
+<div ng-controller="ContractPropertiesCtrl as page" class="col-xl-10 col-sm-12">
+    <!-- Controls -->
+    <div class="properties-btn-wrapper" ng-if="page.isDisplayForm()">
+        <button class="btn rounded primary m-r-sm"
+                ng-click="page.addPropertiesAsideModel()">
+            + {{::page.translate("bdgt_properties_add_prop")}}
+        </button>
+        <button class=" btn rounded btn-outline b-primary text-primary m-r-sm"s
+                ng-click="page.initAssignGLModal()">
+            {{::page.translate("bdgt_properties_assign_gl")}}
+        </button>
+    </div>
+
+    <!--
+    <div class="rp-action-bar box" ng-if="page.isDisplayForm()">
+        <div class="action-item select-all ft-form">
+            <label class="md-check dark-bluebox">
+                <input type="checkbox" name="selectall"
+                       ng-model="page.state.isSelectAll"
+                       ng-true-value="true" ng-false-value="false"
+                       ng-click="page.selectAll()">
+                <i class="primary"></i>
+            </label>
+        </div>
+        <button ng-click="page.assignGlToggle()" class="action-item">
+            <i class="ic-arrow-right-circle"></i>
+            <span class="action-text m-l-sm">{{::page.translate("bdgt_new_contract_assign_accnt")}}</span>
+        </button>
+        
+        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip" ng-show="page.workflow.model.toolTipAlert.state">
+            <span class="arrow left pull-left white"></span>
+            <div class="box-body">
+                {{::page.translate("bdgt_properties_tool_tip")}}
+            </div>
+        </div>
+    </div>
+
+    <div id="assign-gl-workflow" rp-slide-toggle="page.workflow.model" ng-if="page.isDisplayForm()">
+        <div class="box-header">
+            <h2>{{::page.translate("bdgt_new_contract_assign_accnt")}}</h2>
+            <div class="box-tool">
+                <a class="box-close text-neutral" ng-click="page.workflow.closeWorkflow()">
+                    <i class="ic-close rp-icon-delete-2"></i>
+                </a>
+            </div>
+        </div>
+        <div class="box-body p-a-md p-t-xs">
+            <div id="coa-grid-wrapper" class="prop-tab-grid account-allocation-edit">
+                <rp-grid model="page.coaGridModel"></rp-grid>
+                <div class="checkbox p-t-sm">
+                    <label class="md-check dark-bluebox p-r-md">
+                        <input type="checkbox" ng-model="page.workflow.model.overWrite">
+                        <i class="white"></i>
+                        {{::page.translate("bdgt_contract_overwrite_text")}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button ng-click="page.assignGlToProps()" class="btn primary rounded p-x-md">
+                {{::page.translate("bdgt_contract_assign_txt")}}
+            </button>
+            <button ng-click="page.workflow.closeWorkflow()" class="btn rounded btn-outline b-info text-info p-x-md m-l-sm">
+                {{::page.translate("bdgt_new_contract_cancel")}}
+            </button>
+        </div>
+    </div>
+    -->
+
+
+    <!-- Properties -->
+    <div class="m-t-sm">
+        <div class="grid-controls">
+            <!-- 
+            <div class="grid-control-item">
+                <i class="icon rp-icon-printer"></i>
+                <span class="text">Print</span>
+            </div>
+            -->
+            <div class="grid-control-item">
+                <rp-toggle
+                    model="page.propertyGridFilter.state.active" 
+                    options="page.propertyGridFilter.config">
+                </rp-toggle>
+            </div>
+        </div>
+
+        <div id="properties-grid-wrapper" class="prop-tab-grid">
+            <rp-grid model="page.propertiesGridModel"><!-- List of properties available --></rp-grid>
+        </div>
+</div>

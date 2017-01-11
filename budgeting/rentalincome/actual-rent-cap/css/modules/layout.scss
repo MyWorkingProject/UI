@@ -1,0 +1,17 @@
+.actual-rent-cap {
+    .finalized {
+        color: $success-color;
+        background-color: $success;
+    }
+
+    .read-only {
+        color: $grey-color;
+        background-color: $grey;
+    }
+
+    .rp-form-input-text-field{
+        text-align:right;
+    }
+
+  
+}

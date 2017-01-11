@@ -1,0 +1,101 @@
+#taskBudgetModelView {
+.taskmodel-page-content {
+        padding-top: 8%;
+        padding-left: 5px;
+        padding-right: 25px;
+    }
+
+    .taskmodel-page-content-wrap {
+        padding-left: 0px;
+ 
+    }
+    .chart-heading {
+        color: @gray;
+        font-size: 15px;
+        margin-bottom:10px;
+    }
+     .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+        display:inline-block;
+        float:right;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+     .is-selected{
+    	width:8%
+    }
+
+    .budget-year{
+    	width:10%
+    }
+    .model-type{
+    	width:10%
+    }
+    .asset-type{
+    	width:20%
+    }
+    .name{
+    	width:30%
+    }
+    .saveBtn {
+        float: left;
+        margin-right:10%;
+        margin-bottom:10px;
+    }
+    .field-label {
+        .small-text;
+        color: @dark-gray;
+        vertical-align:text-bottom;
+        line-height: 19px!important;
+    }
+}
+
+ .rp-breadcrumbs {
+    margin-top: 5%;
+}
+
+ .workspaces .workspace-header {
+     display:none;
+     }

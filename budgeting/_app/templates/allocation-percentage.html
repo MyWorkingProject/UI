@@ -1,0 +1,8 @@
+﻿<div ng-show="!model.PercentageState">
+    <span class="rp-cg-text rp-cg-body-text">{{ record.percentage | number:2 }}</span>
+    <!-- <span class="rp-form-input-text-suffix-text">%</span> -->
+</div>
+<div ng-show="model.PercentageState" class="rp-input-text small">
+    <input type="text" class="form-control" style="width: 80px;"  ng-blur="config.method(record)"  ng-model="record.percentage" />
+    <!-- <span class="rp-form-input-text-suffix-text">%</span> -->
+</div>

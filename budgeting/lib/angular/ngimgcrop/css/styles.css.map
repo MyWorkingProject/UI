@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"../../../../../ui-src/_lib/angular/ngimgcrop/css/styles.scss",
+		"../../../../../ui-src/_lib/__foundation-ui-library/angular/ngimgcrop/css/ng-img-crop.scss"
+	],
+	"mappings": "ACAA,AAAA,QAAQ,CAAA;EAAC,KAAK,EAAC,IAAK;EAAC,MAAM,EAAC,IAAK;EAAC,OAAO,EAAC,KAAM;EAAC,QAAQ,EAAC,QAAS;EAAC,QAAQ,EAAC,MAAO,GAAE;;AACtF,AAAS,QAAD,CAAC,MAAM,CAAA;EAAC,OAAO,EAAC,KAAM;EAAC,QAAQ,EAAC,QAAS;EAAC,GAAG,EAAC,GAAI;EAAC,IAAI,EAAC,GAAI;EAAC,OAAO,EAAC,CAAE;EAAC,2BAA2B,EAAC,WAAY,GAAE",
+	"names": []
+}

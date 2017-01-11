@@ -1,0 +1,38 @@
+﻿<div class="import-section col-xs-6 acc-charts-select">
+    <span>{{ ::page.model.text.propertyTxt }}</span>
+    <select name="propDrpDwn"
+            class="rp-form-select"
+            rp-update-display-text="true"
+            rp-option-name-key="propertyName"
+            rp-option-value-key="propertyID"
+            ng-model="page.model.form.selectedPropertyID"
+            rp-select-options="page.model.form.propertyData"
+            ng-options="option.propertyID as option.propertyName for option in page.model.form.propertyData.options"
+            ng-change="page.propChange()"></select>
+</div>
+<div class="import-section col-xs-6 dv-load-btn-acc" ng-if="page.model.form.showLoadBtn">
+    <span class="button medium white" ng-click="page.loadAccGls()">
+            {{ ::page.model.text.loadBtn }}
+    </span>
+</div>
+<div class="import-grid-csv" ng-if="gridModel.grid">
+    <div class="import-section-border"></div>
+    <h3 class="gridHeading">{{ ::page.model.text.imprtSecHead }}</h3>
+    <div class="table-controls filter-right">
+        <span class="tooltip-container button medium white deleteBtn" ng-click="page.delGlAccounts();" ng-init="page.model.form.tooltipState">
+            {{ ::page.model.text.deleteBtn }}
+            <span class="tooltip rp-callout top" ng-class="{ active: page.model.form.tooltipState }">{{ ::page.model.text.selectGlToDel }}</span>
+        </span>
+        <span class="button medium blue newbtn importBtn" ng-click="page.saveGlAccounts();">
+            <span>
+                {{ ::page.model.text.importSaveBtn }}
+            </span>
+        </span>
+        <rp-toggle class="table-filter-toggle"
+                   model="gridModel.grid.filtersModel.state.active"
+                   options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+    </div>
+    <rp-grid model="gridModel.grid"></rp-grid>
+</div>	 

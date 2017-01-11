@@ -1,0 +1,11 @@
+<div class="rp-cg-editable">
+    <span class="rp-cg-text rp-cg-body-text mr-lable">
+        {{column.getVal().toLocaleString()}}
+    </span>
+
+        <i class="rp-icon-delete"></i>
+    <input class="rp-cg-input-text rp-form-input mr-text"
+           ng-model-options="{updateOn: 'blur'}"
+           ng-model="column.row.data[column.config.key]" />
+
+</div>

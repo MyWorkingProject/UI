@@ -1,0 +1,54 @@
+<div id="grid-settings" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <div class="p-t p-b-sm">
+                    <span class="h5"> {{::page.headerTitle}}</span>
+                </div>
+            </div>
+            <div class="aside-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div ng-repeat="item in page.model" ng-switch on="item.itemType">
+                            <div ng-switch-when="checkbox">
+                                <h6 class="p-t-1" ng-if="item.title">{{::item.title}}</h6>
+                                <div ng-repeat="option in item.options track by $index" ng-if="option.isVisible">
+                                    <div class="form-block m-y-1">
+                                        <div class="checkbox">
+                                            <label class="md-check dark-bluebox form-label">
+                                                <input type="checkbox" ng-model="option.value" ng-change="page.onChange(option, item)">
+                                                <i class="primary"></i> {{::option.title}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="item.hasDivider" class="separator"></div>
+                            </div>
+                            <div ng-switch-when="radio">
+                                <h6 class="p-t-1" ng-if="item.title">{{::item.title}}</h6>
+                                <div ng-repeat="option in item.options track by $index" ng-if="option.isVisible">
+                                    <div class="form-block m-y-1">
+                                        <label class="md-check form-label">
+                                            <input name="item.name" type="radio" ng-value="option.value" ng-model="item.selected" ng-change="page.onChange(option, item)" />
+                                            <i class="blue"></i> {{::option.title}}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div ng-if="item.hasDivider" class="separator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aside-footer stick-footer">
+                <button class="btn btn-outline b-primary text-primary rounded" ng-click="page.close()" type="button">
+                    {{::page.cancelBtnText}}
+                </button>
+                <button class="btn rounded primary" ng-click="page.assign()" type="button">
+                    {{::page.applyBtnText}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

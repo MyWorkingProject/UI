@@ -1,0 +1,76 @@
+<div id="payroll-by">
+    <div class="box-header">
+        <div class="row">
+
+            <div class="text-neutral">
+                {{::page.fieldLabels.pageIndicator}}
+            </div>
+            <div class="inline pointer text-primary m-t-xs m-b-xs" ng-click="page.showSearchEmployees()">
+                <h2 class="inline payroll-by-title p-r-1">{{page.model.payrollByTitle}} </h2>
+                <span class="rp-icon-angle-down"></span>
+            </div>
+            <div>
+                <span class="text-neutral-02 ft-s-16">{{page.model.payrollBySubTitle}}</span>
+                <span ng-click="page.viewDetails()" class="pull-right pointer">{{ page.model.viewDetailTitle }}</span>
+            </div>
+        </div>
+    </div>
+    <div ng-if="!page.model.isEmployee" class="top-spacer-1">
+        <div class="col-md-5 p-l-0">
+            <div class="ft-bold ft-s-14 ft-track-5">{{::page.fieldLabels.workersCompClassText}}</div>
+            <div>{{page.model.workerClassName }}</div>
+        </div>
+        <div class="col-md-5 p-l-0">
+            <div class="ft-bold ft-s-14 ft-track-5">
+                {{::page.fieldLabels.departmentText}}
+            </div>
+            <div>{{::page.model.departmentName}}</div>
+        </div>
+        <div class="clear"></div>
+        <div class="top-spacer-2">
+            <h2 class="ft-bold ft-s-20 ft-track-5 m-b-1">{{::page.fieldLabels.payRatesText}}</h2>
+            <div class="ft-sub-nav-tabs white">
+                <div class="b-b nav-active-bg">
+                    <ul class="nav nav-tabs w-dr">
+                        <li class="nav-item dropdown pointer" ng-repeat="payrollBy in page.model.payrollBys track by $index">
+                            <a class="nav-link" ng-class="{active: page.isActivePayRate(payrollBy)}" ng-click="page.setActivePayRate(payrollBy)">
+                                {{page.formatRate(payrollBy)}}
+                                <small>{{page.formatNoPayRateCount(payrollBy)}}</small>
+                            </a>
+                            <a class="tab-icon" ng-if="page.model.isEdit" ng-class="{activeIcon: page.isActivePayRate(payrollBy)}" ng-click="page.deletePayRate(payrollBy, $index)">
+                                <i class="rp-icon-delete ft-s-16 icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item" ng-if="page.model.isEdit">
+                            <a class="tab-plus" ng-click="page.addNewPayRate()" href="">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body p-x-0" ng-if="page.tabsMenu">
+        <rp-scrolling-tabs-menu model="page.tabsMenu"></rp-scrolling-tabs-menu>
+        <div class="row" ng-if="!page.model.isReadonly && page.activatePayrollItemView && page.activeTab.hasEdit">
+            <div class="col-md-12 col-sm-12 m-t-1">
+                <div class="pull-right">
+                    <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-b-sm m-r-sm" ng-if="!page.model.isEdit" ng-click="page.edit()">
+                        <span class="rp-icon-edit-text"></span>
+                        {{::page.fieldLabels.editBtnText}}
+                    </button>
+                    <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-b-sm m-r-sm" ng-if="page.model.isEdit" ng-click="page.cancel()">
+                        {{::page.fieldLabels.cancelBtnText}}
+                    </button>
+                    <button class="save btn rounded primary w-xs m-b-sm" ng-if="page.model.isEdit" ng-click="page.save()">
+                        {{::page.fieldLabels.saveBtnText}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div ng-if="page.activatePayrollItemView" class="m-t-1">
+            <div ng-repeat="payrollItem in page.activeTab.payrollItems" class="m-b-3" ng-include="payrollItem.viewUrl"></div>
+        </div>
+    </div>
+</div>

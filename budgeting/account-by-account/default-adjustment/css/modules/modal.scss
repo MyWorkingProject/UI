@@ -1,0 +1,22 @@
+#default-adjustment {
+
+	.aside-body {
+		margin-bottom: 40px;
+	}
+
+	.box-footer {
+		text-align: right;
+	}
+
+	.ic-close {
+		color: $rp-neutral-04;		
+		@include x-small-text;
+	}
+
+// Todo: remove once AngularStrap version Css available
+	top:inherit;
+	bottom: 0;
+	height:380px;
+	width: 100%;
+
+}

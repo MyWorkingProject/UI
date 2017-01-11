@@ -1,0 +1,45 @@
+<div id="distributed-allocations" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <h4 class="aside-title">{{::page.translate("bdgt_allocation_page_Headings")}}</h4>
+            </div>
+            <div class="m-a-md">
+                <form name="distributedAllocation" novalidate class="ft-form" role="form">
+                    <div class="row">
+                        <div class="form-group row">
+                            <div class="col-md-6 col-sm-12">
+                                <label class="form-control-label" for="modelType">{{::page.translate("bdgt_allocation_Model_Type")}}</label>
+                                <p class="form-control-static">
+                                    {{ page.model.modelType }}
+                                </p>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <label class="form-control-label" for="modelYear">{{::page.translate("bdgt_allocation_Model_Year")}}</label>
+                                <p class="form-control-static">
+                                    {{ page.model.modelYear }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="comment">{{::page.translate("bdgt_allocation_Comment")}}</label>
+                            <rp-form-textarea config="page.model.config.comment" rp-model="page.model.comment">
+                            </rp-form-textarea>
+                        </div>
+                        <div class="m-t-md">
+                            <button class="btn rounded btn-outline text-primary b-primary pull-right"
+                                    ng-click="page.close()">
+                                {{::page.translate("bdgt_allocation_Cancel")}}
+                            </button>
+                            <button class="btn rounded primary m-r-1 pull-right"
+                                    ng-click="page.submit(distributedAllocation)">
+                                {{::page.translate("bdgt_allocation_Distribute")}}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

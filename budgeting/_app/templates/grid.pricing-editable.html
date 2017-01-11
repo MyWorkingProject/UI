@@ -1,0 +1,9 @@
+﻿<!-- Grid Editable Number Template -->
+
+<span class="field-block grid-input-text">
+    <input type="text" value="{{record[config.key]}}" 
+        ng-model="record[config.key]" 
+        ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/" 
+        data-duration="{{config.key}}-{{record.year}}" 
+        class="form-control rp-pricing-editable" />
+</span>

@@ -1,0 +1,88 @@
+#occupancy-options {
+	margin-bottom: 4rem;
+
+	.notify-final {
+		@include sub-title;
+    	@include small-text;
+
+		display: block;
+		margin-top: 0.25rem;
+	}
+
+	.md-check i:after {
+		border-color: $white;
+	}
+
+	.has-tooltip .popover {
+		width: 300px;
+	}
+
+	.editable-wrap {
+		width: 100%;
+	}
+
+	.monthly-percent-wrapper {
+		overflow-x: auto;
+	}
+
+	.monthly-percent {
+		display: inline-block;
+		width: 800px;
+		margin: 5px 0;
+	}
+
+	.monthly-gp {
+		float: left;
+		width: 60px;
+
+		label {
+			text-align: right;
+			width: 100%;
+			margin: 0;
+		}
+
+		.form-control-static {
+			text-align: right;
+			padding: 0;
+			margin: 0;
+		}
+
+		.rp-form-input-text-field {
+			text-align: right;
+			font-size: 12px;
+			line-height: 14px;
+
+			padding: 5px;
+			height: 35px;
+		}
+
+	}
+
+	.form-display {
+		.form-control-static {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		.monthly-gp {
+			width: 90px; 
+
+			label {
+				text-align: center;
+			}
+		}
+
+		.monthly-percent {
+			width: 1150px;
+		}
+	}
+
+	.occupancy-goal-opt .md-check {
+		padding: 0.5rem 1.25rem;
+	}
+
+    .ui-select-search {
+	    width: 100%;
+    } 
+	
+}

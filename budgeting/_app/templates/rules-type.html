@@ -1,0 +1,15 @@
+<div ng-if="!model.ruleState.isEdit">
+    {{record.type}}
+</div>
+<div ng-if="model.ruleState.isEdit">
+    <!--<input type="text" ng-model="record.note" />-->
+    <!--<select ng-model="record.type"
+            class="form-control "
+            rp-select-options="model.type"
+            rp-wrapper-class="block"
+            rp-update-display-text="true"
+            ng-options="s.value as s.name for s in model.typeOptions.options"></select>-->
+    <rp-form-select-menu 
+                         config="model.formConfig.type" rp-model="record.type">
+    </rp-form-select-menu>
+</div>

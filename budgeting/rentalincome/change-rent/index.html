@@ -1,0 +1,43 @@
+<div id="change-rent" class="aside" tabindex="-1" role="dialog" ng-class="{'error':!page.calculator.state.display}">
+    <div class="aside-dialog">
+        <div class="aside-content">
+
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">
+                    <i class="ic-close rp-icon-delete-2"></i>
+                </button>
+                <h4 class="aside-title">{{page.model.data.header}}</h4>
+            </div>
+
+            <div class="aside-body">
+                <div class="unavailable" ng-show="!page.calculator.state.display">
+                    {{page.calculator.state.errMsgRequired || page.translate("bdgt_change_rent_unavailable")}}
+                </div>
+
+                <div ng-show="page.calculator.state.display">
+                    <div ui-include="'rentalincome/change-rent/change-rent-aside.html'"></div>
+                </div>
+            </div><!-- .aside-body -->
+
+            <div class="aside-footer">
+                <!-- OK -->
+                <div class="button-wrapper text-sm-right" ng-show="!page.calculator.state.display">
+                    <button class="btn btn-primary rounded" type="button" ng-click="$hide()">
+                        {{::page.translate("bdgt_change_rent_ok")}}
+                    </button>
+                </div>
+
+                <!-- Apply Calculations/Cancel -->
+                <div class="button-wrapper text-sm-right" ng-show="page.calculator.state.display">
+                    <button class="btn btn-outline b-primary text-primary rounded" type="button" ng-click="page.close()">
+                        {{::page.translate("bdgt_change_rent_cancel")}}
+                    </button>
+                    <button data-dismiss="modal" class="btn btn-primary rounded" type="button" ng-click="page.saveAndClose()">
+                        {{::page.translate("bdgt_change_rent_apply_calculations")}}
+                    </button>
+                </div>
+            </div><!-- .aside-footer -->
+
+        </div>
+    </div>
+</div>

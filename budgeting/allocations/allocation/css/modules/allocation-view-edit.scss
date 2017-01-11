@@ -1,0 +1,167 @@
+﻿.allocationview .rp-cg-input-text
+{
+	text-align:right;
+}
+.allocationview .setcomplexgrid
+{
+	padding-left:15px;
+}
+
+.rp-grid-body-1  {
+	.percentage input[type="text"]
+	{
+		text-align: right;
+		width: 57px;
+	}
+	.amount input[type="text"]
+	{
+		width: 57px;
+		text-align: right;
+	}
+	.percentage span
+	{
+		text-align: right;
+	}
+	.amount span
+	{  
+		text-align: right;
+	}
+
+	.master-chart-name
+	{
+		width:20%;
+	}
+	.glaccount span
+	{
+		width:15%;
+	}
+	.percentage
+	{
+		width:17%;
+	}
+	.amount
+	{
+		width:15%;
+	}
+	.delete
+	{
+		width:5%;
+	}
+	.square-footage
+	{
+		width:10%;
+	}
+	.units
+	{
+		width:10%;
+	}
+}
+.propertygrid .property-name{
+    width:15%;
+}
+.rp-grid-headers-1
+{
+	.percentage input[type="text"]
+	{
+		text-align: right;
+		width: 57px;
+	}
+	.amount input[type="text"]{
+		width: 57px;
+		text-align: right;
+	}
+	.percentage span{
+		text-align: right;
+
+	}
+	.amount span{  
+		text-align: right;
+	}
+
+	.master-chart-name{
+		width:20%;
+	}
+	.gl-account{
+		width:15%;
+	}
+	.percentage{
+		width:17%;
+	}
+	.amount{
+		width:15%;
+	}
+	.delete{
+		width:5%;
+	}
+	.square-footage{
+		width:10%;
+	}
+	.units{
+		width:10%;
+	}
+}
+.rp-grid-filters-1 {
+.percentage input{
+    text-align: right;
+    width: 57px;
+}
+.amount input{
+    width: 57px;
+    text-align: right;
+}
+.square-footage input {
+    width:57px;
+    text-align: right;
+
+}
+.units input{
+    width:57px;
+     text-align: right;
+}
+.amount span{
+  
+    text-align: right;
+}
+
+.master-chart-name{
+    width:18%;
+}
+.glaccount{
+    width:17%;
+}
+.percentage{
+    width:9%;
+}
+.amount{
+    width:10%;
+}
+.delete{
+    width:3%;
+}
+.square-footage {
+    width:8%;
+}
+.units{
+    width:8%;
+}
+}
+.rp-cg-editable{
+     .rp-input-text input{
+         text-align:right;
+         }
+}
+ .rp-cg-locked
+    {
+        .rp-cg-headers-row:first-child span
+        {
+           visibility: hidden;
+        }
+} 
+ .box-header h2{
+    font-size: 28px !important;
+ }
+
+.modal{
+ z-index: 9999 !important;
+}
+

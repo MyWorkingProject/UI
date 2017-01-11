@@ -1,0 +1,71 @@
+
+
+.payroll-gl-view {
+  .total .rp-cg-body-text, .group-header .rp-cg-body-text {
+        font-weight: normal;
+      }
+   .rp-cg-headers
+    {
+       height: 80px;
+       overflow: hidden;
+       background: #fff;
+       .rp-cg-headers-row
+       {
+           background: #fff;
+       }
+       .rp-cg-headers-text{
+           color: #515356;
+           font-size: .9rem;
+           font-weight: 500;
+           display: block;
+           white-space: normal;
+           text-align: center;
+
+       }
+       .rp-cg-headers-cell
+        {
+           border-color: #fff;
+       }
+       .rp-cg-headers-table
+       {
+
+           overflow: hidden;
+       }
+       .rp-cg-locked
+        {
+           .rp-cg-headers-cell
+            {
+               border-left: none;
+               height: 80px;
+               vertical-align: bottom;
+           }
+       }
+    }
+
+     .rp-cg-body
+       {
+           border-top: solid 1px #eee;
+        }
+
+}
+ .payroll-grid-columns{
+               height: 49px;
+              .rp-cg-body-text, .group-header .rp-cg-body-text{
+                    font-weight:bold !important;
+                        font-size: large;
+               }
+                 background-color: #ffffff !important;
+                // border-right: solid 0px #eeeeee !important;
+                
+        }
+
+         .payroll-grid-totals{
+               height: 49px;          
+               background-color: #eeeeee !important;             
+               .rp-cg-body-text, .group-header .rp-cg-body-text{
+                    font-weight:bold !important;
+               }
+
+              
+        }
+

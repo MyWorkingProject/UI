@@ -1,0 +1,21 @@
+<div id="payroll-item-benefits" ng-controller="PayrollBenefitsCtrl as benefits" ng-init="benefits.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{benefits.fieldLabels.headerTitle}}</h5>      
+            <div class="inline p-r-1 pointer" ng-click="benefits.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{ benefits.model.commentCount }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="benefits.model.grid">
+        <div class="col-md-12">            
+            <rp-cg model="benefits.model.grid">
+            </rp-cg>
+            <div class="text-center" ng-if="benefits.model.showAddNewBenefits && benefits.model.isEdit">
+                <span> {{::benefits.fieldLabels.noItemsMessage}}</span>
+                <a class="text-info " href="" ng-click="benefits.addNewBenefitsItem()">{{::benefits.fieldLabels.addItemText}}</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,200 @@
+<div class="lease-options">
+    <!--<form editable-form name="editableForm" class="form-validation" onaftersave="page.saveLeaseOptions()">-->
+    <form name="editableForm" class="form-validation" ng-submit="page.saveLeaseOptions()">
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <h5 class="col-xs-6">{{::page.getLangValue('lease_options_page_title')}}</h5>
+            <div class="form-group col-xs-6">
+                <div class="col-sm-9 col-sm-offset-3 p-r-0" ng-show="!page.model.form.isFinalize">
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.onEdit()" ng-show="!page.model.isEdit">
+                            <!--ng-show="!editableForm.$visible" ng-click="editableForm.$show()" >-->
+                        <i class="fa fa-edit"></i>
+                        {{::page.getLangValue('lease_options_edit')}}
+                    </button>
+                    <!-- buttons to submit / cancel form -->
+                    <!--<span ng-show="editableForm.$visible" class="pull-right">-->
+                    <span ng-show="page.model.isEdit" class="pull-right">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-disabled="editableForm.$waiting" ng-click="page.onCancel()">
+                            <!--ng-click="editableForm.$cancel();page.model.isEdit=false;"-->
+                            {{::page.getLangValue('lease_options_cancel')}}
+                        </button>
+                        <button type="submit" class="btn rounded primary w-xs" ng-disabled="editableForm.$waiting">
+                            {{::page.getLangValue('lease_options_save')}}
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Lease Renewal Method-->
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <label class="ft-s-16 ft-bold text-color">
+                    {{::page.getLangValue('lease_options_lease_renewal_method')}}
+                </label>
+                <div class="m-b-sm row">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">
+                            <!--<span editable-select="page.model.form.modelData.renewMethod" e-ng-options="s.value as s.text for s in page.model.form.formData.renewMethods">
+                                {{ page.showStatus(page.leaseOptions) }}
+                            </span>-->
+                            <!--ng-show="editableForm.$visible && page.model.form.modelData.editInputMethod"-->
+                            <!--<select ng-show="page.model.isEdit && page.model.form.modelData.editInputMethod" 
+                                ng-model="page.model.form.modelData.leaseRenewalMethod"
+                                    class="form-control "
+                                    rp-select-options="page.model.form.formData.renewMethods"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                    ng-options="s.value as s.text for s in page.model.form.formData.renewMethods"></select>-->
+                            <rp-form-select-menu ng-show="page.model.isEdit && page.model.form.modelData.editInputMethod"
+                                                 config="page.formConfig.leaseRenewalMethod" rp-model="page.model.form.modelData.leaseRenewalMethod">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.isEdit || !page.model.form.modelData.editInputMethod">
+                                <label>{{ page.model.form.modelData.leaseRenewalMethod }}</label>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group row m-b-0" ng-show="page.model.form.modelData.leaseRenewalMethod!='None'">
+                    <div class="col-sm-4">
+                        <label class="md-check dark-bluebox">
+                            <input type="checkbox" ng-model="page.model.form.modelData.useLeaseReferenceData" ng-disabled="!page.model.isEdit">
+                            <i class="primary"></i>
+                            {{::page.getLangValue('lease_options_use_reference_data')}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row b-t m-l-sm p-y-sm m-r-0"></div>
+        <!-- Assumptions Section-->
+        <div class="row p-b-0 m-l-sm p-y-sm" ng-show="page.model.form.modelData.leaseRenewalMethod!='None'">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('lease_options_assumptions')}}</span>
+        </div>
+        <div class="box-body p-t-sm p-l-sm">
+            <div class="form-horizontal" ng-show="page.model.form.modelData.leaseRenewalMethod!='None'">
+                <div class="form-group row m-b-0">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_market_rent_move_in')}}
+                        </label>
+                        <span class="rp-icon-question-circle p-l-sm" ng-click="page.showMarktMIToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-movein" ng-show="page.model.form.toolTip.mrINtoolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('lease_options_market_rent_move_in_tool_tip')}}
+                            </div>
+                        </div>
+                        <p class="form-control-static">
+                            <!--<span editable-number="page.model.form.modelData.moveInPercent" e-required e-ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">{{ page.model.form.modelData.moveInPercent }}</span>-->
+                            <input type="text" class="form-control req-fld-width" ng-show="page.model.isEdit" ng-model="page.model.form.modelData.moveInPercent" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+                            <!--ng-show="editableForm.$visible"-->
+                            <span ng-show="!page.model.isEdit">{{page.model.form.modelData.moveInPercent}}</span>
+                            <!--ng-show="!editableForm.$visible"-->
+                        </p>
+                    </div>
+                    <div class="col-sm-8" ng-show="page.model.form.modelData.useLeaseReferenceData">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_lease_term')}}
+                        </label>
+                        <p class="form-control-static">
+                            <!--<span editable-number="page.model.form.modelData.defaultAvgLeaseTerm">{{ page.model.form.modelData.defaultAvgLeaseTerm }}</span>-->
+                            <input type="number" class="form-control term-fld-width" ng-show="page.model.isEdit" ng-model="page.model.form.modelData.defaultAvgLeaseTerm" ui-validate="{ a:'$value >= 0'}"/>
+                            <span ng-show="!page.model.isEdit">{{page.model.form.modelData.defaultAvgLeaseTerm}}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group row m-b-0">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_market_rent_lease_renewal')}}
+                        </label>
+                        <span class="rp-icon-question-circle  p-l-sm" ng-click="page.showMarktLRToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-lr" ng-show="page.model.form.toolTip.lrToolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('lease_options_market_rent_lease_renewal_tool_tip')}}
+                            </div>
+                        </div>
+                        <p class="form-control-static m-b-sm">
+                            <!--<span editable-number="page.model.form.modelData.leaseRenewalPercent" e-required e-ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">{{ page.model.form.modelData.leaseRenewalPercent }}</span>-->
+                            <input type="text" class="form-control req-fld-width" ng-show="page.model.isEdit" ng-model="page.model.form.modelData.leaseRenewalPercent" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+                            <span ng-show="!page.model.isEdit">{{page.model.form.modelData.leaseRenewalPercent}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" ng-show="page.model.form.modelData.useLeaseReferenceData">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_lease_renewal')}}
+                        </label>
+                        <p class="form-control-static">
+                            <!--<span editable-number="page.model.form.modelData.defaultLeaseRenewalPercent" e-ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">{{ page.model.form.modelData.defaultLeaseRenewalPercent }}</span>-->
+                            <input type="text" class="form-control lr-fld-width" ng-show="page.model.isEdit" ng-model="page.model.form.modelData.defaultLeaseRenewalPercent" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+                            <span ng-show="!page.model.isEdit">{{page.model.form.modelData.defaultLeaseRenewalPercent}}</span>
+                        </p>
+                    </div>
+                    <div class="col-sm-5" ng-show="page.model.form.modelData.useLeaseReferenceData">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_mtm_renewal')}}
+                        </label>
+                        <p class="form-control-static">
+                            <!--<span editable-number="page.model.form.modelData.defaultLeaseRenewalMTMPercent" e-ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">{{ page.model.form.modelData.defaultLeaseRenewalMTMPercent }}</span>-->
+                            <input type="text" class="form-control mtm-fld-width" ng-show="page.model.isEdit" ng-model="page.model.form.modelData.defaultLeaseRenewalMTMPercent" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" />
+                            <span ng-show="!page.model.isEdit">{{page.model.form.modelData.defaultLeaseRenewalMTMPercent}}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label class="md-check dark-bluebox">
+                            <input type="checkbox" ng-model="page.model.form.modelData.monthtoMonthLease" ng-disabled="!page.model.isEdit">
+                            <i class="primary"></i>
+                            {{::page.getLangValue('lease_options_mtm_lease_market_rent')}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label class="md-check dark-bluebox">
+                            <input type="checkbox" ng-model="page.model.form.modelData.showReferenceData" ng-disabled="!page.model.isEdit">
+                            <i class="primary"></i>
+                            {{::page.getLangValue('lease_options_show_reference_data')}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row m-b-0" ng-show="page.model.form.modelData.showReferenceData">
+                    <div class="col-sm-4">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.getLangValue('lease_options_open_period_reference_data')}}
+                        </label>
+                        <span class="rp-icon-question-circle  p-l-sm" ng-click="page.showRFToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-rf" ng-show="page.model.form.toolTip.opnPrdToolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('lease_options_open_period_tool_tip')}}
+                            </div>
+                        </div>
+                        <p class="form-control-static">
+                            <!--<span editable-select="page.model.form.modelData.renewMethod" e-ng-options="s.value as s.text for s in page.form.leaseOptions.renewMethods">
+                                {{ page.showStatus(page.leaseOptions) }}
+                            </span>-->
+                            <!--<select ng-show="page.model.isEdit" ng-model="page.model.form.modelData.openPeriodData"
+                                    class="form-control "
+                                    rp-select-options="page.model.form.openPeriodData"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                    ng-options="s.value as s.text for s in page.model.form.openPeriodData"></select>-->
+                            <rp-form-select-menu ng-show="page.model.isEdit"
+                                                 config="page.formConfig.openPeriodData" rp-model="page.model.form.modelData.openPeriodData">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.isEdit">
+                                <label>{{ page.model.form.modelData.openPeriodData }}</label>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

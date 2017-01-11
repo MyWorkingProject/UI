@@ -1,0 +1,45 @@
+
+#manage-allocations{
+margin-left:3px;
+
+    .rp-grid {
+       .action{
+		width: 10%;
+	   }
+	   .name
+	   {
+		width: 30%;
+	   }
+		.last-distributed-by
+		{
+			width: 30%;
+		}	
+		.description
+		{
+			widh:30%
+		}
+    }
+
+	.rp-grid-wrap
+	{
+		display:inline;
+	}
+	.adjustgridmenu
+	{
+		padding-top :15px;	
+		height: 700px;
+	}
+
+	.new-alloc
+	{
+		padding-bottom :25px;		
+	}
+	.header
+	{
+		margin-top:10px;
+		padding-bottom:5px;
+		
+	}
+
+
+}

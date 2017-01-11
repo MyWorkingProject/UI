@@ -1,0 +1,83 @@
+<div id="payroll-employee-details" >
+    <div class="other-options">
+        <form name="payrollEmployeeDetails" confirm-on-exit>
+            <div class="row-col p-b-0 p-l-sm p-y-sm">
+                <h5 class="col-xs-6">{{:: payrollItem.model.text.pageTitle}}</h5>
+
+            </div>
+            
+            <div class="box-body p-t-0 p-l-sm">
+                <div class="form-horizontal">
+                    <div class="row sample-fit-form-row">
+                        <div class="col-md-5">
+                            <label class="form-label ft-s-16 ft-bold text-color" for="hudid">{{:: payrollItem.model.text.firstName}}</label>
+                            <rp-form-input-text config="payrollItem.formConfig.firstName" ng-show="payrollItem.model.form.visible" rp-model="payrollItem.model.form.records.firstName">
+                            </rp-form-input-text>
+                            <label class="form-label display-lbl-block" ng-show="!payrollItem.model.form.visible">{{payrollItem.model.form.records.firstName}}</label>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="form-label ft-s-16 ft-bold text-color" for="owner">{{:: payrollItem.model.text.payType}}</label>
+
+                            <div ng-show="payrollItem.model.form.visible">
+                                <label class="md-check">
+                                    <input type="radio" name="radio" ng-checked="payrollItem.model.form.records.payrateType==='Salary'">
+                                    <i class="blue"></i>
+                                    {{:: payrollItem.model.text.salary}}
+                                </label>
+                                <label class="md-check">
+                                    <input type="radio" name="radio" ng-checked="payrollItem.model.form.records.payrateType==='Hourly'">
+                                    <i class="blue"></i>
+                                    {{:: payrollItem.model.text.hourly}}
+                                </label>
+                            </div>
+
+                            <label class="form-label display-lbl-block" ng-show="!payrollItem.model.form.visible">{{payrollItem.model.form.records.payrateType}}</label>
+                        </div>
+                    </div>
+                    <div class="row sample-fit-form-row p-t-1">
+                        <div class="col-md-5">
+                            <label class="form-label ft-s-16 ft-bold text-color" for="yearBuilt">{{:: payrollItem.model.text.lastName}}</label>
+                            <rp-form-input-text ng-show="payrollItem.model.form.visible" config="payrollItem.formConfig.lastName" rp-model="payrollItem.model.form.records.lastName">
+                            </rp-form-input-text>
+                            <label class="form-label display-lbl-block" ng-show="!payrollItem.model.form.visible">{{payrollItem.model.form.records.lastName}}</label>
+                        </div>
+                        <div class="col-md-5 dt-fix" ng-if="payrollItem.model.form.records.corporateStaff">
+                            
+                            <label class="md-check dark-bluebox" ng-show="!payrollItem.model.form.visible">
+                                <input type="checkbox" checked="checked" disabled="disabled">
+                                <i class="primary"></i>{{:: payrollItem.model.text.corporateStaff}}
+                            </label>
+                            <div ng-show="payrollItem.model.form.visible" >
+                                <label class="md-check dark-bluebox" ng-if="payrollItem.model.form.rights.userRights">
+                                    <input type="checkbox" checked="checked">
+                                    <i class="primary"></i>{{:: payrollItem.model.text.corporateStaff}}
+                                </label>  
+
+                                <label class="md-check dark-bluebox" ng-if="!payrollItem.model.form.rights.userRights">
+                                    <input type="checkbox" checked="checked" disabled="disabled">
+                                    <i class="primary"></i>{{:: payrollItem.model.text.corporateStaff}}
+                                </label>
+                            </div> 
+
+                            <div class="fdn-arrow box-color text-color pos-rlt" ng-show="payrollItem.model.showState"><span class="arrow top white"></span><div class="box-body">{{payrollItem.model.text.toolTip}}</div></div>
+                            <span ng-show="payrollItem.model.form.visible" class="rp-icon-question-circle p-l-sm" ng-mouseover="payrollItem.stateHoverIn()" ng-mouseleave="payrollItem.stateHoverOut()"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-col p-b-0 p-l-sm p-y-sm">
+                <h5 class="col-xs-6">{{:: payrollItem.model.text.propertyAllocation}}</h5>
+            </div>
+            <div class="row-col p-b-0 p-l-sm p-y-sm">
+                <rp-grid model="gridFactory.grid">
+                </rp-grid>
+            </div>
+            <div class="row-col p-b-0 p-l-sm p-y-sm add-property">
+                <a class="text-link" ng-click="payrollItem.addPropertiesAsideModel()">{{:: payrollItem.model.text.addProperty}}</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

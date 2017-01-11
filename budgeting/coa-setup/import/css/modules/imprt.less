@@ -1,0 +1,439 @@
+.imprt-page-src {
+    padding-left: 30px;
+    min-width: 351px;
+
+    .col-xs-12 {
+        .column(12);
+        margin: 0px;
+    }
+
+    .col-xs-6 {
+        .column(6);
+
+        @media @defaultOnly {
+            .column(12);
+        }
+
+        @media @smallScreenOnly {
+            .column(12);
+        }
+
+        @media @mediumScreenOnly {
+            .column(12);
+        }
+    }
+
+    .import-section {
+        padding-top: 10px;
+        margin: 0px;
+        width: 225px;
+        float: left;
+        margin-bottom: 15px;
+        margin-right: 10px;
+
+        &.section-acc {
+            width: 300px;
+        }
+
+        &.file-name {
+            width: 50%;
+        }
+    }
+
+    .rp-popover {
+        .popover-content {
+            min-width: 500px;
+            right: initial;
+        }
+    }
+
+    .import-section-csv {
+        padding: 10px;
+        width: 360px;
+        margin: 0px;
+        margin-right: 10px;
+
+        @media @defaultOnly {
+            padding: 0px;
+        }
+
+        @media @smallScreenOnly {
+            padding: 0px;
+        }
+
+        @media @mediumScreenOnly {
+            padding: 0px;
+        }
+    }
+    .browse-btn-dir{
+        position:relative;
+    }
+
+    .file-upload {
+        .opacity(0);
+        top:30px;
+        left:15px;
+        position:absolute;
+        font-size: 25px;
+    }
+
+    .file-input {
+        width: 260px;
+    }
+
+    .spn-link-csv {
+        float: left;
+        margin-top: 30px;
+
+        @media @smallScreenOnly {
+            clear: both;
+        }
+
+        @media @mediumScreenOnly {
+            clear: both;
+        }
+    }
+
+    .a-import-spec {
+        margin-right: 15px;
+        margin-bottom: 0px;
+        width: 155px;
+        height: 20px;
+    }
+
+    .view-import-spec {
+        color: @blue;
+        cursor: pointer;
+    }
+
+    .column-name {
+        width: 30%;
+    }
+
+    .desc {
+        width: 70%;
+    }
+
+    .load-btn-csv {
+        @media @largeScreen {
+            float: right;
+        }
+
+        float: left;
+    }
+
+    .import-section-border-csv {
+        border-top: solid 1px #bbbbbb;
+        margin-bottom: 10px;
+    }
+
+    .import-section-border {
+        border-top: solid 1px #bbbbbb;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    .load-btn-acc {
+        float: right;
+    }
+
+    .page-heading {
+        float: left;
+    }
+
+    .btnBackNext {
+        float: right;
+        margin-right: 25px;
+    }
+
+    .import-grid-lr {
+        clear: both;
+    }
+
+    .import-grid-csv {
+        clear: both;
+    }
+
+    .rp-grid {
+        min-width: 500px;
+        max-width: 100%;
+    }
+
+    .master-chart-id {
+        width: 10%;
+    }
+
+    .gl-account-number {
+        width: 16%;
+    }
+
+    .description {
+        width: 24%;
+    }
+
+    .gl-account-type {
+        width: 15%;
+    }
+
+    .category {
+        width: 20%;
+    }
+
+    .account-level {
+        width: 15%;
+    }
+
+    .rp-grid-filters-1 .rp-grid-row .gl-account-number {
+        margin-left: 3%;
+    }
+
+    .selected-bit {
+        width: 40px;
+    }
+
+    .property-name {
+        width: 30%;
+    }
+
+    .import-date {
+        width: 30%;
+    }
+
+    .property-id {
+        width: 5%;
+    }
+
+    .gridHeading {
+        margin-bottom: 10px;
+        color: @dark-gray;
+        font-weight: 600;
+    }
+
+    .rp-grid-filters-1 {
+        .rp-grid-row {
+            .property-name {
+                margin-left: 3%;
+            }
+        }
+    }
+
+    .deleteBtn {
+        float: left;
+        margin-right: 15px;
+    }
+
+    .refreshBtn {
+        float: right;
+        margin-top: 3px;
+    }
+
+    .importBtn {
+        float: left;
+    }
+
+    .filter-right {
+        text-align: right;
+    }
+
+    .dv-chk-boxes {
+        width: 685px;
+    }
+
+    .chk-imp-cash {
+        margin-right: 15px;
+    }
+
+    .dv-load-btn-acc {
+        margin-top: 20px;
+
+        @media @defaultOnly {
+            margin: 0px; margin-top: 20px;
+        }
+
+        @media @smallScreenOnly {
+            margin: 0px; margin-top: 20px; width: 15%;
+        }
+
+        @media @mediumScreenOnly {
+            margin: 0px; margin-top: 20px; width: 30%;
+        }
+    }
+
+    .dv-load-btn-lr {
+        margin-top: 20px;
+        width: 50%;
+
+        @media @defaultOnly {
+            margin: 0px; margin-top: 10px; margin-bottom:10px;
+        }
+
+        @media @smallScreenOnly {
+            margin: 0px; margin-top: 20px; width: 15%;
+        }
+
+        @media @mediumScreenOnly {
+            margin: 0px; margin-top: 20px; width: 30%;
+        }
+    }
+
+    .dv-load-btn-yardi {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+    .work-flow-btns {
+        margin-right: 15px;
+        margin-top: 10px;
+    }
+
+    .work-flow {
+        margin-top: 10px;
+    }
+
+    .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+        float: right;
+        margin-left: 10px;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+    .tooltip-container {
+        position: relative;
+
+        .tooltip {
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+    .rp-callout.top:before {
+        left: 15%;
+    }
+
+    .source-label {
+        .form-label;
+    }
+
+    .clr {
+        clear: both;
+    }
+
+    .lr-charts-select {
+        .rp-select-menu {
+            width: 100%;
+
+            select {
+                width: 100%;
+            }
+        }
+    }
+
+    .acc-charts-select {
+        .rp-select-menu {
+            width: 100%;
+
+            select {
+                width: 100%;
+            }
+        }
+    }
+
+    .refresh-icon {
+        .icon-refresh;
+    }
+
+    .rp-wizard-controls {
+        padding-top: 0px;
+        margin-right: 25px;
+    }
+
+    .rp-input-text {
+        @media @defaultOnly {
+            .block;
+            width: 63%;
+        }
+
+        @media @smallScreenOnly {
+            .block;
+            float: left; width: 63%;
+        }
+
+        @media @mediumScreenOnly {
+            .block;
+            float: left; width: 63%;
+        }
+    }
+
+    .select-files {
+        margin-left: 10px;
+
+        @media @defaultOnly {
+            margin-top: 20px; margin-left:0px;
+        }
+
+        @media @smallScreenOnly {
+            float: left; margin-left: 10px;
+        }
+
+        @media @mediumScreenOnly {
+            float: left; margin-left: 10px;
+        }
+    }
+
+    .csvSelectSrc {
+        @media @smallScreenOnly {
+            margin-top: 10px;
+        }
+
+        @media @mediumScreenOnly {
+            margin-top: 10px;
+        }
+    }
+
+    .view-spec-head {
+        .module-title;
+    }
+}

@@ -1,0 +1,103 @@
+#propertyChartView {
+    .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+    .width(@w1, @w2) {
+        width: @w1;
+
+        @media @xLargeScreen {
+            width: @w2;
+        }
+    }
+
+    .property-page-content {
+        .page-content-wrap;
+    }
+
+    .rp-grid {
+        min-width: 800px;
+    }
+
+    .last-modified-by-name {
+        //width: 15%;
+    }
+
+    .last-modified-date {
+        .width(16%,14%);
+    }
+
+    .property-name {
+        .width(20%,30%);
+    }
+
+    .cloned-master-chart-name {
+        .width(26%,30%);
+    }
+
+    .rp-actions-menu {
+        .inline-block;
+    }
+
+    .action {
+        .width(8%,5%);
+        text-align: center;
+    }
+
+    .propertycharts-moduel-title {
+        .module-title;
+        padding-top: 25px;
+    }
+
+    .controls {
+        .clearfix;
+        font-size: 0;
+        line-height: 0;
+        text-align: right;
+        margin-bottom: 10px;
+        margin-top:10px;
+    }
+}

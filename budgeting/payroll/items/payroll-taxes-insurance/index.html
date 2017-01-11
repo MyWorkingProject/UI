@@ -1,0 +1,58 @@
+<div id="payroll-item-tax-insurance" ng-controller="PayrollTaxInsuranceCtrl as payrollItem" ng-init="payrollItem.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::payrollItem.fieldLabels.headerTitle}}</h5>
+            <div class="inline p-r-1 pointer" ng-click="payrollItem.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{ payrollItem.model.commentCount }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="payrollItem.model.grid">
+        <ng-form class="form-horizontal" role="form" name="payrollItem.form" novalidate>
+            <div class="col-md-12">
+                <div class="rp-action-bar">
+                    <div class="row">
+                        <div class="pull-right">
+                            <!--<input type="button" class="btn primary rounded" ng-click="payrollItem.save()" />-->
+                            <i class="fa fa-refresh"></i>
+                            <span class="text">{{::payrollItem.fieldLabels.refresh}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rp-action-bar box" ng-if="payrollItem.model.hasCumulativeCompensation && payrollItem.model.isEdit">
+                    <div class="row">
+                        <div class="col-md-5 p-a-0">
+                            <div class="col-md-6">
+                                <label class="ft-s-14 _600 form-label" for="beginningSalaryRate">{{::payrollItem.fieldLabels.taxCapEffectiveMonth}}</label>
+                                <div class="col-md-6 pul-left">
+                                    {{payrollItem.model.taxCapMonth}}
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label class="ft-s-14 _600 form-label" for="dateOfIncrease">{{::payrollItem.fieldLabels.cumulativeCompensation}} ({{payrollItem.model.cumComDetails}})
+                                </label>
+                                <div class="col-md-6 pul-left-width">
+                                    <rp-form-input-text config="payrollItem.formConfig.cumCom" rp-model="payrollItem.model.cumCom">
+                                    </rp-form-input-text>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <rp-cg model="payrollItem.model.grid">
+                </rp-cg>
+                <div class="text-center m-a-2" ng-if="payrollItem.model.showAddNewTax && payrollItem.model.isEdit">
+                    <span class="text-muted"> {{payrollItem.fieldLabels.noPayroll }}</span>
+                    <div class="btn-group dropdown open">
+                        <a data-toggle="dropdown" aria-expanded="true" class="text-info">{{::payrollItem.fieldLabels.addAnItem}}</a>
+                        <div class="dropdown-menu text-left text-sm">
+                            <a class="dropdown-item" ng-repeat="item in payrollItem.model.getNonExemptedItems()" ng-click="payrollItem.addNewItem(item)">{{item.dataTypeDisplay}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div id="budget-comments">
+
+    <div class="row m-b-md">
+        <div class="col-md-9 m-b-xs">
+            <div class="title-display p-t-xs">
+                <h5 class="workspace-title float bws-title ft-bold">{{page.model.text.pageHeading}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="white m-l-sm p-l-xs">
+        <div class="row">
+            <div class="pull-left">
+                <button class="btn rounded primary" ui-toggle-class="modal-open-aside" ng-click="page.getNewCommentFields()" />
+                <i class="fa fa-fw m-r-xs fa-plus"></i> {{::page.model.text.addBtnText}}</button>
+            </div>
+
+            <div class="p-y-md p-t-sm pull-right clearfix" ng-init="model.grid.filtersModel.state.active = false">
+                <div class="pull-right grid-controls">
+                    <div class="grid-control-item">
+                        <i class="icon rp-icon-printer-2"></i>
+                        <span class="text">
+                            {{::page.model.text.print}}
+                        </span>
+                    </div>
+                    <div class="grid-control-item">
+                        <rp-toggle model="page.model.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Filter',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                activeIconClass: 'rp-icon-filter'
+                                }">
+                        </rp-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+    <div>
+        <rp-grid class="workspaces budget-comments max-grid-width" model="page.model.grid"></rp-grid>
+    </div>
+  
+    <!-- Pop Up New comments Section-->
+    <div class="modal fade inactive" id="userComment" data-backdrop="false" >
+        <div class="right w-xl white b-l">
+            <div ui-include="'workspaces/budget-comments/comments-responses/new-comment.html'"></div>
+        </div>
+    </div>
+    <!-- Pop Up New comments Section ends here-->
+
+   <!-- Pop Up comments Section-->
+    
+        <div class="modal fade inactive in" id="user" data-backdrop="false"  >
+            <div class="right w-xl white b-l">
+                <div ui-include="'workspaces/budget-comments/comments-responses/index.html'"></div>
+            </div>
+        </div>
+   
+    <!-- Pop Up comments Section ends here-->
+</div>
+
+

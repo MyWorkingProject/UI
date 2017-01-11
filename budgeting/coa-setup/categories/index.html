@@ -1,0 +1,503 @@
+<div id="category-page-content" ng-controller="BdgtGlAccountCategoryCtrl as page" class="page-body" ng-class="state">
+    <div class="coasetup">
+        <div ng-show="page.model.showPageHeader" class="rp-wizard-step current">
+            <h2 class="rp-wizard-step-title page-heading">{{ ::page.model.text.PageHeaderText }}</h2>
+            <div class="rp-wizard-controls">
+                <span class="button medium white newbtn backBtn" ng-click="page.backClick()">
+                    <span>
+                        {{ ::page.model.text.backButtonText }}
+                    </span>
+                </span>
+                <span class="button medium blue newbtn nextBtn" ng-click="page.nextClick(true)">
+                    <span>
+                        {{ ::page.model.text.nextButtonText }}
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="show-newform-button button show-on-edit" ng-click="page.showRowMenuOptions()">
+                <span class="icon"></span>
+                <span class="text">
+                    {{::page.model.text.addButtonText}}
+                </span>
+            </div>
+            <div ng-show="!page.model.showPageHeader" class="save-btn show-on-edit">
+                <span class="button" type="submit" ng-click="page.nextClick(false)">
+                    {{::page.model.fieldLabel.saveText}}
+                </span>
+            </div>
+            <div class="import-category-header show-on-edit" ng-class="{'import-category-margin':!page.model.showPageHeader}">
+                <a href="" ng-click="page.toggleImportCategory()"> {{::page.model.text.importCategory}}</a>
+
+            </div>
+            <div class="print-category">
+                <a href="">
+                    {{::page.model.text.print}}
+                </a>
+            </div>
+
+        </div>
+        <div rp-slide-toggle="page.model.text.toggleImpCategory" name="impCategory" class="rp-inline-workflow work-flow imp-category show-on-edit">
+            <div class="workflow-inner-wrap">
+                <span class="workflow-close" ng-click="page.toggleImportCategory()"></span>
+                <div ng-include src="page.model.categorySrc">
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="page.model.state.menuIsOn" class="action-menu">
+            <ul>
+                <li ng-click="page.viewCategoryOptions('section')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.section }}
+                    </span>
+                </li>
+                <li ng-click="page.viewCategoryOptions('subSection')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.subSection }}
+                    </span>
+                </li>
+                <li ng-click="page.viewCategoryOptions('category')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.category }}
+                    </span>
+                </li>
+                <li ng-click="page.viewCategoryOptions('refCategory')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.refCategory }}
+                    </span>
+                </li>
+                <li ng-click="page.viewCategoryOptions('text')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.textOnly }}
+                    </span>
+                </li>
+
+                <li ng-click="page.addNonFormRow('Blank')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.blankRow }}
+                    </span>
+                </li>
+                <li ng-click="page.addNonFormRow('Break')">
+                    <span class="iconplus"></span>
+                    <span class="text">
+                        {{ ::page.model.rowMenuOptions.pageBreak }}
+                    </span>
+                </li>
+
+            </ul>
+
+        </div>
+        <form ng-submit="page.submitAssignCategory()" novalidate ng-show="page.model.slideCategoryForm.showCatForm"
+              rp-slide-toggle="page.model.slideCategoryForm"
+              class="category-form not-ready rp-inline-workflow max-form-width"
+              name="categoryForm">
+
+            <div class="workflow-inner-wrap">
+                <span class="workflow-close" ng-click="page.hideCategoryForm()"></span>
+                <h3 class="workflow-title">
+                    {{page.model.text.categoryFormTitle}}
+                </h3>
+
+                <div class="form-row row-break" ng-class="{'remove-padding':!page.model.selOptions.type}">
+                    <div class="column-1 form-block ">
+                        <p class="field-label" ng-show="page.model.selOptions.type">
+                            {{::page.model.fieldLabel.type}}
+                        </p>
+
+                        <p id="reportName" class="data-field pstyle" ng-show="page.model.selOptions.section">
+                           {{::page.model.fieldLabel.report}} 
+                        </p>
+                        <p ng-show="page.model.selOptions.category">
+                            <select required
+                                    name="accountType"
+                                    id="accountType"
+                                    class="rp-form-select"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                    ng-model="page.formModel.form.accountType"
+                                    rp-error-msg="page.model.errorMsgs.accountType"
+                                    rp-select-options="page.formModel.accountTypeData"
+                                    ng-options="option.value as option.name for option in page.formModel.accountTypeData.options">
+                                    <!--ng-change="page.loadAccountCategory(page.formModel.form.accountType,0)"-->
+                                    </select>
+
+                        </p>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="column-1 form-block ">
+                        <p class="field-label">
+                            {{page.model.fieldLabel.categoryOrheaderDesc}}
+                        </p>
+                        <p ng-show="page.model.selOptions.categoryOrheaderDesc">
+                            <input required
+                                   id="categoryOrheaderDesc"
+                                   type="text"
+                                   name="categoryOrheaderDesc"
+                                   maxlength="255"
+                                   class="rp-form-input"
+                                   rp-wrapper-class="block"
+                                   rp-instance-name="categoryOrheaderDesc"
+                                   ng-model="page.formModel.form.categoryOrheaderDesc"
+                                   ng-model-options="{updateOn: 'blur'}"
+                                   rp-error-msg="page.model.errorMsgs.categoryOrheaderDesc"
+                                   placeholder="{{::page.model.placeholder.categoryOrheaderDesc}}">
+                        </p>
+                        <p ng-show="page.model.selOptions.refCategory">
+                            <select required
+                                    name="accountCategory"
+                                    class="rp-form-select"
+                                    rp-wrapper-class="block"
+                                    rp-update-display-text="true"
+                                    ng-model="page.formModel.form.accountCategory"
+                                    rp-error-msg="page.model.errorMsgs.accountCategory"
+                                    rp-select-options="page.formModel.accountCategoryData"
+                                    ng-options="option.value as option.name for option in page.formModel.accountCategoryData.options"></select>
+
+                        </p>
+                    </div>
+                    <div class="column-2 form-block" ng-show="page.model.selOptions.subtotalFooter" ng-class="{'break-line':page.model.selOptions.refCategory}">
+
+                        <p class="field-label">
+                            {{page.model.fieldLabel.subtotalOrFooterDesc}}
+                            <span class="subtotal-option" ng-show="page.formModel.form.showOptionalText"> (optional) </span>
+                        </p>
+                        <input id="subtotalOrFooterDesc"
+                               type="text"
+                               name="subtotalOrFooterDesc"
+                               maxlength="255"
+                               class="rp-form-input"
+                               rp-wrapper-class="block"
+                               rp-instance-name="subtotalOrFooterDesc"
+                               ng-model="page.formModel.form.subtotalOrFooterDesc"
+                               ng-required='page.formModel.form.isFooterReq'
+                               ng-model-options="{updateOn: 'blur'}"
+                               rp-error-msg="page.model.errorMsgs.categoryOrheaderDesc"
+                               placeholder="{{::page.model.placeholder.subtotalOrFooterDesc}}" />
+                    </div>
+                </div>
+                <!-- New Design-->
+                <div ng-show="page.formModel.form.showOptions">
+                    <div class="div-linebreakHeader">
+                        <p class="field-label sub-header">
+                            {{page.model.fieldLabel.sectionOptionsLable}}
+                        </p>
+                    </div>
+                    <div class="div-linebreak">
+                        <div class="div-options-width">
+                            <p class="field-label">
+                                {{page.model.fieldLabel.secCatVisblLable}}
+                            </p>
+                        </div>
+                        <div class="div-category-width" ng-show="page.model.selOptions.divGlAccount">
+                            <p class="field-label">
+                                {{::page.model.fieldLabel.catCalLable}}
+                            </p>
+                        </div>
+                        </div>
+                    <div class="div-linebreak">
+                        <div class="div-category-width">
+
+                            <p class="field-label select-width">
+                                <select required
+                                        name="headerFooter"
+                                        class="rp-form-select"
+                                        rp-wrapper-class="block"
+                                        rp-update-display-text="true"
+                                        ng-model="page.formModel.form.headerFooter"
+                                        rp-select-options="page.formModel.headerFooterList"
+                                        ng-options="option.value as option.name for option in page.formModel.headerFooterList.options"></select>
+                            </p>
+
+                        </div>
+                        <div class="div-gl-acnt-width" ng-show="page.model.selOptions.divGlAccount">
+
+                            <p class="field-label select-width">
+                                <select required
+                                        name="addSubtract"
+                                        class="rp-form-select"
+                                        rp-wrapper-class="block"
+                                        rp-update-display-text="true"
+                                        ng-model="page.formModel.form.addSubtractCategory"
+                                        rp-select-options="page.formModel.addSubtractList"
+                                        ng-options="option.value as option.name for option in page.formModel.addSubtractList.options"></select>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="div-linebreak">
+                        <div class="div-category-width">
+                            <p class="field-label cat-form-chkbox">
+                                <input type="checkbox" class="rp-form-checkbox"
+                                       id="chkrevSignAccntCategory"
+                                       ng-model="page.formModel.form.chkrevSignAccntCategory"
+                                       ng-true-value="true" ng-false-value="false" />
+                                <label for="chkrevSignAccntCategory" class="category-form-chck-labl">
+                                    {{::page.model.fieldLabel.reveseSign}}
+                                </label>
+                            </p>
+                        </div>
+                        <div class="div-category-width" ng-show="page.model.selOptions.divGlAccount">
+                            <p class="field-label cat-form-chkbox">
+                                <input type="checkbox" class="rp-form-checkbox"
+                                       id="chkexcludeFromTotal"
+                                       ng-model="page.formModel.form.chkexcludeFromTotal"
+                                       ng-true-value="true" ng-false-value="false" />
+                                <label for="chkexcludeFromTotal" class="category-form-chck-labl">
+                                    {{::page.model.fieldLabel.excludeFromTotal}}
+                                </label>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="div-linebreakHeader div-gl-option sub-header" ng-show="page.model.selOptions.divGlAccount">
+                        <p class="field-label sub-header">
+                            {{page.model.fieldLabel.glOptionsLable}}
+                        </p>
+                    </div>
+                    <div class="div-linebreak" ng-show="page.model.selOptions.divGlAccount">
+                        <div class="div-options-width">
+                            <p class="field-label">
+                                {{::page.model.fieldLabel.glVisblLable}}
+                            </p>
+                        </div>
+                        <div class="div-category-width">
+                            <p class="field-label">
+                                {{::page.model.fieldLabel.glCalLable}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="div-linebreak" ng-show="page.model.selOptions.divGlAccount">
+                        <div class="div-gl-acnt-width">
+
+                            <p class="field-label select-width">
+                                <select required
+                                        name="showGlCategorty"
+                                        class="rp-form-select"
+                                        rp-wrapper-class="block"
+                                        rp-update-display-text="true"
+                                        ng-model="page.formModel.form.glVisibility"
+                                        rp-select-options="page.formModel.glVisbilityList"
+                                        ng-options="option.value as option.name for option in page.formModel.glVisbilityList.options"></select>
+                            </p>
+
+                        </div>
+                        <div class="div-gl-acnt-width">
+
+                            <p class="field-label select-width">
+                                <select required
+                                        name="addSubtract"
+                                        class="rp-form-select"
+                                        rp-wrapper-class="block"
+                                        rp-update-display-text="true"
+                                        ng-model="page.formModel.form.addSubtractglAccount"
+                                        rp-select-options="page.formModel.addSubtractList"
+                                        ng-options="option.value as option.name for option in page.formModel.addSubtractList.options"></select>
+                            </p>
+
+                        </div>
+                        </div>
+                    <div class="div-linebreak" ng-show="page.model.selOptions.divGlAccount">
+                        <div class="div-gl-acnt-width">
+                            <p class="field-label cat-form-chkbox">
+                                <input type="checkbox" class="rp-form-checkbox"
+                                       id="chkrevSignGLAccnt"
+                                       ng-model="page.formModel.form.chkrevSignGLAccnt"
+                                       ng-true-value="true" ng-false-value="false" />
+                                <label for="chkrevSignGLAccnt" class="category-form-chck-labl">
+                                    {{::page.model.fieldLabel.reveseSign}}
+                                </label>
+                            </p>
+                    </div>
+                        <div class="div-gl-acnt-width">
+
+                            <p class="field-label cat-form-chkbox">
+                                <input type="checkbox" class="rp-form-checkbox"
+                                       id="glchkexcludeFromTotal"
+                                       ng-model="page.formModel.form.glchkexcludeFromTotal"
+                                       ng-true-value="true" ng-false-value="false" />
+                                <label for="glchkexcludeFromTotal" class="category-form-chck-labl">
+                                    {{::page.model.fieldLabel.excludeFromTotal}}
+                                </label>
+                            </p>
+
+                        </div>
+                    </div>
+
+                        </div>
+
+                <!-- End New Design-->
+
+                <div class="row-break-top">
+                    <span class="button" type="submit" ng-click="page.saveRow()">
+                        {{page.model.fieldLabel.createText}}
+                    </span>
+                    <span class="button white cancel btn-space-left" ng-click="page.hideCategoryForm()">
+                        {{::page.model.fieldLabel.cancelText}}
+                    </span>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="dv-heading">
+        <div class="display-header header-desc">
+            <span>{{page.model.Header.DescriptionText}}</span>
+        </div>
+        <div class="display-header header-level">
+            <span>{{page.model.Header.LevelText}}</span>
+        </div>
+        <div class="display-header header-type">
+            <span>{{page.model.Header.TypeText}}</span>
+        </div>
+        <div class="display-header header-catOpt">
+            <span>{{page.model.Header.CatOptText}}</span>
+        </div>
+        <div class="display-header header-glOpt">
+            <span>{{page.model.Header.GLOptText}}</span>
+        </div>
+    </div>
+    <div class="row-legend-options">
+        <p>{{::page.model.fieldLabel.rowOptText}}</p>
+            <div>
+            <div class="display-inline">
+                A
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowAddText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                S
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowSubText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                R
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowRSText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                E
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowETText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                D
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowDNDText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                SF
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowDNDHText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                SH
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowDNDFText}}
+                </div>
+            </div>
+            <div>
+            <div class="display-inline">
+                HFD
+            </div>
+            <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowDNDHFText}}
+            </div>
+        </div>
+        <div>
+            <div class="display-inline">
+                SHF
+            </div>
+                <div class="row-nested-options">
+                {{::page.model.fieldLabel.rowSHFText}}
+                </div>
+            </div>
+
+
+
+        </div>
+
+    <div class="rp-draggable-wrap main-div">
+        <div rp-droppable="{{accountCategory.id}}"
+             rp-draggable="{{accountCategory.id}}"
+             rp-drag="page.move(accountCategory)"
+             rp-drag-end="page.deactivate(accountCategory)"
+             rp-drag-start="page.activate(accountCategory)"
+             rp-drag-enabled="page.model.state.edit"
+             class="category-row {{accountCategory.className}}"
+             ng-repeat="accountCategory in page.dataModel.accountCategoryList.records track by accountCategory.id"
+             ng-click="page.onRowClick(accountCategory)" id="{{accountCategory.id}}">
+            <div class="display-header move">
+            </div>
+            <!--  <div class="display-header" ng-class="{'group-empty-icon':accountCategory.rowType!=='HEADER'}">
+
+            </div> -->
+            <div class="display-header data-desc">
+                <div ng-style="{'margin-left':((accountCategory.level-1)*5)+'%'}">
+                    <span ng-class="{'group-icon':accountCategory.rowType=='HEADER','open':accountCategory.groupState.open}" ng-if="accountCategory.rowType=='HEADER'"
+                          ng-click="page.toggle(accountCategory)">
+                    </span>
+                    <span ng-class="{'group-empty-icon':accountCategory.rowType!=='HEADER'}" ng-if="accountCategory.rowType!=='HEADER'">
+                    </span>
+                    <span>
+                        {{accountCategory.displayText}}
+                    </span>
+                </div>
+            </div>
+            <div class="display-header data-level">
+                {{accountCategory.rowType}}
+            </div>
+            <div class="display-header data-type">
+                {{accountCategory.accountType}}
+            </div>
+            <div class="display-header data-catOpt">
+                {{accountCategory.CatOptn}}
+            </div>
+            <div class="display-header data-glOpt">
+                {{accountCategory.GLOptn}}
+            </div>
+            <div class="display-header">
+                <div class="display-header edit icon-show-on-edit" ng-click="page.edit(accountCategory)">
+
+                </div>
+                <div class="display-header delete icon-show-on-edit"
+                     ng-click="page.delcat(accountCategory)">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<rp-notifications></rp-notifications>

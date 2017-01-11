@@ -1,0 +1,165 @@
+
+#budget-tasks{
+   
+      .modal-dialog {
+        top: 50px;
+    }
+
+    
+    @mixin width($w1) {
+    width: $w1;
+    }
+
+    @mixin width($w1, $w2) {
+         width: $w1;
+
+        /*@media @xLargeScreen {
+            width: @w2;
+        }*/ 
+    }
+
+    .over-due-warn{
+        color: #fd5f68;
+    }
+
+    .rp-actions-menu {
+        display: inline-block;
+        vertical-align: middle;
+        width: 40px;
+    }
+
+
+      .action {
+         @include width(10%,10%);        
+    }
+
+    .title {
+         @include width(25%,20%);
+    }
+
+    .Task-title {
+         @include width(20%,20%);
+    }
+
+    .created-user-name{
+         @include width(23%,15%);
+    }
+    .Taskstatus{
+         @include width(13%,14%);
+    }
+
+     .due-date {
+        // @include width(13%,20%);
+    }
+
+     .priority{
+             width: 14%;
+     }
+
+    .status {
+       @include width(15%,14%);
+    }
+   
+
+    .assigned-to {
+        @include width(23%,15%);
+    }
+
+    .rp-grid-filters-1  .action {
+         width:10%;
+     }
+
+     .rp-grid-filters-1  .Taskpriority {
+         width:17%;
+     }
+
+     .rp-grid-filters-1  .Task-title {
+         width:25%;
+     }
+
+     .rp-grid-filters-1  .Createdby {
+         width:23%;
+     }
+
+      .rp-grid-filters-1  .Taskstatus {
+         width:15%;
+     }
+
+      .rp-grid-filters-1  .dueDate {
+         
+     }
+
+    .more-comments{
+        display: inline;
+        margin-left: 98px;
+    }
+
+   .icon-margin {
+    margin-left: 10px;
+    margin-right: 6px;
+    }
+
+   
+     /*.rp-grid-wrap {       
+        overflow-x: visible; 
+       overflow-y: visible; 
+       
+    }*/
+
+   
+
+    .rp-grid {
+        min-width: 800px;
+    }
+
+    .max-grid-width {
+        width: 100% !important;
+        margin-left: 0px !important;
+    }
+       
+     .table-filter-toggle {
+        cursor: pointer;
+    }
+
+     /*.comments-border-color{
+             border-color: #abd9ff;
+     }*/
+
+    .show-pointer {
+        cursor: pointer;
+    }
+
+    /*.sl-left{
+         margin-left: -15px;
+    }*/
+
+     /*.task-comment-text{
+         display: block; 
+         font-size: smaller;
+     }*/
+     
+
+    .filter-cursor {
+        cursor: pointer;
+    }
+     .filterPad {
+        color: #495E69;
+        .rp-icon-filter {
+            cursor: pointer;
+        }       
+        .text {
+            cursor: pointer;
+        }
+    }
+
+     /*.comments-modal-position{ 
+        z-index :9999; 
+    }*/
+
+
+}
+
+.aside {
+    z-index: 9999 !important;
+    width: 450px;
+}

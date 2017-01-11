@@ -1,0 +1,23 @@
+#payroll-item-benefits {
+    .add-icon {
+        font-size: medium;
+        color: forestgreen;        
+    }
+
+    .delete-icon {
+        font-size: medium;
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .benefits-select-width{
+        width: 195px;
+    }
+
+    .rp-cg-body-row{
+        .rp-cg-cell
+        {
+            height: 64px;
+        }
+    }
+}

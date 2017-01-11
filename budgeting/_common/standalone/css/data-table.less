@@ -1,0 +1,131 @@
+//  Data Table
+
+.data-table {
+    .table-wrap {
+        overflow: auto;
+        position: relative;
+        border-left: solid 2px #efeded;
+        border-right: solid 2px #efeded;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th,
+    td {
+        .box-sizing;
+        font-size: 12px;
+        line-height: 20px;
+        padding-left: 2px;
+        padding-right: 2px;
+        text-align: center;
+
+        &.align-left {
+            text-align: left;
+        }
+
+        &.align-right {
+            text-align: right;
+        }
+    }
+
+    th {
+        color: #8c8a8a;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        background-color: #efeded;
+    }
+
+    .sortable {
+        .icon {
+            .icon-filledarrowdown;
+        }
+    }
+
+    .asc {
+        .icon {
+            .icon-filledarrowup;
+        }
+    }
+
+    .desc {
+        .icon {
+            .icon-filledarrowdown;
+        }
+    }
+
+    .sortable {
+        cursor: pointer;
+
+        .icon {
+            .inline-block;
+            height: 20px;
+            font-size: 16px;
+            line-height: 20px;
+            vertical-align: top;
+        }
+    }
+
+    td {
+        color: @dark-gray;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background-color: #fbfcfd;
+        border-bottom: solid 2px #efeded;
+    }
+
+    tr.even {
+        td {
+            background-color: @white;
+        }
+    }
+
+    tr:hover {
+        td {
+            color: @white;
+            background-color: @light-blue;
+        }
+
+        .link {
+            background-color: @blue;
+        }
+
+        .link:hover {
+            background-color: @orange;
+        }
+
+        a,
+        a:visited,
+        a:hover {
+            color: @white;
+        }
+    }
+
+    .circle {
+        .rounded(9px);
+        color: @white;
+        line-height: 18px;
+        display: inline-block;
+        background-color: @ash-gray;
+
+        &.blue {
+            background-color: #99b6d4
+        }
+    }
+
+    .total {
+        td {
+            padding: 0;
+            color: @dark-gray;
+            border-bottom: 0;
+            background-color: #efeded;
+        }
+    }
+
+    .asc,
+    .desc {
+        color: #706d6d;
+    }
+}
+

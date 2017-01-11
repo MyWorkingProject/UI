@@ -1,0 +1,31 @@
+.vendor-form {
+    .field-info {
+        @include body-2;
+    }
+    .form-label {
+        @include form-label-block(#333333);
+        font-weight: bold;
+    }
+    &-row {
+        @include outer-spacing-bottom;
+    }
+    &-sm-form-actions 
+    {
+        margin-top: 15px; 
+    }
+    .rp-form-error-msgs
+    {
+        margin-top: 5px;
+    }
+    .top-spacer
+    {
+        padding-top: 4.3rem;
+    }
+    .vendor-form-width
+    {
+        width: 350px;
+        background-color: #fff;
+    }
+}
+
+

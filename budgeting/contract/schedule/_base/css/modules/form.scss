@@ -1,0 +1,42 @@
+#define-schedule-wrapper {
+	.form-group {
+		.datepicker-wrapper > .form-group {
+			margin-bottom: 0;
+		}
+
+		.checkbox-wrapper {
+			height: 5rem;
+
+			@media #{$defOnly} {
+				height: 2rem;
+			}
+
+			& > div {
+				position: absolute;
+				top: 60%;
+			}
+
+			.md-check > .primary {
+		    	&:before {
+		    		border: 1px solid $ash-gray;
+		    	}
+		    	&:after {
+		    		border-color: $white;
+		    	}
+		    }
+		}
+
+		.amt-wrapper,
+		.ai-val {
+			input {
+				border-color: $rp-neutral-05;
+			}
+		}
+
+		.amt-wrapper .fa {
+			z-index: 99;
+		}
+
+	}
+	
+}

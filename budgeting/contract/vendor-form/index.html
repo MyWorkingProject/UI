@@ -1,0 +1,28 @@
+<div ng-controller="AddVendorCtrl as page">
+    <ng-form name="addVendor" novalidate>
+        <div class="form-group vendor-form-row">
+          <label class="form-label" for="vendorCode">{{::page.formConfig.fieldLabel.number}}</label>
+          <rp-form-input-text config="page.formConfig.vendorCode" rp-model="page.formData.form.vendorCode">
+          </rp-form-input-text>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="vendorName">{{::page.formConfig.fieldLabel.name}}</label>
+          <rp-form-input-text config="page.formConfig.vendorName" rp-model="page.formData.form.vendorName">
+           </rp-form-input-text>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="stateCode">{{::page.formConfig.fieldLabel.state}}</label>
+          <rp-form-select-menu  config="page.formConfig.stateCode" rp-model="page.formData.form.stateCode"></rp-form-select-menu>
+        </div>
+        <div class="form-group" for="status">
+          <label class="form-label">{{::page.formConfig.fieldLabel.status}}</label>
+          <rp-form-select-menu config="page.formConfig.status" rp-model="page.formData.form.status"></rp-form-select-menu>
+        </div>
+        <button class="btn rounded primary m-r-sm" ng-click="page.submit(addVendor)">
+            {{::page.formConfig.fieldLabel.save}}
+        </button>
+      <!--<span class="btn rounded primary" data-dismiss="modal" ng-click="page.cancel()">
+          {{::page.formConfig.fieldLabel.cancel}}
+      </span>-->
+    </ng-form>
+</div>

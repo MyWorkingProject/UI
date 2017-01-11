@@ -1,0 +1,31 @@
+#change-rent {
+
+    .rp-form-input-text-cell {
+        .rp-form-input-text-field {
+            text-align: right;
+        }
+    }
+
+    .form-control-label {
+        font-weight: bolder;
+    }
+
+    .md-check > i.white {
+        &:before {
+            border: 1px solid $ash-gray;
+        }
+
+        &:after {
+            border-color: $dark-gray;
+        }
+    }
+
+    #affected-period {
+        display: block;
+        padding: 0.5rem;
+
+        .label {
+            font-weight: normal;
+        }
+    }
+}

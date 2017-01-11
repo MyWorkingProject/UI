@@ -1,0 +1,85 @@
+<!-- Calculation Options -->
+<div class="form-group row">
+
+    <!-- Method Sources Selector -->
+    <div class="col-md-4">
+        <label class="form-control-label">{{::page.translate("bdgt_calculator_method")}}</label> 
+        
+        <a class="text-neutral m-l-sm"
+            title="{{page.calculator.form.data.tooltipTitle}}" 
+            data-template-url="app/templates/calculator.tooltip.html"
+            data-placement="right"
+            data-auto-close="1"
+            bs-popover>
+            <i class="rp-icon-question-circle"></i>
+        </a>
+        
+        <select name="calculationMethod" 
+                ng-model="page.calculator.model.data.method" 
+                ng-change="page.calculator.form.prepareCalculator()" 
+                class="form-control" 
+                rp-select-options="page.calculator.form.data.methods" 
+                rp-update-display-text="true" 
+                ng-options="currOpt.value as currOpt.name for currOpt in page.calculator.form.data.methods.options" 
+                required></select> 
+
+    </div>
+
+    <!-- Source Data Selector -->
+    <div class="col-md-3" ng-show="page.calculator.form.state.calculationSource">
+        <label class="form-control-label">{{::page.translate("bdgt_calculator_source")}}</label>
+        <select name="calculationSource" 
+                ng-model="page.calculator.model.data.source" 
+                ng-change="page.calculator.form.prepareCalculationSource()" 
+                ng-required="page.calculator.form.state.calculationSource" 
+                class="form-control" 
+                ng-options="currOpt.value as currOpt.name for currOpt in page.calculator.form.data.sources.options"></select> 
+    </div>
+
+    <!-- Input Amounts -->
+    <div class="col-md-3" ng-show="page.calculator.form.state.calculationAmt1">
+        <label class="form-control-label">{{page.calculator.form.data.calculationAmt1}}</label> 
+        <input name="variableAmount1" 
+                ng-model="page.calculator.model.data.amt1" 
+                ng-model-options="{updateOn:'blur'}" 
+                ng-required="page.calculator.form.state.calculationAmt1" 
+                class="form-control" 
+                type="text" /> 
+    </div>
+    <div class="col-md-3" ng-show="page.calculator.form.state.calculationAmt2">
+        <label class="form-control-label">{{page.calculator.form.data.calculationAmt2}}</label> 
+        <input name="variableAmount2" 
+                ng-model="page.calculator.model.data.amt2" 
+                ng-model-options="{updateOn:'blur'}" 
+                ng-required="page.calculator.form.state.calculationAmt2" 
+                class="form-control" 
+                type="text" /> 
+    </div>
+
+    <!-- Calculate Button -->
+    <div class="col-md-2">
+        <label class="form-control-label">&nbsp;</label> 
+        <button class="btn btn-outline b-primary text-primary w-full" type="button" ng-click="page.calculator.calculate()"> 
+            {{::page.translate("bdgt_calculate")}} 
+        </button> 
+    </div>
+
+    <!-- Average Status -->
+    <div class="col-md-3" ng-show="page.calculator.form.state.affectedPeriodMsg">
+        <label class="form-control-label">&nbsp;</label>         
+        <div id="affected-period">
+            <span class="label rounded secondary p-x-md">{{::page.translate("bdgt_calculator_ave_for")}} {{page.calculator.model.data.affectedPeriod || "..." }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Calculator Grid -->
+<div class="form-group calculator-grid">
+    <div class="active-row" ng-if="page.calculator.form.state.displayActiveYear">
+        {{page.calculator.state.startYear}}
+    </div>
+    <div ng-class="{'show-monthly':page.calculator.form.state.monthlyDisplay, 'show-active':page.calculator.form.state.activePeriodDisplay}">
+        <rp-grid model="page.calculator.grid.model"></rp-grid>
+    </div>
+    <!-- <rp-cg model="page.calculator.grid"></rp-cg> -->
+</div> 

@@ -1,0 +1,46 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Unsaved Changes</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+          <div class="dialog-padding-left  p-t-sm">
+              <p class="m-b-sm">sureness?</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn rounded neutral p-x-md" data-dismiss="modal" ng-click="page.delContract()">Continue</button>
+        <button type="button" class="btn rounded primary p-x-md" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div id="alertDialog" class="modal" data-backdrop="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{::page.model.text.deleteHeader}} </h5>
+            </div>
+
+            <div class="">
+                <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+                <div class="dialog-padding-left  p-t-sm">
+                    <p class="m-b-sm">{{::page.model.text.deleteDesc}} </p>
+                    <p>{{::page.model.text.delConfMsg}}</p>
+                </div>
+
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn rounded neutral p-x-md" data-dismiss="modal" ng-click="page.delContract()">{{::page.model.text.Continue}}</button>
+                <button type="button" class="btn rounded primary p-x-md" data-dismiss="modal">{{::page.model.text.Cancel}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->

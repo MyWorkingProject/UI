@@ -1,0 +1,226 @@
+<div id="define-schedule-wrapper" ng-controller="DefineScheduleCtrl as page">
+    <div class="box-header p-x-0">
+        <h1 class="text-primary">{{page.defineSchedule.pageTitle}}</h1>
+    </div>
+    <div class="box-body p-a-0">
+
+      <div class="row">
+        <div class="col-xl-8 col-lg-12">
+          
+          <ng-form name="page.defineSchedule.form" novalidate class="ft-form" role="form">
+            
+            <!-- Start & End Date, Remind Expiry? -->
+            <div class="form-group row">
+              <div class="col-sm-4 datepicker-wrapper">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_hd_start_date")}}</label>
+                <rp-datetimepicker 
+                  rp-model="page.schedule.model.dateRange.startDate"
+                  config="page.defineSchedule.formConfig.startDate">
+                </rp-datetimepicker>
+
+                <!--
+                  <div class="input-group input-group-date w-full">
+                    <input type="text" 
+                        class="form-control" 
+                        ng-model="page.schedule.model.dateRange.startDate"
+                        data-max-date="{{page.schedule.model.dateRange.endDate}}"
+                        data-date-format="MM/dd/yyyy"
+                        data-date-type="string"
+                        data-autoclose="true"
+                        data-icon-left="rp-icon-angle-left" 
+                        data-icon-right="rp-icon-angle-right" 
+                        name="startDate"
+                        data-trigger="click" 
+                        bs-datepicker
+                        required />
+                    <span class="ic-calendar text-neutral-04"></span>
+                  </div>
+                -->                
+              </div>
+
+              <div class="col-sm-4 datepicker-wrapper">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_hd_end_date")}}</label>
+                <rp-datetimepicker 
+                  rp-model="page.schedule.model.dateRange.endDate"
+                  config="page.defineSchedule.formConfig.endDate">
+                </rp-datetimepicker>
+
+                <!--
+                  <div class="input-group input-group-date w-full">
+                    <input type="text" 
+                        class="form-control" 
+                        ng-model="page.schedule.model.dateRange.endDate" 
+                        data-min-date="{{page.schedule.model.dateRange.startDate}}" 
+                        data-date-format="MM/dd/yyyy"
+                        data-date-type="string"
+                        data-autoclose="true"
+                        data-icon-left="rp-icon-angle-left" 
+                        data-icon-right="rp-icon-angle-right" 
+                        name="endDate" 
+                        data-trigger="click" 
+                        bs-datepicker />
+                    <span class="ic-calendar text-neutral-04"></span>
+                  </div>
+                -->
+              </div>
+
+              <div class="col-sm-4 checkbox-wrapper">
+                <div>
+                  <label class="md-check" for="isReminder">
+                    <input name="isRemindBeforeExpiry"
+                             ng-model="page.schedule.model.isRemindBeforeExpiry"
+                             id="isReminder"
+                             type="checkbox"
+                             ng-change="page.schedule.setReminderDefaults()" />
+                    <i class="primary"></i>
+                    {{::page.translate("bdgt_new_contract_lbl_expiration_reminder")}}
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Remind Expiry: Days Before & Email -->
+            <div class="form-group row" ng-show="page.schedule.model.isRemindBeforeExpiry">
+              <div class="col-sm-4">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_lbl_expiration_days")}}</label>
+                <rp-form-select-menu
+                  rp-model="page.schedule.model.reminder.daysBeforeExpiry"
+                  config="page.defineSchedule.formConfig.reminderCountDown">
+                </rp-form-select-menu>
+              </div>
+              <div class="col-sm-8">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_lbl_expiration_email")}}</label>
+
+                <rp-form-input-text
+                  rp-model="page.schedule.model.reminder.email"
+                  config="page.defineSchedule.formConfig.email">
+                </rp-form-input-text>
+              </div>
+            </div>
+
+            <!-- Frequency and Amount Row, Has Annual Increase? -->
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_hd_frequency")}}</label>
+                <rp-form-select-menu
+                  rp-model="page.schedule.model.frequency"
+                  config="page.defineSchedule.formConfig.frequency">
+                </rp-form-select-menu>
+              </div>
+
+              <div class="col-sm-4">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_hd_amount")}}</label>
+                <div class="amt-wrapper inner-addon left-addon">
+                  <span class="fa currency">$</span>
+                  <input name="amount"
+                       ng-model="page.schedule.model.amount"
+                       ng-model-options="{updateOn:'blur'}"
+                       ng-change="page.pricing.updateSchedule()"
+                       class="form-control"
+                       type="number" />
+                </div>
+
+                <!--
+                <rp-form-input-text
+                  rp-model="page.schedule.model.amount"
+                  config="page.defineSchedule.formConfig.amount">
+                </rp-form-input-text>
+                -->
+              </div>
+
+              <div class="col-sm-4 checkbox-wrapper">
+                <div>
+                  <label class="md-check">
+                    <input name="hasAnnualIncrease"
+                             ng-model="page.schedule.model.hasAnnualIncrease"
+                             id="hasIncrease"
+                             class="rp-form-checkbox"
+                             type="checkbox"
+                             ng-change="page.schedule.setAnnualIncreaseDefaults(); page.pricing.update();" />
+                    <i class="primary"></i>
+                    {{::page.translate("bdgt_new_contract_lbl_annual_increase")}}
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Annual Increase Options -->
+            <div class="form-group row" ng-show="page.schedule.model.hasAnnualIncrease">
+              <div class="col-sm-6">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_ai_increase")}}</label>
+                <div class="annual-increase row">
+                  <div class="ai-type col-xs-3 col-lg-4">
+                    <rp-form-select-menu
+                      rp-model="page.schedule.model.annualIncrease.type"
+                      config="page.defineSchedule.formConfig.increaseType">
+                    </rp-form-select-menu>
+                  </div>
+                  <div class="ai-val col-xs-9 col-lg-8">
+                    <input name="increaseValue"
+                           ng-model="page.schedule.model.annualIncrease.value"
+                           ng-model-options="{updateOn:'blur'}"
+                           ng-change="page.pricing.updateSchedule()"
+                           class="form-control"
+                           type="text" />
+                    <!--
+                    <rp-form-input-text
+                      rp-model="page.schedule.model.annualIncrease.value"
+                      config="page.defineSchedule.formConfig.increaseValue">
+                    </rp-form-input-text>
+                    -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label class="form-control-label">{{::page.translate("bdgt_new_contract_ai_basis_lbl")}}</label>
+                <rp-form-select-menu
+                  rp-model="page.schedule.model.annualIncrease.basis"
+                  config="page.defineSchedule.formConfig.increaseBasis">
+                </rp-form-select-menu>
+              </div>
+            </div>
+          </ng-form>
+        </div>
+      </div>
+
+      <div class="row b-t p-t m-t">
+        <div class="scheduled-charges col-xs-12">
+          <h5 class="text-primary m-b-0">{{::page.translate("bdgt_schedule_charges")}}</h5>
+          
+          <button class="md-btn md-flat text-neutral p-x-0" ng-click="page.openCalculator()">
+            <span class="ic-calculator"></span>&nbsp;{{::page.translate("bdgt_contract_calculator")}}
+          </button>
+          
+          <!--
+          <rp-calculator state="page.pricing.calculator">
+            <button class="md-btn md-flat text-neutral p-x-0">
+              <span class="ic-calculator"></span>&nbsp;{{::page.translate("bdgt_contract_calculator")}}
+            </button>
+          </rp-calculator>
+          -->
+
+          <div class="calculation-table-wrapper">
+            <div class="calculation-table m-t-md">
+                <rp-grid model="page.pricingGridModel"></rp-grid>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- end: .box-body -->
+    <div class="box-footer p-x-0">
+      <div class="pull-right">
+        <button class="btn rounded btn-outline b-primary text-primary w-xs m-b-sm"
+            ng-click="page.cancel()">
+          {{::page.translate("bdgt_new_contract_cancel")}}
+        </button>
+        <button class="btn rounded primary w-xs m-b-sm m-l-sm"
+            ng-click="page.saveAndClose(newScheduleForm)">
+          {{::page.translate("bdgt_schedule_add")}}
+        </button>
+
+      </div>
+    </div>
+</div><!-- end: New Schedule Box -->

@@ -1,0 +1,35 @@
+#job-position-modal {
+	width: 400px;
+	z-index: 4000 !important; //overwrite inline assignment
+
+	@media #{$smScAndBelow} {
+		width: 80%;
+	}
+
+	.aside {
+		&-body {
+			padding-bottom: 150px;
+		}
+
+		&-footer {
+			text-align: right;
+
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}	
+	}
+
+	.ic-close {
+		color: $rp-neutral-04;		
+		@include x-small-text;
+	}
+
+	.job-pos {
+		&-label {
+			@include form-label-block;
+			@include list-group-header($color: $charcoal);
+		}
+		
+	}
+}

@@ -1,0 +1,8 @@
+
+
+<span ng-if="record.status=='Pending' || record.status=='Complete' ">
+    <span>{{record.dueDate}}</span>
+</span>
+<span ng-if="record.status=='Overdue'">
+    <span class="over-due-warn">{{record.dueDate}}</span>
+</span>

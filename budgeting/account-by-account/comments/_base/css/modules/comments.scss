@@ -1,0 +1,20 @@
+
+// Todo: remove once core update
+#commentsAside {
+    z-index: 9999 !important;
+    width: 18rem;
+
+    .rp-scrolling-tabs-wrap {
+        margin: 0;
+        padding: 0;
+    }
+
+    .aside-body {
+        padding-top: .5rem;
+    }
+    .rp-icon-delete-2
+    {
+        font-size: .8rem;
+        opacity: .7;
+    }
+}

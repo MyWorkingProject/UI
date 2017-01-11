@@ -1,0 +1,9 @@
+<span ng-if="record.isEditable">
+    <a class="rp-grid-link" href="#/manage-tasks/{{record.taskID}}">
+        {{record.title}}
+    </a>
+</span>
+<span ng-if="!record.isEditable">
+        {{record.title}}
+   
+</span>

@@ -1,0 +1,17 @@
+﻿<div id="payroll-item-custom-worksheets" ng-controller="PayrollCustomWorksheetsCtrl as customWorksheets" ng-init="customWorksheets.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::customWorksheets.fieldLabels.headerTitle}}</h5>
+            <div class="inline p-r-1 pointer" ng-click="customWorksheets.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{ customWorksheets.model.commentCount }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="customWorksheets.model.grid">
+        <div class="col-md-12">
+            <rp-cg model="customWorksheets.model.grid">
+            </rp-cg>
+        </div>
+    </div>
+</div>

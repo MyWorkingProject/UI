@@ -1,0 +1,240 @@
+//  Datepicker Module
+
+.datepicker {
+    .inline-block;
+    .rounded(5px);
+    z-index: 1;
+    color: @dark-gray;
+    height: 20px;
+    min-width: 70px;
+    padding-left: 5px;
+    position: relative;
+    border: solid 1px @silver;
+
+    &:hover {
+        border: solid 1px #aaa;
+    }
+
+    &.active {
+        .date-value {
+            border: solid 1px @blue;
+        }
+    }
+
+    &.error {
+        border: solid 1px @notify-alert;
+    }
+
+    input,
+    .date-text {
+        .float-left;
+        width: 70px;
+        height: 14px;
+        border: none;
+        font-size: 12px;
+        padding-top: 3px;
+        line-height: 14px;
+    }
+
+    input {
+        .block;
+
+        @media screen and (max-width: 600px) {
+            .hide;
+        }
+    }
+
+    .date-text {
+        .hide;
+
+        @media screen and (max-width: 600px) {
+            .block;
+        }
+    }
+
+    .input-placeholder-wrap {
+        .float-left;
+        height: 20px;
+
+        .input-placeholder {
+            .block;
+
+            @media screen and (max-width: 600px) {
+                .hide;
+            }
+        }
+    }
+
+    .icon {
+        .float-left;
+        .block;
+        .icon-date_picker;
+        cursor: pointer;
+
+        &:before {
+            .block;
+            width: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+
+}
+
+.calendar {
+    .rounded(5px);
+    .box-shadow(5px 5px 10px rgba(100, 100, 100, 0.75));
+    right: 0;
+    top: 32px;
+    z-index: 500;
+    width: 266px;
+    padding: 10px;
+    position: absolute;
+    // margin-left: -102px;
+    background-color: @white;
+    border: solid 1px #aaa;
+
+    @media screen and (max-width: 600px) {
+        left: 50% !important;
+        top: 45px !important;
+        z-index: 500 !important;
+        position: fixed !important;
+        margin: 0 0 0 -144px !important;
+    }
+
+    .close-calendar {
+        .close-button;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 5px;
+
+        span {
+            .block;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            line-height: 32px;
+            text-align: center;
+        }
+
+        .prev {
+            .float-left;
+            .icon-emptyarrowleft;
+            margin-left: 3px;
+        }
+
+        .next {
+            .float-right;
+            .icon-emptyarrowr;
+            margin-right: 3px;
+        }
+
+        .prev,
+        .next {
+            font-size: 26px;
+            line-height: 32px;
+
+            &:before {
+                color: @blue;
+                font-size: 26px;
+            }
+        }
+
+        .disabled {
+            cursor: default;
+            visibility: hidden;
+        }
+    }
+
+    .month-name {
+        color: @blue;
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: bold;
+    }
+
+    .days {
+        .clearfix;
+        margin-bottom: 10px;
+    }
+
+    .cell {
+        .float-left;
+        .box-sizing;
+        .rounded(17px);
+        color: @silver;
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-left: 3px;
+        margin-right: 3px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    .day-name {
+        color: @dark-gray;
+        cursor: default;
+        text-align: center;
+    }
+
+    .current {
+        color: @blue;
+        cursor: pointer;
+    }
+
+    .today {
+        color: @blue;
+        line-height: 32px;
+        background-color: #fbfcfd;
+        border: solid 1px #c2d1de;
+    }
+
+    .active {
+        color: @white;
+        border: none;
+        line-height: 32px;
+        background-color: @orange;
+    }
+
+    .disabled {
+        color: @silver;
+        cursor: default;
+    }
+
+    .blocked {
+        color: @white;
+        background-color: @dark-gray;
+    }
+
+    .years {
+        text-align: center;
+
+        span {
+            .inline-block;
+            color: #c1d1e1;
+            padding: 0 15px;
+            font-size: 16px;
+            cursor: pointer;
+            line-height: 32px;
+        }
+
+        .current {
+            color: @blue;
+            font-size: 18px;
+            cursor: default;
+            font-weight: bold;
+            line-height: 32px;
+        }
+
+        .disabled {
+            cursor: default;
+            visibility: hidden;
+        }
+    }
+}

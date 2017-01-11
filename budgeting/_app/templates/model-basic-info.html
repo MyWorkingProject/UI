@@ -1,0 +1,35 @@
+﻿<div class="white budget-model-details">
+    <div class="row">
+        <div class="col-sm-12 p-l-0">
+            <div class="p-t-sm clearfix">
+                <div class="col-md-8 m-t-xs p-l-0">
+
+                    <div class="text-center text-sm-left ft-follow">
+                        <p class="inline p-l-1 p-r-1 m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{page.model.propertyName}}
+                            </small>
+                        </p><p class="inline p-l-1 b-l b-r p-r-1 m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{page.model.budgetYear}}
+                            </small>
+                        </p> <p class="inline p-l-1 p-r-1 m-b-0">
+                            <small class="ft-s-14 _400">
+                                {{page.model.budgetType}} - {{page.model.assettype}}
+                            </small>
+                        </p>
+                    </div>
+                </div> 
+                <div class="col-md-4 m-t-xs p-x-0">
+                    <div class=" pull-right text-center text-sm-left ft-follow">
+                        <p class="inline p-l-1 p-r-1 m-b-0" ng-class="page.accessPrivileges.errorStatusCode">
+                            <small class="ft-s-14 _400">
+                                {{page.accessPrivileges.errorMessage | uppercase}}
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

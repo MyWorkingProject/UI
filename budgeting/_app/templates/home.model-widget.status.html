@@ -1,0 +1,35 @@
+﻿<!-- State: In Progress -->
+<div ng-if='record.status=="Inprogress"'>
+	<div class="model-status">
+		<i class="fa fa-clock-o text-warning m-r-sm"></i>
+		<span class="ft-bold">{{record.budgetYear}}</span>
+	</div>	
+	
+	<div class="text-neutral-02 stacked-text">
+		{{record.budgetType}} - {{record.assettype}}
+	</div>
+</div>
+
+<!-- State: Completed -->
+<div ng-if='record.status=="Distributed"'>
+	<div class="model-status">
+		<i class="fa fa-circle-thin text-muted m-r-sm"></i>
+		<span class="ft-bold">{{record.budgetYear}}</span>
+	</div>	
+	
+	<div class="text-neutral-02 stacked-text">
+		{{record.budgetType}} - {{record.assettype}}
+	</div>
+</div>
+
+<!-- State: Finalized -->
+<div ng-if='record.status=="Final"'>
+	<div class="model-status">
+		<i class="fa fa-check-circle text-success m-r-sm"></i>
+		<span class="ft-bold">{{record.budgetYear}}</span>
+	</div>	
+	
+	<div class="text-neutral-02 stacked-text">
+		{{record.budgetType}} - {{record.assettype}}
+	</div>
+</div>

@@ -1,0 +1,111 @@
+//  Carousel Styles
+
+.tasks-module {
+    .tasks-carousel {
+        position: relative;
+    }
+
+    .cover {
+        .block;
+        top: 0;
+        z-index: 2;
+        height: 145px;
+        width: 9000px;
+        position: absolute;
+
+        &.touch {
+            .hide;
+        }
+
+        &:before {
+            .block;
+            content: '';
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: @white;
+
+            &.touch {
+                background-color: transparent;
+            }
+        }
+
+        &.left {
+            left: 0;
+            margin-left: -9000px;
+            background-repeat: repeat-y;
+            background-position: top right;
+            background-image: url('@{baseImagePath}tasks-module/bg-cover-left.png');
+
+            &.touch {
+                background-image: none;
+            }
+
+            &:before {
+                left: 0;
+                right: 20px;
+            }
+        }
+
+        &.right {
+            right: 0;
+            margin-right: -8980px;
+            background-repeat: repeat-y;
+            background-position: top left;
+            background-image: url('@{baseImagePath}tasks-module/bg-cover-right.png');
+
+            &.touch {
+                background-image: none;
+            }
+
+            &:before {
+                right: 0;
+                left: 20px;
+            }
+        }
+    }
+
+    .scroll-left {
+        .icon-emptyarrowr;
+        right: -34px;
+    }
+
+    .scroll-right {
+        .icon-emptyarrowleft;
+        left: -34px;
+    }
+
+    span[class^="scroll"] {
+        .block;
+        top: 48px;
+        z-index: 2;
+        width: 34px;
+        height: 34px;
+        color: @silver;
+        cursor: pointer;
+        position: absolute;
+        text-align: center;
+
+        &:before {
+            font-size: 34px;
+        }
+    }
+
+    .tasks-carousel-screen {
+        min-height: 130px;
+        position: relative;
+    }
+
+    .tasks-carousel-slider {
+        .clearfix;
+        top: 0;
+        left: 0;
+        height: 130px;
+        width: 9000px;
+        position: absolute;
+
+        &.hideov {
+            overflow: hidden;
+        }
+    }
+}

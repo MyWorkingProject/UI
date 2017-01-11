@@ -1,0 +1,25 @@
+<div id="payroll-item-bonus" ng-controller="PayrollBonusItemCtrl as bonus" ng-init="bonus.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{bonus.headerTitle}}</h5>
+            <div class="inline p-r-1 pointer" ng-click="bonus.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{ bonus.model.commentCount }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="payrollItem.model.isEdit" ng-click="bonus.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::bonus.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="bonus.model.grid">
+        <div class="col-md-12">
+            <rp-cg model="bonus.model.grid">
+            </rp-cg>
+            <div class="text-center m-a-2" ng-if="bonus.model.showAddNewBonus && bonus.model.isEdit">
+                <span class="text-muted"> {{bonus.noItemsMessage }}</span>
+                <span class="text-info text-u-l pointer" ng-click="bonus.addNewBonusItem()">{{::bonus.fieldLabels.addItemText}}</span>
+            </div>
+        </div>
+    </div>
+</div>

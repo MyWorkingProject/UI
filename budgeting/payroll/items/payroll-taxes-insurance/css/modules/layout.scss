@@ -1,0 +1,27 @@
+#payroll-item-tax-insurance {    
+    .add-icon {
+        font-size: medium;
+        color: forestgreen;        
+    }
+
+    .delete-icon {
+        font-size: medium;
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+    .taxes-col-1-width
+    {
+        width: 195px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .dropdown
+    {
+        position: absolute;
+        .dropdown-menu
+        {
+            position: relative;
+            width: 220px;
+        }
+    }
+}

@@ -1,0 +1,83 @@
+#occupancy-worksheet {
+    .text-pointer {
+        cursor: pointer;
+    }
+    .modal-dialog {
+        top: 50px;
+    }
+    .btn-save {
+        width: 100px;
+    }
+    .begining-help-text {
+        position: absolute;
+        width: 440px;
+        left: 229px;
+        .box-body {
+            width: 425px;
+            white-space: normal;
+        }
+    }
+    .display-occupancy-goal {
+        width: 90px;
+        display: inline-block;
+        float: right;
+        .rp-form-input {
+            text-align: right;
+        }
+    }
+    /*.begining-units{
+        float:right;
+        text-decoration:underline;
+    }*/
+    .occupancy-worksheet-header {
+        background-color: $white !important;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: none;
+        .rp-cg-body-cell {
+            cursor: default;
+        }
+        .rp-cg-body-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+    .rp-cg-free {
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+        .occupancy-worksheet-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+        }
+    }
+    .rp-cg-locked {
+        .rp-cg-headers-row {
+            .item-description {
+                .rp-cg-headers-text {
+                    visibility: hidden;
+                }
+            }
+        }
+        .item-description {
+            .rp-cg-text {
+                &.rp-cg-body-text {
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}
+
+.modal {
+    top: 280px !important;
+}
+
+.selected-service-group {
+    font-size: 22px
+}

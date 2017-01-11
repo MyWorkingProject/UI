@@ -1,0 +1,299 @@
+<div class="row-col" id="reports-page-content">
+    <div class="col-sm-2">
+        <div class="p-y" id="left-nav">
+            <div class="nav-side-menu nav-active-border left b-{{app.setting.theme.primary}} ">
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li data-toggle="collapse" data-target="#reports" class="collapsed">
+                            <a href="">{{page.model.text.reports}}</a>
+                        </li>
+                        <ul class="sub-menu collapse in" id="reports">
+                            <li ng-class="{'li-active' : page.model.showAll}" ng-click="page.leftNav('all')">{{page.model.text.all}}</li>
+                            <li ng-class="{'li-active' : page.model.showFav}" ng-click="page.leftNav('fav')">{{page.model.text.favText}}</li>
+                            <li ng-class="{'li-active' : page.model.showRec}" ng-click="page.leftNav('rec')">{{page.model.text.recText}}</li>
+                        </ul>
+                        <li data-toggle="collapse" data-target="#">
+                            <a href="">{{page.model.text.narrative}}</a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#">
+                            <a href="">{{page.model.text.modelPackage}}</a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#">
+                            <a href="">{{page.model.text.reportGrps}}</a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#">
+                            <a href="">{{page.model.text.portfolio}}</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-9">
+        <div class="row p-t-1 p-b-sm">
+            <div class="display-inline ft-s-14 ft-bold all-labl-pad p-t-1">
+                <h5 class="ft-bold">{{page.model.text.allReports}}</h5>
+            </div>
+            <div class="display-inline pull-right srch-labl-pad p-t-sm inner-addon right-addon">
+                <input ng-model="page.model.reportName"
+                       name="reportName"
+                       placeholder="{{page.model.placeHolder.reportName}}"
+                       class="form-control"
+                       type="text" ng-change="page.search()" />
+                <span class="fa rp-icon-search2 m-t-sm"></span>
+            </div>
+        </div>
+        <!--<div class="">-->
+            <div class="p-y-sm" id="allReports">
+               
+                <div class="border-line m-b-2">
+                </div>
+
+                <div class="nav-side-menu">
+                    <div class="menu-list">
+                        <ul id="menu-content" class="menu-content collapse">
+                            <li data-toggle="collapse" data-target="#mViews" class="primary  li-height"  reports-accrd val="page.model.isScrhd"  ng-show="page.model.showAll" ng-click="page.setSrchd();">
+                                <a href="" class="p-l-1">{{page.model.text.mdlViewText}}</a>
+                            </li>
+                            <ul class="sub-menu collapse panel-border in" id="mViews" ng-show="page.model.showAll" reports-accrd-ul val="page.model.isScrhd" >
+                                <div class="accrdn-pad">
+                                    <rp-grid class="" model="viewsGridFactory.gridModelView"></rp-grid>
+                                </div>
+                            </ul>
+                            <div class="m-b-2"></div>
+                            <li data-toggle="collapse" data-target="#custReports" class="primary li-height" reports-accrd val="page.model.isScrhd"    ng-click="page.setSrchd();">
+                                <a href="" class="p-l-1">{{page.model.text.custRptsText}}</a>
+                            </li>
+                            <ul class="sub-menu collapse panel-border in"  id="custReports" ng-click="page.setSrchd();" reports-accrd-ul val="page.model.isScrhd" >
+                                <div class="accrdn-pad">
+                                    <rp-grid class="" model="reportsGridFactory.gridModelCustReports"></rp-grid>
+                                </div>
+                            </ul>
+                            <div class="m-b-2"></div>
+                            <li data-toggle="collapse" data-target="#stdReports"  class="primary li-height" reports-accrd val="page.model.isScrhd"  ng-click="page.setSrchd();">
+                                <a href="" class="p-l-1">{{page.model.text.stdRptsText}}</a>
+                            </li>
+                            <ul class="sub-menu collapse panel-border in" id="stdReports" reports-accrd-ul val="page.model.isScrhd">
+                                <div class="accrdn-pad">
+                                    <rp-grid class="" model="reportsGridFactory.gridModelStdReports"></rp-grid>
+                                </div>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--<div class="rp-accordion m-b-0 m-t-2" id="accordion">
+                    <div class="panel panel-border">
+                        <div class="box-header ft-medium b-b p-x p-y-sm primary accrodian-height">
+                            <div class="empty-div"></div>
+                            <a data-toggle="collapse" data-parent="#accordion" class="primary" data-target="#mViews" aria-expanded="true">
+                                Model Views
+                            </a>
+                        </div>
+                        <div id="mViews" class="collapse in">
+                            <div class="box-body">
+                               Grid View
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-border">
+                        <div class="box-header ft-medium b-b p-x p-y-sm primary accrodian-height">
+                            <div class="empty-div"></div>
+                            <a data-toggle="collapse" data-parent="#accordion" class="primary" data-target="#cReports" aria-expanded="true">
+                                Custom Reports
+                            </a>
+                        </div>
+                        <div id="cReports" class="collapse in">
+                            <div class="box-body">
+                                Grid View
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-border">
+                        <div class="box-header ft-medium b-b p-x p-y-sm primary accrodian-height">
+                            <div class="empty-div"></div>
+                            <a data-toggle="collapse" data-parent="#accordion" class="primary" data-target="#sReports" aria-expanded="true">
+                                Standard Reports
+                            </a>
+                        </div>
+                        <div id="sReports" class="collapse in">
+                            <div class="box-body">
+                                Grid View
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        <!--</div>-->
+        <!--<div class="p-y p-l-1">
+            <div class="box-header p-t-1 p-b-1 p-l-0"><h5 class="ft-bold">All Reports</h5></div>
+            <div class="rp-accordion m-b-0 p-t-1" id="accordion">
+                <div class="navside whitenav-dropdown p-b-2" layout="column">
+                    <div class="nav-stacked  nav-active-primary" flex>
+                        <ul class="nav" ui-nav>
+
+                            <li class="active">
+                                <a class="reports-a-padding">
+                                    <span class="nav-caret text-muted">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+
+                                    <span class="nav-text">Model Views</span>
+                                </a>
+                                <ul class="nav-sub b-r b-l b-b">
+                                    <li>
+                                        <div class="col-sm-12 p-x-0">
+                                            <div class="box m-b-0">
+
+                                                <table class="table m-b-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Budget Detail Views
+                                                            </td>
+                                                            <td>Owner/Inverstor</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Budget Summary
+                                                            </td>
+                                                            <td>Property manager, operation listing browker ,Agent</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="navside whitenav-dropdown p-b-2" layout="column">
+                    <div class="nav-stacked  nav-active-primary" flex>
+                        <ul class="nav" ui-nav>
+
+                            <li class="active">
+                                <a class="reports-a-padding">
+                                    <span class="nav-caret text-muted">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+
+                                    <span class="nav-text">Custom Reports</span>
+                                </a>
+                                <ul class="nav-sub b-r b-l b-b">
+                                    <li>
+                                        <div class="col-sm-12 p-x-0">
+                                            <div class="box m-b-0">
+
+                                                <table class="table m-b-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Custome Trend Report
+                                                            </td>
+                                                            <td>View the gl's that meet theaudit or filter criteria</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Custome Trend Report
+                                                            </td>
+                                                            <td>View the gl's that meet theaudit or filter criteria</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="navside whitenav-dropdown p-b-2" layout="column">
+                    <div class="nav-stacked  nav-active-primary" flex>
+                        <ul class="nav" ui-nav>
+
+                            <li class="active">
+                                <a class="reports-a-padding">
+                                    <span class="nav-caret text-muted">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+
+                                    <span class="nav-text">Standard Reports</span>
+                                </a>
+                                <ul class="nav-sub b-r b-l b-b">
+                                    <li>
+                                        <div class="col-sm-12 p-x-0">
+                                            <div class="box m-b-0">
+
+                                                <table class="table m-b-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Account by Account
+                                                            </td>
+                                                            <td>View all budget G/L accounts</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Allocation Detail Report
+                                                            </td>
+                                                            <td>To view the budget detail wise allocation for the selected model</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Audit Test Report
+                                                            </td>
+                                                            <td>To view the G/L's that meet the audit or filter criteria</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-primary">
+                                                                Budget Planning
+                                                            </td>
+                                                            <td>To view the planningreport for all budgeted G/L account categories compared to actual through </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>-->
+    </div>
+</div>
+

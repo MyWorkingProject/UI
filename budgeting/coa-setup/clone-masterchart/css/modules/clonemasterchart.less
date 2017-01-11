@@ -1,0 +1,201 @@
+#cloneChart {
+    padding-left: 30px;
+    padding-right: 75px;
+
+    .controls {
+        .clearfix;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+    .rp-grid-filters-1 .rp-grid-row .property-name {
+        margin-left: 2.6%;
+    }
+
+    .property-name {
+        width: 20%;
+    }
+
+    .property-name input {
+        //margin-left:50px;
+    }
+
+    .current-chart {
+        //width: 30%;
+    }
+
+    .current-chart {
+        margin-left: 50px;
+    }
+
+    .last-cloned-date {
+        //width: 10%;
+    }
+
+    .cloned-by {
+        //width: 15%;
+        margin-left: 18px;
+    }
+
+    .rp-grid-cell {
+        //line-height:30px !important;
+    }
+
+    .clone-masterChart {
+        text-align: left;
+    }
+
+    .col-hdr {
+        .column(6);
+
+        @media @smallScreenOnly {
+            .column(12);
+        }
+
+        @media @mediumScreenOnly {
+            .column(12);
+        }
+
+        padding-top: 5px;
+    }
+
+    .fnsh-btn-align {
+        text-align: left;
+        padding-top: 0px;
+    }
+
+    .admin-page-content {
+        .rp-grid-wrap {
+            overflow-x: auto;
+        }
+
+        .rp-grid {
+            min-width: 500px;
+        }
+
+        margin: 30px;
+    }
+
+    .rp-grid {
+        min-width: 800px;
+    }
+
+    .clone-page-content {
+        padding-top: 0px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .btn-align {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .chart-heading {
+        .page-title;
+        float: left;
+        padding-bottom: 10px;
+    }
+
+    .btnBackNext {
+        float: right;
+    }
+
+    .clearfix;
+
+    .show-on-edit {
+        .hide;
+    }
+
+    &.edit {
+        .hide-on-edit {
+            .hide;
+        }
+
+        .show-on-edit {
+            .block;
+        }
+
+        .is-selected {
+            width: 3%;
+            display: table-cell;
+        }
+
+        .controls {
+            /*padding-top: 10px;*/
+            clear: both;
+        }
+
+        .page-content {
+            padding-top: 10px;
+        }
+
+        .admin-page-content {
+            margin: 30px;
+        }
+
+        cursor: default;
+    }
+
+    .is-selected {
+        .hide;
+    }
+
+    .clone-page-title{
+        margin-top:20px;
+    }
+}

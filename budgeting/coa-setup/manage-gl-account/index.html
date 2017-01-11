@@ -1,0 +1,455 @@
+<div id="managegl-page-content" class="managegl-page-content" ng-controller="BdgtManageGlAccountCtrl as page" ng-class="state">
+
+    <div class="btnBackNext right-float" ng-show="page.model.types.wizard">
+        <span class="button medium white newbtn backBtn" ng-click="page.backClick()">
+            <span>
+                {{::page.model.text.btnBack}}
+            </span>
+        </span>
+        <span class="button medium blue newbtn nextBtn" ng-click="page.nextClick()">
+            <span>
+                {{ page.model.text.btnNext }}
+            </span>
+        </span>
+    </div>
+    <h2 id="managelTitle" ng-show="page.model.types.isEditMode" class="managegl-page-title">{{::page.model.text.PageHeaderText}}</h2>
+
+
+    <div class="controls">
+
+        <span class="tooltip-container" ng-click="page.showActionMenu()" ng-init="page.actionsModel.state.actionMenuAlert">
+            <span class="button medium white newbtn actionsBtn show-on-edit">
+                <span class="text">
+                    {{ ::page.actionsModel.text.actions }}
+                </span>
+            </span>
+            <span class="tooltip rp-callout top" ng-class="{ active: page.actionsModel.state.actionMenuAlert }">{{::page.actionsModel.actionMenuList.selectActnMsg }}</span>
+        </span>
+        <span class="show-form-button button show-on-edit" ng-click="page.showHideForm()">
+            <span class="icon"></span>
+            <span class="text">{{::page.createUpdateGlModel.text.newAccount}}</span>
+        </span>
+
+        <div class="importglheader show-on-edit" ng-if="page.createUpdateGlModel.form.showGlImport">
+            <a ng-click="page.navigateToImport();" href="javascript:;"> {{::page.model.text.importGLAccount}}</a>
+
+        </div>
+
+        <div class="print" ng-click="page.togglePrintForm()">
+            <a href="">
+                {{::page.printModel.text.print}}
+            </a>
+        </div>
+
+        <rp-toggle class="table-filter-toggle"
+                   model="gridFactory.grid.filtersModel.state.active"
+                   options="{activeText: page.model.text.hideFilters,
+                                 defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+
+    </div>
+
+    <ul ng-show="page.actionsModel.state.menuIsOn" class="actionmenu">
+        <li ng-click="page.assignAccountCategories()">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.assignAccountCategory }}
+            </span>
+        </li>
+        <li ng-click="page.markForBudgetingUse()" class="menubreak">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.markForBudgetingUse }}
+            </span>
+        </li>
+        <li ng-click="page.unmarkForBudgetingUse()">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.unmarkForBudgetingUse }}
+            </span>
+        </li>
+        <li ng-click="page.setDebitBalance()" class="menubreak">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.setDebitBalance }}
+            </span>
+        </li>
+        <li ng-click="page.setCreditBalance()">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.setCreditBalance }}
+            </span>
+        </li>
+
+        <li ng-click="page.restrictPayrollAccess()" class="menubreak">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.restrictPayrollAccess }}
+            </span>
+        </li>
+        <li ng-click="page.unRestrictPayrollAccess()">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.unRestrictPayrollAccess }}
+            </span>
+        </li>
+
+        <li ng-click="page.moveToMasterChart()" ng-show="page.model.types.isPropertyChart" class="menubreak">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.moveToMasterChart }}
+            </span>
+        </li>
+
+        <li ng-click="page.delete()" class="menubreak">
+            <span class="text">
+                {{ ::page.actionsModel.actionMenuList.del }}
+            </span>
+        </li>
+    </ul>
+
+
+
+
+
+    <form ng-submit="page.submitAssignCategory()" novalidate ng-show=page.actionsModel.toggleAccountCategory.state.open
+          rp-slide-toggle="page.actionsModel.toggleAccountCategory"
+          class="new-Gl-form not-ready rp-inline-workflow max-form-width"
+          name="accountCategoryForm">
+
+        <div class="workflow-inner-wrap">
+            <span class="workflow-close" ng-click="page.hideAssignCategoryForm()"></span>
+            <h3 class="workflow-title">
+                {{::page.actionsModel.text.assignCategoryformTitle}}
+            </h3>
+
+            <div class="form-row row-break">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.actionsModel.fieldLabel.assignAccountCategory}}
+                    </p>
+
+                    <select required
+                            name="assignAccountCategory"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.createUpdateGlModel.form.accountCategory"
+                            rp-error-msg="page.createUpdateGlModel.errorMsgs.accountCategory"
+                            rp-select-options="page.createUpdateGlModel.form.accountCategoryData"
+                            ng-options="option.value as option.name for option in page.createUpdateGlModel.form.accountCategoryData.options"></select>
+
+                </div>
+
+            </div>
+
+            <div class="column-3 formctrl-block workflow-actions">
+                <button class="button" type="submit">
+                    {{::page.actionsModel.fieldLabel.assignText}}
+                </button>
+                <span class="button white cancel" ng-click="page.hideAssignCategoryForm()">
+                    {{::page.model.fieldLabel.cancelText}}
+                </span>
+            </div>
+
+        </div>
+    </form>
+
+
+    <form ng-submit="page.togglePrintForm()" novalidate ng-show=page.printModel.slidePrintParamsForm.isPrintSlideOn
+          rp-slide-toggle="page.printModel.slidePrintParamsForm"
+          class="new-Gl-form not-ready rp-inline-workflow max-form-width"
+          name="printParamsForm">
+
+        <div class="workflow-inner-wrap">
+            <span class="workflow-close" ng-click="page.hidePrintParamsForm()"></span>
+            <h3 class="workflow-title">
+                {{::page.printModel.text.printParamsFormTitle}}
+            </h3>
+
+            <div class="form-row row-break">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.printModel.printParamLabel.masterChartName}}
+                    </p>
+
+                    <p class="data-field">
+                        {{page.model.types.masterChartName}}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.printModel.printParamLabel.accountType}}
+                    </p>
+
+                    <select required
+                            name="accountType"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.printModel.printParamForm.accountType"                           
+                            rp-select-options="page.printModel.printParamForm.accountTypeData"
+                            ng-options="option.value as option.name for option in page.printModel.printParamForm.accountTypeData.options"
+                            ng-change="page.printModel.loadAccountCategory(page.printModel.printParamForm.accountType)"></select>
+
+
+                </div>
+                <div class="column-2 formctrl-block">
+                    <p class="field-label">
+                        {{ ::page.printModel.printParamLabel.accountCategory }}
+                    </p>
+
+
+                    <select required
+                            name="accountCategory"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.printModel.printParamForm.accountCategory"                           
+                            rp-select-options="page.printModel.printParamForm.accountCategoryData"
+                            ng-options="option.value as option.name for option in page.printModel.printParamForm.accountCategoryData.options"></select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.printModel.printParamLabel.useForBudget}}
+                    </p>
+
+                    <select required
+                            name="useForBudget"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.printModel.printParamForm.useForBudget"
+                            rp-select-options="page.printModel.printParamForm.useBudgetData"
+                            ng-options="option.value as option.name for option in page.printModel.printParamForm.useBudgetData.options"></select>
+
+
+                </div>
+                <div class="column-2 formctrl-block">
+                    <p class="field-label">
+                        {{ ::page.printModel.printParamLabel.payrollAccess }}
+                    </p>
+
+
+                    <select required
+                            name="payrollAccess"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.printModel.printParamForm.PayrollAccess"
+                            rp-select-options="page.printModel.printParamForm.payrollAccessData"
+                            ng-options="option.value as option.name for option in page.printModel.printParamForm.payrollAccessData.options"></select>
+                </div>
+            </div>
+
+            <div class="column-3 formctrl-block workflow-actions">
+                <button class="button" type="submit">
+                    {{::page.printModel.printParamLabel.printText}}
+                </button>
+                <span class="button white cancel" ng-click="page.hidePrintParamsForm()">
+                    {{::page.printModel.printParamLabel.cancelText}}
+                </span>
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+    <form   ng-submit="page.submit()" novalidate rp-track-form-changes ng-show=page.createUpdateGlModel.slideGLToggle.isGLSlideOn
+          rp-slide-toggle="page.createUpdateGlModel.slideGLToggle"
+          class="new-Gl-form not-ready rp-inline-workflow max-form-width"
+          name="newGlAccount">
+
+        <div class="workflow-inner-wrap">
+            <span class="workflow-close" ng-click="page.showHideForm()"></span>
+            <h3 class="workflow-title">
+                {{page.createUpdateGlModel.text.formTitle}}
+            </h3>
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block account-number">
+                    <p class="field-label">
+                        {{::page.createUpdateGlModel.fieldLabel.accountNumber}}
+                    </p>
+                    <span  ng-show="!page.createUpdateGlModel.form.enbAccNumber">
+                        <input required
+                               id="accountNumber"
+                               type="text"
+                               name="accountNumber"
+                               maxlength="70"
+                               class="rp-form-input"
+                               rp-wrapper-class="block"
+                               rp-instance-name="accountNumber"
+                              
+                               ng-model="page.createUpdateGlModel.form.accountNumber"
+                               ng-model-options="{updateOn: 'blur'}"
+                               rp-error-msg="page.createUpdateGlModel.errorMsgs.accountNumber"
+                               placeholder="{{::page.createUpdateGlModel.placeholder.accountNumber}}">
+                    </span>
+
+                    <p class="field-label" ng-show="page.createUpdateGlModel.form.enbAccNumber">
+                        {{page.createUpdateGlModel.form.accountNumber}}
+                    </p>
+
+                </div>
+                <div class="column-2 formctrl-block">
+
+                    <div class="form-checkbox-padding">
+                        <input type="checkbox" class="rp-form-checkbox"
+                               id="useForBudgeting" checked="checked"
+                               ng-model="page.createUpdateGlModel.form.userForBudgeting"
+                               ng-true-value="true" ng-false-value="false" />
+
+                        <label for="useForBudgeting" class="field-label form-chck-labl">
+                            {{::page.createUpdateGlModel.fieldLabel.useForBudgeting}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row row-break">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.createUpdateGlModel.fieldLabel.accountDescription}}
+                    </p>
+
+                    <input required
+                           id="accountDescription"
+                           type="text"
+                           name="accountDescription"
+                           maxlength="255"
+                           class="rp-form-input"
+                           rp-wrapper-class="block"
+                           rp-instance-name="accountDescription"
+                           ng-model="page.createUpdateGlModel.form.accountDescription"
+                           ng-model-options="{updateOn: 'blur'}"
+                           rp-error-msg="page.createUpdateGlModel.errorMsgs.accountDescription"
+                           placeholder="{{::page.createUpdateGlModel.placeholder.accountDescription}}">
+                </div>
+
+            </div>
+
+
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{::page.createUpdateGlModel.fieldLabel.accountType}}
+                    </p>
+
+                    <select required
+                            name="accountType"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.createUpdateGlModel.form.accountType"
+                            rp-error-msg="page.createUpdateGlModel.errorMsgs.accountType"
+                            rp-select-options="page.createUpdateGlModel.form.accountTypeData"
+                            ng-options="option.value as option.name for option in page.createUpdateGlModel.form.accountTypeData.options"
+                            ng-change="page.editSaveGlModel.loadAccountCategory(page.createUpdateGlModel.form.accountType)"></select>
+
+
+                </div>
+                <div class="column-2 formctrl-block">
+                    <p class="field-label">
+                        {{::page.createUpdateGlModel.fieldLabel.normalBalance}}
+                    </p>
+                    <div class="rp-select-menu-wrap block">
+
+                        <select name="normalBalance"
+                                class="rp-form-select"
+                                rp-wrapper-class="block"
+                                rp-update-display-text="true"
+                                ng-model="page.createUpdateGlModel.form.normalBalance"
+                                rp-select-options="page.createUpdateGlModel.form.normalBalanceData"
+                                ng-options="option.value as option.name for option in page.createUpdateGlModel.form.normalBalanceData.options"></select>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block">
+                    <p class="field-label">
+                        {{ ::page.createUpdateGlModel.fieldLabel.accountCategory }}
+                    </p>
+
+
+                    <select required
+                            name="accountCategory"
+                            class="rp-form-select"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-model="page.createUpdateGlModel.form.accountCategory"
+                            rp-error-msg="page.createUpdateGlModel.errorMsgs.accountCategory"
+                            rp-select-options="page.createUpdateGlModel.form.accountCategoryData"
+                            ng-options="option.value as option.name for option in page.createUpdateGlModel.form.accountCategoryData.options"></select>
+                </div>
+                <div class="column-2 formctrl-block">
+
+                    <div class="form-checkbox-padding">
+                        <input type="checkbox" class="rp-form-checkbox"
+                               id="restrictPayrollAccess"
+                               ng-model="page.createUpdateGlModel.form.restrictPayrollAccess"
+                               ng-true-value="true" ng-false-value="false" />
+
+                        <label for="restrictPayrollAccess" class="field-label form-chck-labl">
+                            {{::page.createUpdateGlModel.fieldLabel.restrictPayrollAccess}}
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="column-3 form-block">
+                <div class="field-label">
+                    {{::page.createUpdateGlModel.fieldLabel.accountNarrative}}
+
+                    <span class="narriative-option"> (optional) </span>
+
+                </div>
+                <div class="rp-textarea-wrap block">
+                    <textarea ng-trim="true"
+                              ng-minlength="1"
+                              name="description"
+                              ng-maxlength="512"
+                              class="rp-textarea"
+                              rp-wrapper-class="block"
+                              ng-model="page.createUpdateGlModel.form.accountNarrative"
+                              placeholder="{{::page.createUpdateGlModel.placeholder.accountNarrative}}"></textarea>
+
+                </div>
+            </div>
+
+
+            <div class="column-4 formctrl-block workflow-actions">
+                <button class="button" type="submit">
+                    {{::page.model.fieldLabel.saveText}}
+                </button>
+                <span class="button white cancel" ng-click="page.showHideForm()">
+                    {{::page.model.fieldLabel.cancelText}}
+                </span>
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <rp-grid class="managegl-grid max-grid-width" model="gridFactory.grid"></rp-grid>
+
+
+</div>
+<rp-notifications></rp-notifications>

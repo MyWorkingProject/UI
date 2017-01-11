@@ -1,0 +1,39 @@
+<div>
+	<div ng-if="record.displayStr !== ''">
+		<div class="panel-group" ng-model="record.expand" role="tablist" aria-multiselectable="true" bs-collapse>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab">
+					<h4 class="panel-title">
+						<a bs-collapse-toggle>
+							{{record[config.key]}}							
+						</a>
+					</h4>
+				</div><!-- .panel-heading -->
+
+				<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+					<div class="panel-body">
+						<div ng-repeat="desc in record.displayStr">
+							{{desc}}
+						</div>
+					</div>
+				</div><!-- .panel-collapse -->
+			</div>
+		</div>
+	<!--
+		<uib-accordion>
+			<uib-accordion-group is-open="record.expand">
+				<uib-accordion-heading>
+					{{record[config.key]}}
+				</uib-accordion-heading>
+
+				{{record.displayStr}}
+			</uib-accordion-group>
+		</uib-accordion>
+	-->
+	</div>
+
+	<div ng-if="record.displayStr === ''">
+		{{record[config.key]}}
+	</div>
+	
+</div>

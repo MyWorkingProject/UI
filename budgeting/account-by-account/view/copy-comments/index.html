@@ -1,0 +1,37 @@
+<div class="aside" id="copyCommentsAside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <i class="close rp-icon-delete-2 m-t-sm" ng-click="page.close()"></i>
+                <div class="p-t-sm">
+                    <h5>{{::page.fieldLabels.lblCopyComments}}</h5>
+                </div>
+            </div>
+            <div class="aside-body">
+                <ng-form name="copyComments" class="form-validation ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url">
+                    <div>
+                        <label class="form-label _600" for="copyCommentsModelName">{{::page.fieldLabels.lblModelType}}</label>
+                        <rp-form-select-menu config="page.formConfig.copyCommentsModelType" rp-model="page.model.form.copyCommentsModelType">
+                        </rp-form-select-menu>
+                    </div>
+                    <div class="m-t-1">
+                        <label class="form-label _600" for="copyCommentsModelType">{{::page.fieldLabels.lblModelName}}</label>
+                        <rp-form-select-menu config="page.formConfig.copyCommentsModelName" rp-model="page.model.form.cpyModelName">
+                        </rp-form-select-menu>
+                    </div>
+
+                    <div class="m-t-md">
+                        <div class="pull-xs-right">
+                            <button class="btn rounded btn-outline b-primary text-primary m-r-xs" ng-click="page.close()">
+                                {{::page.fieldLabels.lblCancel}}
+                            </button>
+                            <button class="btn rounded primary" ng-click="page.saveCopyComments(copyComments)">
+                                {{::page.fieldLabels.lblCopyComments}}
+                            </button>
+                        </div>
+                    </div>
+                </ng-form>
+            </div>
+        </div>
+    </div>
+</div>

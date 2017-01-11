@@ -1,0 +1,7 @@
+<span ng-if="!record.isLastRecord" ng-click="config.method(record)"
+      class="rp-grid-text rp-grid-link">
+    {{record[config.key]}}  
+</span>
+<span class="rpbgt-grid-total" ng-if="record.isLastRecord">
+    {{record[config.key]}}
+</span>

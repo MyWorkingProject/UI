@@ -1,0 +1,6 @@
+<span ng-if="record.status=='Pending' || record.status=='Complete'  || record.status=='In progress' || record.status=='Cancelled'  || record.status=='Hold'">
+    <span>{{record.status}}</span>
+</span>
+<span ng-if="record.status=='Overdue'">
+    <span class="over-due-warn">{{record.status}}</span>
+</span>

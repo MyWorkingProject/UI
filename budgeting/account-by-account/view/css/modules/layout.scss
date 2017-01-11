@@ -1,0 +1,249 @@
+//  Worksheet Summary Styles
+
+.account-by-account-view-section {
+
+    .rp-cg-locked {
+        .rp-cg-headers-row {
+            .description {
+                .rp-cg-headers-text {
+                    visibility: hidden;
+                }
+            }
+        }
+        .description {
+            .rp-cg-text {
+                &.rp-cg-body-text {
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+
+   .rp-cg-free {
+        .rp-cg-table {
+            width: 100% !important;
+
+            
+        }
+    }
+    
+    .rp-cg-free {
+        .rp-cg-table {
+            [class*='period'] {
+                span {
+                    width: 100px !important;
+                }
+            }
+
+            .total,
+            .avg-monthly,
+            .variance-amount,
+            .rolling-actual {
+                span {
+                    width: 100px !important;
+                }
+            }
+
+            .variance-percent {
+                span {
+                    width: 120px !important;
+                }
+            }
+
+             .comment-count{
+                span {
+                    width: 30px !important;
+                }
+            }
+           
+
+            .first-reference-data,
+            .forecast-use-data, 
+            .per-unit,
+            .per-sq-fT {
+                span {
+                    width: 80px !important;
+                }
+            }
+        }
+    }
+
+    .left-bar {
+        display: block !important;
+    }
+    /*.rp-cg-cell
+    {
+         min-width: 100px;
+    }*/
+    .budget-model-title {
+        margin-bottom: 0 !important;
+    }
+
+
+    .rp-cg {
+        float: left;
+    }
+    /*.page-buttons {
+        @include clearfix;
+        float:left;
+        margin-bottom: 15px;
+
+        .btn {
+            float: left;
+            margin-right: 20px;
+        }      
+    }*/
+    .level-2 {
+        &.group-header {
+            .column-title {
+                .rp-cg-text {
+                    @include title-2;
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+    .gross-rent-title {
+        @include link(underline);
+    }
+    .description {
+        &.rp-cg-cell {
+            text-align: left;
+        }
+    }
+
+
+    .total,
+    .period1,
+    .period2,
+    .period3,
+    .period4,
+    .period5,
+    .period6,
+    .period7,
+    .period8,
+    .period9,
+    .period10,
+    .period11,
+    .period,
+    .variance-amount,
+    .variance-percent,
+    .per-unit,
+    .per-sq-fT,
+    .rolling-actual,
+    .comment-count,
+    .avg-monthly,
+    .forecast-use-data,
+    .first-reference-data {
+        &.rp-cg-cell {
+            text-align: right;
+        }
+    }
+    /*.grid-reference-data {
+        .rp-cg-cell  {
+            border: none;
+         }
+        
+        .rp-cg-headers {
+            display: none;
+        }
+    }
+
+    .grid-editable-data {
+        .group-header.open .toggle-text .rp-cg-body-text {
+            visibility: visible;
+        }		
+    }*/
+    .text-underline {
+        text-decoration: underline;
+    }
+
+    .rp-icon-delete-2 {
+        cursor: pointer;
+        opacity: .6;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+
+    .rp-cg-locked {
+        .rp-cg-headers-row:first-child span {
+            visibility: hidden;
+        }
+    }
+
+
+    .b-l-cell-response {
+        border-left: 1px solid #ff6a00 !important;
+    }
+
+
+    .ui-select-match-text {
+        display: block;
+        width: 100px;
+        overflow: hidden;
+    }
+
+    .ui-select-search {
+        width: 100%;
+    }
+
+    .rp-icon-question-circle {
+        font-size: xx-large;
+        vertical-align: middle;
+    }
+
+    #applyActualsDialog {
+        z-index: 9999;
+        top: 30%;
+    }
+
+
+
+    .glDescription {
+        visibility: hidden;
+    }
+
+    .no-wrap {
+        white-space: nowrap;
+    }
+
+    .refRowStyle {
+        border-left: solid 2px red;
+        height: 12px;
+        padding: 0;
+        margin: 0;
+        max-height: 11px;
+        display: none;
+    }
+
+    .small {
+        .active-bar:before {
+            height: 36px;
+            margin-top: -6px;
+        }
+    }
+
+    .large {
+        .active-bar:before {
+            height: 50px;
+            margin-top: -13px;
+        }
+    }
+
+    .active-bar:before {
+        left: 0;
+        content: "";
+        position: absolute;
+        border-left: solid 2px $rp-accent;
+    }
+}
+
+.modal {
+    top: 280px !important;
+}

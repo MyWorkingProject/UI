@@ -1,0 +1,425 @@
+//  Worksheet Summary Styles
+
+.market-rent-section {
+    .modal-dialog {
+        top: 50px;
+    }
+
+    .error {
+        border: solid 1px $red;
+    }
+
+    .refRowStyle {
+        border-left: solid 2px $red;
+        height: 12px;
+        padding: 0;
+        margin: 0;
+        max-height: 11px;
+        display: none;
+    }
+
+    .display-inline {
+        display: inline-block;
+    }
+
+    .error-left {
+        border-right: solid 1px $red;
+    }
+
+    .finalized {
+        color: $success-color;
+        background-color: $success;
+    }
+
+    .read-only {
+        color: $grey-color;
+        background-color: $grey;
+    }
+
+    .mr-lable {
+        display: block !important;
+    }
+
+    .mr-text {
+        display: none !important;
+    }
+
+    .edit {
+        .mr-text {
+            display: block !important;
+        }
+
+        .mr-lable {
+            display: none !important;
+        }
+    }
+
+    .rp-cg {
+        margin-bottom: 1rem;
+    }
+
+    .clear-set {
+        clear: both;
+    }
+
+    .remove-icon {
+        cursor: pointer;
+    }
+
+    .even-ref {
+        background-color: $row-even !important;
+
+        tr {
+            td {
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .odd-ref {
+        background-color: $white !important;
+
+        tr {
+            td {
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
+
+    .rp-cg-locked {
+        .ref-data {
+            td:first-child span {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .reference-data-header {
+        display: none;
+    }
+
+    .ref-rows, .ref-calc-rows {
+        .reference-data-header {
+            display: table-row;
+
+            td {
+                padding-bottom: 0.75rem;
+                padding-top: 0.75rem;
+            }
+
+            .rp-cg-body-cell {
+                border-top: 1px solid $border-color;
+                border-right: none !important;
+                border-left: none !important;
+            }
+
+            .total {
+                visibility: hidden;
+            }
+        }
+
+        .rp-cg-free {
+            .reference-data-header {
+                .rp-cg-body-text {
+                    visibility: hidden;
+                }
+
+                .rp-cg-body-text::after {
+                    content: ".";
+                }
+            }
+
+            .rp-cg-body-cell,
+            .rp-cg-input-text {
+                text-align: right;
+            }
+        }
+    }
+
+    .reference-data-header {
+        background-color: $white !important;
+        border-bottom: 1px solid $border-color;
+        //border-top: 1px solid $border-color;
+        .rp-cg-body-cell {
+            cursor: default;
+        }
+
+        .rp-cg-body-text {
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+
+
+    .rp-angleDown {
+        @include rp-icon(angle-down);
+    }
+
+    .rp-calc-icon {
+        @include rp-icon(calculator-2);
+    }
+
+    .rp-del-icon {
+        @include rp-icon(delete);
+    }
+
+    .rp-angleUp {
+        @include rp-icon(angle-up);
+    }
+
+    tr {
+        display: table-row;
+    }
+
+    .rp-cg-headers {
+        .total {
+            span {
+                font-weight: bold !important;
+            }
+        }
+    }
+
+    .group-header {
+        .rp-cg-body-text {
+            font-weight: normal !important;
+        }
+    }
+    /* .rp-cg-body-row.group-header {
+        .total {
+            span {
+                font-weight: bold !important;
+            }
+        }
+    } */
+    .total {
+        span {
+            width: 70px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: normal !important;
+        }
+    }
+
+    .rp-cg-headers-cell {
+        //text-align: center !important;
+    }
+
+    .mr-title {
+        @include header-3;
+    }
+
+    .refresh-icon {
+        @include rp-icon(refresh);
+        opacity: 0.6;
+    }
+
+    .filter-icon {
+        @include rp-icon(filter);
+        cursor: pointer;
+        //opacity: 0.6;
+    }
+
+    .refresh-btn {
+        background: transparent;
+        //border: 1px solid $rp-neutral-04 !important;
+        opacity: 1;
+        border-radius: 0;
+
+        .btn-lable {
+            opacity: 0.6;
+        }
+    }
+
+    .btn-save {
+        width: 100px;
+    }
+
+
+
+    .refresh-icon::before {
+        //color:$rp-neutral-04;
+        padding-right: 8px;
+        vertical-align: middle;
+    }
+
+    .grid-header {
+        .change-rent {
+            color: $rp-secondary-03;
+        }
+
+        .actual-rent-cap {
+            color: $rp-secondary-03 !important;
+            vertical-align: bottom;
+        }
+    }
+
+    .actual-rent-cap-other {
+        padding-top: 3.4rem;
+    }
+
+
+
+    .unit-type-description {
+        width: 150px !important;
+    }
+
+    .rp-cg {
+        float: left;
+    }
+
+    .clearfloat {
+        clear: both;
+    }
+
+    .bring-to-front {
+        //z-index: 999;
+    }
+
+    .level-2 {
+        &.group-header {
+            .column-title {
+                .rp-cg-text {
+                    @include title-2;
+                    line-height: 25px;
+                }
+            }
+        }
+    }
+    /* .gross-rent-title {
+        @include link(underline);
+    } */
+    .column-title {
+        &.rp-cg-cell {
+            text-align: left;
+        }
+    }
+    /* .units,
+    .total,
+    .month01,
+    .month02,
+    .month03,
+    .month04,
+    .month05,
+    .month06,
+    .month07,
+    .month08,
+    .month09,
+    .month10,
+    .month11,
+    .month12 {
+        &.rp-cg-cell {
+            text-align: right;
+        }
+    }*/
+    /* .grid-reference-data {
+        .rp-cg-cell {
+            border: none;
+        }
+
+        .rp-cg-headers {
+            display: none;
+        }
+    } */
+    .ref-data {
+        display: none;
+    }
+
+    .ref-rows {
+        .ref-data {
+            display: table-row;
+        }
+    }
+
+    .ref-calc-rows tr {
+        display: table-row;
+    }
+
+    .ref-calc-rows tr td span {
+        //font-weight: bold;
+    }
+
+    .ref-calc-rows {
+        .bdc, .bpc {
+            display: table-row;
+            font-weight: normal;
+        }
+    }
+
+    .ref-rows {
+        .bdc, .bpc {
+            display: none;
+        }
+    }
+
+    .grid-editable-data {
+        .group-header.open .toggle-text .rp-cg-body-text {
+            visibility: visible;
+        }
+    }
+
+    .aparetment-count {
+        //@extend .text-right;
+        text-align: right;
+    }
+
+    .comment-cell {
+        color: $rp-primary !important;
+        padding-left: 1rem;
+    }
+
+    .bdc, .bpc {
+        display: none;
+    }
+
+    .ref-cal-rows {
+        .bdc, .bpc {
+            display: inline-block;
+
+            .total .rp-cg-body-text {
+                font-weight: normal;
+            }
+        }
+    }
+
+    .apts-beds-cell {
+        color: $rp-primary;
+    }
+
+
+
+    .new-unit-type {
+        color: $rp-primary !important;
+        margin-top: 1.9rem;
+    }
+
+    .grid-reference-data .rp-cg-table:first-of-type .markertRent td:first-child span {
+        font-weight: bold;
+    }
+
+    .rp-cg-editable {
+        //height: 25px;
+    }
+
+    .profarma-new-unit {
+        float: right;
+        color: $rp-primary;
+    }
+
+    .rp-select-menu {
+        width: 13.75rem;
+    }
+
+    .text-ellipsis {
+        width: 165px;
+        white-space: nowrap;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

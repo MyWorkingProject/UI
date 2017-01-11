@@ -1,0 +1,25 @@
+.contracts .rp-action-bar {
+	.ic-download {
+		@include fa-icon(download);
+	}
+	.select-all {
+		.md-check {
+				input[type="checkbox"]:checked + i:after {
+				border-color: $white;
+			}			
+		}
+
+		.select-type i {
+			margin-top: 0.4em;
+		}
+	}
+	
+	//tooltip
+	.popover {
+		display: none !important;
+	}
+	&.activate-tooltip .popover {
+		display: block !important;
+	}
+
+}

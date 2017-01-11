@@ -1,0 +1,405 @@
+﻿<!--
+<div id="manage-task-page-content" class="page-content" ng-class="page.model.state">
+
+
+
+    <div class="title-bottom  hide-on-edit">
+        <label class="page-title">{{page.model.text.title}}</label>
+        <div class="edit-tasks">
+            <span ng-click="page.model.edit()" class="link">
+                {{::page.model.text.edit}}
+            </span>
+        </div>
+    </div>
+
+    <div class="title-bottom  show-on-edit">
+        <label class="page-title">{{ page.model.text.title}}</label>
+        <div class="save-btn-div">
+            <span class="button medium blue newbtn save-btn-margn" ng-click="page.submit()">
+
+                <span>
+                    {{::page.model.fieldLabel.save}}
+
+                </span>
+
+            </span>
+            <span class="button medium white newbtn btnCancel" ng-click="page.cancel()">
+
+                <span>
+                    {{::page.model.fieldLabel.cancel}}
+
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <form ng-submit="page.submit()" novalidate rp-track-form-changes
+          class="rp-inline-workflow"
+          name="newTaskForm">
+
+
+        <div id="new-task-form-wrapper" class="form-wrapper">
+
+            <div class="row">
+                <div class="col col-12">
+                    <label class="form-label">{{::page.model.fieldLabel.title}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.title}}</p>
+                    <div class="show-on-edit">
+                        <input required
+                               id="title"
+                               type="text"
+                               name="title"
+                               class="rp-form-input "
+                               rp-wrapper-class="block"
+                               rp-instance-name="title"
+                               ng-model="page.model.form.title"
+
+                               ng-model-options="{updateOn: 'blur'}"
+                               rp-error-msg="page.model.errorMessages.title"
+                               placeholder="{{::page.model.placeholders.title}}" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-12">
+                    <label class="form-label">{{::page.model.fieldLabel.description}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.description}}</p>
+                    <div class="show-on-edit">
+                        <textarea required
+                                  id="description"
+                                  name="description"
+                                  ng-maxlength="3200"
+                                  ng-model="page.model.form.description"
+                                  placeholder="{{::page.model.placeholders.description}}"
+                                  class="rp-textarea"
+                                  rp-wrapper-class="block"
+                                  ng-trim="true"
+                                  rp-instance-name="description"
+                                  ng-model-options="{updateOn: 'blur'}"
+                                  rp-error-msg="page.model.errorMessages.description"></textarea>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-6">
+                    <label class="form-label">{{::page.model.fieldLabel.startDate}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.startDate}}</p>
+
+
+                    <rp-input-date  class="show-on-edit"
+                                   rp-wrapper-class="block"
+
+                                   model="page.model.form.startDate"
+                                    options=page.model.form.dateModel.options></rp-input-date>
+
+                </div>
+                <div class="col col-6">
+                    <label class="form-label">{{::page.model.fieldLabel.dueDate}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.dueDate}}</p>
+                    <rp-input-date class="show-on-edit"
+                                   rp-wrapper-class="block"
+                                   model="page.model.form.dueDate"
+                                   options=page.model.form.dueDateModel.options></rp-input-date>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col col-6">
+                    <label class="form-label">{{::page.model.fieldLabel.priority}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.priority}}</p>
+
+                    <div class="show-on-edit">
+                        <select ng-model="page.model.form.priority"
+                                class="rp-form-select"
+                                rp-select-options="page.model.form.priorityOptions"
+                                rp-wrapper-class="block"
+                                rp-update-display-text="true"
+                                ng-options="option.value as option.name for option in  page.model.form.priorityOptions.options"></select>
+                    </div>
+                </div>
+                <div class="col col-6">
+                    <label class="form-label">{{::page.model.fieldLabel.status}}</label>
+                    <p class="hide-on-edit">{{::page.model.form.status}}</p>
+                    <div class="show-on-edit">
+                        <select ng-model="page.model.form.status"
+                                class="rp-form-select show-on-edit"
+                                rp-select-options="page.model.form.statusOptions"
+                                rp-wrapper-class="block"
+                                rp-update-display-text="true"
+                                ng-options="option.value as option.name for option in  page.model.form.statusOptions.options"></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+    <div>
+        <rp-scrolling-tabs-menu model="page.tabsModel.tabsMenu" class="tasks-scrolling-tabs-menu-align">
+        </rp-scrolling-tabs-menu>
+    </div>
+    <div class="tabs">
+        <div ng-include src="page.tabsModel.includePage">
+        </div>
+    </div>
+
+</div> -->
+
+
+<div id="manage-task-page-content" class="page-content container-fluid"  >
+    <!--<div class="row">
+        <div class="col-xs-4 p-r-2 b-r">
+            <h5 class="modal-title text-primary m-b-md">
+                {{page.model.text.title}}
+            </h5>
+            <form class="ft-form" role="form" name="taskForm">
+                <div class="form-group">
+                    <label for="title">{{::page.model.fieldLabel.title}}</label>
+                    <input type="text" class="form-control" id="title" ng-model="page.model.form.title" placeholder="{{::page.model.placeholders.title}}">
+                </div>
+                <div class="form-group" ng-class="{'has-error': taskForm.startDate.$invalid}">
+                    <label for="startDate">{{::page.model.fieldLabel.startDate}}</label>
+                    <div class="input-group input-group-date date-width">
+                        <input type="text" id="startDate" class="form-control" ng-model="page.model.form.startDate" data-date-format="MM-dd-yyyy" data-autoclose="true" data-icon-left="fa fa-chevron-left" data-icon-right="fa fa-chevron-right" name="date1" bs-datepicker>
+                        <span class="fa fa-calendar"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">{{::page.model.fieldLabel.dueDate}}</label>
+                    <div class="input-group input-group-date date-width">
+                        <input type="text" id="endDate" class="form-control" ng-model="page.model.form.dueDate" data-date-format="MM-dd-yyyy" data-autoclose="true" data-icon-left="fa fa-chevron-left" data-icon-right="fa fa-chevron-right" name="date2" bs-datepicker>
+                        <span class="fa fa-calendar"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">{{::page.model.fieldLabel.description}}</label>
+                    <textarea rows="4"
+                              id="description"
+                              type="text"
+                              ng-model="page.model.form.description"
+                              name="comments"
+                              ng-minlength="1"
+                              ng-maxlength="512"
+                              class="form-control"
+                              ng-trim="true"
+                              rp-wrapper-class="block"
+                              rp-instance-name="description"
+                              ng-model-options="{updateOn: 'blur'}"
+                              rp-error-msg="page.model.errorMessages.description"
+                              placeholder="{{page.model.placeholders.description}}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priority">{{::page.model.fieldLabel.priority}}</label>
+                    <select ng-model="page.model.form.priority"
+                            class="rp-form-select form-control"
+                            rp-select-options="page.model.form.priorityOptions"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-options="option.value as option.name for option in  page.model.form.priorityOptions.options"></select>
+                </div>
+                <div class="form-group">
+                    <label for="status">{{::page.model.fieldLabel.status}}</label>
+                    <select ng-model="page.model.form.status"
+                            class="rp-form-select show-on-edit form-control"
+                            rp-select-options="page.model.form.statusOptions"
+                            rp-wrapper-class="block"
+                            rp-update-display-text="true"
+                            ng-options="option.value as option.name for option in  page.model.form.statusOptions.options"></select>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-4 p-l-2">
+            <h6 class="text-primary">
+                {{page.model.text.linkTaskText}}
+            </h6>
+        </div>
+    </div>-->
+    <div class="modal-complex modal-body p-b-0 p-l-0">
+        <form class="row modal-table" role="form" name="newTaskForm"> <!--form-validation-->
+            <div class="modal-table-row">
+                <div class="col-md-6">
+                    <h5 class="modal-title text-primary m-b-md">{{page.model.text.title}}</h5>
+                    <div class="form-group">
+                        <label for="title">{{::page.model.fieldLabel.title}}</label>
+                        <!--<input type="text" required class="form-control" id="title" name="title" ng-model="page.model.form.title" placeholder="{{::page.model.placeholders.title}}">-->
+                        <rp-form-input-text config="page.formConfig.title" rp-model="page.model.form.title">
+                        </rp-form-input-text>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">{{::page.model.fieldLabel.startDate}}</label>
+                        <!--<input type="text" required class="form-control" ng-model="page.model.form.startDate" data-date-format="MM/dd/yyyy" data-date-type="date" data-autoclose="true" data-icon-left="rp-icon-angle-left" data-icon-right="rp-icon-angle-right" name="startDate" bs-datepicker>-->
+                            <div class="">
+                                <div>
+                                    <!--<input type="text" required class="form-control" ng-model="page.model.form.startDate" data-date-format="MM/dd/yyyy" data-date-type="date" data-icon-left="fa fa-chevron-left" data-autoclose="true" data-icon-right="fa fa-chevron-right" name="startDate" data-trigger="click" bs-datepicker>
+                                    <span class="fa fa-calendar"></span>-->
+                                    <rp-datetimepicker rp-model="page.model.form.startDate"
+                                                       config="page.formConfig.startDate">
+                                    </rp-datetimepicker>
+                                </div>
+                            </div>                        
+
+                    </div>
+                    <div class="form-group">
+                        <label for="dueDate">{{::page.model.fieldLabel.dueDate}}</label>
+                        <div class="">
+                            <div >
+                                <!--<input type="text" required class="form-control" ng-model="page.model.form.dueDate" data-date-format="MM/dd/yyyy" data-date-type="date" data-icon-left="fa fa-chevron-left" data-autoclose="true" data-icon-right="fa fa-chevron-right" name="dueDate" data-trigger="click" bs-datepicker>
+                                <span class="fa fa-calendar"></span>-->
+                                <rp-datetimepicker rp-model="page.model.form.dueDate"
+                                                   config="page.formConfig.dueDate">
+                                </rp-datetimepicker>
+                            </div>
+                        </div>
+                        <!--<input type="text" required class="form-control" ng-model="page.model.form.dueDate" data-date-format="MM/dd/yyyy" data-date-type="date" data-autoclose="true" data-icon-left="rp-icon-angle-left" data-icon-right="rp-icon-angle-right" name="dueDate" bs-datepicker>-->
+                        <!--<div class='input-group date' ui-jp="datetimepicker" ui-options="{format: 'MM/DD/YYYY',
+                    icons: {
+                      time: '',
+                      date: 'fa fa-calendar',
+                      up: 'rp-icon-angle-up',
+                      down: 'rp-icon-angle-down',
+                      previous: 'rp-icon-angle-left',
+                      next: 'rp-icon-angle-right',
+                      today: '',
+                      clear: '',
+                      close: 'rp-icon-delete-2'
+                    }
+                  }">
+                            <input type="text" id="dueDate" required class="form-control" ng-model="page.model.form.dueDate" data-trigger="click"  >
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="form-control-label">{{::page.model.fieldLabel.description}}</label>
+                        <!--<textarea rows="3"
+                                  id="description"
+                                  type="text"
+                                  ng-model="page.model.form.description"
+                                  name="comments"
+                                  ng-minlength="1"
+                                  ng-maxlength="512"
+                                  class="form-control"
+                                  ng-trim="true"
+                                  rp-wrapper-class="block"
+                                  rp-instance-name="description"
+                                  ng-model-options="{updateOn: 'blur'}"
+                                  rp-error-msg="page.model.errorMessages.description"
+                                  placeholder="{{page.model.placeholders.description}}" required></textarea>-->
+                        <rp-form-textarea config="page.formConfig.description" rp-model="page.model.form.description">
+                        </rp-form-textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">{{::page.model.fieldLabel.status}}</label>
+                        <!--<select name="status" ng-model="page.model.form.status"
+                                class="form-control"
+                                rp-select-options="page.model.form.statusOptions"
+                                rp-update-display-text="true"
+                                ng-options="option.value as option.name for option in  page.model.form.statusOptions.options" required></select>-->
+                                <!--rp-wrapper-class="block"-->
+                        <rp-form-select-menu config="page.formConfig.status" rp-model="page.model.form.status">
+                        </rp-form-select-menu>        
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">{{::page.model.fieldLabel.priority}}</label>
+                        <!--<select ng-model="page.model.form.priority"
+                                class="form-control "
+                                rp-select-options="page.model.form.priorityOptions"
+                                rp-wrapper-class="block"
+                                rp-update-display-text="true"
+                                ng-options="option.value as option.name for option in  page.model.form.priorityOptions.options" required></select>-->
+                        <rp-form-select-menu config="page.formConfig.priorityOptions" rp-model="page.model.form.priority">
+                        </rp-form-select-menu>   
+                    </div>
+                </div>
+                <div class="col-md-1 separator-wrap">
+                    <div class="separator separator-arrow separator-height"></div>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="modal-sub-title text-primary m-b-md m-t-2"><i class="fa rp-icon-link link-font"></i>{{::page.model.fieldLabel.linkTask}}</h5>
+                    <div class="form-group">
+                        <label for="assignedTo">{{::page.model.fieldLabel.aasignedTo}}</label>
+                        <!--<input type="text" class="form-control" id="assignedTo">-->
+                        <ui-select multiple ng-model="page.dataModel.data.selectedUsers" ng-required theme="bootstrap" ng-disabled="page.dataModel.users.disabled" on-remove="page.userDelete($item)">
+                            <ui-select-match placeholder="{{page.model.placeholders.selectUsers}}">{{$item.userName}}</ui-select-match>
+                            <!--<ui-select-choices group-by="someGroupFn" repeat="user in page.dataModel.data.users | propsFilter: {userName: $select.search, roleName: $select.search,email: $select.search }">-->
+                            <ui-select-choices refresh="page.getUsers($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="user in page.dataModel.data.users">
+                                <div>
+                                    <span ng-bind-html="''+user.userName | highlight: $select.search"></span> 
+                                    <span ng-bind-html="' , '+user.roleName | highlight: $select.search"></span>
+                                </div>
+                                <small>
+                                    {{user.email}}
+                                    <!--{{user.phone=='' ? '':',' + user.phone}}-->
+                                    <!--<span ng-bind-html="user.phone==''?'':' , '+user.phone "></span>-->
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="relatedProperties">{{::page.model.fieldLabel.relatedProp}}</label>
+                        <!--<input type="text" class="form-control" id="relatedProperties">-->
+                        <ui-select multiple ng-model="page.dataModel.data.selectedProperties" ng-required theme="bootstrap" ng-disabled="page.dataModel.properties.disabled" on-remove="page.propertyDelete($item)">
+                            <ui-select-match placeholder="{{page.model.placeholders.selectProperties}}">{{$item.propertyName}}</ui-select-match>
+                            <ui-select-choices refresh="page.getProperties($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="property in page.dataModel.data.properties">
+                                <div ng-bind-html="property.propertyName | highlight: $select.search"></div>
+                                <small>
+                                    <span ng-bind-html="''+ property.propertyState | highlight: $select.search "></span>
+                                    <!--{{property.propertyState}}-->
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                    <div class="form-group">
+                        <label for="relatedModels">{{::page.model.fieldLabel.realtedModels}}</label>
+                        <!--<input type="text" class="form-control" id="relatedModels">-->
+                        <ui-select multiple ng-model="page.dataModel.data.selectedModels" ng-required theme="bootstrap" ng-disabled="page.dataModel.models.disabled" on-remove="page.modelDelete($item)">
+                            <ui-select-match placeholder="{{page.model.placeholders.selectModels}}">{{$item.budgetYear}} , {{$item.name}}</ui-select-match>
+                            <ui-select-choices refresh="page.getModels($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="model in page.dataModel.data.models ">
+                                <div>
+                                    <span ng-bind-html="''+model.budgetYear | highlight: $select.search"></span>    
+                                    <span ng-bind-html="' , '+model.name | highlight: $select.search"></span> 
+                                </div>
+                                
+                                <small>
+                                    {{model.budgetType}}
+                                    <span ng-bind-html="' , '+model.assetType "></span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer p-t-0 p-l-0">
+        <div class="row modal-table">
+            <div class="modal-table-row">
+                <div class="col-md-6 text-left p-t-1">
+                    <div>{{ page.model.text.createdText }}</div>
+                    <div>{{ page.model.text.modifiedText }}</div>
+                </div>
+                <div class="col-md-1 separator-wrap">
+                    <div class="separator"></div>
+                </div>
+                <div class="col-md-6 p-t-md">
+                    <div class="col-md-6 m-b-md">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-full p-x-md" ng-click="page.cancel()">{{::page.model.fieldLabel.cancel}}</button>
+                    </div>
+                    <div class="col-md-6 m-b-md">
+                        <button type="submit" class="btn primary rounded w-full p-x-md" ng-click="page.submit(newTaskForm)">{{::page.model.fieldLabel.save}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

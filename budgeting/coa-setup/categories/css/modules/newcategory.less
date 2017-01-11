@@ -1,0 +1,335 @@
+#category-page-content {
+    .coasetup .category-form {
+        .account-type,
+        .normal-balance-data,
+        .account-category-data {
+            width: 20%;
+        }
+
+        margin-left: 0px !important;
+
+        .account-number {
+            width: 50%;
+        }
+
+        .account-description {
+            width: 50%;
+        }
+
+        .account-narrative {
+            width: 100%;
+
+            @media @smallScreenAndBelow {
+                width: 67%;
+            }
+        }
+
+        .subtotal-option {
+            text-align: right;
+            // margin-left: 20px;
+            float: right;
+
+            @media @smallScreenAndBelow {
+                // margin-left: 5px;
+            }
+
+            font-style: italic;
+            .sub-title;
+        }
+
+        .account-number {
+            margin-right: 8%;
+        }
+
+        .account-category-data {
+            margin-right: 8%;
+        }
+
+        .column(12);
+
+        @media @mediumScreen {
+            .column(10);
+        }
+
+        @media @largeScreen {
+            .column(8);
+        }
+
+        .column-1 {
+            margin-left: 0 !important;
+            .column(12);
+
+            @media @smallScreen {
+                .column(6);
+            }
+
+            @media @largeScreen {
+                .column(5);
+            }
+        }
+
+
+
+        .column-2 {
+            .column(12);
+
+            @media @smallScreen {
+                .column(6);
+            }
+
+            @media @mediumScreen {
+                .column(4);
+            }
+
+            @media @largeScreen {
+                .column(3);
+            }
+        }
+
+        .column-3 {
+            .column(12);
+
+            @media @mediumScreen {
+                .column(10);
+            }
+
+            @media @largeScreen {
+                .column(8);
+            }
+        }
+
+        .add-links {
+            margin-top: 5px;
+
+            @media @defaultOnly {
+                text-align: center;
+            }
+        }
+
+        .form-title {
+            .bold;
+            .large-text;
+            .column(11);
+            color: @dark-gray;
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            .clearfix;
+        }
+
+        .row-break {
+            margin-bottom: 15px;
+        }
+
+        .remove-padding {
+            margin-bottom: 0 !important;
+        }
+
+        .break-line {
+            clear: both;
+            margin-left: 0px;
+            margin-bottom: 16px !important;
+        }
+
+        .row-break-top {
+            margin-top: 2%;
+        }
+
+        .form-category-row {
+            .clearfix;
+        }
+
+        .line-break {
+            border-bottom: solid 1px #bbbbbb;
+            padding-bottom: 10px;
+            width: 539px;
+        }
+
+        .cat-form-chkbox {
+            padding-top: 8px;
+        }
+
+        .div-linebreak {
+            //border-bottom: solid 1px #bbbbbb;
+            padding-bottom: 20px;
+            padding-top: 7px;
+            width: 519px;
+
+            @media @smallScreenAndBelow {
+                padding-bottom: 38px;
+            }
+        }
+
+        .div-linebreakHeader {
+            padding-bottom: 10px;
+            padding-top: 1px;
+            width: 519px;
+
+            @media @smallScreenAndBelow {
+                padding-bottom: 18px;
+            }
+        }
+
+        .div-options {
+            margin-left: 12px;
+
+            @media @smallScreenAndBelow {
+                margin-left: 1px;
+            }
+        }
+
+        .div-options-width {
+            float: left;
+            //width: 170px;
+            width: 47%;
+
+            @media @smallScreenAndBelow {
+                width: 120px;
+            }
+        }
+
+        .div-gl-option {
+            padding-top: 25px;
+        }
+
+        .div-category-width {
+            float: left;
+            width: 240px;
+
+            @media @smallScreenAndBelow {
+                width: 120px;
+            }
+        }
+
+        .div-gl-acnt-width {
+            float: left;
+            width: 240px;
+
+            @media @smallScreenAndBelow {
+                width: 119px;
+            }
+        }
+
+        .div-width {
+            width: 540px;
+
+            @media @smallScreenAndBelow {
+                width: 380px;
+            }
+        }
+
+
+
+        .form-block {
+            font-size: 0;
+            line-height: 0;
+            margin-bottom: 16px;
+            width: 250px;
+
+            @media @smallScreenAndBelow {
+                width: 98%;
+            }
+
+            &:last-child {
+                @media @smallScreen {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .formctrl-block {
+            font-size: 0;
+            line-height: 0;
+            margin-top: 5px;
+            width: 150px;
+
+            @media @smallScreenAndBelow {
+                width: 98%;
+            }
+
+            &:last-child {
+                @media @smallScreen {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .select-width {
+            width: 208px;
+
+            @media @smallScreenAndBelow {
+                width: 100px;
+            }
+        }
+
+        .formnarrative-block {
+            font-size: 0;
+            line-height: 0;
+            margin-bottom: 20px;
+            width: 570px;
+
+            &:last-child {
+                @media @smallScreen {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+
+        .field-label {
+            .small-text;
+            color: @dark-gray;
+        }
+
+        .pstyle {
+            color: black;
+            font-weight: bold;
+        }
+
+
+        .rp-input-text-wrap {
+            .block;
+        }
+
+        .create-savebutton {
+            margin-right: 20px;
+        }
+
+
+
+        .icon {
+            .icon-close;
+            .block;
+            .rounded(7px);
+            top: 6px;
+            width: 14px;
+            right: -20px;
+            height: 14px;
+            text-align: center;
+            position: absolute;
+            background-color: @gray;
+
+            &:before {
+                color: @white;
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
+
+        .category-form-chck-labl {
+            vertical-align: middle;
+            .inline-form-label;
+        }
+
+        .sub-header {
+            .sub-heading;
+        }
+    }
+}
+
+#category-page-content {
+    .max-form-width {
+        width: 70% !important;
+    }
+}

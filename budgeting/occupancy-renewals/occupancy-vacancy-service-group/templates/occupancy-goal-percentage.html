@@ -1,0 +1,12 @@
+<div class="rp-cg-text rp-cg-body-text  text-left rp-cg-editable ">
+    {{column.row.data[column.config.key] }}
+
+    <span ng-if="model.isEditable" class="text-right p-l-1 display-occupancy-goal">    
+            <input class="rp-cg-input-text rp-form-input" 
+                         ng-model-options="{updateOn: 'blur' }"  
+                         ng-change="column.config.action.change(column, row)" 
+                         ng-blur="column.config.action.blur(column, row)" 
+                         ng-model="column.row.data.goalPercentage">
+          
+    </span>
+</div>

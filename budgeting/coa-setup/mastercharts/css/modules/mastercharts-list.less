@@ -1,0 +1,290 @@
+//  mastercharts List Styles
+.coaSetup-Page{
+    padding-left:30px;
+    padding-top:25px;
+}
+
+.rp-scrolling-tabs-menu .rp-scrolling-tabs-screen {
+    margin-left: 0px;
+}
+
+
+.mastercharts-list {
+    .rp-grid {
+        min-width: 800px;
+    }
+
+    .chart-link {
+        .link;
+    }
+
+    .inprogressicon {
+        /*.icon-clock;*/
+        .v1-icon-in-progress;
+        position: absolute;
+        margin-top: 13px;
+        color: @light-orange;
+
+        &:before {
+            .block;
+            //color: #F59999;
+            font-size: 16px;
+            line-height: 24px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    .width(@w1, @w2) {
+        width: @w1;
+
+        @media @xLargeScreen {
+            width: @w2;
+        }
+    }
+
+    .mn(@m1, @m2) {
+        margin-left: @m1;
+
+        @media @xLargeScreen {
+            margin-left: @m2;
+        }
+    }
+
+    .rp-actions-menu {
+        .inline-block;
+    }
+
+    .action {
+        .width(7%,5%);
+        text-align: center;
+    }
+
+    .thumb {
+        width: 40px;
+        padding-right: 0;
+        text-align: left;
+
+        img {
+            .inline-block;
+        }
+    }
+
+    .name {
+        .width(28%,30%);
+    }
+
+
+
+    .is-alternative-coa {
+        .width(13%,15%);
+    }
+
+
+
+    .mapped-chart-names {
+        .width(10%,15%);
+    }
+
+
+
+
+
+    .last-modified-date {
+        .width(18%,20%);
+    }
+
+
+
+
+
+    .rp-grid-header-1 {
+        .logon-name {
+            // .width(16%, 17%);
+        }
+    }
+
+    .rp-grid-filter-1 {
+        .logon-name {
+            // .width(16%, 17%);
+        }
+
+        .site-name {
+            .width(16%, 23%);
+        }
+
+        .status {
+            .rp-select-menu {
+                width: 65px;
+            }
+        }
+    }
+}
+
+
+
+.table-filter-toggle {
+    .link;
+    .icon-filter;
+    .inline-block;
+    cursor: pointer;
+    min-width: 95px;
+    text-align: left;
+
+    &:before {
+        .block;
+        .float-left;
+        font-size: 16px;
+        line-height: 26px;
+        padding-right: 5px;
+    }
+
+    &.on {
+        color: @orange;
+
+        &:before {
+            color: @orange;
+        }
+    }
+
+    .active,
+    .inactive {
+        .block;
+        .small-text;
+        cursor: pointer;
+        line-height: 26px;
+    }
+
+    .active {
+        .hide;
+    }
+
+    &.on {
+        .active {
+            .inline;
+        }
+
+        .inactive {
+            .hide;
+        }
+    }
+}
+
+.actionmenulist {
+    .rounded(5px);
+    .box-shadow(0 0 5px rgba(100, 100, 100, 0.75));
+    background-color: @white;
+    overflow: hidden;
+    text-align: left;
+    position: absolute;
+    width: 120px;
+    z-index: 10;
+    margin-left: 7%;
+    margin-top: -1%;
+
+
+    li {
+        color: @blue;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 25px;
+        padding-left: 25px;
+
+        &:hover {
+            color: @white;
+            background-color: @blue;
+        }
+    }
+}
+
+.masterchart-page-content {
+    .page-content-wrap;
+
+    .show-form-button {
+        .float-left;
+        font-size: 0;
+        line-height: 24px;
+        position: relative;
+        padding: 0 0 0 20px;
+
+        span {
+            .inline-block;
+        }
+
+        .icon {
+            .v1-icon-add;
+            top: 0;
+            left: 0;
+            position: absolute;
+
+            &:before {
+                .block;
+                color: @white;
+                font-size: 7px;
+                line-height: 22px;
+                padding-left: 7px;
+                padding-right: 5px;
+            }
+        }
+
+        .text {
+            font-size: 13px;
+            line-height: 24px;
+            padding-right: 10px;
+        }
+
+        &.active {
+            cursor: default;
+            border-color: @link-active;
+            background-color: @link-active;
+        }
+    }
+}
+
+.masterchart-title {
+    padding-top: 20px;
+}
+
+.masterchart-scroll-div {
+    padding-top: 5px;
+}
+
+.actions-list {
+    width: 180px;
+}
+
+.action-link {
+    .default() {
+        line-height: 30px;
+    }
+
+    &.chart-view {
+        .v1-icon-view;
+        .default;
+    }
+
+    &.chart-edit {
+        .v1-icon-edit;
+        .default
+    }
+
+    &.chart-assign {
+        .v1-icon-settings;
+        .default;
+    }
+
+    &.chart-copy {
+        .v1-icon-copy;
+        .default
+    }
+
+    &.chart-print {
+        .v1-icon-print;
+        .default
+    }
+
+    &.chart-delete {
+        .v1-icon-delete;
+        .default
+    }
+}

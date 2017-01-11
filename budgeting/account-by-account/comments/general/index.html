@@ -1,0 +1,58 @@
+<div ng-controller="GeneralCommentsCtrl as generalComments" id="generalComments">
+    <div ng-if="generalComments.model.accessPrivilages">
+        <ng-form class="ft-form" role="form" name="postGeneralComments" novalidate>
+            <div class="form-group row">
+                <div class="col-sm-12 m-t-1">
+                    <rp-form-textarea config="generalComments.formConfig.commentsText" rp-model="generalComments.formData.form.commentsText">
+                    </rp-form-textarea>
+                </div>
+            </div>
+            <div class="form-group row p-r-sm">
+                <div class="pull-right">
+                    <button type="submit" ng-click="generalComments.postComment(postGeneralComments, generalComments.formData.form.commentsText)" class="btn rounded primary w-full">{{::generalComments.fieldLabels.postText}}</button>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+    <div ng-if="generalComments.model.isVisibleComments">
+        <div class="b-b m-b-1"></div>
+        <div class="row">
+            <div class="tab-content col-xs-12">
+                <div class="tab-pane p-v-sm active">
+                    <div class="streamline b-l m-b m-l">
+                        <div class="sl-item" ng-repeat="comment in generalComments.model.comments">
+                            <div class="sl-left">
+                                <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+                            </div>
+                            <a class="rp-icon-trash text-primary pull-right" ng-click="generalComments.deleteComment(comment.commentID)" ng-if="comment.isEditable"> </a>
+                            <a class="rp-icon-edit-text text-primary pull-right m-r-sm" ng-click="generalComments.editComment(comment)" ng-if="comment.isEditable"> </a>
+                            <div class="sl-content">
+                                <div class="sl-date text-neutral-02">{{comment.lastModifiedDate}} <i class="fa fa-circle circle-icon text-neutral-02"></i> {{comment.appliesTo}}</div>
+
+                                <span class="text-primary">{{comment.createdBy}}</span>
+
+                                <div ng-if="comment.isEdit">
+                                    <ng-form class="ft-form" role="form" name="editgeneralComment" novalidate>
+                                        <div class="rp-comment">
+                                            <rp-form-textarea config="generalComments.formConfig.editResponse" rp-model="generalComments.formData.form.editCommentText">
+                                            </rp-form-textarea>
+                                            <div class="pull-right edit-buttons m-t-sm m-b-1">
+                                                <button class="btn rounded info w-xs" ng-click="generalComments.updateComment(editgeneralComment, generalComments.formData.form.editCommentText)">
+                                                    {{::generalComments.fieldLabels.saveText}}
+                                                </button>
+                                                <button class="btn rounded btn-outline b-primary text-primary w-xs" ng-click="generalComments.hideComment(comment)">{{::generalComments.fieldLabels.cancelText}}</button>
+                                            </div>
+                                        </div>
+                                    </ng-form>
+                                </div>
+                                <div ng-if="!comment.isEdit">
+                                    <p>{{comment.comment}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

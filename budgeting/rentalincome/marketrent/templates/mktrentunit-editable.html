@@ -1,0 +1,17 @@
+<div class="rp-cg-editable">
+    <span class="rp-cg-text rp-cg-body-text mr-lable">
+        {{column.getVal().toLocaleString()}}
+    </span>
+
+    <div ng-class="{'error': column.row.data.programID > 0 && (column.row.data.grpBalUnitCount < 0) && (column.row.data.currrentGrp === column.row.data.programID)}">
+        <input class="rp-cg-input-text rp-form-input text-right mr-text"
+               ng-focus="column.config.makeRentCountFocus(column.config, column)"
+               ng-disabled="column.row.data.programID < 1 ? true : false"
+               ng-model-options="{updateOn: 'blur'}"
+               title="{{column.row.data.title}}"
+               ng-change="column.config.makeRentUnitVal(column.config, model,column)"
+               ng-model="column.row.data[column.config.key]"
+               onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+    </div>
+
+</div>

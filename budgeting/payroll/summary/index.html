@@ -1,0 +1,35 @@
+<div id="payroll-summary" class="m-b-md">
+    <div class="white">
+        <div class="m-t-1">
+            <div class="pull-left">
+                <button class="btn rounded primary m-r-1" ng-click="page.newEmployee()"><i class="fa fa-fw fa-plus"></i> {{::page.fieldLabels.newEmployee}}</button>
+                <button class="btn rounded btn-outline b-primary text-primary"  ng-click="page.newJobPosition()"><i class="fa fa-fw fa-plus"></i> {{::page.fieldLabels.newPosition}}</button>
+            </div>
+            <div class="p-y-md p-t-sm pull-right clearfix" ng-init="gridFactory.grid.filtersModel.state.active = false">
+                <div class="pull-right grid-controls">
+                    <div class="grid-control-item" ng-click="page.showReports()">
+                        <span class="text">
+                            {{::page.fieldLabels.reportViews}}
+                        </span>
+                    </div>
+                    <div class="grid-control-item">
+                        <span class="text">
+                            <a href="" ng-click="page.showAnnualizeTaxes()">{{::page.fieldLabels.annualizeTaxes}}</a></span>
+                    </div>
+                    <div class="grid-control-item">
+                        <rp-toggle model="page.model.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Filter',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                      activeIconClass: 'rp-icon-filter'
+                                }">
+                        </rp-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="page.model.grid">
+        <rp-grid model="page.model.grid">
+        </rp-grid>
+    </div>
+</div>

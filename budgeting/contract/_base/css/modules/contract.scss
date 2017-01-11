@@ -1,0 +1,64 @@
+#contract-wrapper {
+
+	/* Cancel and Save Button */
+	.contract-controls {
+		top: 50%;
+
+		.btn {
+			margin-top: -1rem;
+            padding-top: 0.65rem;
+		}
+	}
+
+	.form-control-label {
+        color: $rp-secondary-04;
+		font-weight: 600;
+	}
+
+	.rp-grid-wrap { 
+        // Overwrite .rp-grid-wrap overflow styles because it's hiding the action menu
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+
+    .md-check > i.white {
+    	&:before {
+    		border: 1px solid $ash-gray;
+    	}
+    	&:after {
+    		border-color: $dark-gray;
+    	}
+    }
+
+    .ic-arrow-right-circle {
+        @include fa-icon(arrow-circle-o-right);
+    }
+    .ic-calculator {
+        @include fa-icon(calculator);
+    }
+    .ic-calendar {
+        @include fa-icon(calendar);
+    }
+    .ic-edit {
+        @include fa-icon(edit);
+    }
+
+    .contract {
+        &-main {
+            &-hd {
+                text-transform: uppercase;
+            }
+
+            &-subheader {
+                @include header-1($rp-primary);
+            }
+        }
+    }
+
+    #define-contract-wrapper {
+        .tab-content {
+            padding: 1.5rem 0 1rem;
+        }
+    }
+        
+}

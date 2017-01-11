@@ -1,0 +1,6 @@
+<span class="rp-cg-text rp-cg-body-text pointer" 
+      ng-class="{'text-primary': row.data.commentCount > 0, 'text-warning': row.data.reviewerCommentCount > 0}" 
+      ng-click="column.config.loadComments(column, row)" >
+    <i class="rp-icon-chat-bubble"></i>
+    {{  row.data.reviewerCommentCount + row.data.commentCount }}
+</span>

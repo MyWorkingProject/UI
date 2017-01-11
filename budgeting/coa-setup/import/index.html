@@ -1,0 +1,30 @@
+﻿<div class="imprt-page-src">
+    <div class="rp-wizard-step current">
+        <h2 class="rp-wizard-step-title page-heading">{{ ::page.model.text.heading }}</h2>
+        <div class="rp-wizard-controls" ng-show="page.model.form.wizard">
+            <span class="button medium white newbtn backBtn" ng-click="page.backClick()">
+                    {{ ::page.model.text.back }}
+            </span>
+            <span class="button medium blue newbtn nextBtn" ng-click="page.nextClick()">
+                    {{ ::page.model.text.next }}
+            </span>
+        </div>
+    </div>
+    <form name="imprtSel">
+        <div class="col-xs-12">
+            <div class='import-section col-xs-6'>
+                <span class="source-label">{{ ::page.model.text.sourceTxt }}</span>
+                <select name="sourceDrpDwn"
+                        class="rp-form-select"
+                        rp-wrapper-class="block"
+                        rp-update-display-text="true"
+                        ng-model="page.model.form.selVal"
+                        rp-select-options="page.model.form.source"
+                        ng-options="option.value as option.name for option in page.model.form.source.options"
+                        ng-change="page.loadNextView()"></select>
+            </div>
+            <div ui-view>
+            </div>
+        </div>
+    </form>
+</div>

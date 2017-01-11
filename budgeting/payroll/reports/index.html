@@ -1,0 +1,17 @@
+<div class="aside aside-payroll-report" tabindex="-1" role="dialog" style="width:80%">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <div class="p-t p-b-sm">
+                    <span class="h5">{{page.pageTitle}}</span>
+                </div>
+            </div>
+            <div class="aside-body" style="border: none;">
+                <rp-scrolling-tabs-menu model="page.scrollingTabs" class="payroll-report-view-tabs m-b-sm nav-width">
+                </rp-scrolling-tabs-menu>
+                <div ng-include="page.activeTab.tabViewUrl"></div>
+            </div>
+        </div>
+    </div>
+</div>

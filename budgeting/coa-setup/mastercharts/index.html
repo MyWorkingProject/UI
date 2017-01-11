@@ -1,0 +1,55 @@
+
+<div class="masterchart-page-content">
+    <div class="masterchart-title">
+        <h3 class="mastercharts-page-title">{{::page.model.text.PageHeaderText}}</h3>
+    </div>
+    <div class="masterchart-scroll-div">
+        <rp-scrolling-tabs-menu model='page.model.tabsMenu'>
+        </rp-scrolling-tabs-menu>
+    </div>
+
+   
+    <div ng-show="page.model.form.mastercharts.isActive">
+
+      
+            <h3 class="mastercharts-moduel-title">{{ ::page.model.text.moduleText }}</h3>
+        
+
+        <div class="controls">
+
+            <span class="show-form-button button" ng-click="page.showActionMenu()">
+                <span class="icon"></span>
+                <span class="text">{{::page.model.text.newMasterChartText}}</span>
+            </span>
+
+            <rp-toggle class="table-filter-toggle"
+                       model="gridModel.grid.filtersModel.state.active"
+                       options="{activeText: page.model.text.hideFilters,
+                       defaultText: page.model.text.showFilters}">
+            </rp-toggle>
+
+        </div>
+
+      
+            <ul  ng-show="page.model.form.isMenuOn" class="actionmenulist">
+                <li ng-click="page.navToNormalMasterchart()">
+                    <span class="text">
+                        {{ ::page.model.actionMenuList.masterchart }}
+                    </span>
+                </li>
+                <li ng-click="page.navToAltMasterchart()">
+                    <span class="text">
+                        {{ ::page.model.actionMenuList.altMasterChart }}
+                    </span>
+                </li>
+
+            </ul>
+
+      
+
+        <div class="mastercharts-list">
+            <rp-grid  model="gridModel.grid"></rp-grid>
+        </div>
+    </div>
+    <div ng-include src="page.model.includePage">
+    </div>

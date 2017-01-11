@@ -1,0 +1,54 @@
+<div id="assign-gl-account" class="aside" tabindex="-1" role="dialog">
+	<div class="aside-dialog">
+		<div class="aside-content">
+
+			<div class="aside-header">
+				<button type="button" class="close" ng-click="page.closeModal()">
+					<i class="ic-close rp-icon-delete-2"></i>
+				</button>
+        		<h4 class="aside-title">{{::page.translate("aga_header")}}</h4>
+			</div>
+
+			<div class="aside-body">
+				<!-- Master Charts Unavailable -->
+				<div class="aga-master-charts-err" ng-if="page.state.errorMessage">
+					<i class="rp-icon-alert"></i> {{page.state.errorMessage}}
+				</div>
+
+				<!-- Assign GL Accounts Form -->
+				<ng-form ng-if="page.state.isReady" name="page.state.assignGLsForm" role="form" novalidate>
+					<rp-grid model="page.model.grid"></rp-grid>
+				</ng-form>
+			</div><!-- .aside-body -->
+
+			<div class="aside-footer">
+					<div class="aga-override-switch" ng-if="page.state.hasOverwriteOpt">
+						<label for="isOverwriteGLAssignments">
+							{{::page.translate("aga_overwrite")}}
+						</label>
+						<label class="ui-switch primary">
+	                    	<input type="checkbox"
+	                    		id="isOverwriteGLAssignments"
+	                    		name="isOverwriteGLAssignments"
+	                    		ng-model="page.model.overwriteGLAssignments">
+	                    	<i></i>
+	                	</label>
+					</div>
+			        <div class="aga-button-wrapper">
+			            <button class="btn btn-outline b-primary text-primary rounded"
+			            		ng-click="page.closeModal()"			            		
+			            		type="button"> 
+			                {{::page.translate("aga_btn_cancel")}}
+			            </button>  
+			            <button class="btn rounded primary"
+			            		ng-click="page.assignGLAcct()"
+			            		ng-disabled="page.state.errorMessage || !page.state.isReady"
+			            		type="button"> 
+			                {{::page.translate("aga_btn_assign")}}
+			            </button>             
+			        </div> 
+			</div><!-- .aside-footer -->
+
+		</div>
+	</div>
+</div>

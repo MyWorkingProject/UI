@@ -1,0 +1,221 @@
+<div id="contract-wrapper" class="container-fluid">
+
+<div id="define-contract-wrapper" ng-hide="page.contract.state.schedule.open" class="contract-{{page.contract.state.page}}">
+
+    <div class="box-header p-x-0">
+        <span class="contract-main-hd">{{::page.translate("bdgt_contract_title")}}</span>
+        <h1 class="contract-main-subheader" ng-if="!page.contract.isNew()">{{page.contract.model.vendor.vendorName}}</h1>
+        <h1 class="contract-main-subheader" ng-if="page.contract.isNew()">{{::page.translate("bdgt_new_contract_title")}}</h1>
+
+        <div class="contract-controls box-tool">
+            <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-r-sm"
+                    ng-if="page.contract.isDisplayForm()"
+                    ng-click="page.cancel()">
+                {{::page.translate("bdgt_new_contract_cancel")}}</button>
+            <button class="save btn rounded primary w-xs"
+                    ng-if="page.contract.isDisplayForm()"
+                    ng-click="page.save()">
+                {{::page.translate("bdgt_contract_save")}}
+            </button>
+            <a class="edit btn btn-outline rounded b-primary text-primary w-xs"
+                    ng-if="!page.contract.isDisplayForm()"
+                    href="#/contract/edit/{{page.contract.model.id}}" >
+                <span class="ic-edit"></span> {{::page.translate("bdgt_new_contract_edit")}}
+            </a>
+        </div>
+    </div>
+
+    <div class="box-body p-a-0">
+
+    <!--   <form name="defineContractForm" editable-form onbeforesave="page.validator.checkContract($data)" onaftersave="" novalidate class="ft-form" role="form"> -->
+    <form name="defineContractForm" novalidate class="ft-form" role="form">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <input type="submit" id="define-contract-save" class="invisible" />
+
+                <div class="form-group row">
+                    <!-- vendor -->
+                    <div class="col-md-6 col-sm-12">
+                        <label class="form-control-label">{{::page.translate("bdgt_new_contract_vendor_lbl")}}</label>
+
+                        <ui-select ng-if="page.contract.isDisplayForm()"
+                                class="vendor-selector"
+                                ng-model="page.contract.model.vendor"
+                                ng-required="true"
+                                reset-search-input="false"
+                                theme="bootstrap">
+
+                            <ui-select-match placeholder="{{::page.translate('bdgt_new_contract_vendor_placeholder')}}">
+                                {{$select.selected.vendorName}}
+                            </ui-select-match>
+
+                            <ui-select-choices repeat="result in page.vendor.results track by result.vendorID"
+                                    refresh="page.vendor.search($select.search)"
+                                    refresh-delay="300">
+                                <span class="clearfix" ng-bind-html="result.vendorName | highlight: $select.search">{{::result.vendorName}}</span>
+                                <small>
+                                    <span ng-bind-html="result.vendorCode | highlight: $select.search">{{::result.vendorCode ? result.vendorCode : 'N/A'}},</span>&nbsp;
+                                    <span ng-bind-html="result.stateCode | highlight: $select.search">{{::result.stateCode ? result.stateCode : 'N/A' }}</span>
+                                </small>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <p class="form-control-static" ng-if="!page.contract.isDisplayForm()">
+                            {{page.contract.model.vendor.vendorName}}
+                        </p>
+
+                        <!--
+                        <div editable-ui-select="page.contract.model.vendor"
+                                data-e-name="vendor" name="vendor"
+                                data-e-ng-model="page.contract.model.vendor"
+                                data-onbeforesave="page.validator.checkVendor($data)"
+                                theme="bootstrap">
+
+                            {{page.contract.model.vendor.vendorName}}
+
+                            <editable-ui-select-match placeholder="{{::page.translate('bdgt_new_contract_vendor_placeholder')}}">
+                                {{$select.selected.vendorName}}
+                            </editable-ui-select-match>
+
+                            <editable-ui-select-choices
+                                    repeat="result in page.vendor.results track by result.vendorID"
+                                    refresh="page.vendor.search($select.search)"
+                                    refresh-delay="300">
+                                <span class="clearfix" ng-bind-html="result.vendorName | highlight: $select.search">{{::result.vendorName}}</span>
+                                <small>
+                                    <span ng-bind-html="result.vendorCode | highlight: $select.search">{{::result.vendorCode ? result.vendorCode : 'N/A'}},</span>&nbsp;
+                                    <span ng-bind-html="result.stateCode | highlight: $select.search">{{::result.stateCode ? result.stateCode : 'N/A' }}</span>
+                                </small>
+                            </editable-ui-select-choices>
+                        </div>
+                        -->
+
+                        <!-- add vendor -->
+                        <div class="m-t-xs" ng-if="page.contract.isDisplayForm()">
+                            <a class="text-primary" data-toggle="modal" 
+                               data-target="#addVendorModel"
+                               ui-toggle-class="modal-open-aside" ui-target="body">{{::page.translate("bdgt_new_contract_addVendor_lnk")}}</a>
+                       </div>
+                    </div>
+
+                    <!-- description -->
+                    <div class="col-md-6 col-sm-12">
+                        <label class="form-control-label">{{::page.translate("bdgt_new_contract_desc_lbl")}}</label>
+
+                         <rp-form-input-text ng-if="page.contract.isDisplayForm()"
+                            config="page.contract.config.description"
+                            rp-model="page.contract.model.description">
+                        </rp-form-input-text>
+
+                        <p class="form-control-static" ng-if="!page.contract.isDisplayForm()">
+                            {{ page.contract.model.description }}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- notes -->
+                <div class="form-group">                        
+                    <label class="form-control-label">{{::page.translate("bdgt_new_contract_notes_lbl")}}</label>
+
+                    <rp-form-textarea ng-if="page.contract.isDisplayForm()"
+                        config="page.contract.config.notes" 
+                        rp-model="page.contract.model.notes">
+                    </rp-form-textarea>
+
+                    <p class="form-control-static notes" ng-if="!page.contract.isDisplayForm()">
+                        {{page.contract.model.notes || "n/a"}}
+                    </p>
+                    <!--
+                    <textarea ng-model="page.contract.model.notes"
+                              placeholder="{{::page.translate('bdgt_new_contract_notes_placeholder')}}"
+                              class="form-control"
+                              rp-wrapper-class="block"
+                              ng-trim="true"></textarea>
+                    -->
+                </div>
+                
+            </div>
+        </div><!-- end: Contract Form -->
+                        
+        <div class="m-t-md">
+            <div class="tabbable-panel">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" data-target="#schedule-wrapper">
+                                {{::page.translate("bdgt_contract_schedule_title")}}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#documents-wrapper">
+                                {{::page.translate("bdgt_contract_document_title")}}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" data-target="#properties-wrapper">
+                                {{::page.translate("bdgt_contract_properties_title")}}
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content m-t-sm">
+                        <!-- Schedule -->
+                        <div id="schedule-wrapper" class="tab-pane animated fadeIn row active">
+                            <div class="col-xs-12" ng-show="page.contract.isDisplayForm()">
+                                <button ng-click="page.addNewSchedule()" 
+                                        class="btn rounded primary m-b-sm"
+                                        type="button">
+                                    + {{::page.translate("bdgt_contract_new_sched")}}</button>
+                            </div>
+                            
+                            <ng-include src="'contract/schedule/payment-terms/index.html'"></ng-include>
+                        </div><!-- end: Schedule -->
+
+                        <!-- Documents -->
+                        <div id="documents-wrapper" class="tab-pane animated fadeIn row">
+                            <div class="col-xs-12" ng-show="page.contract.isDisplayForm()">
+                                <button class="btn rounded primary m-b-sm" ng-show="page.contract.isDisplayForm()" type="button">
+                                    + {{::page.translate("bdgt_contract_new_doc")}}</button>
+                            </div>
+                            
+                        </div><!-- end: Documents -->
+
+                        <!-- Properties -->
+                        <div id="properties-wrapper" class="tab-pane animated fadeIn row">
+                            <ng-include src="'contract/properties/index.html'"></ng-include>
+                        </div><!-- end: Properties -->
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end: Tabs -->
+      </form>
+    </div><!-- end: New Contract Box -->
+</div>
+
+<ng-include src="'contract/schedule/index.html'" ng-if="page.contract.state.schedule.open"></ng-include>
+
+ <!-- Create New Vendor -->
+  <div class="vendor-form modal fade ng-scope" id="addVendorModel" style="display: none;">
+        <div class="right white b-t vendor-form-width">
+            <div class="row-col">
+                <div class="top-spacer">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">×</a>
+                    <div class="p-a b-b">
+                        <span class="h5"> {{::page.translate("bdgt_contract_new_vendor_title")}}</span>
+                    </div>
+                </div>                    
+                <div class="row-row ng-scope">
+                    <div class="row-body">
+                        <div class="row-inner">
+                            <div class="p-a">
+                                <ng-include src="'contract/vendor-form/index.html'">
+                                </ng-include>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <!-- end: Create New Vendor -->
+</div>

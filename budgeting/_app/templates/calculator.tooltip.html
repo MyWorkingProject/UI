@@ -1,0 +1,11 @@
+<div class="popover" tabindex="-1">
+	<div class="arrow"></div>
+	<h3 class="popover-title" ng-show="title">{{title}}</h3>
+	<div class="popover-content">
+		<p class="calculator-popover-content" 
+			ng-repeat="currContent in page.calculator.form.data.tooltipDesc"
+			ng-class="{'content-header':currContent.isHeader}">
+				{{currContent.msg}}
+		</p>		
+	</div>
+</div>

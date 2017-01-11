@@ -1,0 +1,75 @@
+<div id="budget-comments-responses">
+    <div class="right w-xl white b-l">
+        <div class="top-spacer">
+            <a data-dismiss="modal" class="pull-right text-muted text-lg p-t-sm" ng-click="page.dashboardComment.commentID > 0  ? page.dashboardComment.taskCommentResp() : page.resetForm(postNewComment)"> &times;</a>
+            <div class="p-a">
+                <span class="h5">{{page.dashboardComment.commentID > 0  ? page.dashboardComment.text.comment_edit : page.dashboardComment.text.comment_new}}</span>
+            </div>
+        </div>
+
+        <div class="list-group">
+            <ng-form class="ft-form" role="form" name="postNewComment" novalidate>
+                <div class="form-group row">
+                    <div class="col-sm-12 m-t-1">
+                        <rp-form-textarea config="page.formConfig.commentsResponse" rp-model="page.dashboardComment.commentsResponse">
+                        </rp-form-textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="property">{{:: page.dashboardComment.text.choose_property_lbl}}</label>
+                    <ui-select multiple ng-model="page.dashboardComment.chooseProperty" theme="bootstrap" config="page.formConfig.chooseProperty" on-remove="page.propertyDelete($item)" ng-required="true">
+                        <ui-select-match placeholder="{{:: page.dashboardComment.text.choose_property}}">{{$item.propertyName}}</ui-select-match>
+                        <ui-select-choices refresh="page.getProperties($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="property in page.dashboardComment.data.property">
+                            <div>
+                                <span ng-bind-html="''+property.propertyName | highlight: $select.search"></span>
+                            </div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">{{:: page.dashboardComment.text.choose_model_lbl}}</label>
+                    <ui-select multiple ng-model="page.dashboardComment.chooseModel" config="page.formConfig.chooseModel" ng-required="true" theme="bootstrap" on-remove="page.modelDelete($item)">
+                        <ui-select-match placeholder="{{:: page.dashboardComment.text.choose_model}}">{{$item.modelName}}</ui-select-match>
+                        <ui-select-choices refresh="page.getModels($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="model in page.dashboardComment.modelNames.records">
+                            <div>
+                                <span ng-bind-html="''+model.modelName | highlight: $select.search"></span>
+                            </div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">{{:: page.dashboardComment.text.choose_year_lbl}}</label>
+                    <ui-select multiple ng-model="page.dashboardComment.chooseYear" config="page.formConfig.chooseYear" ng-required="true" theme="bootstrap" on-remove="page.yearDelete($item)">
+                        <ui-select-match placeholder="{{:: page.dashboardComment.text.choose_year}}">{{$item.budgetYearValue}}</ui-select-match>
+                        <ui-select-choices refresh="page.getYears($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="year in page.dashboardComment.data.years">
+                            <div>
+                                <span ng-bind-html="''+year.budgetYearValue | highlight: $select.search"></span>
+                            </div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dueDate">{{:: page.dashboardComment.text.pintostart}}</label>
+                    <div class="">
+                        <div>
+                            <rp-datetimepicker rp-model="page.dashboardComment.pinToStart"
+                                               config="page.formConfig.pinToStart">
+                            </rp-datetimepicker>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+            <div class="form-group row p-r-sm">
+                <div class="col-xs-4 p-r-0 pull-right">
+                    <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.dashboardComment.commentID > 0  ? page.submitEditComment(postNewComment) : page.submitNewComment(postNewComment)">{{:: page.dashboardComment.text.postBtnText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

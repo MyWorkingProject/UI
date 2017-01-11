@@ -1,0 +1,18 @@
+<div class="cb-r-n-b">
+    <div id="glSearch"><!--class="input-group"-->
+    <ui-select ng-model="dir.intialGLAccnt" ng-required theme="bootstrap" ng-disabled="false" on-select="dir.onSelected($item)">
+            <ui-select-match placeholder="{{dir.selectGLText}}">{{$select.selected.glAccountNumber}} {{ $select.selected.glAccountNumber!=undefined?" - ":"" }} {{$select.selected.glAccountDescription}}</ui-select-match>
+        <ui-select-choices group-by="'accountCategoryName'" refresh="dir.getGlAccount($select.search)" refresh-delay="2" repeat="glAccount in dir.glList">
+            <div>
+                <span ng-bind-html="''+glAccount.glAccountNumber | highlight: $select.search"></span>
+                    <span ng-bind-html="glAccount.glAccountDescription | highlight: $select.search"></span>
+            </div>
+        </ui-select-choices>
+    </ui-select>
+        <!--<span class="input-group-btn">
+            <button ng-click="dir.clearGL()" class="btn white">
+                <span class="fa fa-remove"></span>
+            </button>
+        </span>-->
+    </div>
+</div>

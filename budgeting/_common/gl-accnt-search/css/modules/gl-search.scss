@@ -1,0 +1,26 @@
+#glSearch {
+    position: relative;
+
+    .ui-select {
+        &-search {
+            border-right: 1px solid $rp-neutral-04 !important;
+            padding-right: 3rem;
+        }
+
+        &-choices-group {
+            .dropdown-header {
+                color: black;
+                font-weight: bold;
+            }
+        }
+
+        &-match-text {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: block;
+            margin-top: .1rem;
+        }
+    }
+}

@@ -1,0 +1,144 @@
+﻿<div id="defadj-page-content">
+    <form name="defAdjustment">
+            <h2 class="chart-title">{{ ::page.model.text.pageTitle }}</h2>
+            <h3 class="module-heading">{{ page.model.formDefault.chartName }}</h3>
+            <div class="table-controls filter-right btns-filters">
+                <span class="button medium blue newbtn applyBtn" ng-click="page.model.toggleDefAdjModel()">
+                    {{ ::page.budgetModel.labels.applyTxt }}
+                </span>
+                <span class="button medium white newbtn saveBtn" ng-click="page.saveDefAdjPer()">
+                    {{ ::page.model.text.saveTxt }}
+                </span>
+                <span class="tooltip-container" ng-click="page.toggleDefAdjPer()" ng-init="page.model.formDefault.tooltipState">
+                    <span class="link assignLnk">
+                        <span class="complete-icon"></span>
+                        {{ ::page.model.text.assignDefaultPerTxt }}
+                    </span>
+                    <span class="tooltip rp-callout bottom" ng-class="{ active: page.model.formDefault.tooltipState }">Select atleast one category</span>
+                </span>
+                <rp-toggle class="table-filter-toggle"
+                           model="page.model.grid.filtersModel.state.active"
+                           options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+                </rp-toggle>
+            </div>
+            <div rp-slide-toggle="page.model.formDefault.toggleDefAdjState" name="defPerArea" class="rp-inline-workflow workFlow">
+                <div class="workflow-inner-wrap">
+                    <span class="workflow-close" ng-click="page.model.toggleDefAdjPercent()"></span>
+                    <h3 class="workflow-title">
+                        {{ ::page.model.text.assignDefaultPerTxt }}
+                    </h3>
+
+
+                    <div class="form-row">
+                        <div class="column-1 formctrl-block account-number">
+                            <p class="field-label">
+                                {{ ::page.model.text.defaultPer }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-1">
+                            <input id="glbAdjPer"
+                                   type="number"
+                                   name="glbAdjPer"
+                                   maxlength="50"
+                                   class="rp-form-input"
+                                   rp-instance-name="glbAdjPer"
+                                   ng-model="page.model.formDefault.adjPer"
+                                   rp-error-msg=""
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-row workFlowBtns">
+                        <span class="button medium blue newbtn applyBtn" ng-click="page.assignDefPer();">
+                            {{ ::page.model.text.assignTxt }}
+                        </span>
+                        <span class="button medium white newbtn saveBtn" ng-click="page.model.toggleDefAdjPercent()">
+                            {{ ::page.model.text.cancelTxt }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--Budget Model-->
+            <div rp-slide-toggle="page.budgetModel.form.toggleDefAdjModelState" name="defPerModel" class="rp-inline-workflow workFlow">
+                <div class="workflow-inner-wrap">
+                    <span class="workflow-close" ng-click="page.model.toggleDefAdjModel()"></span>
+                    <h3 class="workflow-title">
+                        {{ ::page.budgetModel.labels.applyDefaultPerTxt }}
+                    </h3>
+
+
+                    <div class="form-row">
+                        <div class="column-1 formctrl-block yearCol">
+                            <p class="field-label">
+                                {{ ::page.budgetModel.labels.yearTxt }}
+                            </p>
+                            <select name="yearDrpDwn"
+                                    class="rp-form-select"
+                                    rp-wrapper-class="inline-block"
+                                    rp-update-display-text="true"
+                                    rp-option-name-key="budgetYearText"
+                                    rp-option-value-key="budgetYearValue"
+                                    ng-model="page.budgetModel.form.defBdgtYear"
+                                    rp-select-options="page.budgetModel.form.adjPerYearSrc"
+                                    ng-options="option.budgetYearValue as option.budgetYearText for option in page.budgetModel.form.adjPerYearSrc.options"
+                                    ng-change="page.loadModelData()"></select>
+                        </div>
+                        <div class="column-2  formctrl-block">
+                            <p class="field-label">
+                                {{ ::page.budgetModel.labels.modelTypeTxt }}
+                            </p>
+                            <select name="modelTypeDrpDwn"
+                                    class="rp-form-select"
+                                    rp-wrapper-class="inline-block"
+                                    rp-update-display-text="true"
+                                    ng-model="page.budgetModel.form.defModelType"
+                                    rp-select-options="page.budgetModel.form.modelTypes"
+                                    ng-options="option.value as option.name for option in page.budgetModel.form.modelTypes.options"
+                                    ng-change="page.loadModelData()"></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="column-1  formctrl-block model-name-col">
+                            <p class="field-label">
+                                {{ ::page.budgetModel.labels.modelNameTxt }}
+                            </p>
+                            <select name="modelDrpDwn"
+                                    class="rp-form-select"
+                                    rp-wrapper-class="inline-block"
+                                    rp-update-display-text="true"
+                                    rp-option-name-key="budgetModelName"
+                                    rp-option-value-key="budgetModelID"
+                                    ng-model="page.budgetModel.form.adjPerModel"
+                                    rp-select-options="page.budgetModel.form.adjPerModelSrc"
+                                    ng-options="option.budgetModelID as option.budgetModelName for option in page.budgetModel.form.adjPerModelSrc.options"></select>
+                        </div>
+                    </div>
+                    <div class="form-row over-write-div">
+                        <div class="column-1 formctrl-block over-write-checkbox-wrapper">
+                            <input type="checkbox" id="defChkOverWrite" name="defChkOverWrite" class="rp-form-checkbox" ng-model="page.budgetModel.form.defChkOverWrite" ng-true-value="true" ng-false-value="false" />
+                            <label for="defChkOverWrite">{{ ::page.budgetModel.labels.defChkOverWriteTxt }}</label>
+                        </div>
+                        <div class="column-2 formctrl-block">
+                            <div class="info-tooltip" ng-click="page.showOverWriteInfo()" ng-init="page.budgetModel.form.infoToolTip">
+                                <span class="info-icon"></span>
+                                <span class="tooltip rp-callout right help-icon" ng-class="{ active: page.budgetModel.form.infoToolTip }">{{ ::page.budgetModel.labels.overWriteHelp}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row workFlowBtns">
+                        <span class="button medium blue newbtn applyBtn" ng-click="page.applyDefPerBdgtModel()">
+                            {{ ::page.budgetModel.labels.applyTxt }}
+                        </span>
+                        <span class="button medium white newbtn saveBtn" ng-click="page.model.toggleDefAdjModel()">
+                            {{ ::page.budgetModel.labels.cancelTxt }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        <div ng-if="gridFactory.grid">
+            <rp-grid model="gridFactory.grid"></rp-grid>
+        </div>
+    </form>
+</div>

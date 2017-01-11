@@ -1,0 +1,51 @@
+<div id="payroll-item-renewal-commission" ng-controller="PayrollRenewalCommnItemCtrl as payrollItem" ng-init="payrollItem.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::payrollItem.fieldLabels.headerTitle}}</h5>
+            <div class="inline p-r-1 pointer" ng-click="payrollItem.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{payrollItem.model.commentCount }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="payrollItem.model.isEdit" ng-click="payrollItem.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::payrollItem.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="payrollItem.model.grid">
+        <ng-form class="form-horizontal" role="form" name="payrollItem.model.form" novalidate>
+            <div class="col-md-12">
+                <div class="rp-action-bar box" ng-if="payrollItem.model.isEdit">
+                    <div class="row">
+                        <div class="col-md-9 p-a-0">
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="leaseRenewalPercentage">{{::payrollItem.fieldLabels.leaseRenewalText}} {{::payrollItem.fieldLabels.preSuffixPercentage}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.leaseRenewalPercentage" rp-model="payrollItem.model.leaseRenewalPercentage">
+                                </rp-form-input-text>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="renewalCommission">{{::payrollItem.fieldLabels.renewalCommissionText}} {{::payrollItem.fieldLabels.preSuffixCurrency}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.renewalCommission" rp-model="payrollItem.model.renewalCommission">
+                                </rp-form-input-text>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="mtmRenewalPercentage">{{::payrollItem.fieldLabels.mtmRenewalText}} {{::payrollItem.fieldLabels.preSuffixPercentage}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.mtmRenewalPercentage" rp-model="payrollItem.model.mtmRenewalPercentage">
+                                </rp-form-input-text>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="mtmCommission">{{::payrollItem.fieldLabels.mtmCommissionText}} {{::payrollItem.fieldLabels.preSuffixCurrency}}</label>
+                                <rp-form-input-text ng-if="payrollItem.model.isEdit" config="payrollItem.formConfig.mtmCommission" rp-model="payrollItem.model.mtmCommission">
+                                </rp-form-input-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <rp-cg model="payrollItem.model.grid">
+                </rp-cg>
+        </ng-form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="payroll-item-summary" ng-controller="PayrollSummaryItemCtrl as payrollItem">
+    <div class="row m-b">
+        <div class="col-md-12">
+            <h5>{{::payrollItem.headerTitle}}</h5>
+        </div>
+    </div>
+    <div class="row" ng-if="payrollItem.model.grid">
+        <rp-cg model="payrollItem.model.grid">
+        </rp-cg>
+    </div>
+</div>

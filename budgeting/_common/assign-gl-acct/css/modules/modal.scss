@@ -1,0 +1,48 @@
+#assign-gl-account {
+	width: 600px;
+	z-index: 4000 !important; //overwrite inline assignment
+
+	@media #{$smScAndBelow} {
+		width: 100%;
+	}
+
+	.aside {
+		&-body {
+			padding-bottom: 150px;
+		}
+
+		&-footer {
+			text-align: left;
+
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}	
+	}
+
+	.ic-close {
+		color: $rp-neutral-04;		
+		@include x-small-text;
+	}
+
+	.aga {
+		&-master-charts-err {
+			i {
+				color: $rp-danger;
+			}
+		}
+		&-override-switch {
+			display: inline-block;
+			width: 60%;
+			padding: 0.6rem 0;
+
+			label {
+				margin: 0 0.5rem 0 0;
+				vertical-align: top;
+			}
+		}
+		&-button-wrapper {
+			float: right;
+		}
+	}
+}

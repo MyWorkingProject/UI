@@ -1,0 +1,40 @@
+//	Section Toggle Menu
+
+.option-toggle-menu {
+	ul {
+		.float-left;
+		.clearfix;
+		.rounded(5px);
+		overflow: hidden;
+		border: solid 1px @blue;
+		background-color: @blue;
+	}
+
+	li {
+		.float-left;
+		color: @blue;
+		cursor: pointer;
+		font-size: 11px;
+		padding-top: 1px;
+		line-height: 17px;
+		padding-left: 8px;
+		padding-right: 8px;
+		background-color: @white;
+
+		&.active {
+			color: @white;
+			cursor: default;
+			background-color: transparent;
+		}
+	}
+
+	&.large {
+		li {
+			font-size: 12px;
+			line-height: 20px;
+			// font-weight: bold;
+			padding-left: 12px;
+			padding-right: 12px;
+		}
+	}
+}

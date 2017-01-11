@@ -1,0 +1,146 @@
+<div class="other-options">
+    <form name="frmOtherOptions" confirm-on-exit>
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <h5 class="col-xs-6">{{::page.getLangValue('other_options_page_title')}}</h5>
+            <div class="form-group col-xs-6">
+                <div class="col-sm-9 col-sm-offset-3" ng-show="!page.model.form.isFinalize">
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.showForm()" ng-show="!page.model.form.visible">
+                        <i class="fa fa-edit"></i>
+                        {{::page.getLangValue('form_edit')}}
+                    </button>
+                    <!-- buttons to submit / cancel form -->
+                    <span ng-show="page.model.form.visible" class="pull-right">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs"  ng-click="page.cancel()">
+                            {{::page.getLangValue('form_cancel')}}
+                        </button>
+                        <button type="submit" class="btn rounded primary w-xs" ng-click="page.saveOtherOptions(frmOtherOptions)">
+                            {{::page.getLangValue('form_save')}}
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Property Details-->
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('form_property_title')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                
+                <div class="row sample-fit-form-row">
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="hudid">{{::page.getLangValue('form_hudid')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.hudid" rp-model="page.formData.hudid">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.hudid==="" ? "N/A" : page.formData.hudid }}</label>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="owner">{{::page.getLangValue('form_owner')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.owner" rp-model="page.formData.owner" >
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.owner ==="" ? "N/A" : page.formData.owner }}</label>
+                         
+                    </div>
+                </div>
+                <div class="row sample-fit-form-row p-t-1">
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="yearBuilt">{{::page.getLangValue('form_yearbuilt')}}</label>
+                        <rp-form-input-text  ng-show="page.model.form.visible" config="page.formConfig.yearBuilt" rp-model="page.formData.yearBuilt">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.yearBuilt ==="" ? "N/A" : page.formData.yearBuilt }}</label>
+
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="propertyCode">{{::page.getLangValue('form_propertycode')}}</label>
+                        <span class="rp-icon-question-circle p-l-sm" ng-click="page.showProductToooltip()"></span>
+                        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-product" ng-show="page.model.form.productToolTip">
+                            <span class="arrow left pull-left white"></span>
+                            <div class="box-body">
+                                {{::page.getLangValue('product_tool_tip')}}
+                            </div>
+                        </div>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.propertyCode" rp-model="page.formData.propertyCode">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.propertyCode  === null ? "N/A" : page.formData.propertyCode }}</label>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <!-- Other Assumptions Section-->
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('form_otherassumptions_title')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                
+
+                <div class="row sample-fit-form-row">
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="attachedGarages">{{::page.getLangValue('form_attached_garages')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.attachedGarages" rp-model="page.formData.attachedGarages">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.attachedGarages ==="" ? "N/A" : page.formData.attachedGarages }}</label>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="detachedGarages">{{::page.getLangValue('form_detached_garages')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.detachedGarages" rp-model="page.formData.detachedGarages">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.detachedGarages ==="" ? "N/A" : page.formData.detachedGarages }}</label>
+                    </div>
+
+                    
+                </div>
+                <div class="row sample-fit-form-row p-t-1">
+                   
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="storageUnits">{{::page.getLangValue('form_storage_units')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.storageUnits" rp-model="page.formData.storageUnits">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.storageUnits ==="" ? "N/A" : page.formData.storageUnits }}</label>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="carports">{{::page.getLangValue('form_carports')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.carports" rp-model="page.formData.carports">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.carports ==="" ? "N/A" : page.formData.carports }}</label>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Payroll Options Section-->
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t">
+            <span class="text-primary ft-s-18">{{::page.getLangValue('form_payroll_options_title')}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+
+                <div class="row sample-fit-form-row">
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="payrollIncreaseDate">{{::page.getLangValue('form_dateofincrease')}}</label>                       
+                        <rp-datetimepicker ng-show="page.model.form.visible"  rp-model="page.formData.payrollIncreaseDate"
+                                           config="page.formConfig.payrollIncreaseDate">
+                        </rp-datetimepicker>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.payrollIncreaseDate === null ? "N/A" : page.formData.payrolDate }}</label>
+
+                    </div>
+
+                    <div class="col-md-5">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="payrollIncreasePercent">{{::page.getLangValue('form_increase_percent')}}</label>
+                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.payrollIncreasePercent" rp-model="page.formData.payrollIncreasePercent">
+                        </rp-form-input-text>
+                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{ page.formData.payrollIncreasePercent === null ? "N/A" : page.formData.payrollIncreasePercent }}</label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

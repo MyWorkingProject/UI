@@ -1,0 +1,26 @@
+<div id="custom-worksheets" class="container-fluid">
+    <model-basic-info></model-basic-info>
+    <div class="row m-b-sm">
+        <h3 class="text-primary p-l-1 m-b-xs">{{::page.fieldLabels.headerTitle}}</h3>
+    </div>
+    <div class="row m-b-sm">
+        <div class="col-md-2 col-sm-2">
+            <rp-form-select-menu config="page.formConfig.accountTypes" rp-model="page.model.accountType">
+            </rp-form-select-menu>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <rp-form-select-menu config="page.formConfig.accountCategories" rp-model="page.model.accountCategory">
+            </rp-form-select-menu>
+        </div>
+        <div class="col-md-3 col-sm-3">
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <rp-form-input-text config="page.formConfig.filterGrid" rp-model="page.model.search">
+            </rp-form-input-text>
+        </div>
+    </div>
+    <div class="row" ng-if="page.model.grid">
+        <rp-cg model="page.model.grid">
+        </rp-cg>
+    </div>
+</div>

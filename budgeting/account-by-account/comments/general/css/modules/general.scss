@@ -1,0 +1,32 @@
+#generalComments {
+    label {
+        font-weight: 600;
+    }
+
+    .edit-buttons {
+        .w-xs {
+            width: 4.18rem;
+        }
+
+        .btn {
+            height: 1.9rem;
+            padding: 0;
+            font-weight: 400;
+            font-size: .85rem;
+        }
+    }
+    .circle-icon
+    {
+        font-size: .4rem;
+        margin: 0 4px;
+        position:relative;
+        bottom: 2px;
+    }
+    .sl-content {
+        width: 13rem;
+    }
+    .rp-comment
+    {
+        width: 15.6rem;
+    }
+}

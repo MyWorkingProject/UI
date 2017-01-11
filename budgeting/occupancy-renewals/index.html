@@ -1,0 +1,14 @@
+<div id="occupancy-and-renewals" ng-if="page.state.isReady" class="container-fluid">
+    <div ng-show="page.bmDetails.modelStatus">
+        <model-basic-info></model-basic-info>
+        <div ng-show="page.bmDetails.tabStatus" class="row">
+            <h3 class="budget-model-title text-primary p-l-1 m-b-xs">
+                {{::page.pageTitle}}
+            </h3>
+        </div>
+        <div ng-show="page.bmDetails.tabStatus">
+            <rp-scrolling-tabs-menu model="page.scrollingTabs" class="m-y-md"></rp-scrolling-tabs-menu>
+        </div>
+    </div>
+    <div ui-view ng-cloak class="oar-tab-contents"></div>
+</div>

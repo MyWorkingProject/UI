@@ -1,0 +1,32 @@
+.rentalincomepage {
+    .budget-model-title {
+        padding-left: 16px;
+        color: #42A5F5;
+    }
+    .finalized {
+        color: $success-color;
+        background-color: $success;
+    }
+    .read-only {
+        color: $grey-color;
+        background-color: $grey;
+    }
+
+}
+
+.aside {
+    z-index: 9999 !important;
+    width: 450px;
+}
+
+.actual-rent-cap {
+    .description {
+        width: 10rem;
+    }
+
+    .rp-grid-body-1 {
+        .market-rent-amount {
+            text-align: right;
+        }
+    }
+}

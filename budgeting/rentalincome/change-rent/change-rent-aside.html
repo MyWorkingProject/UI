@@ -1,0 +1,125 @@
+<!-- Calculation Options -->
+<ng-form novalidate  role="form" name="changerent">
+    <div class="form-group row">
+
+        <!-- Method Sources Selector -->
+        <div class="col-md-4">
+            <label class="form-control-label">{{::page.translate("bdgt_change_rent_method")}}</label>
+
+            <a class="text-neutral m-l-sm"
+               title="{{page.calculator.form.data.tooltipTitle}}"
+               data-content="{{page.calculator.form.data.tooltipDesc}}"
+               data-placement="right"
+               data-auto-close="1"
+               bs-popover>
+                <i class="rp-icon-question-circle"></i>
+            </a>
+
+            <select name="calculationMethod"
+                    ng-model="page.calculator.model.data.method"
+                    ng-change="page.methodChange()"
+                    class="form-control"
+                    rp-select-options="page.calculator.form.data.methods"
+                    rp-update-display-text="true"
+                    ng-options="currOpt.value as currOpt.name for currOpt in page.calculator.form.data.methods.options"
+                    required></select>
+
+        </div>
+
+        <!-- Source Data Selector -->
+        <div class="col-md-3" ng-show="page.calculator.form.state.calculationSource">
+            <label class="form-control-label">{{::page.translate("bdgt_change_rent_source")}}</label>
+            <select name="calculationSource"
+                    ng-model="page.calculator.model.data.source"
+                    ng-change="page.calculator.form.prepareCalculationSource()"
+                    ng-required="page.calculator.form.state.calculationSource"
+                    class="form-control"
+                    ng-options="currOpt.value as currOpt.name for currOpt in page.calculator.form.data.sources.options"></select>
+        </div>
+
+        <!-- Input Amounts -->
+        <div class="col-md-3" ng-if="page.calculator.form.state.calculationAmt1">
+            <label class="form-control-label">{{page.calculator.form.data.calculationAmt1}}</label>
+            <rp-form-input-text config="page.formConfig.amt1" rp-model="page.calculator.model.data.amt1">
+            </rp-form-input-text>
+            <!--<input name="variableAmount1"
+                   ng-model="page.calculator.model.data.amt1"
+                   ng-model-options="{updateOn:'blur'}"
+                   ng-required="page.calculator.form.state.calculationAmt1"
+                   class="form-control"
+                   type="text" />-->
+        </div>
+        <div class="col-md-2" ng-if="page.calculator.form.state.calculationAmt2">
+            <label class="form-control-label">{{page.calculator.form.data.calculationAmt2}}</label>
+            <rp-form-input-text config="page.formConfig.amt2" rp-model="page.calculator.model.data.amt2">
+            </rp-form-input-text>
+            <!--<input name="variableAmount2"
+                   ng-model="page.calculator.model.data.amt2"
+                   ng-model-options="{updateOn:'blur'}"
+                   ng-required="page.calculator.form.state.calculationAmt2"
+                   class="form-control"
+                   type="text" />-->
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="col-md-2">
+            <label class="form-control-label">&nbsp;</label>
+            <button class="btn btn-outline b-primary text-primary w-full" type="button" ng-click="page.calculator.calculate(changerent)" ng-show="!page.calculator.form.state.hideResult && page.calculator.form.state.showGrid">
+                {{::page.translate("bdgt_calculate")}}
+            </button>
+        </div>
+
+        <!-- Average Status page.calculator.form.state.affectedPeriodMsg -->
+        <div class="col-md-3" ng-show="false">
+            <label class="form-control-label">&nbsp;</label>
+            <div id="affected-period">
+                <span class="label rounded secondary p-x-md">Average for {{page.calculator.model.data.affectedPeriod || "..." }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apply To -->
+    <divs>
+        <label class="form-control-label text-primary">{{::page.translate("bdgt_change_rent_apply_to")}}</label>
+    </divs>
+    <div class="form-group row period-select">
+        <div class="col-md-2">
+            <label class="form-control-label">{{::page.translate("bdgt_change_rent_periods")}}</label>
+            <rp-form-select-menu class="inline" config="page.formConfig.periodSource" rp-model="page.model.data.periodSelection">
+            </rp-form-select-menu>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2 unit-type-select">
+            <label class="form-control-label">{{ page.model.data.unitTypeDescr }}</label>
+            <rp-form-select-menu class="inline" config="page.formConfig.unitType" rp-model="page.model.data.unitType">
+            </rp-form-select-menu>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 unit-select" ng-if="page.model.data.showUnit">
+            <label class="form-control-label">{{page.model.data.unitDescr}}</label>
+            <rp-form-select-menu class="inline" config="page.formConfig.unit" rp-model="page.model.data.unit">
+            </rp-form-select-menu>
+        </div>
+        <div class="col-md-2 expire-period" ng-if="page.model.data.showExpirePeriod">
+            <label class="form-control-label">{{::page.translate("bdgt_change_rent_exp_period")}}</label>
+            <rp-form-select-menu class="inline" config="page.formConfig.expirePeriods" rp-model="page.model.data.expirePeriod">
+            </rp-form-select-menu>
+        </div>
+
+    </div>
+</ng-form>
+
+<!-- Calculator Grid -->
+<div class="form-group calculator-grid">
+    <!--
+    <div class="active-row">
+        {{page.calculator.state.activePeriod.year}}
+    </div>
+    -->
+    <div ng-if="page.calculator.form.state.showGrid" ng-class="{'show-monthly':page.calculator.form.state.monthlyDisplay, 'show-active':page.calculator.form.state.activePeriodDisplay, 'hide-result': page.calculator.form.state.hideResult, 'hide-apply-change' : !page.calculator.form.state.applyChange}">
+        <rp-grid model="page.calculator.grid.model"></rp-grid>
+    </div>
+    <!-- <rp-cg model="page.calculator.grid"></rp-cg> -->
+</div> 

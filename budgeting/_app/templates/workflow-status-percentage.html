@@ -1,0 +1,30 @@
+<div class="status-inner">
+    <strong class="level-font">Level {{details.currentSequence}}</strong>
+    <!--<a class='text-info pull-right rp-grid-link level-font' href='#/budgetmodel/{{details.distributedID}}/workflow'>
+        {{details.status}}
+    </a>-->
+    <a class='text-info pull-right rp-grid-link level-font' ng-click="dir.showPopUp(details)" data-toggle="modal" data-target="#workflowLevel">
+        <!--ui-toggle-class="modal-open-aside" ui-target="body">-->
+        <span ng-class="details.status.replace(' ','-')">{{details.status}}</span>
+    </a>
+
+    <div class="lne-height">
+        <a class='progress progress-sm m-b-0' popover-placement="top" ng-click='dir.statusClick(details)'>
+            <div class="progress-bar success" style='width: {{details.percentage}}%;'><!--{{details.percentage}}%--></div>
+        </a>
+    </div>
+
+
+    <div class='box pop-over' ng-class='dir.popover' placement="top">
+        <ul class="list inset m-a-0">
+            <li class="popover-list-item" ng-repeat='record in dir.statusData.records'>
+                <!--<span class="list-left icon-top fa fa-check-circle" ng-if="record.status=='Submitted'"></span>-->
+                <span class="list-left icon-top" ng-class="{'fa fa-circle-thin': record.status=='Pending', 'fa fa-check-circle': (record.status=='Submitted' || record.status=='Approved') }"></span>
+                <div class="lne-height list-body-margin">
+                    <span>{{record.roleName}}</span>
+                    <small class="text-muted text-ellipsis">{{record.status}}</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿<div class="import-section-csv col-xs-6 section-acc">
+    <!--<span>{{ ::page.model.text.selectMRIchart }}</span>
+    <select name="chrtDrpDwn"
+            class="rp-form-select"
+            rp-update-display-text="true"
+            ng-model="page.selctedChartId"
+            rp-select-options="page.selCharts"
+            ng-options="option.value as option.name for option in page.selCharts.options"></select>
+</div>
+<div class="col-xs-12">
+    <div class="importSection col-xs-6 dv-chk-boxes">
+        <input type="checkbox" id="impCashAccnt" ng-model="page.impCashAcc" ng-true-value="true" ng-false-value="false" /><span class="chk-imp-cash"> {{ ::page.model.text.chkImpCashAcc }}</span>
+        <input type="checkbox" id="impBalSheet" ng-model="page.impBalSheetAcc" ng-true-value="true" ng-false-value="false" /><span class="chk-imp-cash"> {{ ::page.model.text.chkImpBalAcc }}</span>
+        <input type="checkbox" id="impRetainPre" ng-model="page.impRetainLedgerPrefix" ng-true-value="true" ng-false-value="false" /><span> {{ ::page.model.text.chkretLedgCode }}</span>
+    </div>
+    <div class="importSection col-xs-6 dv-load-btn">
+        <span class="button medium white newbtn load-btn-acc" ng-click="page.loadMRIGls()">
+            {{ ::page.model.text.loadBtn }}
+        </span>
+    </div>
+</div>
+<div class="import-grid-csv" ng-if="page.model.grid">
+    <div class="import-section-border"></div>
+    <h3 class="gridHeading">Imported GL Accounts</h3>
+    <div class="table-controls filter-right">
+        <span class="button medium white newbtn deleteBtn chk-imp-cash" ng-click="page.toggleAssignType();">
+            <span>
+                {{ ::page.model.text.assgn }}
+            </span>
+        </span>
+        <span class="button medium white newbtn deleteBtn" ng-click="page.delGlAccounts();">
+            <span>
+                {{ ::page.model.text.deleteBtn }}
+            </span>
+        </span>
+        <span class="button medium blue newbtn importBtn" ng-click="page.saveGlAccounts()">
+            <span>
+                {{ ::page.model.text.importSaveBtn }}
+            </span>
+        </span>
+        <rp-toggle class="table-filter-toggle"
+                   model="page.model.grid.state.filter"
+                   options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+    </div>
+    <div rp-slide-toggle="page.model.form.toggleAsgnType" name="impAssignType" class="rp-inline-workflow work-flow">
+        <div class="workflow-inner-wrap">
+            <span class="workflow-close" ng-click="page.toggleAssignType()"></span>
+            <h3 class="workflow-title">
+                {{ ::page.model.text.assgnTypeTxt }}
+            </h3>
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block account-number">
+                    <p class="field-label">
+                        {{ ::page.model.text.accntType }}
+                    </p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="column-2">
+                        <select name="selAssType"
+                                class="rp-form-select"
+                                rp-wrapper-class="inline-block"
+                                rp-update-display-text="true"
+                                ng-model="page.selAssgnType"
+                                rp-select-options="page.srcAelAssgnType"
+                                ng-options="option.value as option.name for option in page.srcAelAssgnType.options"></select>
+                </div>
+            </div>
+            <div class="form-row work-flow-btns">
+                <span class="button medium blue newbtn applyBtn" ng-click="page.assignTypeSave();">
+                    {{ ::page.model.text.assgn }}
+                </span>
+                <span class="button medium white newbtn saveBtn" ng-click="page.toggleAssignType()">
+                    {{ ::page.model.text.cancelBtn }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <rp-grid model="page.model.grid"></rp-grid>-->
+
+    Coming Soon..Yet to Implement Importing GL's From MRI..!!
+</div>

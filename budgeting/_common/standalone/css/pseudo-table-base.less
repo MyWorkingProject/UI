@@ -1,0 +1,74 @@
+//  Pseudo Table
+
+.pseudo-table {
+    .row {
+        .clearfix;
+    }
+
+    .cell {
+        .float-left;
+        .box-sizing;
+        .crop-text-overflow;
+
+        p {
+        	.crop-text-overflow;
+        }
+    }
+
+    .cell-text {
+        .inline-block;
+        .crop-text-overflow;
+        font-size: 12px;
+        max-height: 36px;
+        line-height: 18px;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    .table-head {
+        .cell-text {
+            vertical-align: bottom;
+        }
+
+        .sortable {
+            color: @gray;
+            cursor: pointer;
+
+            .icon {
+                .icon-filledarrowdown;
+                color: @silver;
+                margin-left: 5px;
+            }
+        }
+
+        .asc,
+        .desc {
+            color: @dark-gray;
+
+            .icon {
+                color: @dark-gray;
+            }
+        }
+
+        .asc {
+            .icon {
+                .icon-filledarrowup;
+            }
+        }
+
+        .desc {
+            .icon {
+                .icon-filledarrowdown;
+            }
+        }
+
+        .sortable {
+            .icon {
+                .inline-block;
+                height: 20px;
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+    }
+}

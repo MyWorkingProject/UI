@@ -1,0 +1,137 @@
+
+#budget-budgetmodel-default-adjustments {
+    .modal > .right {    
+        overflow-y: scroll !important;
+        overflow-x: hidden;
+         width:340px;
+         position:absolute;
+         z-index:9999;
+    }
+    .p-y-md.p-t-sm.clearfix{
+        margin-bottom: -15px;
+        margin-top: -10px;
+        padding-bottom: 1.0rem !important;
+    }
+    .da-align{
+        .md-check > i
+        {
+            top: 6px;
+        }
+    }
+    .list-body:after {    
+    border-bottom: 1px solid rgb(226, 226, 226) !important;
+    }
+    .p-y-md.p-t-sm.results.clearfix{
+             margin-top: -28px;
+            margin-bottom: 10px;
+    }
+    .pull-right.filterPad{
+        margin-right: 5px;
+        margin-top: 18px;
+    }
+    .p-t-md{
+      
+            margin-right: 10px;
+    width:18%
+    }
+    .btn.rounded{
+        width:auto;
+    }
+    .chk-agn{
+        margin-left:5px;
+        margin-top:5px;
+    }
+    .tool-tip-help {
+    
+    top: -3px;
+    
+    }
+    .cancel
+        {
+        width:auto;
+         margin-left: 140px;
+    }
+    .da-owd{
+        padding-left:30%;
+    }
+    .filter-cursor {
+    cursor: pointer;
+    }
+    .m-t-sm {
+    margin-top: 1.5rem !important;
+}
+    .m-b-sm {
+    margin-bottom: 1.5rem !important;
+}
+    .t-center{        
+        color:#42a5f5 !important;
+    }
+    .th-center{
+       text-align:center;
+    }
+    .b-neutral {
+        color: #515356;
+        font-weight: normal;
+
+    }
+    .is-selected {
+        width: 5%;
+    }
+    .account-type {
+        width: 10%;
+    }
+    .name {
+        width: 10%;
+    }
+
+    .adj-percent {
+        width: 20%;
+    }
+    .form-control{
+        width:30%
+    }
+    .comments-text-decoration {
+        text-decoration: underline;
+    }
+
+    .display-inline-block {
+        display: inline-block;
+    }
+
+    .b-l-cell-response {
+        border-left: 1px solid #ff6a00 !important;
+    }
+
+    .icon-margin {
+        margin-left: 10px;
+        margin-right: 6px;
+    }
+    
+     .text-primary{
+          font-size: 1.5rem;
+              margin-left: -13px;
+          margin-top:5px;
+    }
+    .text-mute-rule{
+      font-size:15px;
+      color:#cbcbcb;
+          margin-left: 3px;
+    }
+    .hr-rule{
+        border-bottom:solid 1px #f5f5f5;
+            margin-top: 10px;
+    margin-bottom: 25px;
+    }
+     .btn.rounded.btn-outline.b-primary.text-primary.w-full.p-x-md
+         {
+           font-size: 1.0rem;
+              margin-left: -13px;
+             margin-top:0px;
+     }
+       .tool-tip {
+        //width: 14%;
+        position: absolute;
+       top: -3px;
+    left: 293px;
+    }
+}

@@ -1,0 +1,18 @@
+
+
+<div ng-if="column.row.data.hasReferenceData!==true" 
+        class="rp-cg-text rp-cg-body-text gross-rent-title p-l-1" title="{{ column.getVal()}}" 
+     ng-click="column.config.navigateToDetailView(column.row.data.glAccountNumber,column.row.data.isCatRestricted,column.row.data.description)" >
+    {{column.getVal()}} 
+ 
+</div>
+
+<div ng-if="column.row.data.hasReferenceData===true"
+     class="rp-cg-text rp-cg-body-text gross-rent-title p-l-1 active-bar" title="{{ column.getVal()}}"
+     ng-click="column.config.navigateToDetailView(column.row.data.glAccountNumber,column.row.data.isCatRestricted,column.row.data.description)">
+    {{column.getVal()}}
+
+</div>
+
+
+

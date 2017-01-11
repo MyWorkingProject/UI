@@ -1,0 +1,60 @@
+#payroll-by {
+    .payroll-by-title {
+        font-size: 2rem;
+    }
+
+    .rp-cg-locked {
+        .rp-cg-text {
+            &.rp-cg-body-text {
+                width: 250px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    .rp-cg-free {
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+    }
+
+    .tab-icon {
+        top: 0;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .nav-tabs {
+        .nav-link {
+            border-top-right-radius: 0.6rem;
+            background: #ebf0f2 !important;
+
+            &.active {
+                background-color: #42a5f5 !important;
+                color: #fff !important;
+                border-top-left-radius: 0.6rem;
+            }
+        }
+
+        .activeIcon {
+            i {
+                color: #fff;
+            }
+        }
+    }
+
+
+
+    .top-spacer-1 {
+        margin-top: 2.375rem;
+    }
+
+    .top-spacer-2 {
+        margin-top: 3.75rem;
+    }
+}

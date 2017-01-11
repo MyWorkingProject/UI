@@ -1,0 +1,62 @@
+<div id="lease-renewals-unittype" class="p-t-2">
+    <div class="col-md-6 p-l-0">
+        <div class="text-muted text-u-c _500">{{::page.fieldLabels.headerTitle}}</div>
+        <div class="col-md-12 p-l-0 text-primary">
+            <div class="col-md-9 p-l-0 pointer" ng-if="!page.isSearchGLAccountVisible" ng-click="page.showSearchGLAccount()">
+                <div class="p-l-0 col-md-9">
+                    <h5>AP 2 BR/1BA (ap 2X1)</h5>
+                </div>
+                <div class="col-md-1 font-18">
+                    <span class="rp-icon-search2"></span>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 p-l-0" ng-if="page.isSearchGLAccountVisible">
+                <input type="text" />
+                <!--<gl-accnt-search data="page.model.glSearch" on-select="page.onSelectedGLaccount(selectedGLAccount)" is-focused-on-show="true" on-blur-out="page.hideSearchGLAccount()"></gl-accnt-search>-->
+            </div>
+            <div class="col-md-1 font-18">
+                <span class="rp-icon-angle-left pointer"></span>
+            </div>
+            <div class="col-md-1 font-18">
+                <span class="rp-icon-angle-right pointer"></span>
+            </div>
+        </div>
+        <div class="col-md-2 inline p-r-1 text-pointer" ng-click="page.openComments()">
+            <i class="rp-icon-chat-bubble"></i>
+            <span>{{::page.fieldLabels.commentCount}}</span>
+        </div>
+        <div class="col-md-4 inline p-l-1 p-r-1 pointer" ng-click="page.openCalculator()">
+            <i class="rp-icon-calculator-2"></i>
+            <span>{{::page.fieldLabels.calculatorText}}</span>
+        </div>
+    </div>
+    <div class="page-buttons col-md-6 p-r-0">
+        <button type="button" class="btn primary rounded p-x-mdy pull-right btn-md w-xs m-l-1" ng-click="page.save()">
+            {{::page.fieldLabels.saveText}}
+        </button>
+        <button type="button" class="btn rounded btn-outline b-primary text-primary p-x-md pull-right btn-md" ng-click="page.cancel()">
+            {{::page.fieldLabels.cancelText}}
+        </button>
+
+    </div>
+    <div class="col-md-12 col-sm-12 p-l-0 m-t-2 m-b-2">
+        <div class="inline p-r-1 table-form-block p-l-0">
+            <span class="m-r-sm _600">{{::page.fieldLabels.input_renewals_by}}</span>
+            <label class="md-check form-label p-r-1">
+                <input name="renewalsType" type="radio"
+                       value="percentage" ng-model="page.model.form.renewalsType" ng-change="page.setFormInput()" />
+                <i class="blue"></i>
+                {{::page.fieldLabels.renewalsPercentage}}
+            </label>
+            <label class="md-check form-label">
+                <input name="renewalsType" type="radio"
+                       value="units" ng-model="page.model.form.renewalsType" ng-change="page.setFormInput()" />
+                <i class="blue"></i>
+                {{::page.fieldLabels.renewalsUnits}}
+            </label>
+        </div>
+        <div class="pull-right m-l-1 pointer" ng-click="page.showTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>Table Settings</div>
+    </div>
+    <rp-cg model="page.model.grid">
+    </rp-cg>
+</div>

@@ -1,0 +1,113 @@
+#change-rent {
+	.calculator-grid {
+		width: 100%;
+		overflow-x: auto;
+        min-height: 250px;
+
+        .rent-calculator-amt{
+            width: 3rem;
+			@include inline-block;
+        }
+
+       
+		.rp-grid-headers-1 {
+			background-color: $rp-primary;
+			
+			.rp-grid-cell {
+				border-right: 1px solid $rp-primary-03;
+				padding: 5px;
+				text-align: right;
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+
+			.rp-grid-text {
+				color: $white;
+				font-size: 14px;
+			}
+		}
+
+		.rp-grid-body-wrap {
+			min-height: auto;
+		}
+
+		.rp-grid-row:nth-child(even) {
+			background-color: $white;
+		}
+
+		.rp-currency-editable {
+			text-align: right;
+			font-size: 0.75rem;
+			padding: 5px;
+		}
+
+		.rp-calculator-amt {
+			width: 3rem;
+			@include inline-block;
+		}
+
+		[class*="period"] {
+			text-align: center;
+			width: 80px;
+		}
+
+		.column-title {
+			width: 12rem;
+
+			.monthly-row {
+				line-height: 1.9rem;
+			}
+		}
+		.total {
+			text-align: right;
+			width: 7rem;
+		}
+
+
+		input {
+			border-color: $ash-gray;
+			padding: 0.25rem;
+		}
+
+		.rp-grid-body-1 {
+			.rp-grid-row:first-child,
+			.rp-grid-row:nth-child(2) {
+				display: none;
+			}
+		}
+		.show-monthly {
+			.rp-grid-body-1 {
+				.rp-grid-row:nth-child(2)  {
+					display: table-row;
+				}
+			}			
+		}
+
+        .hide-result {
+			.rp-grid-body-1 {
+				.rp-grid-row:nth-child(4)  {
+					display: none;
+				}
+			}			
+		}
+
+        .hide-apply-change {
+			.rp-grid-body-1 {
+				.rp-grid-row:nth-child(3)  {
+					display: none;
+				}
+			}			
+		}
+
+		.show-active {
+			.rp-grid-body-1 {
+				.rp-grid-row:first-child {
+					display: table-row;
+				}
+			}
+		}
+
+	}
+}

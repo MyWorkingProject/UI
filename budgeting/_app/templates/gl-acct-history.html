@@ -1,0 +1,110 @@
+<div id="gl-account-history" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+    	<div class="aside-content">
+    		<rp-busy-indicator model="page.busyModel"></rp-busy-indicator>
+
+    		<div class="aside-header">
+				<button class="close" ng-click="page.close()">
+          			<i class="ic-close rp-icon-delete-2"></i>					
+				</button>
+
+    			<h2>{{page.model.modalTitle}}</h2>
+				<small>{{page.model.subtitle}}</small>
+
+				<rp-form-select-menu class="book-type w-sm"
+					ng-if="page.state.isActualData"
+					config="page.formConfig.bookType" 
+					rp-model="page.model.bookType">
+				</rp-form-select-menu>
+        			
+    		</div><!-- .aside-header -->
+
+    		<div class="aside-body">
+    			<div class="gl-history-wrapper" ng-show="page.state.isReady">
+					<div class="gl-acct-history-content" >
+						<div ng-if="page.state.hasData">
+							<div class="panel-group" ng-model="page.model.activePanel" role="tablist" aria-multiselectable="true" bs-collapse>
+								<div class="box panel panel-default" ng-repeat="currPeriod in page.model.periods | orderBy: '-'">
+									<div class="box-header panel-heading" role="tab" ng-class="{'panel-open': page.model.activePanel == $index}">
+										<h4 class="panel-title">
+											<a bs-collapse-toggle>
+												{{currPeriod.month}} {{currPeriod.year}}
+
+												<div class="pull-right">
+								                	<span class="activity-count label rounded">{{currPeriod.totalRecords}}</span>
+													<i class="panel-toggle" ng-class="{'rp-icon-angle-up': (page.model.activePanel == $index), 'rp-icon-angle-down': (page.model.activePanel != $index)}"></i>
+												</div>
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div class="box-body panel-collapse" role="tabpanel" bs-collapse-target>
+										<div class="panel-body">
+											<rp-grid model="currPeriod.grid"></rp-grid>
+											<rp-grid class="total-grid" model="currPeriod.totalGrid"></rp-grid>
+										</div>
+									</div><!-- .panel-collapse -->
+								</div>
+							</div>
+						<!--
+							<uib-accordion>
+								<uib-accordion-group ng-repeat="currPeriod in page.model.periods | orderBy: '-'" is-open="currPeriod.isOpen">
+									<uib-accordion-heading>
+										{{currPeriod.month}} {{currPeriod.year}}
+
+										<div class="pull-right">
+						                	<span class="activity-count label rounded">{{currPeriod.totalRecords}}</span>
+											<i ng-class="{'rp-icon-angle-up': currPeriod.isOpen, 'rp-icon-angle-down': !currPeriod.isOpen}"></i>
+										</div>
+									</uib-accordion-heading>
+
+									<rp-grid model="currPeriod.grid"></rp-grid>
+									<rp-grid class="total-grid" model="currPeriod.totalGrid"></rp-grid>
+								</uib-accordion-group>
+							</uib-accordion>
+						-->
+
+						</div>
+
+						<div ng-if="!page.state.hasData">
+							<!-- {{page.model.historyErrMsg || page.translate("gah_err_no_data_available")}}	 -->
+							{{::page.translate("gah_err_no_data_available")}}
+						</div>	
+					</div><!-- .gl-acct-history-content -->
+
+					<div class="gl-budget-comments m-t-md" ng-if="!page.state.isActualData && page.state.showComments">
+						<div class="box-header">
+							<h2>{{::page.translate("gl_acct_comments")}}</h2>
+						</div>
+						<div class="box-body" ng-show="page.state.isCommentsReady">
+							<div class="gl-acct-history-comments" ng-if="page.state.hasComments">
+								<div class="streamline b-l m-b m-l">						
+									<div class="sl-item" ng-repeat="currComment in page.model.comments">
+										<div class="sl-left">
+											<img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+										</div>
+										<div class="sl-content">
+											<div>
+												<span class="sl-date">{{currComment.lastModifiedDate}}</span>
+												<i class="ic-circle"></i>
+												<span class="source-data">{{currComment.appliesTo}}</span>
+											</div>
+											<div class="sl-author _500">{{currComment.createdBy}}</div>
+											<div class="comment">{{currComment.comment}}</div>
+										</div>
+									</div>								    
+				                </div>	                
+							</div><!-- .gl-acct-histor-comments -->
+							<div class="no-comments" ng-if="!page.state.hasComments">
+			                	<!-- {{page.model.commentsErrMsg || page.translate("gah_err_no_comments")}} -->
+			                	{{::page.translate("gah_err_no_comments")}}
+			                </div>
+						</div><!-- .box-body -->
+					</div><!--.gl-budget-comments -->
+
+				</div><!-- .gl-history-wrapper -->
+    		</div><!-- .aside-body -->
+    		
+    	</div><!-- .aside-content -->
+    </div>
+</div>

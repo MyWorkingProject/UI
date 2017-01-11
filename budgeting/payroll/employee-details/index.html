@@ -1,0 +1,251 @@
+﻿<div id="payroll-employee-details">
+    <div class="other-options">
+        <div class="right white b-l">
+            <div class="row-col">
+                <div class="top-spacer">
+                    <a data-dismiss="modal" class="pull-right text-muted text-lg p-t-sm" ng-click="page.close()">&times;</a>
+                    <div class="p-a">
+                        <span class="h5">
+                            {{page.model.form.records.employeeID > 0  ? page.fieldLabels.viewPageTitle : page.fieldLabels.newPageTitle}}
+                            {{page.model.form.records.employeeID > 0  ? page.model.form.records.firstName+' '+page.model.form.records.lastName : ''}}
+                        </span>
+                        <!--<span class="h5">{{page.model.form.records.employeeID > 0  ? page.dashboardComment.text.comment_edit : page.dashboardComment.text.comment_new}}</span>-->
+                    </div>
+                </div>
+                <div class="row-row">
+                    <div class="row-body">
+                        <div class="row-inner row-inner-scroll">
+                            <div class="list-group no-radius">
+                                <ng-form name="payrollEmployeeDetails">
+                                    <div class="row-col p-b-0 p-l-sm p-y-sm">
+                                        <!--<h5 class="col-xs-6">{{:: page.fieldLabels.pageTitle}}</h5>-->
+                                    </div>
+                                    <div class="box-body p-t-0 p-l-sm">
+                                        <div class="form-horizontal">
+                                            <div class="row sample-fit-form-row">
+                                                <div class="col-md-5">
+                                                    <label class="form-label ft-s-16 ft-bold text-color">{{:: page.fieldLabels.firstName}}</label>
+                                                    <rp-form-input-text config="page.formConfig.firstName" ng-show="page.model.form.visible" rp-model="page.model.form.records.firstName">
+                                                    </rp-form-input-text>
+                                                    <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{page.model.form.records.firstName}}</label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label class="form-label ft-s-16 ft-bold text-color">{{:: page.fieldLabels.lastName}}</label>
+                                                    <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.lastName" rp-model="page.model.form.records.lastName">
+                                                    </rp-form-input-text>
+                                                    <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{page.model.form.records.lastName}}</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row sample-fit-form-row">
+                                                <div class="col-md-5">
+                                                    <label class="form-label ft-s-16 ft-bold text-color">{{:: page.fieldLabels.payType}}</label>
+                                                    <div ng-show="page.model.form.visible">
+                                                        <label class="md-check">
+                                                            <input type="radio" name="radio" ng-model="page.model.form.records.payrateType" ng-click="page.payrateTypeCheck(true)" value="Salary">
+                                                            <i class="blue"></i>
+                                                            {{:: page.fieldLabels.salary}}
+                                                        </label>
+                                                        <label class="md-check">
+                                                            <input type="radio" name="radio" ng-model="page.model.form.records.payrateType" ng-checked="page.model.form.records.payrateType==='Hourly'" value="Hourly">
+                                                            <i class="blue"></i>
+                                                            {{:: page.fieldLabels.hourly}}
+                                                        </label>
+                                                    </div>
+                                                    <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{page.model.form.records.payrateType}}</label>
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div ng-if="page.model.form.records.payrateType==='Salary'">
+                                                        <label class="form-label ft-s-16 ft-bold text-color">{{:: page.fieldLabels.salary}}</label>
+                                                        <rp-form-input-text config="page.formConfig.salary" ng-show="page.model.form.visible" rp-model="page.model.form.records.salary" ng-true-value="Salary">
+                                                        </rp-form-input-text>
+                                                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{page.model.form.records.salary}}</label>
+                                                    </div>
+                                                    <div ng-if="page.model.form.records.payrateType==='Hourly'">
+                                                        <label class="form-label ft-s-16 ft-bold text-color">{{:: page.fieldLabels.hourly}}</label>
+                                                        <rp-form-input-text ng-show="page.model.form.visible" config="page.formConfig.hourly" rp-model="page.model.form.records.hourly" ng-true-value="Hourly">
+                                                        </rp-form-input-text>
+                                                        <label class="form-label display-lbl-block" ng-show="!page.model.form.visible">{{page.model.form.records.hourly}}</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row sample-fit-form-row">
+                                                <div class="col-md-5">
+                                                    <div ng-if="!page.model.form.empStatus">
+                                                        <div ng-if="page.model.form.records.corporateStaff">
+                                                            <!--page.model.form.records.corporateStaff-->
+                                                            <label class="md-check dark-bluebox" ng-show="!page.model.form.visible">
+                                                                <input type="checkbox" checked="checked" disabled="disabled">
+                                                                <i class="primary"></i>{{:: page.fieldLabels.corporateStaff}}
+                                                            </label>
+
+                                                            <div ng-show="page.model.form.visible">
+                                                                <label class="md-check dark-bluebox" ng-if="page.model.form.rights.userRights">
+                                                                    <input type="checkbox" checked="checked" ng-model="page.model.form.records.corporateStaff">
+                                                                    <i class="primary"></i>{{:: page.fieldLabels.corporateStaff}}
+                                                                </label>
+                                                                <label class="md-check dark-bluebox" ng-if="!page.model.form.rights.userRights">
+                                                                    <input type="checkbox" checked="checked" disabled="disabled">
+                                                                    <i class="primary"></i>{{:: page.fieldLabels.corporateStaff}}
+                                                                </label>
+                                                            </div>
+                                                            <div class="fdn-arrow box-color text-color pos-rlt" ng-show="page.model.form.showState"><span class="arrow top white"></span><div class="box-body">{{page.fieldLabels.toolTip}}</div></div>
+                                                            <span ng-show="page.model.form.visible" class="rp-icon-question-circle p-l-sm" ng-mouseover="page.stateHoverIn()" ng-mouseleave="page.stateHoverOut()"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div ng-if="page.model.form.empStatus">
+                                                        <div ng-if="page.model.form.rights.userRights">
+                                                            <label class="md-check dark-bluebox">
+                                                                <input type="checkbox" ng-model="page.model.form.records.corporateStaff" ng-true-value="true" ng-false-value="false">
+                                                                <i class="primary"></i>{{:: page.fieldLabels.corporateStaff}}
+                                                            </label>
+                                                            <div class="fdn-arrow box-color text-color pos-rlt" ng-show="page.model.form.showState"><span class="arrow top white"></span><div class="box-body">{{page.fieldLabels.toolTip}}</div></div>
+                                                            <span ng-show="page.model.form.visible" class="rp-icon-question-circle p-l-sm" ng-mouseover="page.stateHoverIn()" ng-mouseleave="page.stateHoverOut()"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-form>
+                                <div class="row-col p-b-0 p-l-sm p-y-sm">
+                                    <div class="col-md-5-5">
+                                        <h5>{{:: page.fieldLabels.propertyAllocation}}</h5>
+                                    </div>
+                                    <div class="col-md-5-5" ng-show="page.model.form.visible">
+                                        <a class="text-link" ng-click="page.addPropertiesAsideModel()">{{:: page.fieldLabels.addProperty}}</a>
+                                    </div>
+                                </div>
+                                <div class="row-col p-b-0 p-l-sm p-y-sm">
+                                    <div class="box" ng-repeat="item in page.model.form.properties">
+                                        <div class="box-header no-shadow">
+                                            <h3 class="m-b-0">{{item.propertyName}}</h3>
+                                            <div ng-if="!item.isEdit">
+                                                <small ng-repeat="option in page.model.form.position.options">
+                                                    <span ng-if="item.jobPositionID===option.value">{{option.name}}</span>
+                                                </small>
+                                                <small ng-if="item.jobPositionID===''">
+                                                    &nbsp;
+                                                </small>
+                                                <div class="box-tool">
+                                                    <div class="min-h-d">
+                                                        <ul class="nav" ng-show="page.model.form.visible">
+                                                            <li class="nav-item inline">
+                                                                <a class="nav-link"><i class="material-icons md-18"></i></a>
+                                                            </li>
+                                                            <li class="nav-item inline dropdown">
+                                                                <a class="nav-link" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                                                <div class="dropdown-menu dropdown-menu-scale pull-right">
+                                                                    <a class="dropdown-item" ng-click="page.editWidget(item)">{{:: page.fieldLabels.editBtn}}</a>
+                                                                    <a class="dropdown-item" ng-click="page.deleteWidgetDetails(index, item)">{{:: page.fieldLabels.deleteBtn}}</a>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <small class="pull-right pull-top-change">{{item.allocationPercent}}%</small>
+                                                </div>
+                                                <div class="clear-both"></div>
+                                                <div class="box-body-pull">
+                                                    <p class="pull-left">{{item.payrolInputMethod}}</p>
+                                                    <p class="pull-right deep-right">{{item.startDate.format('MM/DD/YYYY')}}{{page.model.checkDateValue(item.endDate)}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div ng-if="item.isEdit">
+                                                <ng-form name='widgetForm' novalidate>
+                                                    <div class="box-tool" ng-show="page.model.form.visible">
+                                                        <ul class="nav">
+                                                            <li class="nav-item inline">
+                                                                <a class="nav-link"><i class="material-icons md-18"></i></a>
+                                                            </li>
+                                                            <li class="nav-item inline dropdown">
+                                                                <a class="nav-link" data-toggle="dropdown" aria-expanded="false" ng-click="page.toggleWidget(item)"><i class="rp-icon-delete-2"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="row sample-fit-form-row">
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="hudid">{{:: page.fieldLabels.position}}</label>
+                                                            <rp-form-select-menu config="page.formConfig.jobPositionName" rp-model="item.jobPositionID">
+                                                            </rp-form-select-menu>
+                                                        </div>
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="yearBuilt">{{:: page.fieldLabels.propertyAllocation}}</label>
+                                                            <rp-form-input-text config="page.formConfig.propertyAllocation" rp-model="item.allocationPercent">
+                                                            </rp-form-input-text>
+                                                        </div>
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="yearBuilt">{{:: page.fieldLabels.payrolInputMethod}}</label>
+                                                            <rp-form-select-menu config="page.formConfig.payrolMethod" rp-model="item.payrolInputMethod">
+                                                            </rp-form-select-menu>
+                                                        </div>
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="hudid">{{:: page.fieldLabels.department}}</label>
+                                                            <rp-form-input-text config="page.formConfig.department" rp-model="item.departmentName">
+                                                            </rp-form-input-text>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row sample-fit-form-row">
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="yearBuilt">{{:: page.fieldLabels.costCenter}}</label>
+                                                            <rp-form-input-text config="page.formConfig.costCenter" rp-model="item.costCenter">
+                                                            </rp-form-input-text>
+                                                        </div>
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="yearBuilt">{{:: page.fieldLabels.startDate}} </label>
+                                                            <rp-datetimepicker config="page.formConfig.startDate" rp-model="item.startDate">
+                                                            </rp-datetimepicker>
+                                                            <ul class="rp-form-error-msgs" ng-if="page.model.form.startDateValidation">
+                                                                <li ng-if="page.model.form.startDateValidation" class="rp-form-error-msg">{{::page.fieldLabels.startEndDate}}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-5-5">
+                                                            <label class="form-label ft-s-16 ft-bold" for="yearBuilt">{{:: page.fieldLabels.endDate}}</label>
+                                                            <rp-datetimepicker config="page.formConfig.endDate" rp-model="item.endDate">
+                                                            </rp-datetimepicker>
+                                                        </div>
+                                                        <div class="col-md-5-5 pull-right">
+                                                            <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-click="page.toggleWidget(item, $index)">
+                                                                {{:: page.fieldLabels.cancelBtn}}
+                                                            </button>
+                                                            <button type="submit" class="btn rounded primary w-xs" ng-click='page.toggleWidgetSave(item, widgetForm)'>
+                                                                {{:: page.fieldLabels.saveBtn}}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </ng-form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-6 model-footer-buttons">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.showForm()" ng-show="!page.model.form.visible">
+                                            <i class="fa fa-edit"></i>
+                                            {{:: page.fieldLabels.editBtn}}
+                                        </button>
+                                        <span ng-show="page.model.form.visible" class="pull-right">
+                                            <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-click=" page.cancel()">
+                                                {{:: page.fieldLabels.cancelBtn}}
+                                            </button>
+                                            <button type="submit" class="btn rounded primary w-xs" ng-click="page.save(payrollEmployeeDetails)">
+                                                {{:: page.fieldLabels.saveBtn}}
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

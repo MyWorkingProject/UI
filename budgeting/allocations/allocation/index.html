@@ -1,0 +1,120 @@
+﻿<div class="allocationview">
+    <!-- Heading with cancel and edit -->
+         <div class="box-header">          
+             <div class="text-neutral"  style="margin-left: -13px;margin-bottom: 5px;">
+                 {{page.model.getKeyVal('form_title')}}
+             </div>
+             <div class="inline pointer text-primary" style="margin-bottom: 6px;">
+                 <h2 class="inline payroll-by-title p-r-1" style="margin-left: -15px;">{{page.model.formData.allocation_name}} </h2>
+             </div>
+                <div class="row" ng-if="!page.model.formData.isView && !page.model.formData.isNew ">
+                    <div class="">
+                        <i class="fa fa-arrow-circle-o-right m-r-xs"></i> <a>
+                            <span ng-click="page.showDistribute()">{{page.model.getKeyVal('form_allocation_distribute')}}</span>
+                        </a>
+                 
+                        <i class="fa fa-arrow-circle-o-left"></i> <a>
+                            <span ng-click="page.recall()">{{page.model.getKeyVal('form_allocation_recall')}}</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="box-tool" ng-if="page.accessRestrictions">
+                    <button ng-if="page.model.formData.isEdit" class="cancel btn rounded btn-outline b-primary text-primary w-xs m-r-sm" ng-click="page.cancel()">{{page.model.getKeyVal('form_allocation_cancel')}}</button>
+                    <button ng-if="page.model.formData.isEdit" class="save btn rounded primary w-xs" ng-click="page.save()">{{page.model.getKeyVal('form_allocation_save')}}</button>
+                    <button ng-if="!page.model.formData.isEdit && !page.model.formData.isNew" type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.edit()"><i class="fa fa-edit"></i> {{page.model.getKeyVal('form_allocation_edit')}}</button>
+                </div>
+            </div>
+<!-- End of the Heading -->
+    <div class="row box-header">
+        
+            <!-- General Info -->
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="ft-s-16 ft-bold text-color">{{page.model.getKeyVal('form_allocation_name')}}</label>
+                        <rp-form-input-text ng-if="!page.model.formData.isView" config="page.formConfig.allocation" rp-model="page.model.formData.allocation_name">
+                        </rp-form-input-text>
+                        <p ng-if="page.model.formData.isView" class="form-control-static">{{page.model.formData.allocation_name}}</p>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="ft-s-16 ft-bold text-color">{{page.model.getKeyVal('form_allocation_method')}}</label>
+                        <rp-form-select-menu ng-if="!page.model.formData.isView" config="page.formConfig.source" rp-model="page.model.formData.methodName">
+                        </rp-form-select-menu>
+                        <p ng-if="page.model.formData.isView" class="form-control-static">{{page.model.formData.method}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="ft-s-16 ft-bold text-color">{{page.model.getKeyVal('form_allocation_description')}}</label>
+                        <rp-form-textarea ng-if="!page.model.formData.isView" config="page.formConfig.description" rp-model="page.model.formData.allocation_description">
+                        </rp-form-textarea>
+                        <p ng-if="page.model.formData.isView" class="form-control-static">{{page.model.formData.allocation_description}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End of General Info -->
+            <hr />
+            <!-- Allocation Amounts -->
+            <div class="">
+                <span class="text-primary ft-s-18">{{page.model.getKeyVal('form_allocation_amounts')}}</span>
+            </div>
+            <div class="" ng-if="!page.model.formData.isView" ng-click="page.showCalculator()">
+                <i class="rp-icon-calculator-2"></i> <a>  <span>{{page.model.getKeyVal('form_allocation_calculator')}}</span> </a>
+            </div>
+        <div class="row setcomplexgrid" ng-if="page.amountGridModel.grid">
+            <rp-cg class="grid-width" model="page.amountGridModel.grid">
+            </rp-cg>
+        </div>
+            <!-- End of Allocation Amounts  -->
+
+
+            <hr />
+            <!-- Properties -->
+
+
+            <div class="">
+                <span class="text-primary ft-s-18">{{page.model.getKeyVal('form_allocation_properties')}}</span>
+            </div>
+
+            <div class="white m-t-1">
+
+                <div class="" ng-if="!page.model.formData.isView">
+                    <!-- <button class="btn rounded primary m-r-sm" ng-click="page.addPropertiesAsideModel()">+ Add Property</button>
+                    <button class="btn rounded btn-outline b-primary text-primary m-r-sm" ng-click="page.showAssignGLModal()">Assign GL Accounts</button> -->
+                  <button class="btn rounded primary m-r-sm" ng-click="page.addPropertiesAsideModel()"><i class="fa fa-plus m-r-xs"></i>{{page.model.getKeyVal('form_allocation_addProperty')}}</button>
+                  <button class="btn rounded btn-outline b-primary text-primary" ng-click="page.showAssignGLModal()">{{page.model.getKeyVal('form_allocation_assignGl')}}</button> 
+               
+
+                <div class="m-t-1 pull-right clearfix">
+                    <div class="pull-right grid-controls">
+                        <div class="grid-control-item">
+                            <rp-toggle model="page.propertiesGridModel.filtersModel.state.active" options="{
+                                            defaultText: 'Filter',
+                                            activeIconClass: 'rp-icon-filter',
+                                            defaultIconClass: 'rp-icon-filter active'
+                                        }">
+                            </rp-toggle>
+                        </div>
+                    </div>
+                </div>
+
+         
+            <div class="propertygrid m-t-2" ng-if="page.propertiesGridModel" ng-show="!page.model.formData.isNew || page.model.formData.isProperty">
+                <rp-grid model="page.propertiesGridModel"></rp-grid>
+            </div>
+
+
+
+            <!-- End of Properties -->
+       
+    </div>
+
+</div>

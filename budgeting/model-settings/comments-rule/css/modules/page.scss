@@ -1,0 +1,44 @@
+#comments-rule {
+    .isView {
+        .is-selected {
+            display: none;
+        }
+
+        .rp-grid-row.active:nth-child(even) {
+            background: $pale-gray;
+        }
+
+        .rp-grid-row.active:nth-child(odd) {
+            background: #fff;
+        }
+        //background-color: #fff !important;
+    }
+
+    .is-selected {
+        width: 4%;
+    }
+
+    .operator {
+        width: 10%;
+    }
+
+    .type {
+        width: 10%;
+    }
+
+    .account-type-code {
+        width: 14%;
+    }
+
+    .amount {
+        width: 10%;
+        input{
+            text-align:right;
+        }
+          
+    }
+
+    .note {
+        width: 22%;
+    }
+}

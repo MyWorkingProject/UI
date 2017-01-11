@@ -1,0 +1,39 @@
+#occupancy-details {
+    .text-pointer {
+        cursor: pointer;
+    }
+    .service-name {
+        text-align: left !important;
+    }
+    .rp-cg-free {
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+        .hourly-duration-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+        }
+    }
+    .rp-cg-locked {
+        .rp-cg-headers-row {
+            .item-description {
+                .rp-cg-headers-text {
+                    visibility: hidden;
+                }
+            }
+        }
+        .service-group {
+            .rp-cg-text {
+                &.rp-cg-body-text {
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

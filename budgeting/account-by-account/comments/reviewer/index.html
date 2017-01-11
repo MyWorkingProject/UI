@@ -1,0 +1,97 @@
+<div ng-controller="ReviewerCommentsCtrl as ReviewerComment" id="reviewer">
+    <div ng-if="ReviewerComment.model.accessPrivilages">
+        <ng-form class="ft-form" role="form" name="postReviewerComments" novalidate>
+            <div class="form-group row">
+                <div class="col-sm-12 m-t-1">
+                    <rp-form-textarea config="ReviewerComment.formConfig.commentsText" rp-model="ReviewerComment.formData.form.commentsText">
+                    </rp-form-textarea>
+                </div>
+            </div>
+            <div class="form-group row p-r-sm">
+                <div class="pull-left p-l-1 p-t-sm">
+                    <a href="" class="text-primary text-underline" ng-click="ReviewerComment.toggleReviewerComments()">
+                        {{!ReviewerComment.model.showComments? ReviewerComment.fieldLabel.showVisibility: ReviewerComment.fieldLabel.hideVisibility}}
+                    </a>
+                </div>
+
+            </div>
+        </ng-form>
+        <div ng-class="{'in':ReviewerComment.model.showComments}" class="collapse row m-b-xs">
+            <div class="sl-author _500 p-l-1">
+                {{::ReviewerComment.fieldLabel.whocanseeText}}
+            </div>
+            <div class="col-xs-12">
+                <ui-select multiple ng-model="ReviewerComment.formData.selectUsers" ng-required theme="bootstrap" ng-disabled="ReviewerComment.formData.form.isEditable" on-remove="ReviewerComment.propertyDelete($item)">
+                    <ui-select-match placeholder="Select Users">{{$item.userName}}</ui-select-match>
+                    <ui-select-choices refresh="ReviewerComment.getUsers($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="user in ReviewerComment.model.userList">
+                        <div ng-bind-html="user.userName | highlight: $select.search"></div>
+                        <small>
+                            <span ng-bind-html="''+ user.roleName | highlight: $select.search "></span>
+                        </small>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="pull-right">
+            <button type="submit" ng-click="ReviewerComment.postComment(postReviewerComments, ReviewerComment.formData.form.commentsText)" class="btn rounded primary w-full m-t-sm">{{::ReviewerComment.fieldLabel.postText}}</button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div ng-if="ReviewerComment.model.isVisibleComments">
+        <div class="b-b m-t-1 m-b-1 col-xs-12"></div>
+        <div class="row">
+            <div class="tab-content col-xs-12">
+                <div class="tab-pane p-v-sm active">
+                    <div class="streamline b-l m-b m-l">
+                        <div class="sl-item" ng-repeat="comment in ReviewerComment.model.comments">
+                            <div class="sl-left">
+                                <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+                            </div>
+                            <div class="sl-content">
+                                <div class="sl-date text-neutral-02">{{comment.lastModifiedDate}} <i class="fa fa-circle circle-icon text-neutral-02"></i> {{comment.appliesTo}}</div>
+
+                                <span class="text-primary">{{comment.createdBy}}</span>
+                                <span ng-if="comment.isEditable">
+                                    <a class="rp-icon-trash text-primary  pull-right" ng-click="ReviewerComment.deleteComment(comment.commentID)"></a>
+                                    <a class="rp-icon-edit-text text-primary pull-right m-r-sm" ng-click="ReviewerComment.editComment(comment)"> </a>
+                                </span>
+
+                                <div ng-if="comment.isEdit">
+                                    <ng-form class="ft-form" role="form" name="editReviewerComment" novalidate>
+                                        <div class="form-group row edit-comment">
+                                            <div class="col-sm-12">
+                                                <ui-select multiple ng-model="ReviewerComment.formData.selectedUsers" ng-required theme="bootstrap" ng-disabled="ReviewerComment.formData.form.isEditable" on-remove="ReviewerComment.propertyDelete($item)">
+                                                    <ui-select-match placeholder="Select Users">{{$item.userName}}</ui-select-match>
+                                                    <ui-select-choices refresh="ReviewerComment.getUsers($select.search)" refresh-delay="0" group-by="someGroupFn" repeat="user in ReviewerComment.model.userList">
+                                                        <div ng-bind-html="user.userName | highlight: $select.search"></div>
+                                                        <small>
+                                                            <span ng-bind-html="''+ user.roleName | highlight: $select.search "></span>
+                                                        </small>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="rp-comment">
+                                            <rp-form-textarea config="ReviewerComment.formConfig.editResponse" rp-model="ReviewerComment.formData.form.editCommentText">
+                                            </rp-form-textarea>
+                                            <div class="pull-right edit-buttons m-t-sm m-b-1">
+                                                <button class="btn rounded info w-xs" ng-click="ReviewerComment.updateComment(editReviewerComment, ReviewerComment.formData.form.editCommentText)">
+                                                    {{::ReviewerComment.fieldLabel.saveText}}
+                                                </button>
+                                                <button class="btn rounded btn-outline b-primary text-primary w-xs" ng-click="ReviewerComment.toggleEditComment(comment)">{{::ReviewerComment.fieldLabel.cancelText}}</button>
+                                            </div>
+                                        </div>
+
+                                    </ng-form>
+                                </div>
+                                <div ng-if="!comment.isEdit">
+                                    <p>{{comment.comment}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

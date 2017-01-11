@@ -1,0 +1,16 @@
+<div id="propertyChartView" ng-controller="BdgtPropertychartCtrl as page" class="property-page-content">
+    <div>
+        <h3 class="propertycharts-moduel-title">{{ ::model.text.pageHeading }}</h3>
+    </div>
+    <div>
+        <div class="controls">
+            <rp-toggle class="table-filter-toggle"
+                       model="model.grid.filtersModel.state.active"
+                       options="{activeText: model.text.hideFilters,
+                       defaultText: model.text.showFilters}">
+            </rp-toggle>
+        </div>
+        <rp-grid model="model.grid"></rp-grid>
+    </div>
+
+</div>

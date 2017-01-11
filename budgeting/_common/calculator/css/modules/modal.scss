@@ -1,0 +1,33 @@
+#rp-calculator {
+	width: 100%;
+	height: 28.5rem;
+	top: auto;
+
+	&.error {
+		height: 16rem;
+	}
+
+	.aside-footer {
+		position: absolute;
+		bottom: 0;
+
+		width: 100%;
+		border-top: none;
+	}
+
+	.ic-close {
+		color: $rp-neutral-04;		
+		@include x-small-text;
+	}
+
+	.unavailable {
+		min-height: 100px;
+	}
+
+	.active-row {
+		@include title-2;
+		background-color: $rp-neutral-05;
+		text-align: center;
+		padding: 0.25rem;
+	}
+}

@@ -1,0 +1,50 @@
+<div id="payroll-employee-allocation" ng-controller="EmployeeAllocationCtrl as employeeAllocation" ng-init="employeeAllocation.setModel($index)">
+    <form name="employeeAllocation.model.form" role="form" novalidate>
+        <div>
+            <h5 class="page-title">{{::employeeAllocation.fieldLabels.pageTitle}}</h5>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block" for="propertyAllocation">{{::employeeAllocation.fieldLabels.propertyAllocation}}</label>
+                        <div ng-if="employeeAllocation.model.isEdit" class="m-r-2">
+                            <rp-form-input-text config="employeeAllocation.formConfig.propertyAllocation" rp-model="employeeAllocation.model.allocationPercent">
+                            </rp-form-input-text>
+                        </div>
+                        <label class="form-label" ng-if="!employeeAllocation.model.isEdit">{{employeeAllocation.model.allocationPercent}}</label>
+                    </div>
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block" for="payType">{{::employeeAllocation.fieldLabels.payType}}</label>
+                        <div class="m-t-1" ng-if="employeeAllocation.model.isEdit">
+                            <label class="md-check m-r-1">
+                                <input type="radio" name="radio" ng-value="'Salary'" ng-model="employeeAllocation.model.payType">
+                                <i class="blue"></i>
+                                {{::employeeAllocation.fieldLabels.salary}}
+                            </label>
+                            <label class="md-check">
+                                <input type="radio" name="radio" ng-value="'Hourly'" ng-model="employeeAllocation.model.payType">
+                                <i class="blue"></i>
+                                {{::employeeAllocation.fieldLabels.hourly}}
+                            </label>
+                        </div>
+                        <label class="form-label" 
+                               ng-if="!employeeAllocation.model.isEdit">{{employeeAllocation.model.payType}}</label>
+                    </div>
+                </div>
+                <div class="row m-t-2">
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block">{{::employeeAllocation.fieldLabels.startDate}}</label>
+                        <label class="form-label">{{employeeAllocation.model.startDate.format(employeeAllocation.fieldLabels.dateFormat) }}</label>
+                    </div>
+                    <div class="col-md-5 p-l-0 m-l-xs">
+                        <label class="ft-s-14 _600 form-label block">{{::employeeAllocation.fieldLabels.endDate}}</label>
+                        <label class="form-label">{{employeeAllocation.model.endDate.format(employeeAllocation.fieldLabels.dateFormat)}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

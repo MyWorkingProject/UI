@@ -1,0 +1,8 @@
+<div class="rp-cg-editable">
+    <span class="rp-cg-text toggle-text text-right total" title="{{column.row.data.total | number}}">
+       {{column.row.data.total | number}} 
+    </span>
+    <span class="rp-cg-text toggle-text text-right total" ng-if="column.row.data.total.indexOf('%') > 0  " title="{{column.row.data.total}}">
+        {{column.row.data.total}}
+    </span>
+</div>

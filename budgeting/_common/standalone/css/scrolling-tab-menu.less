@@ -1,0 +1,61 @@
+//  Scrolling Tabs Menu
+
+.scrolling-tab-menu {
+    position: relative;
+
+    span[class^="scroll-"] {
+        .hide;
+        top: 0;
+        z-index: 2;
+        position: absolute;
+
+        &.disabled {
+            .hide;
+        }
+    }
+
+    .scroll-left {
+        right: 0;
+    }
+
+    .scroll-right {
+        left: 0;
+    }
+
+    .scrolling-tab-screen {
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    .scrolling-tab-slider {
+        .clearfix;
+        // top: 0;
+        // left: 0;
+        // position: absolute;
+    }
+
+    .scrolling-tab {
+        .float-left;
+        cursor: pointer;
+
+        &.active {
+            cursor: default;
+        }
+    }
+}
+
+.no-touch
+.scrolling-tab-menu {
+    span[class^="scroll-"] {
+        .block;
+
+        &.disabled {
+            .hide;
+        }
+    }
+
+    .scrolling-tab-screen {
+        // overflow: hidden;
+    }
+}

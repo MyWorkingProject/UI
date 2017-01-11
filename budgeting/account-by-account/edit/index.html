@@ -1,0 +1,77 @@
+<model-basic-info></model-basic-info>
+<div class="edit-gl-account-section">
+    <div class="box-header">
+        <div class="row">
+            <div class="text-muted">
+                {{page.model.glAccountDetail.accountTypeCode | uppercase}} / {{page.model.glAccountDetail.accountCategoryName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 p-l-0 text-primary">
+                <div class="col-md-8 col-sm-8 p-l-0 pointer" ng-if="!page.isSearchGLAccountVisible" ng-click="page.showSearchGLAccount()">
+                    <div class="p-l-0 col-md-11 selected-gl-account">
+                        <span>{{page.model.glAccountDetail.glAccountNumber}} {{page.model.glAccountDetail.description }} </span>
+                    </div>
+                    <div class="col-md-1 font-18 m-t-sm">
+                        <span class="rp-icon-search2"></span>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-8 p-l-0" ng-if="page.isSearchGLAccountVisible">
+                    <gl-accnt-search data="page.model.glSearch" on-select="page.onSelectedGLaccount(selectedGLAccount)" is-focused-on-show="true" on-blur-out="page.hideSearchGLAccount()"></gl-accnt-search>
+                </div>
+                <div class="col-md-1 font-18 m-t-sm">
+                    <span ng-if="page.model.glAccountDetail.prevGLAccountNumber" ng-click="page.changeGLAccount(page.model.glAccountDetail.prevGLAccountNumber)" class="rp-icon-angle-left pointer"></span>
+                </div>
+                <div class="col-md-1 font-18 m-t-sm">
+                    <span ng-if="page.model.glAccountDetail.nextGLAccountNumber" ng-click="page.changeGLAccount(page.model.glAccountDetail.nextGLAccountNumber)" class="rp-icon-angle-right pointer"></span>
+                </div>
+                <div class="col-md-2 m-t-sm">
+                    <span class="text-link" ng-click="page.findGlAccount()">{{::page.fieldLabels.showingListText}}</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 p-r-0">
+                <div class="pull-right">
+                    <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-b-sm m-r-sm" ng-click="page.cancel()">
+                        {{::page.fieldLabels.cancelBtnText}}
+                    </button>
+                    <button class="save btn rounded primary w-xs m-b-sm" ng-if="page.isEditable" ng-click="page.save()">
+                        {{::page.fieldLabels.saveBtnText}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-body p-a-1">
+        <div class="row p-b-1">
+            <div class="inline p-r-1 pointer" ng-class="{'text-primary': page.model.glAccountDetail.generalCommentCount > 0, 'text-warning': page.model.glAccountDetail.reviewCommentCount > 0}" ng-click="page.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{page.model.glAccountDetail.generalCommentCount + page.model.glAccountDetail.reviewCommentCount }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-click="page.showHistory()">
+                <i class="rp-icon-history"></i>
+                <span>{{::page.fieldLabels.historyText}}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="page.isEditable" ng-click="page.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::page.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-sm-6 p-l-0 p-t-1">
+                <div class="text-muted" ng-if="page.model.glAccountDetail.narrative">
+                    <i class="rp-icon-info-circle"></i>
+                    <i>{{page.model.glAccountDetail.narrative}}</i>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 p-r-0">
+                <div class="pull-xs-right">
+                  <div class="pull-right m-l-1 pointer" ng-click="page.showTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>{{::page.fieldLabels.tableSettingsText}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-1" ng-if="page.model.grid">
+            <rp-cg model="page.model.grid">
+            </rp-cg>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div id="budget-comments-responses">
+    <div>
+        <div class="row-col">
+            <div class="top-spacer">
+                <a class="pull-right text-muted text-lg p-t-sm" data-dismiss="modal" ng-click="page.resetForm(postCommentResponse)">&times;</a>
+                <div class="p-a">
+                    <span class="h5">{{:: page.dashboardComment.text.modalHeader}}</span>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="row-body">
+                    <div class="row-inner">
+                        <div class="list-group no-radius">
+                            <div class="list-group-item p-x-md">
+                                <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="pull-left w-40 m-r img-circle">
+                                <div class="clear">
+                                    <span class="text-muted">{{page.dashboardComment.comments.commentInfo.createdOn}} </span>
+                                    <span ng-if="page.dashboardComment.comments.commentInfo.isEditable">
+                                        <a class="rp-icon-trash pull-right" data-dismiss="modal" ng-click="page.deleteDashboardComment(page.dashboardComment.comments.commentInfo.commentID)"></a>
+                                        <a class="rp-icon-edit-text pull-right m-r-sm " data-dismiss="modal" ng-click="page.editDashboardComment(page.dashboardComment.comments)" data-toggle="modal" data-target="#userComment" ui-toggle-class="modal-open-aside" ui-target="body"></a>
+                                    </span>
+                                    <span class="clear text-ellipsis text-xs comments-user">{{page.dashboardComment.comments.commentInfo.createdBy}}</span>
+                                </div>
+                                <div class="p-x-md m-t p-v-xs" ng-if="!page.dashboardComment.comments.commentInfo.isEdit" ng-class="{'container': !isActive, 'appEllipseContenthover': isActive}" ng-click="isActive = !isActive"">{{page.dashboardComment.comments.commentInfo.comment}}</div>
+
+                                <div class="p-x-md m-t p-v-xs r-ap" ng-if="page.dashboardComment.source==='budgetmodel'">
+                                    {{:: page.dashboardComment.text.comment_property}}                                    
+                                    <span ng-if="page.dashboardComment.comments.commentRecipientList.length < 1" >
+                                        <a href="" class="text-link" ng-click="page.navigateToPage(page.dashboardComment.comments);">{{ page.dashboardComment.comments.commentInfo.appliesTo}}</a>
+                                    </span>
+                                </div>
+
+                                <div class="p-x-md m-t p-v-xs r-ap" ng-if="page.dashboardComment.source==='workspaces'">
+                                    <span ng-if="property.recipientName.length!==0">{{:: page.dashboardComment.text.comment_property}}</span>
+                                    <span ng-repeat="property in page.dashboardComment.comments.commentRecipientList" ng-if="page.dashboardComment.comments.commentRecipientList.length > 0">
+                                        {{ property.recipientName}}{{$last ? '' : ', '}}
+                                    </span>
+                                    <span ng-if="page.dashboardComment.comments.commentRecipientList.length < 1">
+                                        {{ page.dashboardComment.comments.commentInfo.appliesTo}}
+                                    </span>
+                                </div>
+                                <div class="p-x-md m-t p-v-xs r-ap" ng-if="page.dashboardComment.source==='workspaces'">{{:: page.dashboardComment.text.comment_pintostart}} {{page.dashboardComment.comments.commentInfo.pinUntilDate!==''? page.dashboardComment.comments.commentInfo.pinUntilDate : 'N/A'}}</div>
+                            </div>
+                            <div class="p-a responses">
+                                <span class="h5">{{:: page.dashboardComment.text.responses}}</span>
+                            </div>
+                            <ng-form class="ft-form" role="form" name="postCommentResponse" novalidate>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 m-t-1">
+                                        <rp-form-textarea config="page.formConfig.commentsResponses" rp-model="page.dashboardComment.commentsResponses">
+                                        </rp-form-textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row p-r-sm">
+                                    <div class="col-xs-4 p-r-0 pull-right">
+                                        <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.postCommentResponse(page.dashboardComment.comments.commentInfo.commentID, postCommentResponse)">{{:: page.dashboardComment.text.postBtnText}}</button>
+                                    </div>
+                                </div>
+                                <div ng-repeat="data in page.model.comments">
+                                    <div class="sl-left">
+                                        <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+                                    </div>
+                                </div>
+                            </ng-form>
+                            <ng-form class="ft-form" role="form" name="postEditResponse" novalidate>
+                                <div class="streamline b-l m-b m-l" ng-if="page.dashboardComment.comments.commentResponseList.length">
+                                    <div class="sl-item" ng-repeat="records in page.dashboardComment.comments.commentResponseList">
+                                        <div class="sl-left">
+                                            <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="pull-left w-40 m-r img-circle">
+                                            <div class="reponses-top">
+                                                <span class="text-muted">{{records.createdOn}}</span>
+                                                <span ng-if="records.isEditable">
+                                                    <a ng-if="!records.isEdit" class="rp-icon-trash pull-right link-color" ng-click="page.deleteCommentResponse(records.responseID,records.commentID)"></a>
+                                                    <a ng-if="!records.isEdit" class="rp-icon-edit-text pull-right m-r-sm link-color" ng-click="page.editComment(records)"></a>
+                                                </span>
+                                                <span class="clear text-ellipsis text-xs comments-user">{{records.createdBy}}</span>
+                                            </div>
+                                            <div class="p-x-md m-t p-v-xs">
+                                                <div ng-if="!records.isEdit" ng-class="{'container': !isActive, 'appEllipseContenthover': isActive}" ng-click="isActive = !isActive">
+                                                    <span>{{records.response}}</span>
+                                                </div>
+                                                <div ng-if="records.isEdit">
+                                                    <div class="rp-comment">
+                                                        <rp-form-textarea config="page.formConfig.editResponse" rp-model="records.editResponse">
+                                                        </rp-form-textarea>
+                                                    </div>
+                                                    <div class="rp-pull-lft">
+                                                        <a class="btn rounded primary w-full m-b-md  pull-left rp-pull-lt" ng-click="page.postEditResponse(page.dashboardComment.comments.commentInfo.commentID,records,postEditResponse)">Save</a>
+                                                        <a class="btn rounded btn-outline b-primary text-primary m-l-sm pull-left rp-pull-lt" ng-click="page.toggleEditComment(records)">Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

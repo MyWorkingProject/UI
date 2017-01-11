@@ -1,0 +1,14 @@
+<div>
+	<div ng-if="record.rowType !== 'adjustmentPercent'">
+	    {{record[config.key]}}
+	</div>
+	<div ng-if="record.rowType === 'adjustmentPercent'" class="adjustment-row">
+	    <div>{{record[config.key]}}</div>
+		<div ng-if="record.rowType === 'adjustmentPercent'" class="adjustment-all">
+			<rp-form-input-text data-col
+		        config="record.adjustmentForAll"
+		        rp-model="record.percentForAll">
+		    </rp-form-input-text>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,118 @@
+//  Selection List
+
+.tasks-module
+.task-selection-list {
+    .float-left;
+    margin-right: 10px;
+    position: relative;
+
+    h2 {
+        .border-radius(5px, 0, 0, 5px);
+        z-index: 2;
+        color: @dark-gray;
+        width: 120px;
+        height: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 30px;
+        padding-left: 10px;
+        position: relative;
+        background-color: @white;
+
+        span {
+            .block;
+            .icon-emptyarrowd;
+            float: right;
+            width: 20px;
+            height: 30px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+        }
+    }
+
+    ul {
+        .hide;
+        .border-radius(5px, 5px, 5px, 0);
+        .box-shadow(5px 5px 10px rgba(100, 100, 100, 0.75));
+        left: 0;
+        top: 29px;
+        z-index: 4;
+        width: 210px;
+        overflow: auto;
+        max-height: 120px;
+        position: absolute;
+        border: solid 1px @dark-gray;
+        background-color: @white;
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    li {
+        height: 30px;
+        padding: 0 9px;
+        font-size: 12px;
+        cursor: pointer;
+        line-height: 30px;
+
+        span.icon {
+            .float-left;
+            .rounded(3px);
+            width: 14px;
+            height: 14px;
+            color: #535353;
+            margin-top: 7px;
+            margin-right: 5px;
+            text-align: center;
+            position: relative;
+            border: solid 1px #bfcadb;
+
+            &.checked {
+                .icon-complete;
+            }
+
+            &:before {
+                top: 0;
+                left: 0;
+                width: 100%;
+                font-size: 12px;
+                line-height: 14px;
+                position: absolute;
+            }
+        }
+    }
+
+    .empty {
+        .hide;
+    }
+}
+
+.tasks-module
+.task-selection-list.active {
+    h2 {
+        z-index: 5;
+        width: 185px;
+        height: 29px;
+        color: #49709e;
+        padding-left: 9px;
+        line-height: 28px;
+        position: relative;
+        border: solid 1px @dark-gray;
+        border-bottom: none;
+
+        span {
+            .block;
+            // .icon-filledarrowup;
+            .icon-emptyarrowup;
+            float: right;
+            width: 20px;
+            height: 29px;
+            font-size: 14px;
+            line-height: 28px;
+        }
+    }
+
+    ul {
+        .block;
+    }
+}

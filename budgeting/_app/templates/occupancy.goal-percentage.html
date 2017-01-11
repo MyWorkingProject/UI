@@ -1,0 +1,9 @@
+<!-- Occupancy Goal % -->
+
+<label class="form-control-label">DATE</label>
+<span class="field-block grid-input-text">
+    <input type="text" value="{{record[config.key]}}" 
+        ng-model="record[config.key]" 
+        ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/" 
+        class="form-control rp-currency-editable rp-calculator-amt"/>
+</span>

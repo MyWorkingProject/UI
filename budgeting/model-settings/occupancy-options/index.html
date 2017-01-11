@@ -1,0 +1,386 @@
+<div id="occupancy-options" ng-if="page.formState.isReady" ng-cloak>
+    <ng-form name="page.ocm.form" novalidate ng-class="{'form-display': page.formState.isDisplayForm}" role="form">
+        <!-- Header -->
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <h5 class="col-xs-6">{{::page.translate("option_title")}}
+                <small class="notify-final" ng-if="!page.formState.isEditable">{{::page.translate("err_final")}}</small>
+            </h5>
+            <div class="form-group col-xs-6" ng-if="page.formState.isEditable">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <!-- Edit -->
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.editOccupancyOpt()" ng-show="!page.formState.isDisplayForm">
+                        <i class="ic-edit"></i>
+                        {{::page.translate("edit")}}
+                    </button>
+
+                    <!-- Save/Cancel -->
+                    <div ng-show="page.formState.isDisplayForm" class="pull-right">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-click="page.cancel()">
+                            {{::page.translate("cancel")}}
+                        </button>
+                        <button ng-click="page.save()" type="submit" class="btn rounded primary w-xs" ng-disabled="!page.formState.isReady">
+                            {{::page.translate("save")}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-body p-t-sm p-l-sm p-b-0">
+            <div class="form-group row">
+                <!-- Occupancy Method -->
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <label class="form-control-label ft-s-16 ft-bold text-color">{{::page.translate("occupancy_method")}}</label>
+
+                    <rp-form-select-menu
+                        config="page.formConfig.occupancyMethod"
+                        rp-model="page.ocm.model.method.value"
+                        ng-if="page.formState.isDisplayForm && page.formState.isInputMethodEditable">
+                    </rp-form-select-menu>
+
+                    <p class="form-control-static" ng-if="!page.formState.isDisplayForm || !page.formState.isInputMethodEditable">
+                        {{ page.ocm.model.method.name || "&dash;" }}
+                    </p>
+
+                </div>
+
+                <!-- Occupancy Goal % -->
+                <div class="col-md-8 col-sm-6 col-xs-12" 
+                        ng-if="!page.formState.isSeniorLiving"
+                        ng-hide="page.formState.isOccupancyMethodNone">
+                    <label class="form-control-label ft-s-16 ft-bold text-color has-tooltip">
+                        {{::page.translate("occupancy_goal")}}                        
+
+                        <a class="text-neutral m-l-sm" 
+                                uib-popover="{{::page.translate('og_tooltip')}}"
+                                popover-placement="right"
+                                popover-trigger="focus" tabindex="0">
+                            <i class="rp-icon-question-circle"></i>
+                        </a> 
+                    </label>
+
+                    <!-- Annual / Monthly / Use reference data -->
+                    <div class="row occupancy-goal-opt" ng-if="page.formState.isDisplayForm && page.formState.isOccupancyGoalEditable">
+                        <div class="col-xs-12">
+                            <label class="checkbox-inline md-check" for="ocgAnnual">
+                                <input type="radio" id="ocgAnnual" name="occupancyGoalType"
+                                    value="{{::page.formData.occupancyGoalType.ANNUALLY.value}}"
+                                    ng-disabled="!page.formState.isOccupancyGoalEditable"
+                                    ng-model="page.ocm.model.goalPercentage.type"
+                                    ng-click="page.ocm.model.goalPercentage.changedGoalType()"/>
+                                <i class="primary"></i>
+                                {{::page.formData.occupancyGoalType.ANNUALLY.name}}
+                            </label>
+                            <label class="checkbox-inline md-check" for="ocgMonthly">
+                                <input type="radio" id="ocgMonthly" name="occupancyGoalType"
+                                    value="{{::page.formData.occupancyGoalType.MONTHLY.value}}"
+                                    ng-disabled="!page.formState.isOccupancyGoalEditable"
+                                    ng-model="page.ocm.model.goalPercentage.type"
+                                    ng-click="page.ocm.model.goalPercentage.changedGoalType()"/>
+                                <i class="primary"></i>
+                                {{::page.formData.occupancyGoalType.MONTHLY.name}}
+                            </label>
+                            <label class="checkbox-inline md-check" for="ocgUserRef">
+                                <input type="radio" id="ocgUserRef" name="occupancyGoalType"
+                                    value="{{::page.formData.occupancyGoalType.USE_REF_DATA.value}}"
+                                    ng-disabled="!page.formState.isOccupancyGoalEditable"
+                                    ng-model="page.ocm.model.goalPercentage.type"
+                                    ng-click="page.ocm.model.goalPercentage.changedGoalType()"/>
+                                <i class="primary"></i>
+                                {{::page.formData.occupancyGoalType.USE_REF_DATA.name}}
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Occupancy Goal %: EDIT -->
+                    <div class="row m-t-sm" ng-if="page.formState.isDisplayForm && page.formState.isOccupancyGoalEditable">
+                        <!-- Occupancy Goal %: Annual -->
+                        <div class="col-md-6 col-xs-12" ng-show="page.ocm.model.goalPercentage.type === page.formData.occupancyGoalType.ANNUALLY.value">
+                            <rp-form-input-text 
+                                config="page.formConfig.occGoalAnnualVal"
+                                rp-model="page.ocm.model.goalPercentage.value">
+                            </rp-form-input-text>
+                        </div>
+
+                        <!-- Occupancy Goal %: Monthly -->
+                        <div class="monthly-percent-wrapper col-xs-12" ng-show="page.ocm.model.goalPercentage.type === page.formData.occupancyGoalType.MONTHLY.value">
+                            <div class="monthly-percent">
+                                <div class="monthly-gp m-r-xs" ng-repeat="currMonthGP in page.ocm.model.goalPercentage.percentages">
+                                    <label>{{currMonthGP.label}}</label>
+                                    <rp-form-input-text 
+                                        class="small"
+                                        config="page.formConfig.occGoalMonthlyVal"
+                                        rp-model="currMonthGP.goalPercentage">
+                                    </rp-form-input-text>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Occupancy Goal %: VIEW -->
+                    <div ng-if="!page.formState.isDisplayForm || !page.formState.isOccupancyGoalEditable">
+                        <div class="col-xs-12 p-x-0" ng-if="page.ocm.model.goalPercentage.type !== page.formData.occupancyGoalType.MONTHLY.value">
+                            {{ page.ocm.model.goalPercentage.display || "&dash;" }}
+                        </div>
+
+                        <div class="col-xs-12 monthly-percent-wrapper p-x-0" ng-if="page.ocm.model.goalPercentage.type === page.formData.occupancyGoalType.MONTHLY.value">
+                            <div class="monthly-percent">
+                                <div class="monthly-gp m-r-xs w-xs" ng-repeat="currMonthGP in page.ocm.model.goalPercentage.percentages">
+                                    <label>{{currMonthGP.label}}</label>
+                                    <p class="form-control-static">
+                                        {{ currMonthGP.goalPercentage || 0 | number:2 }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GL Accounts -->
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t" ng-hide="page.formState.isOccupancyMethodNone">
+            <span class="text-primary ft-s-18">{{::page.translate("gl_accounts_title")}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm" ng-hide="page.formState.isOccupancyMethodNone">
+            <!-- Non Senior Living -->            
+            <div class="form-horizontal" ng-if="!page.formState.isSeniorLiving">
+                <div class="form-group row ">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_vacancy_loss")}}
+                        </label>
+
+                        <div ng-if="page.formState.isDisplayForm && page.formState.isGLAccountEditable">
+                            <gl-accnt-search data="page.ocm.model.glAccounts.vacantUnit"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm || !page.formState.isGLAccountEditable" class="form-control-static">
+                            {{page.ocm.model.glAccounts.vacantUnit.glAccountNumber}} - {{page.ocm.model.glAccounts.vacantUnit.glAccountDescription}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_down_units_rent")}}
+                        </label>
+                        <div ng-if="page.formState.isDisplayForm && page.formState.isGLAccountEditable">
+                            <gl-accnt-search data="page.ocm.model.glAccounts.downUnit"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm || !page.formState.isGLAccountEditable" class="form-control-static">
+                            {{page.ocm.model.glAccounts.downUnit.glAccountNumber}} - {{page.ocm.model.glAccounts.downUnit.glAccountDescription}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_model_units_rent")}}
+                        </label>
+                        <div ng-if="page.formState.isDisplayForm && page.formState.isGLAccountEditable">
+                            <gl-accnt-search data="page.ocm.model.glAccounts.modelUnit"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm || !page.formState.isGLAccountEditable" class="form-control-static">
+                            {{page.ocm.model.glAccounts.modelUnit.glAccountNumber}} - {{page.ocm.model.glAccounts.modelUnit.glAccountDescription}}
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_admin_units_rent")}}
+                        </label>
+                        <div ng-if="page.formState.isDisplayForm && page.formState.isGLAccountEditable">
+                            <gl-accnt-search data="page.ocm.model.glAccounts.adminUnit"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm || !page.formState.isGLAccountEditable" class="form-control-static">
+                            {{page.ocm.model.glAccounts.adminUnit.glAccountNumber}} - {{page.ocm.model.glAccounts.adminUnit.glAccountDescription}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_employee_units_rent")}}
+                        </label>
+                        <div ng-if="page.formState.isDisplayForm && page.formState.isGLAccountEditable">
+                            <gl-accnt-search data="page.ocm.model.glAccounts.employeeUnit"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm || !page.formState.isGLAccountEditable" class="form-control-static">
+                            {{page.ocm.model.glAccounts.employeeUnit.glAccountNumber}} - {{page.ocm.model.glAccounts.employeeUnit.glAccountDescription}}
+                        </div>
+                    </div>
+                </div>               
+            </div>
+
+            <!-- Senior Living -->
+            <div class="form-horizontal" ng-if="page.formState.isSeniorLiving">
+                <div class="form-group row ">
+                    <div class="col-sm-6 col-xs-12"
+                            ng-class-even="'col-md-5'"
+                            ng-class-odd="'col-md-4'"
+                            ng-repeat="currSeniorGL in page.ocm.model.seniorGLAccounts track by currSeniorGL.glAccountNumber">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("gl_vl_memory_care")}} {{currSeniorGL.serviceGroupName}}
+                        </label>
+                        <div ng-if="page.formState.isDisplayForm">
+                            <gl-accnt-search data="currSeniorGL"></gl-accnt-search>
+                        </div>
+                        <div ng-if="!page.formState.isDisplayForm" class="form-control-static">
+                            {{currSeniorGL.glAccountNumber}} - {{currSeniorGL.glAccountDescription}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Assumptions -->
+        <div class="row-col p-b-0 p-l-sm p-y-sm b-t" ng-hide="page.formState.isOccupancyMethodNone">
+            <span class="text-primary ft-s-18">{{::page.translate("assumptions_title")}}</span>
+        </div>
+        <div class="box-body p-t-0 p-l-sm" ng-hide="page.formState.isOccupancyMethodNone">
+            <div class="form-horizontal">
+                <div class="form-group row" ng-if="!page.formState.isSeniorLiving">
+                    <!-- Model Units Loss Unit Type -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("model_units_loss_type")}}
+                        </label>
+
+                        <rp-form-select-menu
+                            config="page.formConfig.modelUnitsLossType"
+                            rp-model="page.ocm.model.assumptions.modelUnitsLossType.value"
+                            ng-if="page.formState.isDisplayForm && !page.formState.isModelUnitLossTypeDisabled">
+                        </rp-form-select-menu>
+
+                        <p class="form-control-static" ng-if="!page.formState.isDisplayForm || page.formState.isModelUnitLossTypeDisabled">
+                            {{ page.ocm.model.assumptions.modelUnitsLossType.name || "&dash;" }}
+                        </p>
+                    </div>
+
+                    <!-- Skips / Evictions / Early Terminations -->
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color">
+                            {{::page.translate("early_termination")}}
+                        </label>
+
+                        <rp-form-input-text 
+                            config="page.formConfig.earlyTermination"
+                            rp-model="page.ocm.model.assumptions.earlyTermination"
+                            ng-if="page.formState.isDisplayForm">
+                        </rp-form-input-text>
+
+                        <p class="form-control-static" ng-if="!page.formState.isDisplayForm">
+                            {{ page.ocm.model.assumptions.earlyTermination || "&dash;" }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <!-- Basis for Vacancy / Non-revenue Units Rent -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <label class="ft-s-16 ft-bold text-color has-tooltip">
+                            {{page.formData.basisForVacancy.title}}
+
+                            <a class="text-neutral m-l-sm" 
+                                    uib-popover="{{page.formData.basisForVacancy.tooltip}}" 
+                                    popover-placement="right" 
+                                    popover-trigger="focus" tabindex="0">
+                                <i class="rp-icon-question-circle"></i>
+                            </a>
+                        </label>
+
+                        <rp-form-select-menu
+                            config="page.formConfig.noneRevenueRents"
+                            rp-model="page.ocm.model.assumptions.noneRevenueRents.value"
+                            ng-if="page.formState.isDisplayForm">
+                        </rp-form-select-menu>
+
+                        <p class="form-control-static" ng-if="!page.formState.isDisplayForm">
+                            {{ page.ocm.model.assumptions.noneRevenueRents.name || "&dash;" }}
+                        </p>
+                    </div>
+
+                    <!-- Employee Units / Employee Discount -->
+                    <div class="col-md-5 col-sm-6 col-xs-12" ng-if="!page.formState.isSeniorLiving">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <label class="ft-s-16 ft-bold text-color">
+                                    {{::page.translate("employee_units")}}
+                                </label>
+
+                                <rp-form-input-text 
+                                    config="page.formConfig.employeeUnits"
+                                    rp-model="page.ocm.model.assumptions.employeeUnits"
+                                    ng-if="page.formState.isDisplayForm">
+                                </rp-form-input-text>
+
+                                <p class="form-control-static" ng-if="!page.formState.isDisplayForm">
+                                    {{ page.ocm.model.assumptions.employeeUnits || "&dash;" }}
+                                </p>
+
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <label class="ft-s-16 ft-bold text-color">
+                                    {{::page.translate("employee_discount")}}
+                                </label>
+
+                                <rp-form-input-text 
+                                    config="page.formConfig.employeeDiscount"
+                                    rp-model="page.ocm.model.assumptions.employeeDiscount"
+                                    ng-if="page.formState.isDisplayForm">
+                                </rp-form-input-text>
+
+                                <p class="form-control-static" ng-if="!page.formState.isDisplayForm">
+                                    {{ page.ocm.model.assumptions.employeeDiscount || "&dash;" }}
+                                </p>
+
+                            </div>
+                        </div>                     
+                    </div>
+                </div>
+
+                <div class="form-group row ">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <!-- Show reference data -->
+                        <label class="md-check m-b-md" for="showReferenceData">
+                            <input type="checkbox" id="showReferenceData" name="showReferenceData"
+                                ng-model="page.ocm.model.assumptions.showReferenceData"
+                                ng-disabled="!page.formState.isDisplayForm"
+                                />
+                            <i class="primary"></i>
+                            {{::page.translate("show_reference_data")}}
+                        </label>
+                        
+                        <!-- Open Period Reference Data -->
+                        <div class="m-t-sm" ng-show="page.ocm.model.assumptions.showReferenceData">
+                            <label class="ft-s-16 ft-bold text-color has-tooltip">
+                                {{::page.translate("open_reference_data")}}
+
+                                <a class="text-neutral m-l-sm" 
+                                        uib-popover="{{::page.translate('oprd_tooltip')}}" 
+                                        popover-placement="right" 
+                                        popover-trigger="focus" tabindex="0">
+                                    <i class="rp-icon-question-circle"></i>
+                                </a>
+                            </label>
+
+                            <rp-form-select-menu
+                                config="page.formConfig.openPeriodRefData"
+                                rp-model="page.ocm.model.assumptions.openPeriodRefData.value"
+                                ng-if="page.formState.isDisplayForm">
+                            </rp-form-select-menu>
+
+                            <p class="form-control-static" ng-if="!page.formState.isDisplayForm">
+                                {{ page.ocm.model.assumptions.openPeriodRefData.name || "&dash;" }}
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div><!-- .row -->
+
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,20 @@
+.page-header-icons {
+    padding-top: 0.3125rem;
+    padding-left: 0.9375rem;
+    margin-left: 0.625rem;
+
+    i {
+        margin-left: 1.25rem;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.rp-icon-filter {
+    .text {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    }
+    
+}

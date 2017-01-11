@@ -1,0 +1,24 @@
+#properties-wrapper #assign-gl-workflow {
+
+	background-color: $pale-gray;
+	
+	.box-header {
+		border-top: $rp-border-neutral 1px solid;
+		color: $dark-gray;
+
+		.box-close {
+			@include x-large-text;
+			top: 0;
+		}
+	}
+
+	.box-footer {
+		border-bottom: $rp-border-neutral 1px solid;
+	}
+
+	.ic-close {
+		color: $rp-neutral-04;
+		@include x-small-text;
+	}
+
+}

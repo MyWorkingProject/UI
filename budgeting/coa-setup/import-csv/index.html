@@ -1,0 +1,49 @@
+﻿<csv-browse file-data="page.fileInput"></csv-browse>
+<div class="spn-link-csv">
+    <div class="rp-popover a-import-spec" ng-class="impViewImportSpec.state" rp-popover-id="impViewImportSpec">
+        <span ng-click="impViewImportSpec.show()" class="view-import-spec">{{ ::page.model.text.viewSpecTxt }}</span>
+        <div class="popover-content">
+            <h2 class="view-spec-head">{{ ::page.model.text.importSpecTxt }}</h2>
+            <rp-grid model="viewSpecGrid.grid"></rp-grid>
+        </div>
+    </div>
+    <a target="_self" ng-click="page.dwnloadCsvTemplate()" class="view-import-spec">{{ ::page.model.text.csvTemp }}</a>
+</div>
+<div ng-if="page.fileInput" class="col-xs-12" >
+    <span>
+        {{ ::page.model.text.importFileTxt }}
+    </span>
+</div>
+<div ng-if="page.fileInput" class="col-xs-12" >
+    <div class="import-section col-xs-6 file-name">
+        <span>
+            {{ page.fileInput[0].filename }}
+        </span>
+    </div>
+    <div class="import-section col-xs-6 dv-load-btn">
+        <span class="button medium white newbtn load-btn-csv" ng-click="page.loadCSVData()">
+            {{ ::page.model.text.loadBtn }}
+        </span>
+    </div>
+</div>
+<div class="import-grid-csv" ng-if="gridModel.grid">
+    <div class="import-section-border-csv"></div>
+    <h3 class="gridHeading">Imported GL Accounts</h3>
+    <div class="table-controls filter-right">
+        <span class="tooltip-container button medium white deleteBtn" ng-click="page.delGlAccounts();" ng-init="page.model.form.tooltipState">
+            {{ ::page.model.text.deleteBtn }}
+            <span class="tooltip rp-callout top" ng-class="{ active: page.model.form.tooltipState }">{{ ::page.model.text.selectGlToDel }}</span>
+        </span>
+        <span class="button medium blue newbtn importBtn" ng-click="page.saveGlAccounts()">
+            <span>
+                {{ ::page.model.text.importSaveBtn }}
+            </span>
+        </span>
+        <rp-toggle class="table-filter-toggle"
+                   model="gridModel.grid.filtersModel.state.active"
+                   options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+    </div>
+    <rp-grid model="gridModel.grid"></rp-grid>
+</div>		 

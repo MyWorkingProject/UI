@@ -1,0 +1,15 @@
+﻿
+<div class="list-body">
+
+    <div ng-class="config.key === 'name' ? 'ng-show':'ng-hide'">
+        <div>
+            <span class="rp-grid-text rp-grid-link" ng-click="config.method(record)">{{record[config.key]}}</span>
+        </div>
+    </div>
+    <div ng-class="config.key !== 'name' ? 'ng-show':'ng-hide'">
+        <div>
+            <small class="text-ellipsis">{{record.lastModifiedDate}}</small>
+        </div>
+        by <a class="text-primary comments-text-decoration" ng-click="" href="">{{record.lastModifiedBy}}</a>
+    </div>
+</div>

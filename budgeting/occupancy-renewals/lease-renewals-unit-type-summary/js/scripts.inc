@@ -1,0 +1,11 @@
+{{{ include('controllers\lease-renewals.js') }}}
+{{{ include('models\lease-renewals-constant.js') }}}
+{{{ include('models\lease-renewals-content.js') }}}
+{{{ include('models\lease-renewals-grid-config.js') }}}
+{{{ include('models\lease-renewals-mapper.js') }}}
+{{{ include('models\lease-renewals-mock.js') }}}
+{{{ include('models\lease-renewals.js') }}}
+{{{ include('models\table-settings.js') }}}
+{{{ include('services\lease-renewals.js') }}}
+{{{ include('models\lease-grid-option-config.js') }}}
+{{{ include('templates\templates.inc.js') }}}

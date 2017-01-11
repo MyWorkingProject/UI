@@ -1,0 +1,67 @@
+#reviewer {
+   label {
+        font-weight: 600;
+    }
+
+    .aside {
+        .close {
+            font-size: 20px;
+            padding: 0;
+        }
+    }
+
+    .ui-select-search, .ui-select-container {
+        width: 17.8rem !important;
+    }
+
+    .ui-select-match {
+        display: block;
+        max-height: 80px;
+        overflow: auto;
+    }
+
+    .ui-select-match-item {
+        max-width: 12rem;
+
+        span + span {
+            max-width: 9.8rem;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .edit-buttons {
+        .w-xs {
+            width: 67px;
+        }
+
+        .btn {
+            height: 1.9rem;
+            padding: 0;
+            font-weight: 400;
+            font-size: .85rem;
+        }
+    }
+
+    .sl-content {
+        width: 13rem;
+    }
+
+    .edit-comment {
+        .ui-select-search, .ui-select-container {
+            max-width: 13rem;
+        }
+    }
+    .rp-comment
+    {
+        width: 13rem;
+    }
+    .circle-icon
+    {
+        font-size: .4rem;
+        margin: 0 4px;
+        position:relative;
+        bottom: 2px;
+    }
+}

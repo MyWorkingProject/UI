@@ -1,0 +1,82 @@
+<div class="aside occupancy-table-settings" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header" style="border: none;">
+                <button type="button" class="close" ng-click="page.close(false)">&times;</button>
+                <div class="p-t b-b p-b-sm">
+                    <span class="h5"> {{::page.getLangValue('bdget_occupancy_table_settings')}}</span>
+                </div>
+            </div>
+            <div class="aside-body" style="border: none;">
+                <div class="col-md-12 col-sm-12 p-l-0">
+                    <div>
+                        <h5 class="p-t-1">{{::page.getLangValue('bdget_occupancy_rowOptions')}}</h5>
+
+                        <div class="table-form-block" ng-if="page.occupancySettings.options.hasShowRefFiled">
+                            <div class="checkbox">
+                                <label class="md-check dark-bluebox form-label">
+                                    <input type="checkbox" ng-model="page.occupancySettings.options.refValue">
+                                    <i class="primary"></i>
+                                    {{::page.getLangValue('bdget_occupancy_showRefData')}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="table-settings-separator"></div>
+
+                        <div class="table-form-block">
+                            <label class="md-check form-label">
+                                <input name="rowHeightClass" type="radio"
+                                       value="small" ng-model="page.occupancySettings.options.rowHeightClass" />
+                                <i class="blue"></i>
+                                {{::page.getLangValue('bdget_occupancy_smallRows')}}
+                            </label>
+                        </div>
+
+                        <div class="table-form-block">
+                            <label class="md-check form-label">
+                                <input name="rowHeightClass" type="radio"
+                                       value="large" ng-model="page.occupancySettings.options.rowHeightClass" />
+                                <i class="blue"></i>
+                                {{::page.getLangValue('bdget_occupancy_largeRows')}}
+                            </label>
+                        </div>
+
+                        <div class="table-settings-separator"></div>
+
+                        <h5 class="p-t-1">{{::page.getLangValue('bdget_occupancy_colOptions')}}</h5>
+
+                        <div class="table-settings-separator"></div>
+
+                        <div class="columns-list">
+                            <div class="checkbox"
+                                 ng-if="column.label"
+                                 ng-repeat="column in page.occupancySettings.columnData.columns.data">
+                                <label class="md-check dark-bluebox form-label table-form-block">
+                                    <input type="checkbox"
+                                           id="col{{$index}}"
+                                           ng-model="column.state.active"
+                                           class="form-checkbox rp-form-checkbox"
+                                           ng-true-value="true" ng-false-value="false">
+                                    <i class="primary"></i>
+                                    {{column.label+" "+column.year}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="table-settings-separator"></div>
+                        <div class="text-right">
+                            <button class="btn rounded btn-outline b-info text-info p-r-1" ng-click="page.close(false)">
+                                {{::page.getLangValue('bdget_occupancy_cancel')}}
+                            </button>
+
+                            <button class="btn rounded primary" ng-click="page.close(true)">
+                                {{::page.getLangValue('bdget_occupancy_Apply')}}
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

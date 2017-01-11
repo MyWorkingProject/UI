@@ -1,0 +1,47 @@
+<div id="payroll-item-leasing-commission" ng-controller="PayrollLeasingCommItemCtrl as leasingItem" ng-init="leasingItem.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::leasingItem.fieldLabels.headerTitle}}</h5>
+            <div class="inline p-r-1 pointer" ng-click="leasingItem.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{ leasingItem.model.commentCount || 0 }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="leasingItem.model.isEdit" ng-click="leasingItem.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::leasingItem.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="leasingItem.model.grid">
+        <ng-form class="form-horizontal" role="form" name="leasingItem.model.form" novalidate>
+            <div class="col-md-12">
+                <div class="rp-action-bar box" ng-if="leasingItem.model.isEdit">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-9 p-a-0">
+                            <div class="col-xs-6 col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="moveInsPercent">
+                                    {{::leasingItem.fieldLabels.moveInsPercentText}}
+                                </label>
+                                <rp-form-input-text
+                                    config="leasingItem.formConfig.moveInsPercent"
+                                    rp-model="leasingItem.model.moveInsPercentage">
+                                </rp-form-input-text>                                
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <label class="ft-s-14 _600 form-label" for="commissionAmt">
+                                    {{::leasingItem.fieldLabels.commissionAmtText}}
+                                </label>
+                                <rp-form-input-text 
+                                    config="leasingItem.formConfig.commissionAmt"
+                                    rp-model="leasingItem.model.commissionAmounts">
+                                </rp-form-input-text>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <rp-cg model="leasingItem.model.grid"></rp-cg>                
+            </div>
+        </ng-form>        
+    </div>
+</div>

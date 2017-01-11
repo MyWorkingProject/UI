@@ -1,0 +1,303 @@
+<div id="budgetworkflowstatus-page-content">
+    <div class="row m-b-md">
+        <div class="col-md-9 m-b-xs">
+            <div class="title-display p-t-xs">
+                <h5 class="workspace-title float bws-title ft-bold">{{ :: page.model.moduleTitle.text }}</h5>
+            </div>
+            <!--</div>-->
+            <div class="col-md-6 pull-right p-r-0">
+                <div class="tabs-menu-wrap pull-right">
+                    <rp-tabs-menu class="t1 large" model="page.tabsMenu">
+                    </rp-tabs-menu>
+                </div>
+            </div>
+            <!--<div class="col-md-6">-->
+            <!--<div class="pull-right">
+                <div class="btn-group btn-group-rounded btn-group-outline b-primary rounded">
+                    <button type="button" class="btn white b-primary text-primary rounded" ng-click="page.showData('inProgress')" ng-class="{active : page.model.form.inProgress.isActive}">{{:: page.model.form.inProgress.text }}</button>
+                    <button type="button" class="btn white b-primary text-primary rounded " ng-click="page.showData('approval')" ng-class="{active : page.model.form.needApproval.isActive}">{{:: page.model.form.needApproval.text }}</button>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="rp-action-bar box m-b-md" ng-class="{'activate-tooltip': page.contractOperations.state.dispErr}">
+        <!--<div class="action-item select-all ft-form" rp-grid-model="page.gridFactory.grid">
+            <label class="md-check dark-bluebox">-->
+                <!--<input type="checkbox" name="name" value="" ng-model="page.model.isSelectAll" ng-true-value="true" ng-false-value="false" ng-click="page.selectAll()" class="ng-pristine ng-untouched ng-valid ng-empty">-->
+                <!--<input type="checkbox"
+                       ng-true-value="true"
+                       ng-false-value="false"
+                       class="rp-form-checkbox"
+                       ng-model="gridSelect.model.selected"
+                       ng-change="gridSelect.model.publishState()" />
+                <i class="primary"></i>
+            </label>
+            <span class="rp-icon-angle-down"></span>
+        </div>-->
+        <div ng-if="page.model.form.isConfigReady" rp-grid-model="page.gridFactory.grid"
+             class="action-item rp-grid-select ft-form">
+            <label class="md-check dark-bluebox rp-grid-select-label">
+                <input type="checkbox"
+                       ng-true-value="true"
+                       ng-false-value="false"
+                       class="rp-form-checkbox"
+                       ng-model="gridSelect.model.selected"
+                       ng-change="gridSelect.model.publishState()" />
+                <i class="primary"></i>
+            </label>
+            <span class="rp-grid-select-icon rp-icon-angle-down"></span>
+        </div>
+
+        <button ng-click="page.showCommentsForm('Submit')" ng-show="page.model.form.inProgress.isActive" ng-init="page.model.state.toolTipAlert" class="action-item"><i class="action-icon fa fa-arrow-circle-o-right"></i> <span class="action-text">{{ page.bgtStatusOperations.fieldLabel.submitText }}</span></button>
+        <button ng-click="page.showCommentsForm('Approve')" ng-show="page.model.form.needApproval.isActive" class="action-item">
+            <i class="action-icon rp-icon-correct">  </i>
+            <span class="action-text"> {{ page.bgtStatusOperations.fieldLabel.approveText }}</span>
+        </button>
+        <button ng-click="page.showCommentsForm('Reject')" ng-show="page.model.form.needApproval.isActive" class="action-item">
+            <i class="action-icon rp-icon-delete-2">  </i>
+            <span class="action-text">
+                {{ page.bgtStatusOperations.fieldLabel.rejectText }}
+            </span>
+        </button>
+        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt " ng-class="{'tool-tip-apprv': page.model.form.needApproval.isActive, 'tool-tip-sub': page.model.form.inProgress.isActive}" ng-show="page.model.state.toolTipAlert">
+            <span class="arrow left pull-left white"></span>
+            <div class="box-body">
+                {{page.model.toolTip.toolTipText }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--<div ng-repeat="glAccnt in page.glList">
+        <gl-accnt-search data="glAccnt"></gl-accnt-search>
+    </div>-->
+    <!--<gl-accnt-search data="page.glObj"></gl-accnt-search>
+    <gl-accnt-search data="page.glObj1"></gl-accnt-search>
+    <gl-accnt-search data="page.glObj2"></gl-accnt-search>-->
+
+
+
+    <div ng-show="page.model.form.slideCommentsForm.state.open">
+        <div class="border-line">
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <div class="box-header no-b-b p-l-sm">
+                        <h2 class="submit-workflow-header">{{page.bgtStatusOperations.fieldLabel.submitWorkflow}}</h2>
+                        <div class="pull-right">
+                            <span class="rp-icon-delete-2 ft-s-10 btn-submit show-pointer" ng-click="page.hideCommentsForm()"></span>
+                        </div>
+                    </div>
+                    <div class="box-body p-l-sm p-t-0 p-b-0">
+                        <ng-form novalidate class="ft-form" role="form" name="workflow">
+                            <div class="form-group row m-b-0">
+                                <div class="col-md-2">
+                                    <span class="form-control-label ft-bold">{{::page.bgtStatusOperations.fieldLabel.comments}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-9">
+                                    <!--<textarea required id="subComments" ng-model="page.bgtStatusOperations.form.comments" name="comments" ng-minlength="1"
+                                              ng-maxlength="512" ng-trim="true" ng-model-options="{updateOn: 'blur'}" class="form-control" rows="3"
+                                              placeholder="{{page.bgtStatusOperations.placeholder.submitComments}}"></textarea>-->
+                                    <rp-form-textarea config="page.formConfig.commentText" rp-model="page.bgtStatusOperations.form.comments">
+                                    </rp-form-textarea>
+                                </div>
+                            </div>
+                            <div class="checkbox col-md-12 p-l-0" ng-show="page.bgtStatusOperations.form.showChkBoxRow">
+                                <label class="md-check dark-bluebox">
+                                    <input type="checkbox"
+                                           id="customAccount"
+                                           ng-model="page.bgtStatusOperations.form.chkRoleStatus"
+                                           ng-true-value="true" ng-false-value="false" />
+                                    <i class="primary"></i>
+                                    {{page.bgtStatusOperations.form.chkRoleText}}
+                                </label>
+                                <i class="rp-icon-info-circle text-primary help-icon m-l-1 show-pointer" ng-click="page.showOverWriteInfo()"></i>
+                                <div class="col-sm-6 help-tip" ng-show="page.bgtStatusOperations.form.infoToolTip">
+                                    <div class="fdn-arrow box-color text-color pos-rlt">
+                                        <span class="arrow left pull-right white"></span>
+                                        <div class="box-body">
+                                            <p>
+                                                {{page.bgtStatusOperations.fieldLabel.overWriteHelp }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-9 pull-left">
+                                    <button type="submit" class="btn primary rounded p-x-md pull-right" ng-click="page.updateWorkflowStatus(workflow)">{{page.bgtStatusOperations.fieldLabel.formSubmitBtnText}}</button>
+                                    <button class="btn rounded btn-outline b-info text-info p-x-md m-r-md pull-right" ng-click="page.hideCommentsForm()">{{::page.bgtStatusOperations.fieldLabel.cancelText}}</button>
+                                </div>
+                            </div>
+                        </ng-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-line m-b-1">
+        </div>
+    </div>
+
+
+    <!--<div class="box box-border" ng-show="page.model.form.slideCommentsForm.state.open">
+        <div class="row p-t-1">
+            <div class="col-md-6 p-l-2">
+                <h5>{{page.bgtStatusOperations.fieldLabel.submitWorkflow}}</h5>
+            </div>
+            <div class="pull-right">
+                <a class="box-close" ng-click="page.hideCommentsForm()">
+                    <i class="fa fa-close btn-submit text-neutral"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="box-body p-l-0 p-b-0">
+            <form class="ft-form" role="form">
+                <div class="form-group col-md-12">
+                    <label for="comments" class="form-control-label">{{::page.bgtStatusOperations.fieldLabel.comments}}</label>
+                </div>
+                <div class="form-group col-md-9 div-cmnt">
+                    <textarea rows="3"
+                              id="comments"
+                              type="text"
+                              ng-model="page.bgtStatusOperations.form.comments"
+                              name="comments"
+                              ng-minlength="1"
+                              ng-maxlength="512"
+                              class="form-control"
+                              ng-trim="true"
+                              rp-wrapper-class="block"
+                              rp-instance-name="comments"
+                              ng-model-options="{updateOn: 'blur'}"
+                              rp-error-msg="page.model.errorMsgs.comments"
+                              placeholder="{{page.bgtStatusOperations.placeholder.submitComments}}"></textarea>
+                </div>
+                <div class="checkbox col-md-12" ng-show="page.bgtStatusOperations.form.showChkBoxRow">
+                    <label class="md-check dark-bluebox">
+                        <input type="checkbox"
+                               id="customAccount"
+                               ng-model="page.bgtStatusOperations.form.chkRoleStatus"
+                               ng-true-value="true" ng-false-value="false" />
+                        <i class="primary"></i>
+                        {{page.bgtStatusOperations.form.chkRoleText}}
+                    </label>
+                    <i class="rp-icon-info-circle text-primary help-icon m-l-1" ng-click="page.showOverWriteInfo()"></i>
+                    <div class="col-sm-3 help-tip" ng-show="page.bgtStatusOperations.form.infoToolTip">
+                        <div class="fdn-arrow box-color text-color pos-rlt" >
+                            <span class="arrow left pull-right white"></span>
+                            <div class="box-body text-center">
+                                <p>
+                                    {{::page.bgtStatusOperations.fieldLabel.overWriteHelp }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-9" ng-class="{'p-t-2':!page.bgtStatusOperations.form.showChkBoxRow}">
+                        <button type="submit" class="btn primary rounded p-x-md pull-right m-l-2" ng-click="page.updateWorkflowStatus()">
+                            {{page.bgtStatusOperations.fieldLabel.formSubmitBtnText}}
+                        </button>
+
+                        <button type="submit" class="btn rounded btn-cancel btn-outline b-primary text-primary pull-right" ng-click="page.hideCommentsForm()">
+                            {{::page.bgtStatusOperations.fieldLabel.cancelText}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>-->
+    <!--<div class="pull-right filterPad m-b-1">
+        <span class="show-pointer">
+            <i class="rp-icon-printer-2 icon-margin"></i>{{::page.model.text.print}}
+        </span>
+        <span class="icon-margin ">
+            <rp-toggle model="gridFactory.grid.filtersModel.state.active" class="rp-icon-filter show-pointer" options="{activeText: '', defaultText: 'Filter'}">
+            </rp-toggle>
+        </span>
+    </div>-->
+    <!--<div class="pull-right filterPad">
+        <i class="rp-icon-printer-2 icon-size icon-margin "></i>Print <span class="icon-margin ">
+            <rp-toggle model="gridFactory.grid.filtersModel.state.active" class="rp-icon-filter icon-size" options="{
+                                  defaultText: 'Filter'
+                              }">
+            </rp-toggle>
+        </span>
+    </div>-->
+    <!--<rp-toggle class="inline pull-right p-l-sm filter-cursor rp-icon-filter"
+               model="gridFactory.grid.filtersModel.state.active"
+               options="{ defaultText: 'Filter'}">
+    </rp-toggle>
+
+
+    <span class="rp-icon-filter pull-right filter-padding"></span>
+    <span class="pull-right m-r-sm text"><i class="fa fa-print m-r-xs ft-s-18 p-r-sm"> </i>{{::page.model.text.print}}</span>-->
+    <!--<div class="text-center text-sm-right pull-right ft-follow p-b-2 body">
+        <a class="inline p-x text-center">
+            <i class="rp-icon-printer">
+                <span class="ft-s-16 print-pading">
+                    {{::page.model.text.print}}
+                </span>
+            </i>
+        </a>
+        <a class="inline p-x text-center">
+            <rp-toggle class="table-filter-toggle ft-s-18 rp-icon-filter" model="gridFactory.grid.filtersModel.state.active" options="{activeText: '', defaultText: 'Filter' }">
+            </rp-toggle>
+        </a>
+    </div>-->
+    <div class="white m-l-sm p-l-xs">
+        <div class="row">
+            <div class="col-xs-12 p-y-md p-t-sm pull-right clearfix" ng-init="page.gridFactory.grid.filtersModel.state.active = false">
+                <div class="pull-right grid-controls">
+                    <div class="grid-control-item">
+                        <i class="icon rp-icon-printer-2"></i>
+                        <span class="text">
+                            {{::page.model.text.print}}
+                        </span>
+                    </div>
+                    <div class="grid-control-item">
+                        <rp-toggle model="page.gridFactory.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                              defaultText: 'Filter',
+                                              defaultIconClass: 'rp-icon-filter active',
+                                        activeIconClass: 'rp-icon-filter'
+                                        }">
+                            </rp-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="page.gridFactory.grid">
+        <!--class="col-sm-12"-->
+        <rp-grid model="page.gridFactory.grid" class="workspaces budgetworkflowstatus max-grid-width" ng-if="page.gridFactory.grid"></rp-grid>
+    </div>
+
+    <!--<div class="modal fade inactive" id="workflowLevel" data-backdrop="false">
+        <div class="right workflow-width white b-l pop-overflow">
+            <div ng-include src="page.model.includePage"></div>
+        </div>
+    </div>-->
+    <div id="workflowLevel" class="modal modal-position" data-backdrop="true">
+        <div class="modal-dialog modal-complex right pop-layout pop-overflow">
+            <div class="">
+                <div ng-include src="page.model.includePage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="modal fade inactive" id="workflowLevel" data-backdrop="false">
+        <div class="right workflow-width white b-l">
+            Showing pop up
+        </div>
+    </div>-->
+
+</div>

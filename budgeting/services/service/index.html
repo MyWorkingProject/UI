@@ -1,0 +1,109 @@
+﻿<div class="service">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-md-8 col-sm-8 p-l-0">
+                <div class="text-neutral">SERVICE</div>
+                <div class="inline pointer text-primary">
+                    <h2 class="inline service-heading-title p-r-1">Alarm Fees</h2>
+                </div>                
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="pull-right">
+                    <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-b-sm m-r-sm"
+                            ng-if="!page.isEdit" ng-click="page.edit()">
+                        <i class="rp-icon-edit-text"></i> Edit
+                    </button>
+                    <button class="cancel btn rounded btn-outline b-primary text-primary w-xs m-b-sm m-r-sm"
+                            ng-if="page.isEdit" ng-click="page.cancel()">
+                        Cancel
+                    </button>
+                    <button class="save btn rounded primary w-xs m-b-sm" ng-if="page.isEdit" ng-click="page.save()">Save</button>
+                </div>
+            </div>       
+    
+        </div>
+
+    </div>
+
+    <form name="">     
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+
+                <div class="row m-t-2">
+                    <div class="col-md-4">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="">{{:: page.fieldLabels.serviceName}}</label>
+                        <div ng-if="page.isEdit">
+                            <rp-form-input-text config="page.formConfig.serviceName" rp-model="page.serviceDetails.name">
+                            </rp-form-input-text>
+                        </div>
+                        <div class="form-label display-lbl-block" ng-if="!page.isEdit">{{:: page.serviceDetails.name}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="">{{:: page.fieldLabels.glAccount}}</label>
+                        <div ng-if="page.isEdit">
+                            <rp-form-input-text config="page.formConfig.glAccount" rp-model="page.serviceDetails.glAccount">
+                            </rp-form-input-text>
+                        </div>
+                        <div class="form-label display-lbl-block" ng-if="!page.isEdit">{{:: page.serviceDetails.glAccount}}</div>
+                    </div>
+                    <div ng-if="page.isEdit" class="col-md-4 m-t-3">
+                        <a class="text-info gl-account" href="" ng-click="page.findGlAccount()">{{:: page.fieldLabels.glAccounts}}</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-label display-lbl-block" ng-if="!page.isEdit">{{:: page.serviceDetails.inactive}}</div>
+                        <div class="m-t-1 checkbox" ng-if="page.isEdit">
+                            <label class="md-check dark-bluebox">
+                                <input type="checkbox"  required="" class="">
+                                <i class="primary"></i> {{:: page.fieldLabels.inactive}}
+                            </label>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="row m-t-3">
+                    <div class="col-md-4">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="">{{:: page.fieldLabels.amount}}</label>
+                        <div ng-if="page.isEdit">
+                            <rp-form-input-text config="page.formConfig.amount" rp-model="page.serviceDetails.amount">
+                            </rp-form-input-text>
+                        </div>
+                        <div class="form-label display-lbl-block" ng-if="!page.isEdit">{{:: page.serviceDetails.amount}}</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label ft-s-16 ft-bold text-color" for="">{{:: page.fieldLabels.calculationMethod}}</label>
+                        <div ng-if="page.isEdit">
+                            <rp-form-input-text config="page.formConfig.amount" rp-model="page.serviceDetails.calculationMethod">
+                            </rp-form-input-text>
+                        </div>
+                        <div class="form-label display-lbl-block" ng-if="!page.isEdit">{{:: page.serviceDetails.calculationMethod}}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">                        
+                        <div class="m-t-1 checkbox" ng-if="page.isEdit">
+                            <label class="md-check dark-bluebox">
+                                <input type="checkbox" required="" class="">
+                                <i class="primary"></i> {{:: page.fieldLabels.residentDay}}
+                            </label>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-md-4">                       
+                        <div class="m-t-1 checkbox" ng-if="page.isEdit">
+                            <label class="md-check dark-bluebox">
+                                <input type="checkbox" required="" class="">
+                                <i class="primary"></i> {{:: page.fieldLabels.lockAmount}}
+                            </label>
+                        </div>
+                    </div>  
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>

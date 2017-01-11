@@ -1,0 +1,105 @@
+.calendar-module-1 {
+    clear: both;
+    padding-top: 10px;
+    border-bottom: solid 1px #efefed;
+
+    .month-year-wrap {
+        text-align: center;
+
+        span {
+            .inline-block;
+            color: @dark-gray;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 20px;
+        }
+
+        .arrow {
+            .inline-block;
+            height: 20px;
+            color: @blue;
+            margin: 0 10px;
+
+            &:before {
+                font-size: 18px;
+                line-height: 20px;
+            }
+        }
+
+        .month-year {
+            .inline-block;
+            min-width: 120px;
+            text-align: center;
+        }
+    }
+
+    .week-row {
+        .cell {
+            height: 40px;
+        }
+
+        .edge {
+            width: 4%;
+        }
+
+        .arrow {
+            &:before {
+                line-height: 40px;
+            }
+        }
+
+        .week {
+            width: 92%;
+        }
+    }
+
+    .day {
+        .float-left;
+        color: @dark-gray;
+        height: 40px;
+        width: 14.285%;
+        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+            .day-num {
+                color: @white;
+                background-color: @blue;
+
+                &.today {
+                    background-color: #f2f2f2;
+                }
+
+                &.select {
+                    color: @white;
+                    background-color: @orange;
+                }
+            }
+        }
+    }
+
+    .day-num {
+        .rounded(12px);
+        width: 24px;
+        height: 24px;
+        margin: 0 auto;
+        line-height: 24px;
+        text-align: center;
+
+        &.today {
+            background-color: #f2f2f2;
+        }
+
+        &.select {
+            color: @white;
+            background-color: @orange;
+        }
+    }
+
+    .day-name {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+

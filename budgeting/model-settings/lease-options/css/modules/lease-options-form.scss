@@ -1,0 +1,45 @@
+.lease-options {
+    .form-control-static {
+        .editable-select {
+            width: 100% !important;
+        }
+    }
+
+    .tool-tip-movein {
+        width: 204%;
+        left: 214px;
+        top: -23px;
+        position: absolute;
+    }
+
+    .tool-tip-lr {
+        width: 204%;
+        left: 261px;
+        top: -30px;
+        position: absolute;
+    }
+
+    .tool-tip-rf {
+        width: 136%;
+        left: 249px;
+        top: -23px;
+        position: absolute;
+    }
+
+    .req-fld-width{
+        width:57%;
+    }
+
+    .term-fld-width{
+        width:65%;
+    }
+
+    .mtm-fld-width{
+        width:42%;
+    }
+
+    .lr-fld-width{
+        width:80%;
+    }
+
+}

@@ -1,0 +1,127 @@
+.edit-gl-account-section {
+    .text-muted {
+        opacity: 1;
+    }
+    .selected-gl-account {
+        font-size: 1.85rem;
+        padding: 0px;
+    }
+    .selected-gl-account:after {
+        font-size: 1.4rem;
+    }
+    .text-link {
+        @include link(underline);
+    }
+    .reference-data-header {
+        background-color: $white !important;
+        border-bottom: 1px solid $border-color;
+        .reference-data-header {
+            &.rp-cg-body-cell {
+                cursor: default;
+                padding-top: 30px;
+                border-right: none;
+                border-left: none;
+            }
+            .rp-cg-body-text {
+                font-weight: 500;
+                font-size: 1.25rem;
+            }
+        }
+    }
+    .reference-data-empty-header {
+        background-color: $white !important;
+        border-bottom: 1px solid $border-color;
+        .reference-data-header {
+            &.rp-cg-body-cell {
+                cursor: default;
+                border-right: none;
+                border-left: none;
+            }
+            .rp-cg-body-text {
+                font-weight: normal;
+                font-size: 12px;
+            }
+        }
+    }
+    .reference-data-section {
+        td {
+            padding-bottom: 0px !important;
+            .rp-cg-body-text {
+                font-weight: bold;
+            }
+        }
+    }
+    .reference-data-detail {
+        td {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+    }
+    .rp-cg-locked {
+        .item-description {
+            .rp-input-text {
+                input {
+                    width: 85%;
+                }
+            }
+            .add-icon {
+                font-size: medium;
+                color: $success;
+            }
+            .delete-icon {
+                font-size: medium;
+            }
+            .rp-cg-text {
+                &.rp-cg-body-text {
+                    width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        .gl-account,
+        .gl-account-group,
+        .gl-account-type {
+            .rp-cg-body-text {
+                font-weight: bold;
+            }
+        }
+    }
+    .rp-cg-free {
+        .reference-data-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+            .rp-cg-body-text::after {
+                content: ".";
+            }
+        }
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+    }
+    .rp-cg-body-row {
+        &.gl-account {
+            background: inherit;
+        }
+        &.gl-account-group,
+        &.gl-account-type {
+            .rp-cg-body-cell {
+                background: $rp-neutral-05;
+                border-bottom: solid 1px $rp-neutral-06;
+            }
+        }
+    }
+    .reference-data-even {
+        background-color: $full-white !important;
+    }
+    .reference-data-odd {
+        background-color: $row-even !important;
+    }
+}
+
+.modal {
+    top: 120px !important;
+}

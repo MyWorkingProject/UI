@@ -1,0 +1,36 @@
+<div id="manage-allocations">
+    <div class="header">
+        <h5 class="text-primary">
+            {{::page.fieldLabels.pageHeading}} <br />
+        </h5>
+    </div>
+    <div class="m-b-md">
+        <div class="white">
+            <div class="m-t-1">
+                <div class="pull-left new_alloc">
+                    <button class="btn rounded primary m-r-1" ng-click="page.newAllocations()">
+                        <i class="fa fa-fw fa-plus"></i> {{::page.fieldLabels.newAlloction}}
+                    </button>
+                </div>
+                <div class="p-y-md p-t-sm pull-right clearfix">
+                    <div class="pull-right grid-controls">
+                        <div class="grid-control-item">
+                            <rp-toggle model="page.model.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Filter',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                      activeIconClass: 'rp-icon-filter'
+                                }">
+                            </rp-toggle>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div ng-if="page.model.grid" class="adjustgridmenu">
+            <rp-grid model="page.model.grid">
+            </rp-grid>
+        </div>
+
+    </div>
+</div>

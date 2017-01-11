@@ -1,0 +1,76 @@
+﻿<div class="import-section col-xs-6 acc-charts-select">
+    <span>{{ ::page.model.text.propertyTxt }}</span>
+    <select name="chrtDrpDwn"
+            class="rp-form-select"
+            rp-update-display-text="true"
+            rp-option-name-key="propertyName"
+            rp-option-value-key="propertyID"
+            ng-model="page.model.form.selctedChartId"
+            rp-select-options="page.model.form.selCharts"
+            ng-options="option.propertyID as option.propertyName for option in page.model.form.selCharts.options"
+            ng-change="page.propChange()"></select>
+</div>
+<div class="importSection col-xs-6 dv-load-btn-yardi" ng-if="page.model.form.showLoadBtn">
+    <span class="button medium white newbtn" ng-click="page.loadYardiGls()">
+        {{ ::page.model.text.loadBtn }}
+    </span>
+</div>
+<div class="import-grid-csv" ng-if="page.model.grid">
+    <div class="import-section-border"></div>
+    <h3 class="gridHeading">Imported GL Accounts</h3>
+    <div class="table-controls filter-right">
+        <span class="button medium white newbtn deleteBtn chk-imp-cash" ng-click="page.toggleAssignType();">
+            {{ ::page.model.text.assgnTypeTxt }}
+        </span>
+        <span class="tooltip-container button medium white deleteBtn" ng-click="page.delGlAccounts();" ng-init="page.model.form.tooltipState">
+            {{ ::page.model.text.deleteBtn }}
+            <span class="tooltip rp-callout top" ng-class="{ active: page.model.form.tooltipState }">{{ ::page.model.text.selectGlToDel }}</span>
+        </span>
+        <span class="button medium blue newbtn importBtn" ng-click="page.saveGlAccounts()">
+            {{ ::page.model.text.importSaveBtn }}
+        </span>
+        <rp-toggle class="table-filter-toggle"
+                   page.usersListFilters.state.active
+                   model="page.model.grid.filtersModel.state.active"
+                   options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+    </div>
+    <div rp-slide-toggle="page.model.form.toggleAsgnType" name="impAssignType" class="rp-inline-workflow work-flow">
+        <div class="workflow-inner-wrap">
+            <span class="workflow-close" ng-click="page.toggleAssignType()"></span>
+            <h3 class="workflow-title">
+                {{ ::page.model.text.assgnAccntType }}
+            </h3>
+
+
+            <div class="form-row">
+                <div class="column-1 formctrl-block account-number">
+                    <p class="field-label">
+                        {{ ::page.model.text.accntType }}
+                    </p>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="column-2">
+                    <select name="selAssType"
+                            class="rp-form-select"
+                            rp-wrapper-class="inline-block"
+                            rp-update-display-text="true"
+                            ng-model="page.model.form.selAssgnType"
+                            rp-select-options="page.model.form.srcAssgnType"
+                            ng-options="option.value as option.name for option in page.model.form.srcAssgnType.options"></select>
+                </div>
+            </div>
+            <div class="form-row work-flow-btns">
+                <span class="button medium blue newbtn applyBtn" ng-click="page.assignTypeSave();">
+                    {{ ::page.model.text.assgn }}
+                </span>
+                <span class="button medium white newbtn saveBtn" ng-click="page.toggleAssignType()">
+                    {{ ::page.model.text.cancelBtn }}
+                </span>
+            </div>
+        </div>
+    </div>
+    <rp-grid model="page.model.grid"></rp-grid>
+</div>

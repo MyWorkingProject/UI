@@ -1,0 +1,57 @@
+<div id="payroll-item-housing-allowance" ng-controller="PayrollHAItemCtrl as payrollItem" ng-init="payrollItem.setModel($index)">
+    <div class="row m-b">
+        <div class="col-md-12 col-sm-12">
+            <h5>{{::payrollItem.fieldLabels.headerTitle}}</h5>
+            <div class="text-muted m-b-sm">
+                <span ng-if="!payrollItem.model.isEdit && payrollItem.model.incomeModel!=='None'">
+                    {{::payrollItem.model.incomeModel}} {{payrollItem.model.selectedMarketRent}}
+                </span>
+            </div>
+            <div class="inline p-r-1 pointer" ng-click="payrollItem.showComments()">
+                <i class="rp-icon-chat-bubble"></i>
+                <span>{{payrollItem.model.commentCount }}</span>
+            </div>
+            <div class="inline p-l-1 p-r-1 pointer" ng-if="payrollItem.model.isEdit" ng-click="payrollItem.showCalculator()">
+                <i class="rp-icon-calculator-2"></i>
+                <span>{{::payrollItem.fieldLabels.calculatorText}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="payrollItem.model.grid">
+        <ng-form class="form-horizontal" role="form" name="payrollItem.model.form" novalidate>
+            <div class="col-md-12">
+                <div class="rp-action-bar box" ng-if="payrollItem.model.isEdit">
+                    <div class="row">
+                        <div class="col-md-8 p-a-0">
+                            <div class="col-md-4" ng-if="payrollItem.model.incomeModel!=='None'">
+                                <label class="ft-s-14 _600 form-label" for="rateOptions">{{::payrollItem.model.incomeModel}}</label>
+                                <rp-form-select-menu config="payrollItem.formConfig.rateOptions" rp-model="payrollItem.model.rateOption">
+                                </rp-form-select-menu>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="col-md-12">
+                                    <label class="ft-s-14 _600 form-label" for="criteriaOptions">{{::payrollItem.fieldLabels.allowanceCriteriaText}}</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <rp-form-select-menu config="payrollItem.formConfig.criteriaOptions" rp-model="payrollItem.model.criteriaOption">
+                                    </rp-form-select-menu>
+                                </div>
+                                <div class="col-md-8">
+                                    <rp-form-input-text ng-if="payrollItem.model.criteriaOption === 'Dollor'" config="payrollItem.formConfig.allowanceCurrency" rp-model="payrollItem.model.allowance">
+                                    </rp-form-input-text>
+
+                                    <rp-form-input-text ng-if="payrollItem.model.criteriaOption === 'Percentage'" config="payrollItem.formConfig.allowancePercentage" rp-model="payrollItem.model.allowance">
+                                    </rp-form-input-text>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-a-0">
+                        </div>
+                    </div>
+                </div>
+                <rp-cg model="payrollItem.model.grid">
+                </rp-cg>
+            </div>
+        </ng-form>
+    </div>
+</div>

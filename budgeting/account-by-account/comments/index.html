@@ -1,0 +1,19 @@
+<div class="aside comments" id="commentsAside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <i class="close rp-icon-delete-2 m-t-sm" ng-click="page.close()"></i>
+                <div class="p-t-sm">
+                    <h5 class="m-b-xs">{{::page.fieldLabels.pageTitle}}</h5>
+                    <div class="text-neutral-02 m-b-xs">{{::page.model.getGLAccountNumber()}}</div>
+                </div>
+            </div>
+            <div class="aside-body">
+                <rp-scrolling-tabs-menu model="page.tabsMenu"
+                                        class="m-b-sm nav-width">
+                </rp-scrolling-tabs-menu>
+                <div ng-include="page.activeTab.tabViewUrl"></div>
+            </div>
+        </div>
+    </div>
+</div>

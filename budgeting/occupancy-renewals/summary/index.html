@@ -1,0 +1,59 @@
+<div id="occupancy-renewals-summary">
+
+	<div class="row">
+		<div class="col-xs-12" ng-if="page.oarSummaryLineBarChart">
+			<rp-line-chart2 model="page.oarSummaryLineBarChart"></rp-line-chart2>
+		</div>
+	</div>
+
+	<div class="row summary-card-wrapper">
+
+		<div class="col-md-3 col-xs-6 summary-card" ng-if="page.showOccupancyVacancy()">
+			<div class="btn btn-icon primary rounded">
+				<i class="summary-card-icon rp-icon-package-delivery"></i>
+			</div>
+			<label class="summary-card-label m-l-sm">
+				<span class="count">{{page.oarSummary.model.avgMoveIns}}</span> {{::page.translate("oar_avg_move_ins")}}
+			</label>
+		</div>
+
+		<div class="col-md-3 col-xs-6 summary-card" ng-if="page.showOccupancyVacancy()">
+			<div class="btn btn-icon primary rounded">
+				<i class="summary-card-icon rp-icon-exit"></i>
+			</div>
+			<label class="summary-card-label m-l-sm">
+				<span class="count">{{page.oarSummary.model.avgMoveOuts}}</span> {{::page.translate("oar_avg_move_outs")}}
+			</label>
+		</div>
+
+		<div class="col-md-3 col-xs-6 summary-card" ng-if="page.showLeaseRenewals()">
+			<div class="pie-wrapper">
+				<div ng-if="page.leaseRenewalsPieChart">
+					<rp-pie-chart1 model="page.leaseRenewalsPieChart"></rp-pie-chart1>
+				</div>			
+			</div>				
+			<label class="summary-card-label m-l-sm">
+				<span class="count">{{page.oarSummary.model.leaseRenewalsPercent}}%</span> {{::page.translate("oar_lease_renewals")}}
+			</label>					
+
+		</div>
+
+		<div class="col-md-3 col-xs-6 summary-card" ng-if="page.showOccupancyVacancy()">
+			<div class="pie-wrapper">
+				<div ng-if="page.occRenewalsPieChart">
+					<rp-pie-chart1 model="page.occRenewalsPieChart"></rp-pie-chart1>	
+				</div>				
+			</div>
+			<label class="summary-card-label m-l-sm">
+				<span class="count">{{page.oarSummary.model.occupancyRenewalsPercent}}%</span> {{page.translate("oar_occupancy")}}
+			</label>
+		</div>
+	</div>
+
+	<div class="row summary-grid-wrapper">
+		<div class="col-xs-12">
+			<rp-cg model="page.oarSummaryGrid.model"></rp-cg>
+		</div>
+	</div>
+
+</div>

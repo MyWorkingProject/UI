@@ -1,0 +1,85 @@
+﻿<div class="row-col">
+    <a data-dismiss="modal" class="pull-right text-muted text-lg p-a-sm m-r-sm">&times;</a>
+    <div class="p-a b-b">
+        <span class="h5">Members</span>
+    </div>
+    <div class="row-row">
+        <div class="row-body">
+            <div class="row-inner">
+                <div class="col-md-12">
+                    <div class="">
+                        <div class="box-header p-l-sm">
+                            <h7 class="submit-workflow-header">Comments</h7>                             
+                            <span class="rp-icon-delete-2 ft-s-10 btn-submit pull-right show-pointer" ng-click="page.hideCommentsForm()"></span>
+                        </div>
+                        <div>
+                            <form class="ft-form" role="form">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 m-t-1">
+                                        <textarea id="subComments" ng-model="page.commentsModel.form.comments" name="comments" ng-minlength="1"
+                                                  ng-maxlength="512" ng-trim="true" ng-model-options="{updateOn: 'blur'}" class="form-control comments-border-color" rows="3"
+                                                  placeholder="Leave a comment"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-xs-4 p-r-0 pull-right">
+                                        <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.addUpdateComments()">Post</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-8 col-lg-9">
+                            <div class="tab-content">
+                                <div class="tab-pane p-v-sm active" id="tab_1">
+                                    <div class="streamline b-l m-b m-l">
+                                        <div class="sl-item">
+                                            <div class="sl-left">
+                                                <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+                                            </div>
+                                            <div class="sl-content">
+                                                <div class="sl-date">10/11/2015</div>
+                                                <div class="sl-author _500">
+                                                    <a href>Peter Joo</a>
+                                                </div>
+                                                <div>
+                                                    <p>Check your Internet connection</p>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="sl-item">
+                                            <div class="sl-left">
+                                                <img src="/ui/budgeting/common/standalone/images/user-image-small.png" class="img-circle">
+                                            </div>
+                                            <div class="sl-content">
+                                                <div class="sl-date">08/05/2014</div>
+                                                <div class="sl-author _500">
+                                                    <a href>Mike</a>
+                                                </div>
+                                                <div>
+                                                    <p>Meeting with tech leader</p>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

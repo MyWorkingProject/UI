@@ -1,0 +1,28 @@
+<div id="default-adjustment" class="aside" tabindex="-1" role="dialog">
+  <div class="aside-dialog">
+    <div class="aside-content">
+      <div class="aside-header">
+        <button type="button" class="close" ng-click="page.close()">
+          <i class="ic-close rp-icon-delete-2"></i>
+        </button>
+        <h4 class="aside-title">{{::page.translate("def_adj_hd")}}</h4>
+      </div>
+      <div class="aside-body">
+          <form name="defaultAdjustmentForm">
+            <rp-grid model="page.defaultAdjGrid.model"></rp-grid>
+          </form>
+      </div>
+      <div class="aside-footer">
+      <!-- Cancel -->
+            <button class="btn btn-outline b-primary text-primary rounded" type="button" ng-click="page.close()"> 
+                {{::page.translate("def_adj_cancel")}}
+            </button>  
+
+            <!-- Apply -->
+            <button  class="btn btn-primary rounded" type="button" ng-click="page.applyChanges()" ng-if="!page.defAdj.model.isBudgetModelFinal"> 
+                {{::page.translate("def_adj_apply")}}
+            </button>
+      </div>
+    </div>
+  </div>
+</div>

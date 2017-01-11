@@ -1,0 +1,104 @@
+#rp-calculator {
+	.calculator-grid {
+		width: 100%;
+		overflow-x: auto;
+
+		.rp-grid-headers-1 {
+			background-color: $rp-primary;
+			
+			.rp-grid-cell {
+				border-right: 1px solid $rp-primary-03;
+				padding: 5px;
+				text-align: right;
+
+				&:last-child {
+					border-right: 0;
+				}
+			}
+
+			.rp-grid-text {
+				color: $white;
+				font-size: 14px;
+			}
+		}
+
+		.rp-grid-body-wrap {
+			min-height: auto;
+		}
+
+		.rp-grid-row:nth-child(even) {
+			background-color: $white;
+		}
+
+		.rp-grid-cell {
+			padding-top: 8px;
+			padding-bottom: 8px;
+
+			font-size: 0.8rem;
+		}
+
+		.rp-currency-editable {
+			text-align: right;
+			font-size: 0.75rem;
+			padding: 5px;
+		}
+
+		.rp-calculator-amt {
+			width: 3rem;
+			@include inline-block;
+		}
+
+		[class*="period"] {
+			text-align: center;
+			width: 6.5rem;
+		}
+
+		.column-title {
+			width: 12rem;
+
+			.monthly-row {
+				line-height: 1.9rem;
+			}
+		}
+		.total {
+			text-align: right;
+			width: 7rem;
+		}
+
+
+		input {
+			border-color: $ash-gray;
+			padding: 0.25rem;
+		}
+
+		.rp-grid-body-1 {
+			.rp-grid-row:first-child,
+			.rp-grid-row:nth-child(2) {
+				display: none;
+			}
+		}
+
+		.show-monthly {
+			.rp-grid-body-1 {
+				/* Monthly Row */
+				.rp-grid-row:nth-child(2)  {
+					display: table-row;
+				}
+			}			
+		}
+
+		.show-active {
+			.rp-grid-body-1 {
+				/* Source Row */
+				.rp-grid-row:first-child {
+					display: table-row;
+
+					[class*="period"] {
+						text-align: right;
+					}
+				}
+			}
+		}
+
+	}
+}

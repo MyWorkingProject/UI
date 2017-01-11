@@ -1,0 +1,72 @@
+<div class="aside actual-rent-cap" role="dialog" >
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <button type="button" class="close" ng-click="page.close()">&times;</button>
+                <div class="p-t">
+                    <span class="h5">{{::page.getKeyValue('cap_header')}}</span>
+                </div>
+            </div>
+            <div class="aside-body">
+                <form editable-form name="editableForm" class="form-validation" ng-class="page.model.form.state" ng-submit="page.saveCapMethod()">
+                    <div class="col-md-12 p-l-0 p-b-1">
+                        {{::page.getKeyValue('cap_method_text')}}
+                        <i class="rp-icon-question-circle m-l-1 pointer" ng-click="page.showHelpInfo()"></i>
+                    </div>
+                    <div class="col-md-12 p-l-0">
+                        <div class="col-md-9 p-l-0" ng-if="!page.model.form.isFinal">
+                            <rp-form-select-menu class="inline col-md-9 p-l-0" config="page.formConfig.source" rp-model="page.model.form.capMethod">
+                            </rp-form-select-menu>
+                        </div>
+                        <div class="col-md-9 p-l-0" ng-if="page.model.form.isFinal">
+                            <span>{{ page.model.form.capMethod }}</span>
+                        </div>
+                        <div ng-if="!page.model.form.isFinal">
+                            <button type="submit" class="btn rounded primary w-xs" data-toggle="modal"  data-target="{{ page.model.form.popDialog }}">
+                                {{::page.getKeyValue('save_btn_text')}}
+                            </button>
+                        </div>
+                        <div class="text-center text-sm-left ft-follow" ng-if="page.model.form.isFinal">
+                            <p class="inline p-l-1 p-r-1 m-b-0 finalized" ng-class="page.model.form.erroCode">
+                                <small class="ft-s-14 _400">
+                                    {{page.model.form.errorMsg}}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-t-2 p-l-0">
+                        <div ng-if="page.gridFactory.grid && page.isValidCap()">
+                            <rp-grid model="page.gridFactory.grid" class=""></rp-grid>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="alertZeroDialog" class="modal" data-backdrop="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{::page.getKeyValue('cap_popUp_header')}} </h5>
+                </div>
+
+                <div class="">
+                    <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+                    <div class="dialog-padding-left p-t-sm">
+                        <p class="m-b-sm p-l-3">{{::page.getKeyValue('cap_popUp_desc')}} </p>
+                        <p class="p-l-3">{{::page.getKeyValue('cap_popUp_confirm')}}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn rounded primary p-x-md pull-right m-l-1" data-dismiss="modal" ng-click="page.cancel()">{{::page.getKeyValue('cap_popUp_cancel')}}</button>
+                    <button type="button" class="btn rounded neutral p-x-md pull-right" data-dismiss="modal" ng-click="page.onContinue()">{{::page.getKeyValue('cap_popUp_contnue')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,308 @@
+#defadj-page-content {
+    padding-top: 25px;
+    padding-left: 30px;
+    padding-right:25px;
+
+    .chart-title {
+        .page-title;
+        .x-large-text;
+        color: @charcoal;
+    }
+
+    .column-1 {
+        .column(12);
+        margin-left: 0%;
+
+        @media @smallScreen {
+            .column(6);
+            margin-left: 0%;
+        }
+
+        @media @largeScreen {
+            .column(5);
+            margin-left: 0%;
+        }
+    }
+
+
+
+    .column-2 {
+        .column(12);
+
+        @media @smallScreen {
+            .column(6);
+        }
+
+        @media @mediumScreen {
+            .column(4);
+        }
+
+        @media @largeScreen {
+            .column(3);
+        }
+    }
+
+    .column-3 {
+        .column(12);
+
+        @media @mediumScreen {
+            .column(10);
+        }
+
+        @media @largeScreen {
+            .column(8);
+        }
+    }
+
+    .add-links {
+        margin-top: 5px;
+
+        @media @defaultOnly {
+            text-align: center;
+        }
+    }
+
+    .form-title {
+        .bold;
+        .large-text;
+        .column(11);
+        color: @dark-gray;
+        margin-bottom: 15px;
+    }
+
+    .form-row {
+        .clearfix;
+
+        &:last-child {
+            margin-top: 20px;
+        }
+    }
+
+    .form-block {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 20px;
+        width: 370px;
+
+
+        &:last-child {
+            @media @smallScreen {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .formctrl-block {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 20px;
+        width: 250px;
+
+        @media @smallScreenAndBelow {
+            width: 98%;
+        }
+
+        &:last-child {
+            @media @smallScreen {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .formnarrative-block {
+        font-size: 0;
+        line-height: 0;
+        margin-bottom: 20px;
+        width: 570px;
+
+        &:last-child {
+            @media @smallScreen {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+
+    .field-label {
+        .form-label;
+    }
+
+    .yearCol {
+        width: 50px;
+    }
+
+    .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+    .filter-right {
+        text-align: right;
+    }
+
+    .selected-bit {
+        width: 3%;
+    }
+
+    .account-type-code {
+        width: 15%;
+    }
+
+    .rp-grid-filter-1 .rp-grid-row .account-type-code {
+        margin-left: 3%;
+    }
+
+    .rp-grid-wrap {
+        overflow-x: auto;
+    }
+
+    .rp-grid {
+        min-width: 500px;
+    }
+
+    .account-category-name {
+        width: 20%;
+    }
+
+    .adj-percent {
+        width: 20%;
+    }
+
+    .applyBtn {
+        float: left;
+    }
+
+    .saveBtn {
+        float: left;
+        margin-left: 10px;
+    }
+
+    .assignLnk {
+        margin-right: 10px;
+    }
+
+    .workFlow {
+        margin-top: 10px;
+    }
+
+    .iconComplete {
+        content: "\33";
+        color: orange;
+        font-family: 'OnesiteIconFont';
+        font-size: 50px;
+        float: left;
+        line-height: initial;
+        padding-right: 15px;
+    }
+
+    .model-name-col {
+        margin-bottom: 15px;
+    }
+
+    .over-write-checkbox-wrapper {
+        width:210px;
+        margin:0px;
+
+        label {
+            .inline-form-label;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+    }
+
+    .tooltip-container {
+        position: relative;
+
+        .tooltip {
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+    .info-tooltip {
+        position: relative;
+
+        .tooltip {
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+    .bottom-border {
+        border-bottom: solid 1px #bbbbbb;
+        padding-bottom: 5px;
+    }
+
+    .module-heading {
+        .body-text-light;
+        padding-top:25px;
+    }
+
+    .over-write-div{
+        margin-top:20px;
+    }
+
+    .btns-filters {
+        padding-top: 10px;
+    }
+
+    .help-icon {
+        top: -14px;
+        width: 520px;
+        margin-left: 20px;
+        white-space: normal;
+        left: 0px;
+    }
+
+    .complete-icon {
+        .icon-complete;
+    }
+
+    .info-icon {
+        .icon-info;
+    }
+}

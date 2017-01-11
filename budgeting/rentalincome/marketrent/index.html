@@ -1,0 +1,356 @@
+<div class="market-rent-section">
+    <div class="grid-section">
+        <div class="market-rent-summary">
+      
+            <div class="col-md-3 p-l-0">
+                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_summary_lable')}}</h5>
+                <div class="">
+                    <span class="text-muted">
+                        {{page.getMRSubText()}}
+                    </span>
+                </div>
+            </div>
+                <div class="page-buttons col-md-9 p-r-0">
+                <button type="button" class="btn primary rounded p-x-mdy pull-right btn-md btn-save" ng-if="!page.model.form.isFinal" ng-click="page.save()">
+                    {{::page.getKeyValue('bdgt_rental_mr_save_lable')}}
+                </button>
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary p-x-md pull-right m-r-1 btn-md" ng-click="page.cancel()">
+                    {{::page.getKeyValue('bdgt_rental_mr_cancel_lable')}}
+                </button>
+                <div class="pull-right text-center text-sm-left ft-follow p-r-1 p-t-1" ng-if="page.model.form.isFinal">
+                    <p class="inline p-l-1 p-r-1 m-b-0 finalized" ng-class="page.model.form.erroCode">
+                        <small class="ft-s-14 _400">
+                            <!--{{page.model.form.errorMsg}}-->
+                        </small>
+                    </p>
+                </div>
+                <!--<div class="m-b-md">
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary w-full p-x-md" ng-click="page.cancel()">{{::page.getKeyValue('bdgt_rental_mr_cancel_lable')}}</button>
+                </div>
+                <div class="m-b-md">
+                    <button type="button" class="btn primary rounded w-full p-x-md" ng-click="page.save()">{{::page.getKeyValue('bdgt_rental_mr_save_lable')}}</button>
+                </div>
+                <div class="m-b-md">
+                    <button type="button" class="btn" ng-click="page.refresh()">{{::page.getKeyValue('bdgt_rental_mr_refresh_lable')}}</button>
+                </div>-->
+            </div>
+            <div class="pull-right m-t-1 m-b-1">
+                <div class="pull-right m-l-1 pointer" ng-click="page.loadTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>{{ ::page.getKeyValue('bdgt_rental_mr_table_settings')}}</div>
+                <div class="pull-right pointer" ng-click="page.showRefresh()"><i class="rp-icon-refresh m-r-sm ft-s-16"></i>{{ ::page.getKeyValue('bdgt_rental_mr_refresh_lable')  }}</div>
+            </div>
+                <div class="row"></div>
+                <div class="col-md-11 bring-to-front">
+                    <!--<button type="button" class="btn pull-right refresh-btn text-muted" ng-if="!page.model.form.isFinal"  ng-click="page.showRefresh()">
+                        <i class="refresh-icon"></i>
+                        <span class="btn-lable"> {{::page.getKeyValue('bdgt_rental_mr_refresh_lable')}}</span>
+                    </button>-->
+                    <!--<div class="pull-right text-muted" ng-click="page.showRefresh()"><i class="refresh-icon ft-s-18"></i>{{::page.getKeyValue('bdgt_rental_mr_refresh_lable')}}</div>-->
+                   
+                </div>
+            <div ng-if="page.model.form.gridReady">
+                <!--<div class="rp-cg-options-toggle-wrap ft-form"
+                     ng-style="{maxWidth: page.grid.getMaxWidth()}">
+                    <span class="rp-cg-options-toggle"
+                          ng-click="rpCgOptions.toggle()"
+                          ng-class="{active: rpCgOptions.visible}">
+                        <span class="rp-cg-options-toggle-icon"></span>
+                    </span>
+
+                    <div target-grid="page.grid"
+                         ng-show="rpCgOptions.visible"
+                         rp-stop-event="click" class="rp-cg-options">
+                        <h2>{{::page.getKeyValue('bdgt_rental_mr_row_optn_lable')}}</h2>
+
+                        <div class="form-block">
+                            <div class="checkbox">
+                                <label class="md-check dark-bluebox form-label">
+                                    <input type="checkbox" ng-model="page.model.form.showReferenceData"
+                                           ng-change="page.showReferenceDataToggle()">
+                                    <i class="primary"></i>
+                                    {{::page.getKeyValue('bdgt_rental_mr_row_optn_SR_lable')}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-block" ng-show="page.model.form.showReferenceData">
+                            <div class="checkbox">
+                                <label class="md-check dark-bluebox form-label">
+                                    <input type="checkbox" ng-model="page.model.form.showReferenceCalcData"
+                                           ng-change="page.showCalculationRowsToggle()">
+                                    <i class="primary"></i>
+                                    {{::page.getKeyValue('bdgt_rental_mr_row_optn_SC_lable')}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div class="form-block">
+                            <label class="md-check form-label">
+                                <input name="rowHeightClass" type="radio"
+                                       value="small" ng-model="page.grid.rowHeightClass" />
+                                <i class="blue"></i>
+                                {{::page.getKeyValue('bdgt_rental_mr_row_optn_SRS_lable')}}
+                            </label>
+                        </div>
+
+                        <div class="form-block">
+                            <label class="md-check form-label">
+                                <input name="rowHeightClass" type="radio"
+                                       value="large" ng-model="page.grid.rowHeightClass" />
+                                <i class="blue"></i>
+                                {{::page.getKeyValue('bdgt_rental_mr_row_optn_LRS_lable')}}
+                            </label>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <h2>{{::page.getKeyValue('bdgt_rental_mr_col_optn_lable')}}</h2>
+
+                        <div class="separator"></div>
+
+                        <div class="columns-list">
+                            <div class="form-block"
+                                 ng-if="column.label"
+                                 class="rp-cg-option-column"
+                                 ng-repeat="column in page.grid.columns.data">
+                                <label class="md-check dark-bluebox form-label">
+                                    <input type="checkbox"
+                                           id="col{{$index}}"
+                                           ng-model="column.state.active"
+                                           ng-change="rpCgOptions.updateLayout()"
+                                           class="form-checkbox rp-form-checkbox"
+                                           ng-true-value="true" ng-false-value="false">
+                                    <i class="primary"></i>
+                                    {{column.label}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="clear-set"></div>
+                <div ng-class="{'ref-rows':page.model.form.showReferenceData && !page.model.form.showReferenceCalcData,'ref-calc-rows' : page.model.form.showReferenceCalcData}">
+                    <rp-cg model="page.grid">
+                    </rp-cg>
+                </div>
+            </div>
+
+           
+
+        </div>
+        <!--<div ng-if="page.model.showReferenceData" ng-class="page.model.showRefCalRows">
+            <div ng-controller="MarketRentRefCtrl as ref" class="grid-reference-data">
+                <div class="grid-header">
+                    <h5 class="mr-title">{{::page.getKeyValue('bdgt_rental_mr_refdata_lable')}}</h5>
+                </div>
+                <rp-cg model="ref.grid">
+                </rp-cg>
+            </div>
+        </div>-->
+        <div class="market-rent-details">
+            <!--Market Rent by Unit-->
+            <div ng-if="page.model.pageTypes.unit">
+                <div ng-controller="MarketrntByUnitCtrl as edt" class="grid-editable-data">
+                    <div ng-class="edt.model.state" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md col-md-7 m-b-sm">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()" ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                                <div class="m-l-1 m-t-xs m-r-xs left-bar refRowStyle display-inline"></div><div class="text-muted display-inline"> {{ ::page.getKeyValue('bdgt_rental_mr_reference_lable')  }}</div>
+                            </div>
+                            <div class="col-md-5 pull-right p-t-md">
+                                <div ng-hide="true" ng-click="page.toggleFilter()" class="text filter-icon rp-toggle pull-right m-t-md">
+                                    {{::page.getKeyValue('bdgt_rental_mr_filter_lable')}}
+                                </div>
+                                <div class="grid-filters pull-right m-t-xs">
+                                    <rp-form-select-menu class="inline" config="page.formConfig.source" rp-model="page.model.form.unitType">
+                                    </rp-form-select-menu>
+                                </div>
+                            </div>
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+            <!--Market Rent by UnitType-->
+            <div ng-if="page.model.pageTypes.unitType">
+                <div ng-controller="MarketrntByUnitTypeCtrl as edt" class="grid-editable-data">
+                    <div ng-class="edt.model.state" class="m-b-1" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-9">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                            </div>
+                            <!--<div class="grid-filters pull-right actual-rent-cap-other">
+                                
+                            </div>-->
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Rent Service Group -->
+            <div ng-if="page.model.pageTypes.serviceGroupUnitType" class="mr-service-unit-type">
+                <div ng-controller="MarketRentServiceGroupCtrl as edt" class="grid-editable-data">
+                    <div ng-class="edt.model.state" class="m-b-1" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-9">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent m-r-1"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                            </div>
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Rent Service Program-->
+            <div ng-if="page.model.pageTypes.programUnitType" class="mr-program-unit-type">
+                <div ng-controller="MarketRentUnitTypeProgramCtrl  as edt" class="grid-editable-data">
+                    <div ng-class="edt.model.state" class="m-b-1" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-9">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                            </div>
+                            <!--<div class="grid-filters pull-right actual-rent-cap-other">
+                               
+                            </div>-->
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+            <!--Market Rent Student by Unit-->
+            <div ng-if="page.model.pageTypes.studentUnit">
+                <div ng-controller="MarketRentUnitStudentCtrl as edt" class="grid-editable-data mr-student-unit">
+                    <div ng-class="edt.model.state" class="m-b-1" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-6">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                            </div>
+                            <div class="col-md-5 pull-right p-t-md">
+                                <div ng-hide="true" ng-click="page.toggleFilter()" class="text filter-icon rp-toggle pull-right m-t-md">
+                                    {{::page.getKeyValue('bdgt_rental_mr_filter_lable')}}
+                                </div>
+                                <div class="grid-filters pull-right m-t-xs">
+                                    <rp-form-select-menu class="inline" config="page.formConfig.source" rp-model="page.model.form.unitType">
+                                    </rp-form-select-menu>
+                                </div>
+                            </div>
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+            <!--Market Rent Student by UnitType-->
+            <div ng-if="page.model.pageTypes.studentUnitType" class="mr-student-unit-type">
+                <div ng-controller="MarketRentUnitTypeStudentCtrl as edt" class="grid-editable-data">
+                    <div ng-class="edt.model.state" ng-if="edt.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-9">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>
+                            </div>
+                            <!--<div class="grid-filters pull-right actual-rent-cap-other">
+                                
+                            </div>-->
+                        </div>
+                        <rp-cg model="edt.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+
+            <div ng-if="page.model.pageTypes.proforma">
+                <div ng-controller="MarketRentProfarmaCtrl as mrp" class="grid-editable-data">
+                    <div ng-class="mrp.model.state" ng-if="mrp.model.gridReady">
+                        <div class="row">
+                            <div class="grid-header m-t-md m-b-sm col-md-8">
+                                <h5 class="mr-title">{{page.getMRText('bdgt_rental_mr_detail_lable')}}</h5>
+                                <a ng-click="page.showChangeRent()"  ng-disabled="page.model.form.isFinal" class="change-rent"><i class="rp-calc-icon m-r-xs"></i>{{page.getChangeMRText('bdgt_rental_mr_change_rent_lable')}}</a>
+                                <a ng-click="page.showActualRentCap()"  ng-disabled="page.model.form.isFinal" ng-if="!page.model.isMarketRent()" class="actual-rent-cap p-l-1">{{::page.getKeyValue('bdgt_rental_ar_cap_lable')}}</a>    
+                            </div>
+                            <div class="col-md-4 pull-right p-t-md new-unit-type text-right">
+                                <a ng-if="!page.model.form.isFinal" ng-click="mrp.addNewRow()">+ {{page.getKeyValue('bdgt_rental_mr_new_unit_type_lable')}}</a>
+                            </div>
+                        </div>
+                        <rp-cg model="mrp.grid">
+                        </rp-cg>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="alertDialog" class="modal" data-backdrop="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{::page.getKeyValue('bdgt_rental_mr_refresh_header')}} </h5>
+                </div>
+
+                <div class="">
+                    <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+                    <div class="dialog-padding-left p-t-sm">
+                        <p class="m-b-sm p-l-3">{{::page.getKeyValue('bdgt_rental_mr_refresh_desc')}} </p>
+                        <p class="p-l-3">{{::page.getKeyValue('bdgt_rental_mr_refresh_confirm')}}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn rounded primary p-x-md pull-right m-l-1" data-dismiss="modal">{{::page.getKeyValue('bdgt_rental_mr_refresh_cancel')}}</button>
+                    <button type="button" class="btn rounded neutral p-x-md pull-right" data-dismiss="modal" ng-click="page.onRefresh()">{{::page.getKeyValue('bdgt_rental_mr_refresh_load')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="alertImportDialog" class="modal" data-backdrop="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{::page.getKeyValue('bdgt_rental_mr_import_header')}} </h5>
+                </div>
+
+                <div class="">
+                    <div class="col-sm-1 rp-icon-question-circle p-t-md"></div>
+                    <div class="dialog-padding-left p-t-sm">
+                        <p class="m-b-sm p-l-3">{{::page.getKeyValue('bdgt_rental_mr_import_desc')}} </p>
+                        <p class="p-l-3">{{::page.getKeyValue('bdgt_rental_mr_import_confirm')}}</p>
+                    </div>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn rounded primary p-x-md pull-right m-l-1" data-dismiss="modal" ng-click="page.loadCancel()">{{::page.getKeyValue('bdgt_rental_mr_refresh_cancel')}}</button>
+                    <button type="button" class="btn rounded neutral p-x-md pull-right" data-dismiss="modal" ng-click="page.loadImportedData()">{{::page.getKeyValue('bdgt_rental_mr_import_load')}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Comments pop up-->
+    <div ng-if="page.commentsModel.form.showComment">
+        <!--<budget-comments-dialog records='page.model.baseParams.records' ng-class='{"on":page.commentsModel.form.showForm,"off":!page.commentsModel.form.showForm}'></budget-comments-dialog>-->
+        <budget-comments data='page.commentsModel.data' ng-class='{"on":page.commentsModel.form.showForm,"off":!page.commentsModel.form.showForm}'></budget-comments>
+    </div>
+</div>
+

@@ -1,0 +1,55 @@
+//  Busy Indicator
+
+.busy-indicator {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    text-align: center;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(249, 249, 249, 0.7);
+    background-image: url('@{rpImagePath}preloader.gif');
+
+    .message-1,
+    .message-2 {
+        .hide;
+        color: @dark-gray;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 20px;
+        vertical-align: middle;
+    }
+
+    .message-1 {
+        width: 175px;
+        text-align: left;
+    }
+
+    .button {
+        margin-top: 20px;
+        font-weight: normal;
+    }
+
+    &.busy,
+    &.error {
+        background-image: none;
+    }
+
+    &.busy {
+        .message-1 {
+            .inline-block;
+        }
+    }
+
+    &.error {
+        .message-1 {
+            .hide;
+        }
+        .message-2 {
+            .inline-block;
+        }
+    }
+}

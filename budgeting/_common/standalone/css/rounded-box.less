@@ -1,0 +1,49 @@
+//  rounded box with border
+
+.rounded-box(@border-color: @silver) {
+    .clearfix;
+    .rounded(5px);
+    padding-top: 4px;
+    padding-bottom: 9px;
+    margin-bottom: 20px;
+    border: solid 1px @border-color;
+
+    h2,
+    h3,
+    th,
+    td,
+    p {
+        .arial;
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    h2,
+    h3 {
+        font-weight: bold;
+    }
+
+    h2 {
+        .float-left;
+        color: @dark-gray;
+        font-size: 16px;
+    }
+
+    h3 {
+        color: @blue;
+        font-size: 14px;
+    }
+
+    span,
+    a,
+    a:visited {
+        .arial;
+        font-size: 12px;
+    }
+
+    .header {
+        .clearfix;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+}

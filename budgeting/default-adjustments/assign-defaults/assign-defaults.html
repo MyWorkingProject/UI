@@ -1,0 +1,40 @@
+<div id="budget-default-adjustments-aside">
+    <div class="right w-xl white b-l">
+        <div class="row-col">
+            <div class="top-spacer">
+                <a data-dismiss="modal" class="pull-right text-muted text-lg p-t-sm" ng-click="page.clearAdjustDefaults(defaultAdjustments)">&times;</a>                
+                <div class="p-a">                   
+                    <span class="h5">{{:: page.model.text.modelHeadingtxt}}</span>
+                </div>
+            </div>
+         
+            <div class="row-row">
+                <div class="row-body">
+                    <div class="row-inner">                        
+                        <div class="list-group no-radius">    
+                            <div class="p-a responses">
+                                <span class="model-text-box">{{:: page.model.text.modelHeadingTitle}}</span>
+                            </div>                    
+                            <ng-form class="ft-form" role="form" name="defaultAdjustments" novalidate>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 m-t-1">
+                                        <rp-form-input-text config="page.formConfig.adjPercent" rp-model="page.model.adjPercent">
+                                        </rp-form-input-text>                                
+                                    </div>                                  
+                                </div>   
+
+                                <div class="form-group row p-r-sm">
+                                    <div class="col-xs-4 p-r-0 pull-right adjust-buttons">
+                                        <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.assignAdjustDefaults(defaultAdjustments)">{{:: page.model.text.modelAssignBtnTxt}} </button>                                        
+                                        <button data-dismiss="modal" class="btn rounded btn-outline b-primary text-primary w-full m-b-md" ng-click="page.clearAdjustDefaults(defaultAdjustments)">{{:: page.model.text.cancelBtnText}}</button>
+                                    </div>
+                               </div>
+                          </ng-form>
+                       </div>                         
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+

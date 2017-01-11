@@ -1,0 +1,45 @@
+.occupancy-table-settings {
+    .page-buttons {
+        @include clearfix;
+        float: left;
+        margin-bottom: 15px;
+
+        .btn {
+            float: left;
+            margin-right: 20px;
+        }
+    }
+
+
+    .small {
+        .active-bar:before {
+            height: 36px;
+            margin-top: -6px;
+        }
+    }
+
+    .large {
+        .active-bar:before {
+            height: 50px;
+            margin-top: -13px;
+        }
+    }
+
+
+    .table-form-block {
+        margin: 10px 0;
+    }
+
+    .table-settings-separator {
+        height: 1px;
+        overflow: hidden;
+        margin: 5px -15px;
+        background-color: #cbcbcb;
+    }
+  
+}
+// Todo: remove once core update
+.aside 
+{
+		z-index: 9999 !important;
+}

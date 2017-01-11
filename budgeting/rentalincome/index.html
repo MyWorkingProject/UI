@@ -1,0 +1,14 @@
+<div class="rentalincomepage container-fluid">
+    <!--<model-details info="page.budgetDetails.budgetDetails"></model-details>-->
+    <model-basic-info></model-basic-info>
+    <h3 class="budget-model-title text-primary p-l-xs p-b-sm">
+        {{::page.budgetDetails.budgetDetails.pageTitle}}
+    </h3>
+    <div ng-if="page.isReady()">
+        <rp-scrolling-tabs-menu model="page.scrollingTabs" class="budget-model-tabs m-b-sm nav-width">
+        </rp-scrolling-tabs-menu>
+    </div>
+
+    <div ui-view ng-cloak class="workspaces">
+    </div>
+</div>

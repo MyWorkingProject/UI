@@ -1,0 +1,34 @@
+#recall-allocations {
+    width: 60%;
+    z-index: 9999;
+
+    .rp-grid {
+        &-headers-1 {
+            .rp-grid-cell {
+                border-top: none;
+            }
+        }
+
+        .is-recalled {
+            width: 8%;
+        }
+
+        .distributed-as {
+            width: 25%;
+        }
+
+        .amount {
+            width: 15%;
+        }
+    }
+}
+
+.aside {
+    z-index: 9999 !important;
+}
+.modal{
+ z-index: 9999 !important;
+}
+.modal-content .p-l-1{
+    padding-left: 0.0rem !important;
+}

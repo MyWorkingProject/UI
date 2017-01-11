@@ -1,0 +1,10 @@
+﻿{{{ include("controllers/allocationCtrl.js") }}}
+{{{ include("models/allocation-model.js") }}}
+{{{ include("models/form-config.js") }}}
+{{{ include("models/allocation-property-config.js") }}}
+{{{ include("services/allocation-view-editSvc.js") }}}
+{{{ include("models/sum-filter.js") }}}
+{{{ include("models/amount-grid-model.js") }}}
+{{{ include("models/amount-grid-config.js") }}}
+{{{ include("models/constant.js") }}}
+{{{ include("models/allocation-error-handling.js") }}}

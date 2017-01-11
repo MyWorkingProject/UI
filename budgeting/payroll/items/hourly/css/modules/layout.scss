@@ -1,0 +1,22 @@
+#payroll-item-hourly {
+   .hourly-duration-header {
+        background-color: $white !important;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: none;
+        .rp-cg-body-cell {
+            cursor: default;
+        }
+        .rp-cg-body-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+    .rp-cg-free {
+        .hourly-duration-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+        }
+    }
+}

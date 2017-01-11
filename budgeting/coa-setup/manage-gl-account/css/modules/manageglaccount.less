@@ -1,0 +1,370 @@
+
+#managegl-page-content {
+
+    .width(@w1, @w2) {
+        width: @w1;
+
+        @media @xLargeScreen {
+            width: @w2;
+        }
+    }
+
+    .mn(@m1, @m2) {
+        margin-left: @m1;
+
+        @media @xLargeScreen {
+            margin-left: @m2;
+        }
+    }
+
+    .managegl-grid {
+
+        .rp-grid {
+            min-width: 800px;
+        }
+
+
+        .max-grid-width {
+            width: 100% !important;
+        }
+
+        .gl-account-number {
+            .width(9%,10%);
+        }
+
+        .gl-account-description {
+            .width(14%,23%);
+        }
+
+        .account-category-name {
+            .width(13%,20%);
+        }
+
+
+
+        .account-type-code {
+            .width(6%,11.5%);
+        }
+
+
+        .budget-use-only {
+            .width(6%,11%);
+        }
+
+
+
+        .normal-balance {
+            .width(5%,10%);
+        }
+
+        .restrict-payroll {
+            .width(8%,11%);
+        }
+
+        .status {
+            .width(6%,12%);
+        }
+
+
+        .filter-right {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .newglbtn {
+            float: left;
+            margin-left: 15px;
+        }
+
+        .gridHeading {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    /*.error-msg {
+        .block;
+    }*/
+    .workflow-title {
+        .module-title;
+        margin-bottom: 20px;
+    }
+
+
+
+
+    .actionsBtn {
+        float: left;
+        text-align: left;
+    }
+
+
+    .iconactionmenu {
+        .icon-emptyarrowd;
+        position: absolute;
+
+        &:before {
+            .block;
+            color: #A4A8C1;
+            font-size: 13px;
+            line-height: 24px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    .menubreak {
+        padding-top: 4%;
+    }
+
+    .paddingright {
+        padding-right: 5%;
+    }
+
+    .tooltip-container {
+        position: relative;
+
+        .tooltip {
+            &.active {
+                display: block;
+            }
+        }
+    }
+    /*.rp-callout.top {
+        bottom: -65px;
+        left: -1129px;
+    }*/
+    .rp-callout.top {
+        top: -35px;
+        left: inherit;
+    }
+
+    .rp-callout.top:before {
+        top: 0;
+        left: 14%;
+        margin-top: 20px;
+    }
+
+    .property-print {
+        position: relative;
+        float: left;
+        margin-right: 2%;
+        margin-left: 69%;
+        position: relative;
+    }
+
+    .property-print {
+        .v1-icon-print;
+        line-height: 22px;
+        color: #5a84ae;
+        /*:before {
+        content: "\37";
+        font-family: RealPageIconFont;
+        color: #5a84ae;
+        font-size: 16px;*/
+    }
+
+    .print {
+        margin-right: 2%;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+    .print:before {
+        content: "\37";
+        font-family: RealPageIconFont;
+        color: #5a84ae;
+        font-size: 16px;
+    }
+
+    .importglheader {
+        margin-right: 2%;
+         margin-left: 56%;
+         @media @defaultOnly {
+              margin-left: 55%;
+             }
+          @media @smallScreenOnly {
+              margin-left: 26%;
+             }  
+           /*@media @smallScreen {
+              margin-left: 26%;
+             }*/        
+       
+        position: relative;
+        float: left;
+        /* font-size: 0; */
+        /* line-height: 24px; */
+        position: relative;
+    }
+
+    .importglheader {
+        .v1-icon-import;
+        line-height: 22px;
+        color: #5a84ae;
+        /*:before {
+        content: "\44";
+        font-family: RealPageIconFont;
+        color: #5a84ae;
+        font-size: 16px;*/
+    }
+
+    .table-filter-toggle {
+        .link;
+        .icon-filter;
+        .inline-block;
+        cursor: pointer;
+        min-width: 95px;
+        text-align: left;
+
+        &:before {
+            .block;
+            .float-left;
+            font-size: 16px;
+            line-height: 26px;
+            padding-right: 5px;
+        }
+
+        &.on {
+            color: @orange;
+
+            &:before {
+                color: @orange;
+            }
+        }
+
+        .active,
+        .inactive {
+            .block;
+            .small-text;
+            cursor: pointer;
+            line-height: 26px;
+        }
+
+        .active {
+            .hide;
+        }
+
+        &.on {
+            .active {
+                .inline;
+            }
+
+            .inactive {
+                .hide;
+            }
+        }
+    }
+
+    .actionmenu {
+        .rounded(5px);
+        .box-shadow(0 0 5px rgba(100, 100, 100, 0.75));
+        background-color: @white;
+        overflow: hidden;
+        text-align: left;
+        position: absolute;
+        width: 190px;
+        z-index: 10;
+        margin-left: 5.3%;
+        margin-top: -2.9%;
+
+        li {
+            color: @blue;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 25px;
+            padding-left: 25px;
+
+            &:hover {
+                color: @white;
+                background-color: @blue;
+            }
+        }
+    }
+
+    .clearfix;
+
+    &.edit {
+        .page-content-wrap;
+
+        .hide-on-edit {
+            .hide;
+        }
+
+        .show-on-edit {
+            .block;
+        }
+
+        cursor: default;
+    }
+
+    .show-on-edit {
+        .hide;
+    }
+
+    .table-controls {
+        font-size: 0;
+        line-height: 0;
+        text-align: right;
+    }
+
+    .is-selected {
+        .hide;
+    }
+
+    &.edit {
+        .is-selected {
+            width: 3%;
+            display: table-cell;
+        }
+    }
+
+    .is-selected {
+        font-size: 0;
+        text-align: center;
+        padding-left: 10px;
+
+        .checkbox-wrap {
+            .inline-block;
+        }
+
+        .rp-checkbox {
+            vertical-align: middle;
+        }
+
+        .rp-select-menu {
+            width: 100%;
+        }
+
+        .rp-select-menu-value {
+            text-align: left;
+        }
+    }
+
+    .gl-account-number {
+        .width(9%,16%);
+        pointer-events: none;
+        color: #1d2d3d;
+    }
+
+    .rp-grid-link {
+        color: #1d2d3d;
+    }
+
+    &.edit {
+        .gl-account-number {
+            .width(9%,16%);
+            pointer-events: auto;
+            color: #4f7aa4;
+        }
+
+        .rp-grid-link {
+            color: #4f7aa4;
+        }
+    }
+
+    .btnBackNext {
+        float: right;
+        margin-top: 20px;
+    }
+}

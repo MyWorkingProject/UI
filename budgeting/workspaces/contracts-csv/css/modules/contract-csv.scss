@@ -1,0 +1,133 @@
+#contractCSV {
+    .link-display {
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .tool-tip {
+        //width: 14%;
+        position: absolute;
+        top: 11px;
+        left: 247px;
+    }
+
+    .btn-display {
+        display: inline-block;
+    }
+
+    .link {
+        color: $rp-primary;
+    }
+
+    .font-headr {
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+
+    .pad-imp {
+        padding-top: 5.3rem;
+    }
+
+    .box-header {
+        border-bottom: none !important;
+    }
+
+    .divider-line {
+        border-top: 1px solid $silver;
+        //margin-bottom:1rem;
+    }
+
+    .column-name {
+        width: 5%;
+        text-align: left;
+    }
+
+    .desc {
+        width: 20%;
+        text-align: left;
+    }
+
+    .modal {
+        top: 100px;
+        left: 150px;
+    }
+
+    .is-selected {
+        width: 1.5%;
+    }
+
+    .vendor-name {
+        width: 7%;
+    }
+
+    .description {
+        width: 7%;
+    }
+
+    .frequency {
+        width: 5%;
+    }
+
+    .start-date {
+        width: 5%;
+    }
+
+    .end-date {
+        width: 5%;
+    }
+
+    .amount {
+        width: 5%;
+    }
+
+    .property-iD {
+        width: 6%;
+    }
+
+    .btn-width {
+        width: 95%;
+    }
+
+    .rp-grid-filters-1 {
+        .is-selected {
+            width: 1.8%;
+        }
+
+        .vendor-name {
+            width: 9.3%;
+        }
+
+        .description {
+            width: 9.8%;
+        }
+
+        .frequency {
+            width: 26.8%;
+        }
+
+        .start-date {
+            width: 5%;
+        }
+
+        .end-date {
+            width: 5%;
+        }
+
+        .amount {
+            width: 5%;
+        }
+
+        .property-iD {
+            width: 8%;
+
+            .rp-form-input {
+                width: 95%;
+            }
+        }
+    }
+
+    .filter-cursor {
+        cursor: pointer;
+    }
+}

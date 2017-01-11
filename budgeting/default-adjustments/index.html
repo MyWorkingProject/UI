@@ -1,0 +1,131 @@
+<div class="container-fluid"  id="budget-budgetmodel-default-adjustments">
+    <model-basic-info></model-basic-info>
+    <div>
+        <div class="row p-y-md p-t-sm clearfix ">
+            <div class="col-md-4">
+                <h5 class="budget-model-title text-primary p-l-1">{{:: page.model.text.pageHeading}}</h5>
+            </div>
+        </div>
+        <div class="text-mute-rule">{{::page.model.text.pageHeadingTitle}}</div>
+        <div class="hr-rule"></div>
+        <div class="white p-x">
+            <div class="row">
+                <div class="box box-border">
+                    <div class="p-y-md p-t-sm clearfix">
+                        <div>
+                            <div class="pull-left m-t-xs">
+                                <!---->
+                                <div class="select-all btn b-neutral m-a-sm ft-form box" ng-class="{'activate-tooltip': page.contractOperations.state.dispErr}">
+                                    <div class="grid-action-item rp-grid-select ft-form box"  rp-grid-model="page.model.grid" ng-if="page.model.grid">
+                                        <label class="md-check dark-bluebox rp-grid-select-label">
+                                            <input type="checkbox" name="name"
+                                                   ng-true-value="true"
+                                                   ng-false-value="false"
+                                                   ng-model="gridSelect.model.selected"
+                                                   ng-change="gridSelect.model.publishState()"
+                                                   class="ng-pristine ng-untouched ng-valid ng-empty">
+                                            <i class="primary"></i>
+                                        </label>
+                                        <span class="action-icon rp-icon-angle-down m-r-0 pointer" data-toggle="dropdown"></span>
+                                        <ul class="dropdown-menu da-align">
+                                            <li class="dropdown-item">
+                                                <label class="md-check dark-bluebox rp-grid-select-label">
+                                                    <input type="radio" name="select-type" ng-value="true"                                                  
+                                                           ng-model="gridSelect.model.selected"
+                                                           ng-click="gridSelect.model.publishState()" />
+                                                    <i class="primary"></i>
+                                                    {{::page.model.text.selectAllText}}
+                                                </label>
+                                            </li>
+                                            <li class="dropdown-item">
+                                                <label class="md-check dark-bluebox rp-grid-select-label">
+                                                    <input type="radio" name="select-type"  ng-value="false"                                                  
+                                                           ng-model="gridSelect.model.selected"
+                                                           ng-click="gridSelect.model.publishState()"  />
+                                                    <i class="primary"></i>
+                                                    {{::page.model.text.noneText}}
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip" ng-show="page.model.state.toolTipAlert">
+                                    <span class="arrow left pull-left white"></span>
+                                    <div class="box-body">
+                                        {{page.model.text.selectAnyChkBox }}
+                                    </div>
+                                </div>
+                       
+                                <button  ng-click="page.showSelectionChanges()" class="btn btn-outline b-neutral btn-submit m-a-sm">
+                                    <i class="rp-icon-correct"></i>
+                                    {{:: page.model.text.assignBtnText}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="white p-x">
+            <div class="row">
+                <div class="p-y-md p-t-sm results clearfix" ng-init="gridFactory.grid.filtersModel.state.active = false">
+                    <div>
+                        <div class="pull-left m-t-xs" ng-if="page.model.getSelectedDefaultAdjustmentsCount()">
+                            {{page.model.getSelectedDefaultAdjustmentsCount()}} {{:: page.model.text.recordsSelected}} {{page.model.total}}
+                        </div>
+                    </div>
+                    <div class="pull-right grid-controls p-t-sm">
+                        <div class="grid-control-item">
+                            <rp-toggle model="page.model.grid.filtersModel.state.active" class="filter-cursor" options="{
+                                      defaultText: 'Show Filters',
+                                      defaultIconClass: 'rp-icon-filter active',
+                                      activeIconClass: 'rp-icon-filter'
+                                }">
+                            </rp-toggle>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <rp-grid class="workspaces budget-comments max-grid-width" model="page.model.grid">
+        </rp-grid>
+    </div>
+    <div class="row col-xs-12 m-b-sm">
+        <div class="pull-left m-t-sm da-owd">
+            <span class="t-center">{{:: page.model.text.overwriteDefaultAdjustment}} </span>
+                <a ng-click="page.showHelpToolTip()"><i class="rp-icon-question-circle"></i></a>
+            <span class="chk-agn">
+                <label class="ui-switch m-t-xs m-r">
+                    <input type="checkbox" ng-model="page.model.overWrite" ng-init="page.model.overWrite=false" ng-true-value="true" ng-false-value="false"><i></i>
+                </label>
+            </span>
+        </div>
+
+        <div class="col-sm-3 fdn-arrow box-color text-color pos-rlt tool-tip-help " ng-show="page.model.state.toolTipHelp">
+            <span class="arrow left pull-left white"></span>
+            <div class="box-body">
+                {{page.model.text.toolTip }}
+            </div>
+        </div>
+
+        <div class="p-t-0 m-t-sm pull-right">
+            <div class="m-t-0 text-right">
+                <button type="submit" class="btn primary rounded w-full p-x-md" ng-click="page.saveDefaultAdjustments()"> {{:: page.model.text.applyAdjustmentBtnText}}</button>
+            </div>
+        </div>
+        <div class="m-t-sm m-r-md text-nav-color pull-right">
+            <button type="button" class="btn rounded btn-outline b-primary text-primary w-full p-x-md" ng-click="page.cancel()">{{:: page.model.text.cancelBtnText}}</button>
+        </div>
+    </div>
+    <!-- Pop Up Assign Defaults Section-->
+    <div class="modal fade" id="assignDefaults" data-backdrop="false">
+        <div class="right w-xl white b-l">        
+            <div ui-include="'default-adjustments/assign-defaults/assign-defaults.html'"></div>
+        </div>
+    </div>
+    <!-- Pop Up New comments Section ends here-->
+</div>
+
+

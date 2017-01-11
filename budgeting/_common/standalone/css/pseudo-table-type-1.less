@@ -1,0 +1,106 @@
+//  Pseudo Table Type 1
+
+.pseudo-table-type-1 {
+    .table {
+        overflow: hidden;
+        border-left: solid 2px #efeded;
+        border-right: solid 2px #efeded;
+    }
+
+    .row {
+        position: relative;
+        border-bottom: solid 2px #efeded;
+
+        &:nth-child(even) {
+            background-color: #fbfcfd;
+        }
+
+        &:first-child {
+            border-top: solid 2px #efeded;
+        }
+
+        &:hover {
+            .cell {
+                background-color: #f8f8f8;
+            }
+        }
+    }
+
+    .cell {
+        color: #aaa;
+        min-height: 42px;
+        padding-top: 5px;
+        line-height: 16px;
+        padding-bottom: 5px;
+
+        &.first-cell {
+            padding-left: 10px;
+        }
+
+        &.arrow {
+            .icon-emptyarrowr;
+            text-align: right;
+            position: relative;
+            padding-right: 30px;
+
+            &:before {
+                top: 50%;
+                right: 0;
+                width: 30px;
+                color: @silver;
+                font-size: 18px;
+                margin-top: -10px;
+                line-height: 20px;
+                text-align: center;
+                position: absolute;
+            }
+        }
+
+        p {
+            line-height: 16px;
+        }
+    }
+
+    .actions {
+        top: -2px;
+        height: 46px;
+        position: absolute;
+        margin-left: -120px;
+        background-color: @orange;
+
+        li {
+            color: @white;
+            float: left;
+            width: 40px;
+            height: 42px;
+            font-size: 18px;
+            position: relative;
+            border-top: solid 2px #efeded;
+            border-bottom: solid 2px #efeded;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            &:before {
+                .block;
+                z-index: 1;
+                line-height: 42px;
+                position: relative;
+                text-align: center;
+            }
+        }
+
+        a,
+        a:visited {
+            .block;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url('@{baseImagePath}_shared/blank.png') no-repeat 0 0;
+        }
+    }
+}

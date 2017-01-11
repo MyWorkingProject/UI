@@ -1,0 +1,32 @@
+#pt-wrapper {
+	.rp-grid-body-wrap {
+		
+		.rp-grid-cell {
+			&.frequency {
+				text-transform: capitalize;	
+			}	
+		}
+	}
+
+	.rp-grid-cell {	
+		&.amount, 
+		&.total {
+			text-align: right;
+		}
+
+		&.action {
+			text-align: center;
+			width: 10%;
+		}
+	}
+
+	.contract-view {
+		.action {
+			display: none;
+		}
+	}
+
+	.rp-grid-headers-1 .rp-grid-cell {
+		border-top: 0;
+	}
+}

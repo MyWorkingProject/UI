@@ -1,0 +1,114 @@
+.overview-exp-list {
+    .nav-side-menu {
+        width: 100% !important;
+    }
+
+    .menu-list {
+        border-top: none !important;
+    }
+
+    .overview-list-menu > .menu-content:first-child > li:first-child {
+        border-top: 1px solid #cbcbcb !important;
+    }
+
+    .sub-menu-bottom-border {
+        border-bottom: 1px solid #cbcbcb !important;
+    }
+
+    .overview-exp-list {
+        .box-body {
+            padding-top: 1px !important;
+        }
+
+        .nav-side-menu ul li ul :not(collapsed) {
+            border-top: none !important;
+        }
+    }
+
+    .overview-exp-list-title {
+        padding-left: 2.875rem !important;
+    }
+
+    .nav-side-menu ul li.collapsed:after {
+        float: left !important;
+        margin-right: 10px !important;
+    }
+
+    .nav-side-menu ul li:not(collapsed):after {
+        float: left !important;
+        margin-right: 10px !important;
+    }
+
+    .nav-side-menu ul .sub-menu li:before {
+        float: right !important;
+        font-size: 20px;
+    }
+
+    .inline-block {
+        display: inline-block !important;
+    }
+
+    .list-name {
+        width: 37.5% !important;
+    }
+
+    .list-dt, .item-dt {
+        width: 30% !important;
+    }
+
+    .item-name {
+        width: 37.5% !important;
+        padding-left: 20px;
+    }
+    .item-summary {
+        width: 16% !important;
+    }
+
+    .rp-icon-time:before {
+        //color: $orange;
+        color: #ff9800;
+    }
+
+    .fa-check-circle:before {
+        //	color: $green;
+        color: #4caf50;
+        font-size: 20px;
+    }
+
+    .fa-circle-thin:before {
+        //	color: $blue-grey;
+        color: #607d8b;
+        font-size: 20px;
+    }
+
+    .no-child {
+        .collapsed:after {
+            visibility: hidden;
+        }
+        .collapsed {
+            .circle
+            {
+                    margin-right: 11px;
+                    margin-top: 8px;
+            }
+        }
+        .collapsed:before
+        {
+            padding-right: .5rem;
+            float: right;
+            font-family: "FontAwesome";
+            font-size: 20px;
+            content: "\f105";
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .circle-spacer
+    {
+        .circle
+        {
+            margin-top: 8px;
+            margin-right: 25px;
+        }
+    }
+}

@@ -1,0 +1,178 @@
+#budgeting-home
+ {
+
+    .rp-grid-wrap {
+        height: 300px;
+        overflow-x: hidden;
+
+        .rp-grid-cell {
+            border-bottom: 1px solid #f5f5f5;
+            line-height: normal;
+            padding: 5px 20px;
+
+            &.model-name {
+                width: 46%;
+
+                a {
+                    text-decoration: underline;
+                }
+            }
+
+            &.status {
+                padding: 5px 0 5px 20px;
+                text-align: right;
+                width: 46%;
+            }
+
+            &.action {
+                padding: 8px 0;
+                text-align: center;
+                vertical-align: top;
+                width: 7%;
+            }
+        }
+
+        .model-status {
+            i {
+                font-size: 18px;    
+            }
+            span {
+                line-height: 20px;
+                vertical-align: middle;
+            }
+        }
+
+        .action {
+            .rp-icon-more{
+                -webkit-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+
+                height: 24px;
+                width: 20px;
+                padding: 0;
+            }
+
+            .dropdown-menu {
+                right: 0;
+                left: auto;
+
+            }
+        }
+
+    }
+
+    //.rp-grid-body {
+        .rp-grid-row {
+            background-color: #fff;
+        }
+    //}
+
+    .rp-toggle {
+        &.on {
+            color: #42A5F5;
+        }
+    }
+
+    //temporary styles for demo
+    .rp-grid-filters-1 {
+        .property{
+            width: 50%;
+
+            .rp-input-text {
+                max-width: none;
+                width: 100%;
+            }
+
+            .rp-input-text-inner {
+                border-radius: 0;
+            }
+
+            .rp-form-input {
+                font-size: 13px;
+                height: 30px;
+                padding: 6px 12px;
+            }
+        }
+
+        .budget-year {
+            width: 25%;
+        }
+
+        .model-type {
+            width: 29%;
+        }
+
+        .rp-grid-cell {
+            &.property {
+                padding: 0 5px 10px 15px;
+            }
+            &.budget-year {
+                padding: 0 5px 10px 5px;
+            }
+            &.model-type {
+                padding: 0 15px 10px 5px;
+            }
+            
+        }
+
+        select {
+            border-color: #ddd;
+            font-size: 14px;
+
+            height: 31px;
+            width: 100%;
+
+            padding: 6px 12px;
+            
+
+        }
+
+    }
+    
+
+/* 
+     .property-name{
+             width: 53%;
+     }
+
+     .budget-year{
+        width: 17%;
+     }
+
+    .rp-actions-menu {
+        display: inline-block;
+        vertical-align: middle;
+        width: 40px;
+    }
+    
+
+    .dropdown-menu.dropdown-menu-width {
+        min-width: 178px;
+        margin-left: -151px;
+    }
+
+
+    .dropdown-menu {   
+         min-width: 103px;
+         margin-right: 35px;
+    }
+ */
+	 .rp-workspaces-list
+	 {
+		.header-text
+		{
+			i, .text{
+				color: $rp-neutral;
+
+			}
+		}
+	 }
+	#model-widget-wrapper
+	{
+		h3{	
+			color: $rp-neutral;
+		}
+	}
+    
+}
+

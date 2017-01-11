@@ -1,0 +1,14 @@
+<div class="rp-cg-editable">
+    <span class="rp-cg-text rp-cg-body-text">
+        {{column.getVal().toLocaleString()}}
+    </span>
+    <div class="rp-input-text small">
+        <input ng-class="column.row.data[column.config.key] === '' ? 'cg-editable-dirty rp-cg-input-text rp-form-input' : 'rp-cg-input-text rp-form-input'"
+               ng-model-options="{updateOn: 'blur' }"
+               ng-model="column.row.data[column.config.key]"
+               ng-change="column.config.action.change(column, row)"
+               ng-blur="column.config.action.blur(column, row)"
+               onkeypress='return (event.charCode != 46 && event.charCode != 45 && event.charCode > 31
+    && (event.charCode < 48 || event.charCode > 57)) ? false : true' />
+    </div>
+</div>

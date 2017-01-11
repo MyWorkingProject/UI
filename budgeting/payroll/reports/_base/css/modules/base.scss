@@ -1,0 +1,28 @@
+.payroll-report-view {
+    .box {
+        border: none !important;
+    }
+
+    .payroll-report-view-title {
+        padding-left: 16px !important;
+        color: #42A5F5;
+    }
+}
+
+.payroll-report-view-tabs {
+    .tab-text {
+        color: #42a5f5 !important;
+        background: transparent !important;
+        font-weight: 500;
+        opacity: 0.5;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        display: block;
+    }
+}
+
+.nav-width {
+    .rp-scrolling-tabs-slider {
+        width: auto !important;
+    }
+}

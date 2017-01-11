@@ -1,0 +1,28 @@
+<div id="admin-page-content" class="page-body page-content-wrap">
+    <rp-breadcrumbs></rp-breadcrumbs>
+    <h2 class="admin-page-title">Budgeting Administration</h2>
+    <div class="admin-page-links">
+        <h2 class="section-title">{{ page.bdgtadminnav.category[0].catname }}</h2>
+        <div class="col-xs row sectionitem" ng-repeat="item in page.bdgtadminnav.category[0].links">
+            <div class="area" ng-click="page.navigateToPage(item.href);">
+                <span class="{{item.class}} icon-div"></span>
+                <div class="item-desc-section">
+                    <div class="admin-link">{{item.linkName}}</div>
+                    <p class="item-description">{{item.linkDesc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="admin-page-links clr">
+        <h2 class="section-title">{{ page.bdgtadminnav.category[1].catname }}</h2>
+        <div class="col-xs row sectionitem" ng-repeat="item in page.bdgtadminnav.category[1].links">
+            <div class="area" ng-click="page.navigateToPage(item.href);">
+                <span class="{{item.class}} icon-div"></span>
+                <div class="item-desc-section">
+                    <div class="admin-link">{{item.linkName}}</div>
+                    <p class="item-description">{{item.linkDesc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

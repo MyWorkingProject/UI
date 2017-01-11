@@ -1,0 +1,16 @@
+#payroll-summary {
+    .rp-grid {
+        &-cell {
+            width: 7.82rem;
+            text-align: right;
+        }
+        .employ-job-name, .job-position {
+            text-align: left;
+            width: 11.25rem;
+        }
+        .action {
+            text-align: left;
+        }
+    }
+}
+

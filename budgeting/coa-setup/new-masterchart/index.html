@@ -1,0 +1,220 @@
+<!--<div ng-controller="BdgtNewMasterChartCtrl as page" ng-class="page.chartModel.state">-->
+<div id="newchart-page-content" class="newchart-page-content-wrap" ng-controller="BdgtNewMasterChartCtrl as page" ng-class="page.chartModel.state">
+    <form class="" name="newChart">
+        <div class="newchart-page-content" ng-class="{'set-height':!page.chartModel.state.edit && !page.chartModel.form.isCustomAccount,'reset-height':page.chartModel.state.edit}">
+            <div class="new-masterChartBtns" ng-show="!page.chartModel.isEditMode || page.chartModel.wizard">
+                <span class="button medium blue newbtn nextBtn" ng-click="page.submit()">
+                    <span>
+                        {{ ::page.chartModel.lableText.nextBtnText }}
+                    </span>
+                </span>
+            </div>
+            <h2 class="rp-wizard-step-title" ng-show="!page.chartModel.isEditMode">
+                {{ ::page.chartModel.lableText.pageHeadetText}}
+            </h2>
+            <div class="new-masterChart"
+                 ng-class="">
+                <h2 class="chart-name hide-on-edit">
+                    {{page.chartModel.form.name}}
+                </h2>
+                <div class="edit-chart hide-on-edit">
+                    <span ng-click="page.edit()" class="link">
+                        {{::page.chartModel.lableText.editChartText}}
+                    </span>
+                </div>
+                <!--<div class="edit-chart hide-on-edit">
+
+                </div>-->
+                <div class="btn-linehgt">
+                    <div class="newchart-labl show-on-edit">
+                        <label class="new-masterChart newchart-form-label" for="newchart-name">{{page.chartModel.lableText.chartText}}</label>
+                    </div>
+
+                </div>
+                <div class="pad-botm">
+                    <div class="show-on-edit">
+
+                        <input required
+                               id="chartname"
+                               type="text"
+                               name="chartname"
+                               class="rp-form-input newchart-name"
+                               ng-model="page.chartModel.form.name"
+                               rp-instance-name="chart1"
+                               maxlength="70"
+                               rp-error-msg="page.chartModel.errorMsgs.chartName"
+                               placeholder="{{page.chartModel.placeHolder.chartName}}" />
+                               <!--rp-add-validation="page.chartModel.addDupValidators()" />-->
+
+                        <div class="show-btn">
+                            <span class="button medium blue newbtn save-btn-margn" ng-show="page.chartModel.isEditMode  && !page.chartModel.wizard" ng-click="page.submit()">
+                                <!-- <span class="icon newicon"></span> -->
+                                <span>
+                                    {{ ::page.chartModel.lableText.saveBtnText }}
+                                    <!--   Save -->
+                                </span>
+
+                            </span>
+                            <span class="button medium white newbtn btnCancel" ng-show="page.chartModel.isEditMode  && !page.chartModel.wizard" ng-click="page.cancel()">
+                                <!--  <span class="icon newicon"></span> -->
+                                <span>
+                                    {{ ::page.chartModel.lableText.cancelBtnText }}
+                                    <!--   Save -->
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="chk-custom show-on-edit">
+                    <input type="checkbox" class="rp-form-checkbox"
+                           id="customAccount"
+                           ng-model="page.chartModel.form.isCustomAccount"
+                           ng-true-value="true" ng-false-value="false" />
+                    <label for="customAccount" class="newchart-form-chck-labl">
+                        {{::page.chartModel.lableText.customText}}
+                    </label>
+                    <!--<div class="rp-popover help-icon" ng-class="chartHelp.state" rp-popover-id="chartHelp" ng-init="page.chartModel.form.infoToolTip">
+                        <span class="icon"></span>
+                        <span class="tooltip rp-callout right helpicon" ng-class="{ active: page.chartModel.form.infoToolTip }">{{ ::page.chartModel.lableText.customHelpText}}</span>
+                    </div>-->
+                    <!--<div ng-class="chartHelp.state" rp-popover-id="chartHelp">
+                        <div class="info-tooltip" ng-click="page.showOverWriteInfo()">
+                            <span class="info-icon"></span>
+                            <span class="tooltip rp-callout right helpicon">{{ ::page.chartModel.lableText.customHelpText}}</span>
+                        </div>
+                    </div>-->
+
+                     <!--<div class="rp-popover help-icon" ng-class="chartHelp.state" rp-popover-id="chartHelp">
+                        <span class="icon" ng-click="chartHelp.show()"></span>
+                        <div class="popover-content">
+                            <p>{{::page.chartModel.lableText.customHelpText}}</p>
+                        </div>
+                    </div>-->
+                    <div class="icon-display" >
+                        <div class="info-tooltip" ng-click="page.showOverWriteInfo()" ng-init="page.model.chartModel.infoToolTip">
+                            <span class="info-icon"></span>
+                            <span class="tooltip rp-callout right helpicon" ng-class="{ active: page.chartModel.form.infoToolTip }">{{ ::page.chartModel.lableText.customHelpText}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="newchart-sub-heading newchart-inner-spacing" ng-show="page.chartModel.form.isCustomAccount && page.chartModel.state.edit">
+                    <label>{{::page.chartModel.lableText.accountStrText}}</label>
+                </div>
+                <div class="col-prsu" ng-show="page.chartModel.form.isCustomAccount || !page.chartModel.state.edit">
+                    <div class="new-masterChart newchart-form-label lable-prefix">
+                        <label for="accountPrefix" ng-if="page.chartModel.form.isCustomAccount">{{::page.chartModel.lableText.prefixText}}</label>
+                        <label class="newchart-optional-label show-on-edit">({{::page.chartModel.lableText.optionsText}})</label>
+                        <input ng-model="page.chartModel.form.accountPrefix" maxlength="30"
+                               class="rp-form-input newchart-prsf show-on-edit" type="text" id="accountPrefix"
+                               placeholder="{{page.chartModel.placeHolder.accountPrefix}}" />
+                        <p class="value hide-on-edit">{{page.chartModel.form.accountPrefix}}</p>
+                    </div>
+                </div>
+                <div class="col-prsu" ng-show="page.chartModel.form.isCustomAccount || !page.chartModel.state.edit">
+                    <div class="new-masterChart newchart-form-label lable-suffix">
+                        <label for="accountSuffix" ng-if="page.chartModel.form.isCustomAccount">{{::page.chartModel.lableText.suffixText}}</label>
+                        <label class="newchart-optional-label show-on-edit">({{::page.chartModel.lableText.optionsText}})</label>
+                        <input ng-model="page.chartModel.form.accountSuffix" maxlength="30"
+                               class="rp-form-input newchart-prsf show-on-edit" type="text" id="accountSuffix"
+                               placeholder="{{page.chartModel.placeHolder.accountSuffix}}" />
+                        <p class="value hide-on-edit">{{page.chartModel.form.accountSuffix}}</p>
+                    </div>
+                </div>
+                <div class="hide-on-edit lable-structure">
+                    <p class="label" ng-if="page.chartModel.form.isCustomAccount">{{::page.chartModel.lableText.customAccntText}}</p>
+                    <p class="value">{{page.chartModel.accountStructure}}</p>
+                </div>
+                <div ng-show="page.chartModel.form.isCustomAccount" class="show-on-edit">
+                    <div class="empty-div">
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-field">
+                        <label for="newchart-name">{{::page.chartModel.lableText.field1Text}}</label>
+
+                        <select name="field1"
+                                id="field1"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.field1"
+                                ng-change="page.field1Change()"
+                                rp-error-msg="page.chartModel.errorMsgs.filed1Msg"
+                                rp-select-options="page.chartModel.fieldOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.fieldOptions.options"></select>
+
+
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-delimeter" ng-if="page.chartModel.form.showField2">
+                        <label for="newchart-name">{{::page.chartModel.lableText.delimiter1Text}}</label>
+                        <select name="delimiter1"
+                                id="delimiter1"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.delimiter1"
+                                rp-select-options="page.chartModel.seperatorOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.seperatorOptions.options"></select>
+
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-field" ng-if="page.chartModel.form.showField2">
+                        <label for="newchart-name">{{::page.chartModel.lableText.field2Text}}</label>
+                        <select name="field2"
+                                id="field2"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.field2"
+                                ng-change="page.field2Change()"
+                                rp-select-options="page.chartModel.fieldOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.fieldOptions.options"></select>
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-delimeter" ng-if="page.chartModel.form.showField3">
+                        <label for="newchart-name">{{::page.chartModel.lableText.delimiter2Text}}</label>
+
+                        <select name="delimiter2"
+                                id="delimiter2"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.delimiter2"
+                                rp-select-options="page.chartModel.seperatorOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.seperatorOptions.options"></select>
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-field" ng-if="page.chartModel.form.showField3">
+                        <label for="newchart-name">{{::page.chartModel.lableText.field3Text}}</label>
+
+                        <select name="field3"
+                                id="field3"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.field3"
+                                ng-change="page.field3Change()"
+                                rp-select-options="page.chartModel.fieldOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.fieldOptions.options"></select>
+
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-delimeter" ng-if="page.chartModel.form.showField4">
+                        <label for="newchart-name">{{::page.chartModel.lableText.delimiter3Text}}</label>
+
+                        <select name="delimiter3"
+                                id="delimiter3"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.delimiter3"
+                                rp-select-options="page.chartModel.seperatorOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.seperatorOptions.options"></select>
+                    </div>
+                    <div class="new-masterChart newchart-form-label lable-field" ng-if="page.chartModel.form.showField4">
+                        <label for="newchart-name">{{::page.chartModel.lableText.field4Text}}</label>
+
+                        <select name="field4"
+                                id="field4"
+                                class="rp-form-select"
+                                rp-update-display-text="true"
+                                ng-model="page.chartModel.form.field4"
+                                rp-select-options="page.chartModel.fieldOptions"
+                                ng-options="option.value as option.name for option in page.chartModel.fieldOptions.options"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--</div>-->

@@ -1,0 +1,27 @@
+#assign-gl-account {
+
+	.rp-grid {
+		margin-bottom: 1.5rem;
+
+		&-wrap {
+			overflow-x: visible;
+			overflow-y: visible;
+		}
+
+		&-body-wrap {
+			min-height: 0;
+		}
+
+		&-cell {
+			&.master-chart-name {
+				width: 40%;
+			}
+		}
+
+	}
+
+	.rp-grid-headers-1 .rp-grid-cell {
+		border-top: none;
+	}
+
+}

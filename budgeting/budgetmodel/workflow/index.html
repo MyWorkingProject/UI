@@ -1,0 +1,20 @@
+<div class="box col-md-12 p-l-0 budget-model-workflow" ng-controller="BdgtWorkflowCtrl as page" ng-class="{'p-r-0' : page.levelModel.levelData.showPopUp,'pop-min-height': page.levelModel.levelData.showPopUp}">
+    <div class="box-header workflow-header p-l-0 m-b-md" ng-class="{'p-t-1': page.levelModel.levelData.showPopUp,'m-l-1': page.levelModel.levelData.showPopUp}">
+        <div ng-show="page.levelModel.levelData.showPopUp" class="rp-icon-delete-2 ft-s-10 pop-show-cursor m-t-1 m-r-1 pull-right btn-submit" data-dismiss="modal"></div>
+        <h5 class="pull-left">{{::page.levelModel.levelData.workflowHeaderText}}</h5>
+        <div class="pop-show-sub-header" ng-show="page.levelModel.levelData.showPopUp">
+            <span class="pop-property-name">{{page.levelModel.levelData.propertyName}}</span>|
+            <span class="pop-model-year">{{page.levelModel.levelData.modelYear}}</span>|
+            <span class="pop-model-name">{{page.levelModel.levelData.modelName}}</span>
+        </div>
+        <div class="pull-right">
+            <span class="rp-grid-link view-details p-r-sm" ng-click="page.toggleAllDetails()">{{page.levelModel.levelData.viewAllDetailsText}}</span>
+            <i class="fa fa-print m-r-xs ft-s-18 link-color"></i><span class="rp-grid-link view-details">Print</span>
+        </div>
+    </div>
+    <div class="pop-border-bottom" ng-show="page.levelModel.levelData.showPopUp">
+    </div>
+    <div class="col-xs-12 p-l-0" ng-class="{'m-l-1': page.levelModel.levelData.showPopUp, 'pop-pad-right' : page.levelModel.levelData.showPopUp}">
+        <level-sections levels="page.levelModel.levelData"></level-sections>
+    </div>
+</div>

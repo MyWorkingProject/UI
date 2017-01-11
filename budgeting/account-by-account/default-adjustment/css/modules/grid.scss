@@ -1,0 +1,83 @@
+#default-adjustment {
+	.rp-grid-headers-1 {
+		background-color: $rp-primary;
+
+		.rp-grid-cell {
+			border-right: 1px solid $rp-primary-03;
+			padding: 5px;			
+		}
+
+		.rp-grid-text {
+			@include title-3;
+			line-height: 20px;
+
+			color: $white;
+		}
+	}
+
+	.active-row {
+		@include module-title;
+
+		background-color: #ddd;
+		padding: 0.25rem;
+		text-align: center;
+
+		width: 100%;
+	}
+
+	.rp-grid-body-wrap {
+		min-height: 0;
+	}
+
+	.rp-grid-cell {
+		text-align: right;
+		vertical-align: top;
+		width: 80px;
+
+		input {
+			text-align: right;
+		}
+		
+		&.description{
+			text-align: left;
+		}
+
+		&.description {
+			width: 160px;
+		}
+
+		&.total {
+			width: 100px;
+		}
+	}
+
+	.description .adjustment-row {
+
+		& > div {
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 1.9rem;
+		}
+
+		.adjustment-all {
+			float: right;
+
+			.rp-form-input-text {
+				width: 50px;
+			}
+
+			.rp-form-input-text-table {
+				height: 2rem;
+			}
+
+			.rp-form-input-text-field {
+				height: 1.9rem;
+				padding: 0.25rem 0.5rem;
+			}
+		}
+
+		
+	}
+
+}
+

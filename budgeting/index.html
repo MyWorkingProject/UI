@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="budgeting" ng-strict-di>
+
+<head>
+    <title>RPNext - Budgeting</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+</head>
+
+<body class="app-wrap" ng-controller="AppCtrl" ng-show="AppCtrl.ready" ng-class="appLayout">
+
+<rp-global-header ng-show="appLayout.appHeader">
+</rp-global-header>
+
+<rp-primary-nav ng-show="appLayout.appNav">
+</rp-primary-nav>
+
+<div class="app-subheader">
+    <div class="white lt box-shadow clearfix whiteBar">
+        <rp-bdgt-breadcrumbs></rp-bdgt-breadcrumbs>
+
+        <div class="pull-right clear">
+            <rp-property-context></rp-property-context>
+            <div class="page-header-icons b-l b-l-neutral-06 pull-left">
+                <i class="rp-icon-star font-22 text-nav-color-02"></i>
+                <i class="rp-icon-search2 font-22 text-nav-color-02 m-l"></i>
+                <i class="rp-icon-envelope font-22 text-nav-color-02 m-l"></i>
+            </div>
+        </div>
+    </div>
+    <rp-property-picker></rp-property-picker>
+</div>
+
+<div ui-view class="app-content">
+</div>
+
+<div class="app-footer" ng-show="appLayout.appFooter">
+</div>
+
+<script type="text/javascript" src="startup/js/scripts.js"></script>
+
+</body>
+
+</html>

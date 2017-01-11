@@ -1,0 +1,179 @@
+
+<div class="account-by-account-view-section">
+
+    <div>
+        <div class="row m-b-sm">
+            <div class="col-md-8">
+                <model-basic-info></model-basic-info>
+                <div class="row">
+                    <h3 class="budget-model-title text-primary p-l-1 m-b-xs">
+                       {{::page.getLangValue('bdgt_model_account_lblheader')}}
+                    </h3>
+                    <div class="m-t-sm m-l-1">
+                        <div ng-if="page.showAdvanceActualsSection" class="pull-xs-left m-r-sm">
+                            <i class="fa fa-arrow-circle-o-right m-r-xs"></i><a ng-click="page.showAdvanceActuals()" data-toggle="collapse" data-target="#divAdvanceActuals">{{::page.getLangValue('bdgt_model_account_advance_actuals_header_text')}}</a>
+                        </div>
+                        <div class="m-l-sm m-r-sm pull-xs-left" ng-if="page.showAdvanceActualsSection">|</div>
+                        <div class="pull-xs-left p-r-1 m-l-xs">
+                            <i class="rp-icon-chat-bubble m-r-xs"></i><a ng-click="page.showCopyComments()">{{::page.getLangValue('bdgt_model_account_copy_comments_lbl_copy_comments')}} </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 m-t-1">
+                <!--<rp-form-input-text class="search-field" config="page.formConfig.searchFieldCfg" rp-model="">
+                </rp-form-input-text>-->
+                <gl-accnt-search data="page.model.form.glSearch" on-select="page.onSelectedGLaccount(selectedGLAccount)" ></gl-accnt-search>
+            </div>
+        </div>
+    </div>
+    <div ng-if="page.model.loadedConfig" class="grid-section">
+        <div class="grid-summary-data">
+            <div class="row p-t-1">
+                <div class="col-md-12 col-sm-12">
+                    <form name="form" class="form-validation ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url">
+                        <div class="col-md-3 col-sm-3 m-b p-l-0">
+                            <rp-form-select-menu config="page.formConfig.allTypes" rp-model="page.model.form.types">
+                            </rp-form-select-menu>
+                        </div>
+                        <div class="col-md-3 col-sm-3 m-b p-l-0">
+                            <rp-form-select-menu config="page.formConfig.allCategories" rp-model="page.model.form.categories">
+                            </rp-form-select-menu>
+                        </div>
+                        <div class="m-t-0 col-md-6 col-sm-3 m-b p-l-0">
+                            <div class="pull-left">
+                                <button class="btn primary m-b-sm pointer" ng-click="page.refresh()">
+                                    {{::page.getLangValue('bdget_accByAcc_apply')}}
+                                </button>
+                            </div>
+                            <div class="pull-left m-t-sm m-l-1">
+                                <div class="pull-left m-t-xs m-r-xs left-bar refRowStyle"></div><div class="text-muted pull-left"> {{ ::page.getLangValue('bdget_accByAcc_refData')  }}</div>
+                            </div>
+                            <div class="pull-right m-t-sm">
+                                <div class="pull-right m-l-1 pointer" ng-click="page.loadTableSettings()"><i class="fa fa-cog m-r-sm ft-s-18"></i>{{ ::page.getLangValue('bdget_accByAcc_table_settings')}}</div>
+                                <div class="pull-right pointer" ng-click="page.refresh()"><i class="rp-icon-refresh m-r-sm ft-s-16"></i>{{ ::page.getLangValue('bdget_accByAcc_refresh')  }}</div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-md-4 col-sm-4 p-l-0" ng-hide="true">
+                    <div class="pull-xs-right">
+                        <div class="rp-cg-options-toggle-wrap ft-form"
+                             ng-style="{maxWidth: page.grid.getMaxWidth()}">
+                            <span class="rp-cg-options-toggle"
+                                  ng-click="rpCgOptions.toggle()"
+                                  ng-class="{active: rpCgOptions.visible}">
+                                <span class="rp-cg-options-toggle-icon"></span>
+                            </span>
+
+                            <div target-grid="page.grid"
+                                 ng-show="rpCgOptions.visible"
+                                 rp-stop-event="click" class="rp-cg-options">
+                                <h2>{{::page.getLangValue('bdget_accByAcc_rowOptions')}}</h2>
+
+                                <div class="form-block">
+                                    <div class="checkbox">
+                                        <label class="md-check dark-bluebox form-label">
+                                            <input type="checkbox" ng-model="page.model.form.rowOptions.hideZeroRows"
+                                                   ng-change="page.loadGLBudgetData()">
+                                            <i class="primary"></i>
+                                            {{::page.getLangValue('bdget_accByAcc_hideZeroRows')}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-block">
+                                    <div class="checkbox">
+                                        <label class="md-check dark-bluebox form-label">
+                                            <input type="checkbox" ng-model="page.model.form.rowOptions.hasReferenceData"
+                                                   ng-change="page.getRefData()">
+                                            <i class="primary"></i>
+                                            {{::page.getLangValue('bdget_accByAcc_hasRefData')}}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <div class="form-block">
+                                    <label class="md-check form-label">
+                                        <input name="rowHeightClass" type="radio"
+                                               value="small" ng-model="page.grid.rowHeightClass" />
+                                        <i class="blue"></i>
+                                        {{::page.getLangValue('bdget_accByAcc_smallRows')}}
+                                    </label>
+                                </div>
+
+                                <div class="form-block">
+                                    <label class="md-check form-label">
+                                        <input name="rowHeightClass" type="radio"
+                                               value="large" ng-model="page.grid.rowHeightClass" />
+                                        <i class="blue"></i>
+                                        {{::page.getLangValue('bdget_accByAcc_largeRows')}}
+                                    </label>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <h2>{{::page.getLangValue('bdget_accByAcc_colOptions')}}</h2>
+
+                                <div class="form-block">
+                                    <label class="md-check form-label">
+                                        <input name="viewOption" value="summary" type="radio" ng-model="page.model.form.rowOptions.gridViewType" ng-change="page.changeViewType()" />
+                                        <i class="blue"></i>
+                                        {{::page.getLangValue('bdget_accByAcc_Summary')}}
+                                    </label>
+                                </div>
+
+                                <div class="form-block">
+                                    <label class="md-check form-label">
+                                        <input name="viewOption" value="quarterly" type="radio" ng-model="page.model.form.rowOptions.gridViewType" ng-change="page.changeViewType()" />
+                                        <i class="blue"></i>
+                                        {{::page.getLangValue('bdget_accByAcc_quaterly')}}
+                                    </label>
+                                </div>
+
+                                <div class="form-block">
+                                    <label class="md-check form-label">
+                                        <input name="viewOption" value="monthly" type="radio" ng-model="page.model.form.rowOptions.gridViewType" ng-change="page.changeViewType()" />
+                                        <i class="blue"></i>
+                                        {{::page.getLangValue('bdget_accByAcc_monthly')}}
+                                    </label>
+                                </div>
+
+                                <div class="separator"></div>
+
+                                <div class="columns-list">
+                                    <div class="checkbox"
+                                         ng-if="column.label"
+                                         class="rp-cg-option-column"
+                                         ng-repeat="column in page.model.form.columnOptions.columns.data">
+                                        <label class="md-check dark-bluebox form-label">
+                                            <input type="checkbox"
+                                                   id="col{{$index}}"
+                                                   ng-model="column.state.active"
+                                                   ng-change="page.chageRowOptions(column)"
+                                                   class="form-checkbox rp-form-checkbox"
+                                                   ng-true-value="true" ng-false-value="false">
+                                            <i class="primary"></i>
+                                            {{column.label}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <div ng-if="page.rowOptions">
+                    <rp-cg model="page.grid">
+                    </rp-cg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

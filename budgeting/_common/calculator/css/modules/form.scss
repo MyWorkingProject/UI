@@ -1,0 +1,24 @@
+#rp-calculator {
+
+	.form-control-label {
+		font-weight: bolder;
+	}
+
+	.md-check > i.white {
+    	&:before {
+    		border: 1px solid $ash-gray;
+    	}
+    	&:after {
+    		border-color: $dark-gray;
+    	}
+    }
+
+    #affected-period {
+        display: block;
+        padding: 0.5rem;
+
+        .label {
+            font-weight: normal;
+        }
+    }
+}

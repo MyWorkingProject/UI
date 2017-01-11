@@ -1,0 +1,52 @@
+<div id="comments-rule">
+    <form editable-form name="editableForm" class="form-validation" ng-class="page.model.form.state" ng-submit="page.saveCommentRules()">
+        <div class="row-col p-b-0 p-l-sm p-y-sm">
+            <h5 class="col-xs-6">{{::page.getKeyValue('bdgt_comments_rule_Heading')}}</h5>
+            <div class="form-group col-xs-6" ng-show="page.model.form.commentRuleOption.editCommentRule">
+                <div class="col-sm-9 col-sm-offset-3 p-r-0" ng-show="!page.model.form.isFinalize">
+                    <button type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.onEdit()" ng-show="!page.model.form.state.isEdit">
+                        <!--ng-show="!editableForm.$visible" ng-click="editableForm.$show()" >-->
+                        <i class="fa fa-edit"></i>
+                        {{::page.getKeyValue('bdgt_comments_rule_edit')}}
+                    </button>
+                    <!-- buttons to submit / cancel form -->
+                    <!--<span ng-show="editableForm.$visible" class="pull-right">-->
+                    <span ng-show="page.model.form.state.isEdit" class="pull-right">
+                        <button type="button" class="btn rounded btn-outline b-primary text-primary w-xs" ng-disabled="editableForm.$waiting" ng-click="page.onCancel()">
+                            <!--ng-click="editableForm.$cancel();page.model.isEdit=false;"-->
+                            {{::page.getKeyValue('bdgt_comments_rule_cancel')}}
+                        </button>
+                        <button type="submit" class="btn rounded primary w-xs" ng-disabled="editableForm.$waiting">
+                            {{::page.getKeyValue('bdgt_comments_rule_save')}}
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="box-body p-t-0 p-l-sm">
+            <div class="form-horizontal">
+                <label class="ft-s-16 ft-bold text-color">
+                    {{::page.getKeyValue('bdgt_comments_rule_source')}}
+                </label>
+                <div class="m-b-sm row">
+                    <div class="col-sm-4">
+                        <p class="form-control-static">                          
+                            <rp-form-select-menu ng-show="page.model.form.state.isEdit && page.model.form.commentRuleOption.editCommentRule" 
+                                                 config="page.formConfig.source" rp-model="page.model.form.commentRuleOption.commentRuleMethod">
+                            </rp-form-select-menu>
+
+                            <span class="span-width" ng-show="!page.model.form.state.isEdit || !page.model.form.commentRuleOption.editCommentRule">
+                                <label>{{ page.model.form.commentRuleOption.commentRuleMethod ==="AccountType" ? "Account Type":page.model.form.commentRuleOption.commentRuleMethod }}</label>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div ng-if="gridFactory.grid && page.model.form.commentRuleOption.commentRuleMethod!='None'">
+            <!--class="col-sm-12"-->
+            <rp-grid model="gridFactory.grid" class=""></rp-grid>
+        </div>
+    </form>
+</div>

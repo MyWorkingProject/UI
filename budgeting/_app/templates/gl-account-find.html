@@ -1,0 +1,61 @@
+<div id="gl-account-finder" class="aside" tabindex="-1" role="dialog">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div id="gl-account-model-window">
+                <div class="right w-xl white b-l">
+                    <div class="row-col">
+                        <div class="top-spacer">
+                            <a data-dismiss="modal" class="pull-right text-muted text-lg p-t-sm" ng-click="$hide()">&times;</a>
+                            <div class="p-a">
+                                <div class="h5">
+                                   {{::page.model.text.headerTxt}}
+                                    <div ng-if="page.model.propertyID <=0  || page.model.propertyID=='undefined' || page.model.propertyID==''">
+                                        <div class="gl-select-box">
+                                            <rp-form-select-menu config="page.formConfig.glAccount" rp-model="page.model.form.glAccount">
+                                            </rp-form-select-menu>
+                                        </div>
+                                    </div>
+                                    <div ng-if="page.model.propertyID>0">
+                                        <div class="gl-select-box" >
+                                            <h5 class="gl-h5">{{page.model.masterChartList[0].masterChartName}}</h5>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="gl-input-text">
+                                        <rp-form-input-text config="page.formConfig.searchKey" rp-model="page.model.searchKey">
+                                        </rp-form-input-text> <span class="rp-form-input-text-icon rp-icon-search2"></span>                                                                  
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="row-row">
+                                <div class="row-body">
+                                    <div class="row-inner">
+                                        <div class="list-group no-radius">
+                                            <ng-form class="ft-form" role="form" name="findGlAccount" novalidate>
+                                                <div class="p-a income" ng-repeat="item in page.model.data | filter:page.model.searchKey | orderBy:accountCategoryName">
+                                                    <div class="gl-acc" ng-show="page.model.newGrouping(page.model.data, 'accountCategoryName', $index);">
+                                                        <span class="h5">{{item.accountCategoryName}}</span>
+                                                    </div>
+                                                    <a href class="list-group-item" ng-click="page.selectedGlAccountInfo(item.glAccountNumber)">
+                                                        {{item.glAccountNumber}} {{item.glAccountDescription}}
+                                                    </a>
+                                                </div>
+                                            </ng-form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-a b-t">
+                    <div class="p-r-0">
+                        <button type="submit" class="btn rounded btn-outline b-primary text-primary w-full p-x-md" ng-click="$hide()">{{::page.model.text.cancel}}   </button>
+                        <button type="submit" class="btn rounded primary w-full m-b-md" ng-click="page.showSelectedGlAccount()">{{::page.model.text.select}}   </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

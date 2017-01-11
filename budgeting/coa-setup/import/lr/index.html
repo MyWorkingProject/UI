@@ -1,0 +1,39 @@
+﻿<div class="import-section col-xs-6 lr-charts-select">
+    <span>{{ ::page.model.text.selectChartTxt }}</span>
+    <select name="propDrpDwn"
+            class="rp-form-select"
+            rp-update-display-text="true"
+            rp-option-name-key="masterChartName"
+            rp-option-value-key="masterChartName"
+            ng-model="page.model.form.selectedPropertyID"
+            rp-select-options="page.model.form.propertyData"
+            ng-options="option.masterChartName as option.masterChartName for option in page.model.form.propertyData.options"
+            ng-change="page.chartSelect();"
+            ></select>
+</div>
+<div class="import-section col-xs-6 dv-load-btn-lr" ng-if="page.model.form.showLoadBtn">
+    <span class="button medium white newbtn loadBtn" ng-click="page.loadLRProps()">
+            {{ ::page.model.text.loadBtn }}
+    </span>
+</div>
+
+<div class="import-grid-lr" ng-if="gridModel.grid">
+    <div class="import-section-border"></div>
+    <h3 class="gridHeading">{{ ::page.model.text.importSecHeading }}</h3>
+    <div class="table-controls filter-right">
+        <span class="tooltip-container button medium blue importBtn" ng-click="page.saveLRGlAccounts();" ng-init="page.model.form.tooltipState">
+            {{ ::page.model.text.importSaveBtn }}
+            <span class="tooltip rp-callout top" ng-class="{ active: page.model.form.tooltipState }">{{ ::page.model.text.selectPropToSave }}</span>
+        </span>
+        <rp-toggle class="table-filter-toggle"
+                   model="gridModel.grid.filtersModel.state.active"
+                   options="{activeText: page.model.text.hideFilters,
+                        defaultText: page.model.text.showFilters}">
+        </rp-toggle>
+        <span class="text link refreshBtn" ng-click="page.refreshLRData();">
+            <span class="refresh-icon"></span>
+            {{ ::page.model.text.refreshBtn }}
+        </span>
+    </div>
+    <rp-grid model="gridModel.grid"></rp-grid>
+</div>	 
