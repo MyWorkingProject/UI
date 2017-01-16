@@ -8,6 +8,14 @@
     .thumb {
         width: 27%;
     }
+    .rp-grid-headers-1
+    {
+        .thumb{
+            span{
+                padding-left: 10px;
+            }
+        }
+    }
     .container{
     width: 225px;
     margin-left: -15px;    
@@ -48,9 +56,18 @@
     .display-inline-block {
         display: inline-block;
     }
-
-    .b-l-cell-response {
-        border-left: 1px solid #ff6a00 !important;
+    .Read
+    {
+        visibility: hidden;
+    }
+    .unRead{
+        visibility: visible;
+    }
+    .circle-icon-align
+    {
+        font-size: .5rem;
+        position: relative;
+        right: 4px;
     }
 
     .icon-margin {

@@ -104,7 +104,7 @@
 
             "default-adjustments": ["css", "js", "lang"],
             "default-adjustments.assign-defaults": ["css"],
-            
+
             "occupancyRenewals.base": ["css", "js", "lang"],
             "occupancyRenewals.occupancyTableSettings": ["css", "js", "lang"],
             "occupancyRenewals.summary": ["css", "js", "lang"],
@@ -131,6 +131,9 @@
             //Custom-Worksheet
             //"custom-worksheets": ["css", "js", "lang"],
             //"custom-worksheet": ["js", "lang"]
+
+            "rentalincome.lossOrGainServiceGroupSummary": ["css", "js", "lang"],
+            "rentalincome.lossOrGainServiceGroupDetails": ["css", "js", "lang"],
         };
 
         appConfig = {
@@ -146,4 +149,3 @@
         .module("budgeting")
         .config(["rpResolveModuleProvider", config]);
 })(angular);
-

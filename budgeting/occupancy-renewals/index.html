@@ -1,6 +1,7 @@
 <div id="occupancy-and-renewals" ng-if="page.state.isReady" class="container-fluid">
+
+    <model-basic-info></model-basic-info>
     <div ng-show="page.bmDetails.modelStatus">
-        <model-basic-info></model-basic-info>
         <div ng-show="page.bmDetails.tabStatus" class="row">
             <h3 class="budget-model-title text-primary p-l-1 m-b-xs">
                 {{::page.pageTitle}}

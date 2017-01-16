@@ -307,7 +307,7 @@
             if(marketRentCalculationModel.isDataModified()){
                 changeModal.setContent({
                       title: vm.getKeyValue('bdgt_rental_mr_changes_header'),
-                      message: vm.getKeyValue('bdgt_rental_mr_changes_desc') + model.getWorksheetText(),
+                      message: vm.getKeyValue('bdgt_rental_mr_changes_desc') + model.getWorksheetText()+". "+ vm.getKeyValue('bdgt_rental_mr_confirm_msg'),
                       btnAcceptText: vm.getKeyValue('bdgt_rental_mr_changes_ok'),
                       btnRejectText: vm.getKeyValue('bdgt_rental_mr_refresh_cancel')
                   }).show();

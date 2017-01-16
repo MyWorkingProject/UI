@@ -128,6 +128,15 @@
         model.getApplyChangesRowData = function() {
             return model.data.gridData[2];
         };
+
+        model.resetApplyChangesRowData = function() {
+            angular.forEach(model.data.gridData[2], function (val, key) {
+               if (pricingUtils.isJsonKeyMonth(key)) { 
+                    model.data.gridData[2][key] = true;
+                }
+            });
+        };
+
         model.getResultsRowData = function() {
             return model.data.gridData[3];
         };
@@ -137,6 +146,7 @@
                 //model.data.gridData[0] = data[0];
                 model.copyPeriodData(data[0], noOfperiods);
             }
+            model.setActiveRow(data[0]);
         }; 
 
         model.copyPeriodData = function(data, noOfperiods){
@@ -169,7 +179,7 @@
 
         //calculate according to the method and other user inputs
         model.calculate = function (baseValueData) {
-            model.setActiveRow(baseValueData);
+            //model.setActiveRow(baseValueData);
 
             var currMethod = model.data.method;
             switch (currMethod) {
@@ -204,7 +214,7 @@
         };
 
         model.getComputeValue = function(val) {
-            if(val === null) {
+            if(val === null || val === undefined) {
                 return 0;
             }
             return parseFloat(val);
@@ -373,13 +383,19 @@
                 applyChangesGridData = model.getApplyChangesRowData(),
                 applicableMonths = model.countApplicableMonths(),
                 baseValueGridData = model.getActiveRow(),
-                total = 0;
+                total = 0, annaulAmount = 0;
 
             if (currMethod == changeRentMethods.ID_ANNUALLY_CURRENCY.value) {
                 amt = amt / applicableMonths;
-            } else {
-                amt = amt / 100.0; //treat as percent
             }
+            else{
+                var annualTotal = parseFloat(baseValueGridData["total"]);
+                annaulAmount = (annualTotal * amt) / 100;
+                amt = applicableMonths === 0 ? 0 : annaulAmount / applicableMonths;
+            }    
+            /* else {
+                amt = amt / 100.0; //treat as percent
+            }*/
 
             angular.forEach(resultsGridData, function (val, key) {
                 if (!pricingUtils.isJsonKeyMonth(key)) {
@@ -389,11 +405,12 @@
                 var newVal = null;
                 if (applyChangesGridData[key] === true) {
                     newVal = parseFloat(baseValueGridData[key]) || 0;
-                    if (currMethod == changeRentMethods.ID_ANNUALLY_CURRENCY.value) {
+                    newVal += amt;
+                   /* if (currMethod == changeRentMethods.ID_ANNUALLY_CURRENCY.value) {
                         newVal += amt;
                     } else {
                         newVal += (newVal * amt);
-                    }
+                    }*/
                 } else {
                     newVal = baseValueGridData[key];
                 }

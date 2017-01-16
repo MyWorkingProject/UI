@@ -2,9 +2,10 @@
 (function (angular) {
     "use strict";
 
-    function pricingEditable(keycode, calculatorModel) {
+    function pricingEditable(keycode, calculatorModel, priceUtil) {
         function link(scope, elem, attr) {
             var onChange = function (evt) {
+                evt.target.value = priceUtil.displayAsCurrency(evt.target.value);
                 calculatorModel.setMonthlyGridData(evt.target.value);
                 scope.$apply();
             };
@@ -23,6 +24,7 @@
         .directive("rentCalculatorAmt", [
             "keycode",
             "changeRentModel",
+            "rentPricingUtility",
             pricingEditable
         ]);
 })(angular);

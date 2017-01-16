@@ -1,5 +1,6 @@
 #gl-account-finder {
     width: 340px;
+    z-index:9999 !important;
     border-left: 1px solid #eee;
     #gl-account-model-window {
         .gl-acc {

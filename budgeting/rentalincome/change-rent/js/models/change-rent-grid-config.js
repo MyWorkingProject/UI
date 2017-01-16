@@ -5,7 +5,7 @@
     function gridFactory(rpGridConfig, pricingUtils, i18n, moment) {
         var grid = {},
             gridConfig = rpGridConfig(),
-            templateUrl = "app/templates/calculator.grid-monthly.html";
+            templateUrl = "app/templates/rent.grid-monthly.html";
 
         var defaultConfig = {
             startMonth: 1,
@@ -39,7 +39,7 @@
             columnConfig.push({
                 key: "total",
                 type: "custom",
-                templateUrl: "app/templates/calculator.grid-total.html"
+                templateUrl: "app/templates/rent.grid-total.html"
             });
         };
 

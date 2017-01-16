@@ -8,11 +8,11 @@
         };
       
         model.copyData = {};
-        model.formdata = [{ 'value': 1, text: translate('method_equally') },
-                              { 'value': 2, text: translate('method_inputamount') },
-                              { 'value': 3, text: translate('method_percentage') },
-                              { 'value': 4, text: translate('method_units') },
-                              { 'value': 5, text: translate('method_sqftg') }
+        model.formdata = [{ 'value': translate('value_equally'), text: translate('method_equally') },
+                              { 'value': translate('value_inputamount'), text: translate('method_inputamount') },
+                              { 'value': translate('value_percentage'), text: translate('method_percentage') },
+                              { 'value': translate('value_units'), text: translate('method_units') },
+                              { 'value': translate('value_sqftg'), text: translate('method_sqftg') }
         ];       
         model.setOptions = function () {
             formConfig
@@ -20,7 +20,7 @@
 
         };  
        
-        model.formData = { isEdit: false, isView: false, isNew: false, methodName: 1, allocation_name: translate('form_allocaton_newName'),isProperty:false };
+        model.formData = { isEdit: false, isView: false, isNew: false, methodName: translate('value_equally'), allocation_name: translate('form_allocaton_newName'), allocation_title: translate('form_allocaton_newName'), isProperty:false };
     
         angular.copy(model.formData, model.copyData);
 
@@ -37,23 +37,37 @@
                 model.formData.isNew = true;
                 amountGridModel.grid.edit(true);
             }
-            if (!model.formData.isNew) {
+            logc(allocationType);
+                model.formData.allocation_name = allocationType === 'copy' ? 'copy of ' + allocationData.name : allocationData.name;
+                model.formData.methodName = model.getMethodID(allocationData.method);
+                model.formData.allocation_description = allocationData.description;
+                model.formData.method = allocationData.method;
+            /*if (!model.formData.isNew) {
                 //var allocationData = allocationAmountSvc.getAllocationDetails(allocationId).records;
+                logc(allocationType);
                 model.formData.allocation_name = allocationType === 'copy' ? 'copy of ' + allocationData.name : allocationData.name;
                 model.formData.methodName = model.getMethodID(allocationData.method);
                 model.formData.allocation_description = allocationData.description;
                 model.formData.method = allocationData.method;
             }
+            else{
+                logc('new');
+                logc(allocationType);
+                model.formData.allocation_name = allocationType === 'copy' ? 'copy of ' + allocationData.name : allocationData.name;
+                model.formData.methodName = model.getMethodID(allocationData.method);
+                model.formData.allocation_description = allocationData.description;
+                model.formData.method = allocationData.method;
+            }*/
         };
 
         model.getMethodID = function(methodName){
             var methodID;
             switch(methodName){
-                case translate('method_equally') : methodID = 1; break;
-                case translate('method_inputamount') : methodID = 2; break;
-                case translate('method_percentage') : methodID = 3; break;
-                case translate('method_units') : methodID = 4; break;
-                case translate('method_sqftg') : methodID = 5; break;
+                case translate('method_equally') : methodID = translate('value_equally'); break;
+                case translate('method_inputamount') : methodID = translate('value_inputamount'); break;
+                case translate('method_percentage') : methodID = translate('value_percentage'); break;
+                case translate('method_units') : methodID = translate('value_units'); break;
+                case translate('method_sqftg') : methodID = translate('value_sqftg'); break;
             }
             return methodID;
         };
@@ -61,11 +75,11 @@
         model.getMethodName = function(method){
             var methodName;
             switch(method){
-                case 1 : methodName = translate('method_equally') ; break;
-                case 2 : methodName = translate('method_inputamount') ; break;
-                case 3 : methodName = translate('method_percentage') ; break;
-                case 4 : methodName = translate('method_units') ; break;
-                case 5 : methodName = translate('method_sqftg') ; break;
+                case translate('value_equally') : methodName = translate('method_equally') ; break;
+                case translate('value_inputamount') : methodName = translate('method_inputamount') ; break;
+                case translate('value_percentage') : methodName = translate('method_percentage') ; break;
+                case translate('value_units') : methodName = translate('method_units') ; break;
+                case translate('value_sqftg') : methodName = translate('method_sqftg') ; break;
             }
             return methodName;
         };
@@ -88,35 +102,35 @@
         };
                
         model.handlePropertyData = function (grid, data, totalAmount, methodname) {
-            angular.forEach(data.records, function (item) {
+            angular.forEach(data.records, function (item) {                
                 switch (methodname) {
-                    case 1:
+                    case translate('value_equally'):
                         item.amount = (totalAmount / data.records.length).toFixed(2);
                         item.percentage = (100 / data.records.length).toFixed(2);
                         break;
-                    case 4:
+                    case translate('value_units'): 
                         item.amount = (totalAmount * item.units / ($filter("sumByKey")(data.records, 'units'))).toFixed(2);
                         item.percentage = (100 * item.units / ($filter("sumByKey")(data.records, 'units'))).toFixed(2);
                         break;
-                    case 5:
+                    case translate('value_sqftg'):
                         item.amount = (totalAmount * item.squareFootage / ($filter("sumByKey")(data.records, 'squareFootage'))).toFixed(2);
                         item.percentage = (100 * item.squareFootage / ($filter("sumByKey")(data.records, 'squareFootage'))).toFixed(2);
                         break;
-                    case 3:
+                    case translate('value_percentage'):
                         item.amount = (totalAmount * item.percentage / 100).toFixed(2);
                         break;
-                    case 2:
+                    case translate('value_inputamount'):
                         item.percentage = (100 * item.amount / totalAmount).toFixed(2);
                         break;
                 }
 
                 //item.squareFootage = item.squareFootage.toLocaleString('en-IN');
             });
-            if (methodname === 2) {
+            if (methodname === translate('value_inputamount')) {
                 grid.amountState = true;
                 grid.PercentageState = false;
             }
-            else if (methodname === 3) {
+            else if (methodname === translate('value_percentage')) {
                 grid.PercentageState = true;
                 grid.amountState = false;
             }
@@ -157,7 +171,15 @@
                     item.amount=0;
                     propertiesData.push(item);
                 }                
-            });            
+            });
+            checkedRows.forEach(function(item){
+                propertiesData.forEach(function(property){
+                    if(property.masterChartID === item.masterChartID){
+                        property.glAccountNumber = item.glAccountNumber;
+                        property.glAccountDescription = item.glAccountDescription;
+                    }
+                });
+            });     
             logc(JSON.stringify(propertiesData));
             var dataNew = { records: propertiesData };
             grid.addData(dataNew);

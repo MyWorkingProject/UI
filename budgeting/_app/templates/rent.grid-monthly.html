@@ -1,0 +1,34 @@
+﻿<!-- Source Data -->
+<span ng-if="record.rowType === 'activePeriod'">
+    {{record[config.key]}}
+</span>
+
+<!-- Apply Change -->
+<span ng-if="record.rowType === 'applyChanges'">
+    <label class="md-check">
+        <!-- not disabled -->
+        <input type="checkbox" 
+            ng-if="record[config.key] !== 'disabled'"
+            ng-true-value="true" 
+            ng-false-value="false" 
+            class="rp-form-checkbox" 
+            ng-model="record[config.key]" />
+
+        <!-- disabled -->
+        <input type="checkbox" 
+            ng-if="record[config.key] === 'disabled'"
+            class="rp-form-checkbox" 
+            disabled="disabled" />
+        <i class="white"></i>
+    </label>
+</span>
+
+<!-- Monthly Data, Results -->
+<span ng-if="record.rowType === 'monthlyAmount' || record.rowType === 'results'" class="field-block grid-input-text">
+    <input type="text" value="{{record[config.key]}}"
+        data-row-type="{{record.rowType}}"
+        data-period="{{config.key}}"
+        ng-model="record[config.key]" 
+        ng-model-options="{updateOn: 'blur'}"
+        class="form-control form-control-sm rp-calculator-editable text-right"/>
+</span>

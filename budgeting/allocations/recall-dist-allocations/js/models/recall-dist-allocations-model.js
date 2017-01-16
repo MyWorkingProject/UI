@@ -10,6 +10,7 @@
                 grid = model.grid = gridModel();
 
             model.init = function () {
+                model.isChecked = false;
                 grid
                     .setConfig(gridConfig)
                     .setEmptyMsg('No results were found');

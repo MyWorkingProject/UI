@@ -56,9 +56,9 @@
             getgridconfig(columns, 'masterChartName', 'form_allocation_master_chart');
             //getgridconfig(columns, 'glaccount', 'form_allocation_glaccount');
             getgridconfig(columns, 'glAccountNumber', 'form_allocation_glaccount', undefined, 'app/templates/allocations-gl-accounts.html');
-            if (methodname === 4) {
+            if (methodname === translate('value_units')) {
                 getgridconfig(columns, 'units', 'form_allocation_units');
-            } else if (methodname === 5) {
+            } else if (methodname === translate('value_sqftg')) {
                 getgridconfig(columns, 'squareFootage', 'form_allocation_sqft');
             }
 
@@ -69,10 +69,10 @@
             }
             getgridconfig(headers, 'propertyName', 'form_allocation_propertyName');
             getgridconfig(headers, 'masterChartName', 'form_allocation_master_chart');
-            getgridconfig(headers, 'glaccount', 'form_allocation_glaccount');
-            if (methodname === 4) {
+            getgridconfig(headers, 'glAccountNumber', 'form_allocation_glaccount');
+            if (methodname === translate('value_units')) {
                 getgridconfig(headers, 'units', 'form_allocation_units');
-            } else if (methodname === 5) {
+            } else if (methodname === translate('value_sqftg')) {
                 getgridconfig(headers, 'squareFootage', 'form_allocation_sqft');
             }
 
@@ -83,14 +83,8 @@
             }
             getFilters(filters, "propertyName", "text", "Filter by Property");
             getFilters(filters, "masterChartName", "text", "Filter by Master Chart");
-            getFilters(filters, "glaccount", "text", "Filter by Gl Account");
-            if (methodname === 4) {
-                getFilters(filters, "units", "text", "Filter by  Units");
-            } else if (methodname === 5) {
-                getFilters(filters, "squareFootage", "text", "Filter by Sq.Ft");
-            }
-            getFilters(filters, "percentage", "text", "Filter by Allocation");
-            getFilters(filters, "amount", "text", "Filter by Amount");
+            getFilters(filters, "glAccountNumber", "text", "Filter by Gl Account");
+           
             model.get = function() {
                 return columns;
             };

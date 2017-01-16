@@ -54,8 +54,9 @@
            'bdgt_rental_mr_reference_header',
            'bdgt_rental_mr_table_settings',
            'bdgt_rental_mr_reference_lable' ,
-            'bdgt_rental_mr_prof_save_header',
-            'bdgt_rental_mr_prof_save_msg'
+           'bdgt_rental_mr_prof_save_header',
+           'bdgt_rental_mr_prof_save_msg',
+           'bdgt_rental_mr_confirm_msg'
         ];
 
         appLangKeys.app('market-rent').set(keys);

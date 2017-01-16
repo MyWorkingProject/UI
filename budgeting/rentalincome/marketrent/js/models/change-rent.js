@@ -132,12 +132,15 @@
             amnt = parseFloat(parseFloat(startingAmount) / 100.0);
             angular.forEach(data, function (item) {
                avg = 0; total = 0; totalPeriods = 0; resultData = {}; monthlyVal = 0;
+               amnt = parseFloat((parseFloat(item["total"]) * parseFloat(startingAmount)) / 100.0); 
                switch (periodSelection.toLowerCase()) {
                     case "selected periods":
+                         amnt = actualPeriods === 0 ? 0 : amnt / actualPeriods;
                         for(var i = 1; i <= noOfperiods; i++) {
                             if(checkedPeriods[model.periodSuf + i]){
                                 //startingAmount = parseFloat(parseFloat(startingAmount) / 100.0); 
-                                item[model.periodSuf + i] = Math.round(parseFloat(item[model.periodSuf + i]) + (amnt *  parseFloat(item[model.periodSuf + i])),0);
+                               // item[model.periodSuf + i] = Math.round(parseFloat(item[model.periodSuf + i]) + (amnt *  parseFloat(item[model.periodSuf + i])),0);
+                                item[model.periodSuf + i] += Math.round(amnt,0);
                             }
                              total +=  parseInt(item[model.periodSuf + i]);
                         }
@@ -145,9 +148,11 @@
                         item.isUpdated = true;
                         break;
                     case "all periods":
+                         amnt = amnt / 12;
                          for(var j = 1; j <= noOfperiods; j++) {
                                 //startingAmount = parseFloat(parseFloat(startingAmount) / 100.0); 
-                                item[model.periodSuf + j] = Math.round(parseFloat(item[model.periodSuf + j]) + (amnt *  parseFloat(item[model.periodSuf + j])),0);
+                                //item[model.periodSuf + j] = Math.round(parseFloat(item[model.periodSuf + j]) + (amnt *  parseFloat(item[model.periodSuf + j])),0);
+                                item[model.periodSuf + j] += Math.round(amnt,0);
                                 total +=  parseInt(item[model.periodSuf + j]);
                         }
                         item.total = total;

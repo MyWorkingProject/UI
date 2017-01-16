@@ -13,7 +13,7 @@
         model.adjPercent = inputConfig({
             id: "adjPercent",
             required: true,
-            pattern: /^[0-9]+\.?[0-9]*$/,
+            pattern: /^-?[0-9]+\.?[0-9]*$/,
             placeholder: text.leaveComment,         
             errorMsgs: [{
                 name: "required",

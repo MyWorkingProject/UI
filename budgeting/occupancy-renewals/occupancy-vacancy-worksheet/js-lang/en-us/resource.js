@@ -44,7 +44,7 @@
                 "save_text": "Save",
                 "cancel_text": "Cancel",
                 "goal_percentage": "Goal %",
-                "move_inn_text": "Move-inns",
+                "move_inn_text": "Move-ins",
                 "input_occ_by": "Input Occupancy by",
                 'bou_title': "Update beginning occupied Units",
                 'bou_message': "The current number of occupied units is ",

@@ -25,12 +25,15 @@
         model.allocation = inputConfig({
             id: "allocationName",
             fieldName: "allocationName",
-            placeholder: "New Allocation"
+            placeholder: "New Allocation",
+            maxlength: 75,
+            required: true
         });
 
         model.description = textareaConfig({
             id: "description",
-            placeholder: "Description"
+            placeholder: "Description",
+            maxlength: 255
         });
         return model;
     }

@@ -1,20 +1,21 @@
-
-
-(function (angular) {
+(function(angular) {
     function BdgtRentalIncomeCtrl($scope, $window, $stateParams, nav, scrollingTabsMenu, mrModel, calcModel, confirmModal, breadcrumbs, budgetDetails, $state) {
-        var vm = this, tabsMenu = scrollingTabsMenu(), unSubscribeTabChangeEvent, changeModal;
+        var vm = this,
+            tabsMenu = scrollingTabsMenu(),
+            unSubscribeTabChangeEvent, changeModal;
 
-        vm.init = function () {
+        vm.init = function() {
             nav.init();
             var budgetModel = budgetDetails.getModelDetails();
             unSubscribeTabChangeEvent = tabsMenu
                 .setData(nav.data())
                 .subscribe("change", vm.setActiveTab);
+            console.log(tabsMenu);
             vm.scrollingTabs = tabsMenu;
             nav.setDistID($stateParams.distID);
             nav.setNavUrls();
-            breadcrumbs.updateLink('budgetmodel.overview', { distID: $stateParams.distID },  budgetModel.modelName);
-            changeModal = confirmModal.confirm().accept(vm.onChangesOK).reject(vm.onChangesCancel);  
+            breadcrumbs.updateLink('budgetmodel.overview', { distID: $stateParams.distID }, budgetModel.modelName);
+            changeModal = confirmModal.confirm().accept(vm.onChangesOK).reject(vm.onChangesCancel);
             //vm.scrollingTabs = nav.data();
             nav.setState($window.location.hash);
             vm.budgetDetails = nav;
@@ -22,11 +23,11 @@
             //$scope.$watchGroup(watchKeys, dateRange.publish);
         };
 
-        vm.isReady = function(){
+        vm.isReady = function() {
             return nav.isModelReady();
         };
 
-        vm.destroy = function () {
+        vm.destroy = function() {
             nav.reset();
             unSubscribeTabChangeEvent();
             //tabsMenu.destory();
@@ -34,26 +35,26 @@
             vm = undefined;
         };
 
-        vm.setActiveTab = function(tab){
-           /* vm.tab = tab;
-            logc(tabsMenu);
-            tab.isActive = false;
-            if(calcModel.isDataModified()){
-                changeModal.setContent({
-                      title: nav.getKeyValue('bdgt_rental_mr_changes_header'),
-                      message: nav.getKeyValue('bdgt_rental_mr_changes_desc') + mrModel.getWorksheetText(),
-                      btnAcceptText: nav.getKeyValue('bdgt_rental_mr_changes_ok'),
-                      btnRejectText: nav.getKeyValue('bdgt_rental_mr_refresh_cancel')
-                  }).show();
-            } */
+        vm.setActiveTab = function(tab) {
+            /* vm.tab = tab;
+             logc(tabsMenu);
+             tab.isActive = false;
+             if(calcModel.isDataModified()){
+                 changeModal.setContent({
+                       title: nav.getKeyValue('bdgt_rental_mr_changes_header'),
+                       message: nav.getKeyValue('bdgt_rental_mr_changes_desc') + mrModel.getWorksheetText(),
+                       btnAcceptText: nav.getKeyValue('bdgt_rental_mr_changes_ok'),
+                       btnRejectText: nav.getKeyValue('bdgt_rental_mr_refresh_cancel')
+                   }).show();
+             } */
         };
 
-        vm.onChangesOK = function(tab){
+        vm.onChangesOK = function(tab) {
             vm.tab.isActive = true;
         };
 
-        vm.onChangesCancel = function(tab){
-           
+        vm.onChangesCancel = function(tab) {
+
         };
         vm.init();
     }
@@ -75,4 +76,3 @@
             BdgtRentalIncomeCtrl
         ]);
 })(angular);
-

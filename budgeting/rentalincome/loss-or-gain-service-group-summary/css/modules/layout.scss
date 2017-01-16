@@ -1,0 +1,26 @@
+#lossOrGain-service-group {
+    .adjustment-header {
+        background-color: $white !important;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-right: none;
+        .rp-cg-body-cell {
+            cursor: default;
+        }
+        .rp-cg-body-text {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+    .rp-cg-free {
+        .rp-cg-body-cell,
+        .rp-cg-input-text {
+            text-align: right;
+        }
+        .adjustment-header {
+            .rp-cg-body-text {
+                visibility: hidden;
+            }
+        }
+    }
+}

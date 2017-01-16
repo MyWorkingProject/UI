@@ -72,7 +72,7 @@
                 return {
                     records: {
                         "allocationID": 1,
-                        "name": "New Allocation",
+                        "name": "",
                         "description": "",
                         "method": "Equally",
                         "methodName":"Equally",

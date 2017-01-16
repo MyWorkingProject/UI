@@ -18,10 +18,11 @@
         calcuStateModel,
         rpWatchList,
         allocationErrorHandling,
-        $filter
+        $filter,
+        langTranslate
         ) {
         var vm = this, budgetModel, amountGridModel, distributedAllocationAside, recallDestAllocationAside, calculatorAside, assignGLAcctsAside,
-        addPropertiesAside,
+        addPropertiesAside, translate = langTranslate('allocationEdit').translate,
             propertiesGridModel = rpGridModel(),
             propertiesGridConfig = rpGridConfig(),
             gridTransform = gridTransformSvc();
@@ -220,7 +221,7 @@
            
                 model.cancel();
                 amountGridModel.grid.edit(false);
-                model.formData.methodName = 1;
+                model.formData.methodName = translate('value_equally');
                 vm.propertyRefresh(false);
                 if($stateParams.type === "new"){
                       //$state.go('allocations', { distID: $stateParams.distID });
@@ -229,55 +230,61 @@
                 //model.handlePropertyData(vm.propertiesGridModel, vm.propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
             };
 
-            vm.save = function(){
-                var validation = vm.allocationValidation();
-                logc(validation);
-                if(!validation)
-                {
-                    logc($stateParams.type);
-                    var allocationModel = {};
-                    allocationModel.allocation = {
-                        "allocationID": $stateParams.type === 'edit' ||  $stateParams.type === 'view' ?  $stateParams.allocationID : 0,
-                        "name": model.formData.allocation_name,
-                        "amount": model.formData.totalAmount,
-                        "description": model.formData.allocation_description,
-                        "method": model.getMethodName(model.formData.methodName),
-                        "isSiteLevel": true,
-                        "budgetModelID": budgetModel.budgetModelID,
-                        "propertyID": budgetModel.propertyID
-
-                    };
-                    var allocationPropertyList = [];
-                    logc(JSON.stringify(vm.propertiesGridModel.getData().records));
-                    vm.propertiesGridModel.getData().records.forEach(function(item){
-                        allocationPropertyList.push( {
-                          "propertyID": item.propertyID,
-                          "allocationID": $stateParams.type === 'edit' ||  $stateParams.type === 'view' ?  $stateParams.allocationID : 0,
-                          "percentage": item.percentage,
-                          "amount": item.amount,
-                          "isModified": item.isModified,
-                          "masterChartID": item.masterChartID,
-                          "glAccountNumber": item.glAccountNumber
-                         });
-                    });
-                    allocationModel.allocationPropertyList = allocationPropertyList;
-                    allocationModel.allocationPeriod = amountGridModel.getAllacationPerriods();
-                    allocationAmountSvc.putAllocationModel(allocationModel).then(function(response){
-                        logc(JSON.stringify(response));
-                        allocationErrorHandling.showAllocationSuccess();
-                        $location.path('/budgetmodel/' + $stateParams.distID + '/allocations');
-                    }, function(error){
-                        logc(JSON.stringify(error));
-                        if(error.data.messageText === 'DUPLICATE'){
-                            allocationErrorHandling.showAllocationError('Allocation name already exist.');
-                        }
-                        else{
-                            allocationErrorHandling.showAllocationError('Error occured while saving allocation..');
-                        }
-                    });
+            vm.save = function(alloctionForm){
+                if (alloctionForm.$invalid) {
+                    alloctionForm.$setSubmitted();
                 }
                 else{
-                    allocationErrorHandling.showAllocationError(validation);
+                    var validation = vm.allocationValidation();
+                    logc(validation);
+                    if(!validation)
+                    {
+                        logc($stateParams.type);
+                        var allocationModel = {};
+                        allocationModel.allocation = {
+                            "allocationID": $stateParams.type === 'edit' ||  $stateParams.type === 'view' ?  $stateParams.allocationID : 0,
+                            "name": model.formData.allocation_name,
+                            "amount": model.formData.totalAmount,
+                            "description": model.formData.allocation_description,
+                            "method": model.getMethodName(model.formData.methodName),
+                            "isSiteLevel": true,
+                            "budgetModelID": budgetModel.budgetModelID,
+                            "propertyID": budgetModel.propertyID
+
+                        };
+                        var allocationPropertyList = [];
+                        logc(JSON.stringify(vm.propertiesGridModel.getData().records));
+                        vm.propertiesGridModel.getData().records.forEach(function(item){
+                            allocationPropertyList.push( {
+                              "propertyID": item.propertyID,
+                              "allocationID": $stateParams.type === 'edit' ||  $stateParams.type === 'view' ?  $stateParams.allocationID : 0,
+                              "percentage": item.percentage,
+                              "amount": item.amount,
+                              "isModified": item.isModified,
+                              "masterChartID": item.masterChartID,
+                              "glAccountNumber": item.glAccountNumber
+                             });
+                        });
+                        allocationModel.allocationPropertyList = allocationPropertyList;
+                        allocationModel.allocationPeriod = amountGridModel.getAllacationPerriods();
+                        allocationAmountSvc.putAllocationModel(allocationModel).then(function(response){
+                            alloctionForm.$setPristine();
+                            logc(JSON.stringify(response));
+                            allocationErrorHandling.showAllocationSuccess();
+                            $location.path('/budgetmodel/' + $stateParams.distID + '/allocations');
+                        }, function(error){
+                            logc(JSON.stringify(error));
+                            if(error.data.messageText === 'DUPLICATE'){
+                                allocationErrorHandling.showAllocationError('Allocation name already exist.');
+                            }
+                            else{
+                                allocationErrorHandling.showAllocationError('Error occured while saving allocation..');
+                            }
+                        });
+                    }
+                    else{
+                        allocationErrorHandling.showAllocationError(validation);
+                    }
                 }
             };
 
@@ -287,39 +294,26 @@
                 if(vm.amountGridModel.grid.getRows().first().getData().total <= 0 || vm.amountGridModel.grid.getRows().first().getData().total === '')
                 {
                     logc('amount zero');
-                    validationMessage = 'allocation amount should not be empty or zero';
+                    validationMessage = 'allocation amount should not be empty or zero.';
                 }
                 else if(vm.propertiesGridModel.getData().records.length <= 0){
                     logc('property');
                     validationMessage = 'At least one allocation property should be added.';
                 }
-                /*else if(model.getMethodName(model.formData.methodName) === 'Input Percentage' || model.getMethodName(model.formData.methodName) === 'Input Amount'){
-                    logc('percentage');
-                   vm.propertiesGridModel.getData().records.forEach(function(item){
-                        logc(JSON.stringify(item));
-                        if(item.percentage <= 0 || item.percentage === '' || item.percentage === '0.00' ){
-                            logc('p');
-                            validationMessage = 'percentage should not be empty or zero';
-                           // return;
-                        }
-                        else if(item.amount <= 0 || item.amount === '' || item.amount === '00'){
-                            logc('a');
-                            validationMessage = 'amount should not be empty or zero';
-                           // return;
-                        }               
-                    });
-                }*/
-                else if(vm.vallidationZero()){
-                    validationMessage = 'percentage or amount should not be empty or zero';
+                else if(vm.isAmountZeroOrEmpty()){
+                    validationMessage = 'percentage or amount should not be empty or zero.';
                 }
                 else if( vm.amountGridModel.grid.getRows().first().getData().total < propertyGridTotal){
                      logc('exceed');
-                    validationMessage =  'propeties amount should not be exceed than allocation amount';
+                    validationMessage =  'propeties percentage should not be exceeded than allocation amount.';
+                }
+                else if(vm.isGLAccountEmpty()){
+                    validationMessage = 'All allocation property glAccounts should be assigned.';
                 }
                 return validationMessage;
             };
 
-            vm.vallidationZero = function(){
+            vm.isAmountZeroOrEmpty = function(){
                 var returnValue = false;
                 vm.propertiesGridModel.getData().records.forEach(function(item){
                         logc(JSON.stringify(item));
@@ -337,6 +331,29 @@
                         }               
                     });
                 return returnValue;
+            };
+
+            vm.isGLAccountEmpty = function(){
+                var returnValue = false;
+                vm.propertiesGridModel.getData().records.forEach(function(item){
+                        logc(JSON.stringify(item));
+                        if(item.glAccountNumber <= 0 || item.glAccountNumber === '' || item.glAccountNumber === undefined ){
+                           returnValue = true;
+                           return;
+                        }           
+                    });
+                return returnValue;
+            };
+
+            vm.isPercentageExceeded = function(){
+                var isExceeded = false;
+                var propertyGridTotal = $filter("sumByKey")(vm.propertiesGridModel.getData().records, 'amount');
+                if( vm.amountGridModel.grid.getRows().first().getData().total < propertyGridTotal){
+                     logc('exceed');
+                     isExceeded = true;
+                    //validationMessage =  'propeties amount should not be exceed than allocation amount';
+                }
+                return isExceeded;
             };
 
             vm.recall = function(){
@@ -414,9 +431,9 @@
             vm.getRowTotal = function (column, row, rows) {
                 return bmCalculation.getRowTotal(column, row, rows);
             };
-            vm.onMonthlyChange = function () {
+            vm.onMonthlyChange = function (column, row, rows) {
                 logc('m');
-                vm.amountGridModel.grid.reCalculate()
+                vm.amountGridModel.updateDefaultRow(column, row, rows).grid.reCalculate()
                 .refresh();
                 vm.doAllcalucatiuopns();
             };
@@ -454,15 +471,43 @@
             };
 
             vm.onMonthlyBlur = function (column, row) {
+                logc(column);
+                logc(row);
                 amountGridModel.setSelectedRow(column, row);
             };
 
-            vm.onPercentageBlur = function(record){
-                model.handlePropertyData(propertiesGridModel, propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
+            /*vm.onPercentageBlur = function(record){
+                if(!vm.isPercentageExceeded()){
+                  model.handlePropertyData(propertiesGridModel, propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
+                }
+                else{
+                    allocationErrorHandling.showAllocationError('propeties percentage should not be exceed than allocation amount');
+                }
             };
 
             vm.onAmountBlur = function(record){
+                if(!vm.isPercentageExceeded()){
+                  model.handlePropertyData(propertiesGridModel, propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
+                }
+                else{
+                    allocationErrorHandling.showAllocationError('propeties amount should not be exceed than allocation amount');
+                }
+            };*/
+
+            vm.onPercentageBlur = function(record){
+                record.isModified = true;
                 model.handlePropertyData(propertiesGridModel, propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
+                if(vm.isPercentageExceeded()){
+                    allocationErrorHandling.showAllocationError('propeties percentage should not be exceeded than allocation amount');
+                }
+            };
+
+            vm.onAmountBlur = function(record){
+                record.isModified = true;
+                model.handlePropertyData(propertiesGridModel, propertiesGridModel.getData(), vm.amountGridModel.grid.getRows().first().getData().total, model.formData.methodName);
+                if(vm.isPercentageExceeded()){
+                    allocationErrorHandling.showAllocationError('propeties percentage should not be exceeded than allocation amount');
+                }
             };
 
             vm.deleteProperty = function(record){
@@ -548,5 +593,6 @@
             'rpWatchList',
             'allocationErrorHandling',
             '$filter',
+            'appLangTranslate',
             controller]);
 })(angular);

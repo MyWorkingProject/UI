@@ -1,4 +1,4 @@
-<span ng-if="record.rowType !== 'monthlyAmount'">
+<span ng-if="record.rowType !== 'monthlyAmount'" ng-class="{'text-right' : record.config.key.indexOf('period') !=-1 }">
     {{record[config.key]}}
 </span>
 <span ng-if="record.rowType === 'monthlyAmount'" class="monthly-row">

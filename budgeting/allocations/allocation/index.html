@@ -1,11 +1,14 @@
 ﻿<div class="allocationview">
     <!-- Heading with cancel and edit -->
+    <form name="allocationForm" novalidate class="ft-form" role="form">
          <div class="box-header">          
              <div class="text-neutral"  style="margin-left: -13px;margin-bottom: 5px;">
                  {{page.model.getKeyVal('form_title')}}
              </div>
+         
              <div class="inline pointer text-primary" style="margin-bottom: 6px;">
-                 <h2 class="inline payroll-by-title p-r-1" style="margin-left: -15px;">{{page.model.formData.allocation_name}} </h2>
+                 <h2 ng-if="page.model.formData.allocation_name === ''" class="inline payroll-by-title p-r-1" style="margin-left: -15px;">{{page.model.formData.allocation_title}} </h2>
+                 <h2 ng-if="page.model.formData.allocation_name !== ''" class="inline payroll-by-title p-r-1" style="margin-left: -15px;">{{page.model.formData.allocation_name}} </h2>
              </div>
                 <div class="row" ng-if="!page.model.formData.isView && !page.model.formData.isNew ">
                     <div class="">
@@ -19,10 +22,11 @@
                     </div>
                 </div>
                 <div class="box-tool" ng-if="page.accessRestrictions">
-                    <button ng-if="page.model.formData.isEdit" class="cancel btn rounded btn-outline b-primary text-primary w-xs m-r-sm" ng-click="page.cancel()">{{page.model.getKeyVal('form_allocation_cancel')}}</button>
-                    <button ng-if="page.model.formData.isEdit" class="save btn rounded primary w-xs" ng-click="page.save()">{{page.model.getKeyVal('form_allocation_save')}}</button>
-                    <button ng-if="!page.model.formData.isEdit && !page.model.formData.isNew" type="button" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.edit()"><i class="fa fa-edit"></i> {{page.model.getKeyVal('form_allocation_edit')}}</button>
+                    <span ng-if="page.model.formData.isEdit" class="cancel btn rounded btn-outline b-primary text-primary w-xs m-r-sm" ng-click="page.cancel()">{{page.model.getKeyVal('form_allocation_cancel')}}</span>
+                    <span ng-if="page.model.formData.isEdit" class="save btn rounded primary w-xs" ng-click="page.save(allocationForm)">{{page.model.getKeyVal('form_allocation_save')}}</span>
+                    <span ng-if="!page.model.formData.isEdit && !page.model.formData.isNew" class="btn rounded btn-outline b-primary text-primary pull-right" ng-click="page.edit()"><i class="fa fa-edit"></i> {{page.model.getKeyVal('form_allocation_edit')}}</span>
                 </div>
+           
             </div>
 <!-- End of the Heading -->
     <div class="row box-header">
@@ -60,6 +64,7 @@
 
                 </div>
             </div>
+
             <!-- End of General Info -->
             <hr />
             <!-- Allocation Amounts -->
@@ -89,9 +94,9 @@
                 <div class="" ng-if="!page.model.formData.isView">
                     <!-- <button class="btn rounded primary m-r-sm" ng-click="page.addPropertiesAsideModel()">+ Add Property</button>
                     <button class="btn rounded btn-outline b-primary text-primary m-r-sm" ng-click="page.showAssignGLModal()">Assign GL Accounts</button> -->
-                  <button class="btn rounded primary m-r-sm" ng-click="page.addPropertiesAsideModel()"><i class="fa fa-plus m-r-xs"></i>{{page.model.getKeyVal('form_allocation_addProperty')}}</button>
-                  <button class="btn rounded btn-outline b-primary text-primary" ng-click="page.showAssignGLModal()">{{page.model.getKeyVal('form_allocation_assignGl')}}</button> 
-               
+                  <span class="btn rounded primary m-r-sm" ng-click="page.addPropertiesAsideModel()"><i class="fa fa-plus m-r-xs"></i>{{page.model.getKeyVal('form_allocation_addProperty')}}</span>
+                  <span class="btn rounded btn-outline b-primary text-primary" ng-click="page.showAssignGLModal()">{{page.model.getKeyVal('form_allocation_assignGl')}}</span> 
+               </div>
 
                 <div class="m-t-1 pull-right clearfix">
                     <div class="pull-right grid-controls">
@@ -111,7 +116,7 @@
                 <rp-grid model="page.propertiesGridModel"></rp-grid>
             </div>
 
-
+ </form>
 
             <!-- End of Properties -->
        

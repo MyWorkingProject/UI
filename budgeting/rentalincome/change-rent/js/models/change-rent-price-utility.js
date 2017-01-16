@@ -25,7 +25,7 @@
           if(isNaN(val)) {
             return "0";
           }
-          return Number(val).toFixed(0);
+          return util.roundNumber(val,0);//Number(val);//.toFixed(0);
         };
 
         util.roundNumber = function(number, places) {

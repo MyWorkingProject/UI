@@ -161,7 +161,7 @@
                 gridColumns.options.push({
                     key: column.key,
                     title: column.colName ,
-                    value: true,
+                    value: column.state.active,
                     isVisible: column.isDataColumn
                 });
             });

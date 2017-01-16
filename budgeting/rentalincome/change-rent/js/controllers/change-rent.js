@@ -57,6 +57,7 @@
       };  
 
       vm.periodChange = function(val){
+         changeRentModel.resetApplyChangesRowData();
          calculator.form.showApplyChange(val);
          changeRentModel.showExpirePeriod(val);
          calculator.form.handleGrid();   

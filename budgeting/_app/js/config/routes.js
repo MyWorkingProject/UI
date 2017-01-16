@@ -439,6 +439,9 @@
                     "budgeting.common.grid-settings",
                     "lib.realpage.scrolling-tabs-menu",
                     "budgeting.rentalincome.marketrent",
+                    "lib.realpage.complex-grid",
+                    "budgeting.common.budget-model-grid",
+                    "budgeting.common.budget-comments",
                 ]
             }]
         };
@@ -464,6 +467,16 @@
                     "budgeting.rentalincome.change-rent",
                     //"budgeting.common.model-details",
                     //"budgeting.common.budget-comments"
+                ]
+            }]
+        };
+        routes['rentalincome.lossOrGainServiceGroupSummary'] = {
+            url: '/LossOrGain/ServiceSummary',
+            controller: 'summaryCtrl as page',
+            lazyLoad: [{
+                files: [
+                    "budgeting.rentalincome.lossOrGainServiceGroupSummary",
+                    "budgeting.rentalincome.lossOrGainServiceGroupDetails"
                 ]
             }]
         };
@@ -677,6 +690,7 @@
             url: '',
             lazyLoad: [{
                 serie: true,
+                rerun: true,
                 files: [
                     "budgeting.allocations.manage-allocations",
                     "budgeting.allocations.recall-dist-allocations",
@@ -690,6 +704,7 @@
             controller: 'BdtallocationCtrl as page',
             lazyLoad: [{
                 serie: true,
+                rerun: true,
                 files: [
                     "lib.angular.bootstrap",
                     "lib.realpage.grid",
@@ -838,10 +853,9 @@
                 serie: true,
                 rerun: true,
                 files: [
-                    "budgeting.occupancyRenewals.occupancyVacancySummary",
                     "budgeting.occupancyRenewals.occupancyVacancy",
                     "budgeting.occupancyRenewals.occupancyTableSettings",
-
+                    "budgeting.occupancyRenewals.occupancyVacancySummary"
 
                 ]
             }]

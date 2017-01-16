@@ -51,7 +51,7 @@
             bdgt_rental_sr_save_msg: "Actual Rent data saved successfully",
             bdgt_rental_sr_save_err_msg: "Unable to save data, invalid data. Please verify the data in the worksheet.",
             bdgt_rental_ar_cap_lable: "Manage Actual Rent Cap",
-            bdgt_rental_mr_changes_header:"Changes will be lost",
+            bdgt_rental_mr_changes_header:"Confirm",
             bdgt_rental_mr_changes_desc:"Click 'Close' to discard any changes. Click 'Cancel' to continue the working in the ",
             bdgt_rental_mr_changes_ok:"Close",
             bdgt_rental_mr_unitCnt_header : "Units not assigned to ",
@@ -63,7 +63,8 @@
             bdgt_rental_mr_table_settings: "Table Settings",
             bdgt_rental_mr_reference_lable: "Month lease expires",
             bdgt_rental_mr_prof_save_header: "Please save the data",
-            bdgt_rental_mr_prof_save_msg:"Please save the data to add the comments to newly added profroma unit type"
+            bdgt_rental_mr_prof_save_msg:"Please save the data to add the comments to newly added profroma unit type",
+            bdgt_rental_mr_confirm_msg:" What do you want to do?"
         });
     }
 

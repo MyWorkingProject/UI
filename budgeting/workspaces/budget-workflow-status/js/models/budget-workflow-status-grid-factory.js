@@ -42,12 +42,14 @@
         };
 
         model.load = function () {
+            bwsModel.setConfigReady(true);
             var data = grid.busy(true).flushData().getQuery();
             bwsModel.getBudgetWorkFlowStatusList(data).success(model.setGridData, exHandling.getBdgtWorkflowStatusException);
         };
 
         model.paginate = function () {
             var data = grid.getQuery();
+            bwsModel.setConfigReady(true);
             return bwsModel.getBudgetWorkFlowStatusList(data).success(model.addGridData, exHandling.getBdgtWorkflowStatusException);
         };
 
@@ -69,6 +71,7 @@
             model.setSelectColumn(response);
             model.addCheckboxStatus(response);
             model.resetGridSelected();
+           // bwsModel.setConfigReady(true);
             grid.addData(response).busy(false);
         };
 

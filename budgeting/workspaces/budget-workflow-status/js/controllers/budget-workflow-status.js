@@ -77,6 +77,7 @@
                 form.$setSubmitted();
             }
             else {
+                model.setConfigReady(false);
                 var data = grid.getSelectedRecords();
                 bgtStatusOperations.updateStatus(data);
                 model.setSelectAll(false);

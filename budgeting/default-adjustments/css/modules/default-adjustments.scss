@@ -1,4 +1,6 @@
-
+#assignDefaults{
+    z-index:9999 !important;
+}
 #budget-budgetmodel-default-adjustments {
     .modal > .right {    
         overflow-y: scroll !important;

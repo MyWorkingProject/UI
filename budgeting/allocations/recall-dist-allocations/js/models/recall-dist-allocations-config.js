@@ -18,7 +18,7 @@
                 if(!isHistory){
                     cols.push({
                         key: "isRecalled",
-                        idKey: 'isRecalled',
+                        idKey: 'allocationID',
                         type: 'select'
                     });
                 }
@@ -54,7 +54,7 @@
                     headers.push({
                     key: 'isRecalled',
                     type: 'select',
-                    text: ''
+                    //text: ''
                     });
                 }
                 headers = headers.concat([

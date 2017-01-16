@@ -37,6 +37,11 @@
                 return model;
             };
 
+            model.updateDefaultRow = function(column, row, rows){
+                row.getData()[column.getKey()] = parseFloat(row.getData()[column.getKey()]) || 0;
+                return model;
+            };
+            
             model.setData = function (data) {
                 var defaultRow = gridConfig.getDefaultRow({}, 0),
                 dataRows = model.mapperGridData(defaultRow, data);

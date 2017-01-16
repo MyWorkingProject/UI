@@ -21,14 +21,21 @@
             width: 15%;
         }
     }
-}
 
+    .modal {
+        z-index: 99999 !important;
+    }
+}
+#finalizeRecall{
+    z-index: 99999 !important;
+}
 .aside {
     z-index: 9999 !important;
 }
 .modal{
  z-index: 9999 !important;
 }
+
 .modal-content .p-l-1{
     padding-left: 0.0rem !important;
 }

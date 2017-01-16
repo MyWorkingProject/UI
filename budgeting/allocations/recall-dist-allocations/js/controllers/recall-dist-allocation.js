@@ -11,7 +11,9 @@
         recallDistAllocationSvc,
         errorHandling,
         recallDistSettingModel,
-        alertModal) {
+        alertModal,
+        budgetDetails,
+        $filter) {
 
         var vm = this, model, confirmModal;
         vm.fieldLabels = recallDistAllocationsContent;
@@ -23,6 +25,7 @@
             model = vm.model = recallDistModel(gridConfig, recallDistSettingModel.isHistory);
             vm.getRecallDistAllocations()
                   .then(model.setGridData);
+            vm.isDisable = true;
         };
 
         vm.getRecallDistAllocations = function () {
@@ -37,19 +40,36 @@
         };
 
         vm.recallDistAllocations = function () {
-            confirmModal = alertModal.confirm().accept(vm.onConfirm).reject(vm.onReject);
+            vm.selectedAllcoationList = model.getSelectedList($stateParams.distID);
+            if( vm.selectedAllcoationList.length > 0 ){
+                if(budgetDetails.getModelDetails().isFinal){
+                    var finalizeCount = $filter("sumByKey")(vm.model.grid.data.records, 'finalizeCount');
+                    vm.showConfirmMessage(vm.fieldLabels.FinalizeAlertTitle, finalizeCount + vm.fieldLabels.FinalizeAlertMessage, vm.fieldLabels.FinalizeConfirmMessage);
+                }
+                else{
+                    vm.showConfirmMessage(vm.fieldLabels.AlertTitle, vm.fieldLabels.AlertMessage, vm.fieldLabels.AlertConfirmMessage);
+                }
+            }
+            else{
+                vm.showRecallDistAllocationError('please select at least one allocation..');
+            }
+        };
+
+        vm.showConfirmMessage = function(title, message, confirmMessage){
+            confirmModal = alertModal.confirm({ templateUrl: vm.fieldLabels.AlertTemplareUrl }).accept(vm.onConfirm).reject(vm.onReject);
             confirmModal.setContent({
-                title: vm.fieldLabels.AlertTitle,
-                message: vm.fieldLabels.AlertMessage,
-                btnAcceptText: recallDistAllocationsContent.AlertOK,
-                btnRejectText: vm.fieldLabels.Cancel
-            }).show();
+                    title: title,
+                    message: message,
+                    confirmMessage: confirmMessage,
+                    btnAcceptText: recallDistAllocationsContent.AlertOK,
+                    btnRejectText: vm.fieldLabels.Cancel
+                }).show();
         };
 
         vm.onConfirm = function () {
-            var selectedList = model.getSelectedList($stateParams.distID);
-            logc(JSON.stringify(selectedList));
-            recallDistAllocationSvc.recallDistAllocations(selectedList).then(function (response) {
+            //var selectedList = model.getSelectedList($stateParams.distID);
+            logc(JSON.stringify(vm.selectedAllcoationList));
+            recallDistAllocationSvc.recallDistAllocations(vm.selectedAllcoationList).then(function (response) {
                 vm.showRecallDistAllocationSuccess();
             }, function (error) {
                 vm.showRecallDistAllocationError('Error occured while recalling allocation..');
@@ -68,7 +88,6 @@
 
         vm.showRecallDistAllocationError = function (message) {
             errorHandling.showRecallDistAllocationError(message);
-            asideModalInstance.done(recallDistSettingModel);
         };
 
         vm.destroy = function () {
@@ -95,5 +114,7 @@
             "recallDistErrorHandling",
             "recallDistSettingModel",
             "rpBdgtModalService",
+            "budgetDetails",
+            "$filter",
              RecallDistAllocationCtrl]);
 })(angular);

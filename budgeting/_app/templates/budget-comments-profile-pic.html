@@ -1,7 +1,17 @@
-<div ng-class="{'list-left p-l-sm':record.status=='Read','list-left p-l-sm b-l-cell-response':record.status=='UnRead'}">
+<!--<div ng-class="{'list-left p-l-sm':record.status=='Read','list-left p-l-sm b-l-cell-response':record.status=='UnRead'}">
+    <img class="w-40 circle" alt='' src='/ui/budgeting/common/standalone/images/user-image-small.png' />
+    <span class="m-l-sm">{{record.createdBy}}</span>
+</div>-->
+
+
+<div class="list-left p-l-sm">
+    <i class="fa fa-circle text-accent circle-icon-align" ng-class="record.status"></i>
     <img class="w-40 circle" alt='' src='/ui/budgeting/common/standalone/images/user-image-small.png' />
     <span class="m-l-sm">{{record.createdBy}}</span>
 </div>
+
+
+
 
 
 

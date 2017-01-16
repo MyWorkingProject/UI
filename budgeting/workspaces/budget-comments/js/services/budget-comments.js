@@ -183,6 +183,19 @@
             return $resource(url, defaults, actions);
         }
 
+        function changeStatusOfUnreadComments() {
+            var url, actions;
+            url = '/api/budgeting/common/comment/:commentID/commentviewlog';
+            actions = {
+                put: {
+                    method: 'PUT',
+                    params: {
+                        commentID: '@commentID'
+                    }
+                }
+            };
+            return $resource(url, defaults, actions);
+        }
 
         svc.markTaskAsComplete = markTaskAsComplete().putData;
         svc.deleteTask = deleteTask().delete;
@@ -191,6 +204,7 @@
         svc.getCommentsByTaskID = getCommentsByTaskID().getData;
         svc.getCommentByTaskCommentID = getCommentByTaskCommentID().getData;
         svc.deleteTaskComment = deleteTaskComment().delete;
+        svc.changeStatusOfUnreadComments = changeStatusOfUnreadComments().put;
 
 
         return svc;

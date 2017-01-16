@@ -8,5 +8,4 @@
 {{{ include('models\service-gruop-mock.js') }}}
 {{{ include('services\service-group.js') }}}
 {{{ include('models\service-grid-option-config.js') }}}
-{{{ include('templates\templates.inc.js') }}}
 {{{ include('models\table-settings.js') }}}

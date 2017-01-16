@@ -16,6 +16,10 @@
             return bmDetails.data;
         };
 
+        bmDetails.getDistributedID = function() {
+            return bmDetails.data.distributedID;
+        };
+
         bmDetails.getStartYear = function() {
             return bmDetails.data.budgetYear;
         };

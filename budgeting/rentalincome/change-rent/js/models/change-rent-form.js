@@ -105,7 +105,7 @@
                     
                     states.activePeriodDisplay = true;
                     states.affectedPeriodMsg = true;
-
+                    states.calculationSource = true;
                     calculator.getSourceList("average");
                     calculator.prepareCalculationSource();
                     calculator.handleResults();                    
@@ -143,6 +143,7 @@
                     calculator.handleSource();  
                     break;
                 case calculationMethods.ID_ANNUALLY_CURRENCY.value:
+                    states.calculationSource = true;
                     states.activePeriodDisplay = true;                
                     states.calculationAmt1 = true;
                     calculator.handleResults();
@@ -150,6 +151,7 @@
                     calculator.setSelectedSourceRowData(calculationSources.CURR_ROW.value);
                     break;
                 case calculationMethods.ID_ANNUALLY_PERCENTAGE.value:
+                    states.calculationSource = true;
                     states.activePeriodDisplay = true;                
                     states.calculationAmt1 = true;
                     calculator.handleResults(); 
@@ -172,13 +174,13 @@
                     calculator.handleSource();
                     calculator.data.calculationAmt2 = calculator.lbl.factorPercent;
                     break;
-                case calculationMethods.COMPOUND_PERCENTAGE.value:
+             /*   case calculationMethods.COMPOUND_PERCENTAGE.value:
                     states.calculationAmt1 = true;
                     states.calculationAmt2 = true;
                     states.hideResult = false;
                     calculator.handleSource();
                     calculator.data.calculationAmt2 = calculator.lbl.factorPercent;
-                    break;
+                    break;*/
                 case "applyMR":
                 case "applyAR":
                     calculator.handleResults(); 
@@ -209,7 +211,7 @@
 
       calculator.handleSourceOptions = function(){
             var currMethod = calculatorModel.data.method;
-            if(currMethod === "id-monthly-currency-expiry" || currMethod === "id-monthly-percent-percent-expiry"){
+            if(currMethod === "id-monthly-currency-expiry" || currMethod === "id-monthly-percent-percent-expiry" || currMethod === calculationMethods.ID_ANNUALLY_CURRENCY.value || currMethod === calculationMethods.ID_ANNUALLY_PERCENTAGE.value || currMethod === calculationMethods.AVERAGE.value){
             calculator.data.sources = calculationSources.getList(false);
             }
             else{
@@ -220,9 +222,9 @@
 
        calculator.handleGrid = function(){
             var currMethod = calculatorModel.data.method;
-            if(currMethod !== "applyMR" && currMethod !== "applyAR" && (!calculator.state.hideResult || calculator.state.activePeriodDisplay || calculatorModel.data.periodSelection === "selected periods" || calculator.state.calculationSource)){
+            if(currMethod !== "applyMR" && currMethod !== "applyAR" && (!calculator.state.hideResult ||  calculator.state.activePeriodDisplay || calculatorModel.data.periodSelection === "selected periods" || calculator.state.monthlyDisplay )){
                calculator.state.showGrid = true;
-               calculator.state.hideResult = false; 
+               //calculator.state.hideResult = false; 
                if(currMethod === "id-monthly-currency-expiry" || currMethod === "id-monthly-percent-percent-expiry"){
                     calculator.state.hideResult = true; 
                 } 
@@ -230,7 +232,7 @@
             else{
                calculator.state.showGrid = false;
             }
-       }; 
+       };
 
        calculator.handleResults = function(){
             var currMethod = calculatorModel.data.method;
